@@ -16,11 +16,12 @@ C6 = WORKSPACE / 'J280/C6_Presentation_Delivery_20261030/J280_C6_Complete_With_F
 SEQ = WORKSPACE / 'J280/V5_G_Regression_20261102/sequential_motion'
 CATEGORIES = {'ADB1': '01_平衡与手势控制', 'R28': '02_六位置控制',
               'R28_Bluetooth': '03_电脑蓝牙端', 'DS13': '04_现场手绘',
-              'C6': '05_GOWIN画字与真实波形/画字控制与波形绘制'}
+              'C6': '05_GOWIN画字与真实波形/画字控制与波形绘制', 'HOST': '06_上位机源码'}
+HOST_FIXTURES = {'backend/fixtures/adb1_fastp/diagnostic.bin', 'backend/fixtures/adb1_fastp/extension.bin', 'backend/fixtures/adb1_fastp/telemetry.bin', 'backend/fixtures/v4_usb_ble/usb_wire_frames.bin', 'backend/fixtures/v4_usb_ble/wire_frames.bin'}
 BITSTREAM = {'.fs', '.bit', '.bin', '.svf', '.xsvf', '.jed', '.jic', '.sof', '.pof', '.rbt'}
 PACKED = {'.zip', '.rar', '.7z', '.tar', '.gz', '.bz2', '.xz', '.tgz'}
 COMPILED = {'.exe', '.dll', '.pyd', '.pyc', '.pyo', '.obj', '.o', '.lib', '.a', '.pdb', '.mexw64', '.db', '.dbs', '.dat', '.bak'}
-ALLOWED = set(('.patch .java .typed .pywinrt .py .pyi .v .vh .sv .svh .c .h .cpp .tcl .m .ps1 .cmd .bat .do .sdc .cst .gprj '
+ALLOWED = set(('.vue .js .mjs .css .step .glb .patch .java .typed .pywinrt .py .pyi .v .vh .sv .svh .c .h .cpp .tcl .m .ps1 .cmd .bat .do .sdc .cst .gprj '
                '.json .yaml .yml .xml .ini .toml .cfg .conf .txt .md .rst .csv .tsv .html .htm .log .rpt '
                '.f .lst .mem .hex .rom .slx .mat .wlf .fig .png .jpg .jpeg .pdf .svg .ps .npz .npy .ipx .ipc .qsf .sdcx').split())
 SKIP_PARTS = {'runtime', '__pycache__', '.git', '.pytest_cache', 'node_modules', '_internal'}
@@ -53,7 +54,7 @@ def reason(name):
         return 'compiled_artifact_removed'
     if '/work/_' in '/' + '/'.join(parts) or any(x in ('_info', '_lib1_0', '_lib1_0.qdb') for x in parts):
         return 'simulator_cache_removed'
-    if ext not in ALLOWED and p.name.lower() not in ('license', 'copying', 'readme', 'notice'):
+    if ext not in ALLOWED and p.name.lower() not in ('license', 'copying', 'readme', 'notice', '.gitignore', '.gitattributes'):
         return 'non_source_artifact_removed'
     return None
 
@@ -79,6 +80,10 @@ def add_zip(ident, archive, strip_root):
             member = item.filename.replace('\\', '/')
             rel = member.split('/', 1)[1] if strip_root else member
             why = reason(rel)
+            if ident == 'HOST' and PurePosixPath(rel).suffix.lower() in {'.txt', '.md'}:
+                why = 'user_requested_document_removal'
+            elif ident == 'HOST' and rel in HOST_FIXTURES:
+                why = None
             if stat.S_ISLNK(item.external_attr >> 16):
                 why = 'archive_symlink_removed'
             if why:

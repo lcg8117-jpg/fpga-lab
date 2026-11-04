@@ -1,0 +1,346 @@
+{
+  "accepted": true,
+  "variant": 2,
+  "native": {
+    "variant": 2,
+    "firmware_id": "0x46443432",
+    "bitstream_sha256": "994071c9a0f29c02e02e8b565d0c2448609e92166b23cc80bb4712efbd45f5b1",
+    "source_files": 36,
+    "setup_violated_endpoints": 0,
+    "hold_violated_endpoints": 0,
+    "analyzed_endpoints": 61189,
+    "clock_target_mhz": 50.0,
+    "final_fmax_mhz": 50.106,
+    "minimum_reported_setup_slack_ns": 0.043,
+    "minimum_reported_hold_slack_ns": 0.213,
+    "resources": {
+      "Logic": "38114/54720",
+      "Register": "21090/42000",
+      "CLS": "23236/27360",
+      "BSRAM": "7/140",
+      "DSP": "15.5/20",
+      "PRIMARY": "3/8",
+      "LW": "8/8"
+    },
+    "tool_version": "V1.9.12.04 (64-bit)",
+    "control_floorplan": null,
+    "auxiliary_slacks_ns": {
+      "recovery": 12.105,
+      "removal": 1.372,
+      "pulse_width": 7.315
+    },
+    "swing_up": true
+  },
+  "source_scope": {
+    "accepted": true,
+    "variant": 2,
+    "original_input_count": 36,
+    "unchanged_other_inputs": 35,
+    "only_system_changed": true,
+    "system_sha256": "dba51762522c10e2313deb9a522d8a7dcc74fae22619ef8c7575242cb1aa46f2",
+    "patch_contract": {
+      "accepted": true,
+      "variant": 2,
+      "hardware_actions": 0,
+      "physical_validation": false,
+      "source_sha256": {
+        "V2/project/forest_d1_v2.gprj": "d60fd12802ddb0b32e1bbf85360a61c487f364a4503d256bda566f8e3ca73ea6",
+        "V2/project/src/dd1_i2c_byte.v": "988d36dee019e774628b6e27e10e3a0ba1301ee2f61468dc9111f0e9f756a85b",
+        "V2/project/src/dd1_init_rom.v": "386a8337f1e70e26fd1affcf6c42b0af85c0e3b0a2064bdb718659856e1f392e",
+        "V2/project/src/forest_command_router.v": "66269f7285a8d9fcd83887a10d9defba931998409d4b5faec4b0c0613113d8d3",
+        "V2/project/src/forest_d1_board.sdc": "b875aa623ef6342803daaf60d60b1abf7abf3383e9b8a578b6f9641618454503",
+        "V2/project/src/forest_d1_diagnostics.v": "3974971c908600931dc9fad1d6353a927c624f05af3002dfed35ccd763109417",
+        "V2/project/src/forest_d1_fp64.v": "9e24ccf029718f78bd4f9a9111072d3f28cc683fa1fb6c982237ac0759413b4c",
+        "V2/project/src/forest_d1_fp_functions.vh": "11ea724bdf52e6cd49f456eb2a78dffa95123e5c2305f243cea43eee8a1a7c8e",
+        "V2/project/src/forest_d1_gateway.v": "038c335789813b4c33654484c2f3d57b8e2be1be0168d34d7d3889c52a8a34c6",
+        "V2/project/src/forest_d1_gesture_decode.v": "487ce77bd5acb9847c116a96ba8e37d02495604e78df526a80d2a588d504356f",
+        "V2/project/src/forest_d1_gesture_reader.v": "5eba2b78cc7a83c7bcf796c20ff16168db7f0b3d9beacf89bdbefed2939422dc",
+        "V2/project/src/forest_d1_link.v": "af5ebc5933da852839312e42b82674de40dfafb9a50fb5c7b79acb0098dc864f",
+        "V2/project/src/forest_d1_pid.v": "d91779196f25851f00d529e6848adb049b1fa2d70ca5501149e00392e1ebfdf9",
+        "V2/project/src/forest_d1_reset.v": "8ce1007d2d4c5d432adeb65bb729b0fc406095994c1901da43ca426bdf3fecce",
+        "V2/project/src/forest_d1_run_actuator.v": "42bdda196e5c7e7c6cf900ba202c3c4224e7bedeeccfbf8ea63ccf2430c99598",
+        "V2/project/src/forest_d1_run_inputs.v": "c1eb158404d0a03b4a9d1d8ca895d19ff5dd69fbf2d45e9772318dd3c02de842",
+        "V2/project/src/forest_d1_safety.v": "42d81d52e43608704b7bfbd51a184c856078c4ff585fd92da71cced4b73db474",
+        "V2/project/src/forest_d1_swing_observer.v": "2343cdcc7b99708a0b965f893c8ad1187bac04435671a8f211058bec908663ba",
+        "V2/project/src/forest_d1_swing_pwm40k.v": "58973290e142b16967783f656cf93da94f9d8138789a78b8c4c9f2707c013573",
+        "V2/project/src/forest_d1_swingup.v": "81698b52c63791ff4ef3ff3943baf91d2c9b038225e493e67693bd77c51cb0ad",
+        "V2/project/src/forest_d1_system.v": "dba51762522c10e2313deb9a522d8a7dcc74fae22619ef8c7575242cb1aa46f2",
+        "V2/project/src/forest_d1_top.v": "1f0826206155143dc0968de1b59594defaf3c8cde85583bafdb10226bd0d1ae2",
+        "V2/project/src/forest_d1_window_sampler.v": "eb1bc8ec98a614013a0d2b513aad6778d81353ca22e1b30428865b40d11094d5",
+        "V2/project/src/forest_motion_coordinates.v": "d5be87539f48bf39090698574cf1c44d4e5bc369058002f8c84a1bc40c88978c",
+        "V2/project/src/forest_motion_planner.v": "0bb5f2df0db79888211ea91a5e1f1f6b9a9802663b908ab0aa1f7a211facadb0",
+        "V2/project/src/forest_motion_tables.v": "664f382e6742a53593bf6ac29d7f28b1b3e7db7ff4c8d107ee7dd3897d43b357",
+        "V2/project/src/j280_adc_capture_trace.v": "069fd990d6593d1766ff2e826184740ccd4db86a0ec2dfb3d7334d1e81b29cdf",
+        "V2/project/src/j280_encoder_velocity.v": "d4aba72acdb8b9a5a7d2f6adf766affd955a36a24fe340ab927b47b26ff94813",
+        "V2/project/src/j280_encoder_x4.v": "1d80cdf9be06f78ca0f186231027b830f92e467199bef1149ac1b52e314d89c1",
+        "V2/project/src/j280_key_debounce.v": "8f1e39e19ab024978362cc0e2082f9a17ed335bb97a07638836daf4b243ce336",
+        "V2/project/src/j280_official_interface.cst": "22178bb76a8dd850c0e624d84970f14d5adda6c6fe5e0b3626fd8a7487422e9e",
+        "V2/project/src/j280_pwm_motor_safe.v": "99dd05ce105945223542d42f793627a979d426cd551615b7c4c713bcd60d90a5",
+        "V2/project/src/j280_pwm_source_144.v": "4461133661cfe39992def33af9b147eaface09a5cbf19604e37448753b6b117e",
+        "V2/project/src/j280_swing_source_144.v": "ef77618edd1f724e4a42c82653536d881bbef36be1d2add086ffa5e8373c43f5",
+        "V2/project/src/j280_swing_source_sa21.v": "ca2f7aa3f70180a7b66e282ce47956e920c83ae81e739608bb4a2b34a5bc95dc",
+        "V2/project/src/j280_swing_source_swm4.v": "93d449b9649c017961343fee5855dd118df3d8dea62e4beb225fe2df62e8e2df",
+        "reference/V2/forest_d1_system.v": "06cb65bccf80f5e79a8352339ffff1d21fe3ea03c5feec04b9b54252dd0f354f",
+        "reports/BASELINE_SOURCE.json": "2e1cf5675d77ca2c1d9e152910c9ec91ec50bbe4f104bc981871ef90c05941bc",
+        "tools/check_v2_handoff_source.py": "1b3b28f8e8af30cb3267acc22f0cbc4a02647857a66f7f50061edceffa8bc71f"
+      },
+      "original_system_sha256": "06cb65bccf80f5e79a8352339ffff1d21fe3ea03c5feec04b9b54252dd0f354f",
+      "current_system_sha256": "dba51762522c10e2313deb9a522d8a7dcc74fae22619ef8c7575242cb1aa46f2",
+      "only_system_changed": true,
+      "unchanged_other_inputs": 35,
+      "line_endings_preserved": true,
+      "new_handoff_flag_bits": 1,
+      "timeout_ms_unchanged": 250,
+      "supported_profiles": [
+        0
+      ],
+      "wire_version": 3,
+      "firmware_id": "46443432",
+      "schema": "46443402",
+      "original_control_periods_unchanged": true,
+      "patch_counts": [
+        1,
+        1,
+        1,
+        3,
+        1,
+        1,
+        1
+      ],
+      "proof_scope": "Strict source transformation and closure; functional evidence is separate"
+    }
+  },
+  "handoff_functional_proof": {
+    "accepted": true,
+    "variant": 2,
+    "actual_project_closure": true,
+    "physical_validation": false,
+    "cases": {
+      "V2_HANDOFF_MATRIX": {
+        "cases": 4,
+        "negative": false,
+        "CSV_checks": [
+          {
+            "rows": 87,
+            "balance_entries": 1,
+            "fresh_frame_admissions": true,
+            "first_position_frames": [
+              {
+                "round": 0,
+                "clock": 24701464,
+                "position_pwm": 0,
+                "position_diff_bits": "00000000",
+                "position_D_directly_logged": false,
+                "D_zero_proof": "source-bound first25ms bench assertion"
+              }
+            ]
+          },
+          {
+            "rows": 190,
+            "balance_entries": 1,
+            "fresh_frame_admissions": true,
+            "first_position_frames": [
+              {
+                "round": 0,
+                "clock": 29851362,
+                "position_pwm": 0,
+                "position_diff_bits": "00000000",
+                "position_D_directly_logged": false,
+                "D_zero_proof": "source-bound first25ms bench assertion"
+              }
+            ]
+          },
+          {
+            "rows": 87,
+            "balance_entries": 1,
+            "fresh_frame_admissions": true,
+            "first_position_frames": [
+              {
+                "round": 0,
+                "clock": 24751464,
+                "position_pwm": 0,
+                "position_diff_bits": "00000000",
+                "position_D_directly_logged": false,
+                "D_zero_proof": "source-bound first25ms bench assertion"
+              }
+            ]
+          },
+          {
+            "rows": 190,
+            "balance_entries": 1,
+            "fresh_frame_admissions": true,
+            "first_position_frames": [
+              {
+                "round": 0,
+                "clock": 29901362,
+                "position_pwm": 0,
+                "position_diff_bits": "00000000",
+                "position_D_directly_logged": false,
+                "D_zero_proof": "source-bound first25ms bench assertion"
+              }
+            ]
+          }
+        ]
+      },
+      "V2_HANDOFF_EDGES": {
+        "cases": 6,
+        "negative": false,
+        "CSV_checks": [
+          {
+            "rows": 87,
+            "balance_entries": 1,
+            "fresh_frame_admissions": true,
+            "first_position_frames": [
+              {
+                "round": 0,
+                "clock": 24701464,
+                "position_pwm": 0,
+                "position_diff_bits": "00000000",
+                "position_D_directly_logged": false,
+                "D_zero_proof": "source-bound first25ms bench assertion"
+              }
+            ]
+          },
+          {
+            "rows": 107,
+            "balance_entries": 1,
+            "fresh_frame_admissions": true,
+            "first_position_frames": [
+              {
+                "round": 0,
+                "clock": 25201362,
+                "position_pwm": 0,
+                "position_diff_bits": "00000000",
+                "position_D_directly_logged": false,
+                "D_zero_proof": "source-bound first25ms bench assertion"
+              }
+            ]
+          },
+          {
+            "rows": 6,
+            "balance_entries": 0,
+            "fresh_frame_admissions": true,
+            "first_position_frames": []
+          },
+          {
+            "rows": 5,
+            "balance_entries": 0,
+            "fresh_frame_admissions": true,
+            "first_position_frames": []
+          },
+          {
+            "rows": 252,
+            "balance_entries": 0,
+            "fresh_frame_admissions": true,
+            "first_position_frames": []
+          },
+          {
+            "rows": 380,
+            "balance_entries": 2,
+            "fresh_frame_admissions": true,
+            "first_position_frames": [
+              {
+                "round": 0,
+                "clock": 29851362,
+                "position_pwm": 0,
+                "position_diff_bits": "00000000",
+                "position_D_directly_logged": false,
+                "D_zero_proof": "source-bound first25ms bench assertion"
+              },
+              {
+                "round": 1,
+                "clock": 58901362,
+                "position_pwm": 0,
+                "position_diff_bits": "00000000",
+                "position_D_directly_logged": false,
+                "D_zero_proof": "source-bound first25ms bench assertion"
+              }
+            ]
+          }
+        ]
+      },
+      "V2_HANDOFF_OLD_NEGATIVE": {
+        "cases": 1,
+        "negative": true,
+        "CSV_checks": [
+          {
+            "rows": 192,
+            "expected_old_failure": true
+          }
+        ]
+      },
+      "V2_POST_HANDOFF_ROTATION": {
+        "cases": 2,
+        "negative": false,
+        "CSV_checks": [
+          {
+            "rows": 872,
+            "balance_entries": 2,
+            "fresh_frame_admissions": true,
+            "first_position_frames": [
+              {
+                "round": 0,
+                "clock": 24701464,
+                "position_pwm": 0,
+                "position_diff_bits": "00000000",
+                "position_D_directly_logged": false,
+                "D_zero_proof": "source-bound first25ms bench assertion"
+              },
+              {
+                "round": 1,
+                "clock": 58001464,
+                "position_pwm": 0,
+                "position_diff_bits": "00000000",
+                "position_D_directly_logged": false,
+                "D_zero_proof": "source-bound first25ms bench assertion"
+              }
+            ]
+          },
+          {
+            "rows": 872,
+            "balance_entries": 2,
+            "fresh_frame_admissions": true,
+            "first_position_frames": [
+              {
+                "round": 0,
+                "clock": 24751464,
+                "position_pwm": 0,
+                "position_diff_bits": "00000000",
+                "position_D_directly_logged": false,
+                "D_zero_proof": "source-bound first25ms bench assertion"
+              },
+              {
+                "round": 1,
+                "clock": 58051464,
+                "position_pwm": 0,
+                "position_diff_bits": "00000000",
+                "position_D_directly_logged": false,
+                "D_zero_proof": "source-bound first25ms bench assertion"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "original_Host_proof": {
+    "accepted": true,
+    "variant": 2,
+    "inherited_original_Host": true,
+    "Host_changed": false,
+    "historical_tests_not_claimed_rerun": true,
+    "hardware_actions": 0
+  },
+  "manifest_files": 0,
+  "hardware_actions": 0,
+  "physical_validation": false,
+  "release": "J280_V2_HandoffFix_20261027",
+  "RTL_files_changed": 1,
+  "Host_files_changed": 0,
+  "positive_functional_cases": 12,
+  "expected_old_failures": 1,
+  "positive_checks": 2521,
+  "UART_rotation_checks": 16,
+  "source_system_sha256": "dba51762522c10e2313deb9a522d8a7dcc74fae22619ef8c7575242cb1aa46f2",
+  "packaging_receipt": "Final immutable ZIP clean extraction and packaged-runtime smoke are recorded in the external DELIVERY.json"
+}

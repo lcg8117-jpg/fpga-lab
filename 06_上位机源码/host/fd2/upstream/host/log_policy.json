@@ -1,0 +1,7 @@
+{
+  "additional_roots": [],
+  "max_shared_bytes": 2147483648,
+  "min_free_bytes": 10737418240,
+  "reserve_bytes": 8388608,
+  "note": "All five launchers share this host directory. Existing standard drive:/ForestD1_Logs and every previously selected root are included automatically. Add other historical roots here before connecting; history is never deleted."
+}

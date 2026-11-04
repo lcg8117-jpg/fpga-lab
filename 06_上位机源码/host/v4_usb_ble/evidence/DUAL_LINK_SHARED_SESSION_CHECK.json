@@ -1,0 +1,50 @@
+{
+  "status": "PASS",
+  "source": "D:\\Codex_Scratch\\R28_USB_BLE_Restore_20261103\\work\\project\\src\\forest_command_router.v",
+  "source_sha256": "37e015954d8faa3866f74440b451e3b828cfd7feebfc9b7820617cd1c4c713ac",
+  "source_unchanged": true,
+  "firmware": "5634523A",
+  "case": "D:\\Codex_Scratch\\R28_USB_BLE_Restore_20261103\\reports\\dual_link_shared_session",
+  "testbench": "D:\\Codex_Scratch\\R28_USB_BLE_Restore_20261103\\reports\\dual_link_shared_session\\router_dual_link_shared_session_tb.sv",
+  "testbench_sha256": "4744d0d0f8caaf00982710d4f3f6fc728fdb1efd5e53cdbb4a7cd6bc33264283",
+  "marker": "PASS DUAL_LINK_SHARED_SESSION checks=107 cycles=2129 dispatched=19 replies=24 duplicates=1 rejected=3 positions=4 reads=13 redundantSTOPdispatch=2 HELLO=1 FW=5634523A\n",
+  "runs": [
+    {
+      "stage": "vlib",
+      "exit_code": 0,
+      "seconds": 0.21899999998277053
+    },
+    {
+      "stage": "compile",
+      "exit_code": 0,
+      "seconds": 0.3120000000053551
+    },
+    {
+      "stage": "simulate",
+      "exit_code": 0,
+      "seconds": 7.312999999994645
+    }
+  ],
+  "hardware_actions": 0,
+  "native_compiles": 0,
+  "production_edits": 0,
+  "results": {
+    "single_USB_HELLO_session_reused_on_BLE": true,
+    "USB_status_and_gain_reads": true,
+    "BLE_same_session_status_and_position": true,
+    "BLE_disconnect_reopen_without_HELLO": true,
+    "read_highwater_per_route": true,
+    "mutation_highwater_shared": true,
+    "position_mirrored_event_executes_once": true,
+    "dual_stop_immediate_urgent": true,
+    "dual_stop_dispatches_twice_intentionally": true,
+    "dual_stop_ACK_each_route": true
+  },
+  "limits": [
+    "Both physical routes must use the exact same logical session and globally allocated request/event ids.",
+    "BLE POSITION additionally needs synchronized BT_STATE high. Rejected low-STATE actions are retired and cannot be replayed after reconnect.",
+    "Read arrival order is per-route; reads do not retire mutations. Mutating actions remain globally ordered, so old mutations arriving after newer mutations are rejected.",
+    "The test uses the real unchanged router with a minimal accepting gateway model; it does not open serial/BLE, emulate the physical RF connection, or recompile the bitstream.",
+    "If watchdog marks the logical session expired, a new explicit stopped session is required; physical BLE reconnection alone cannot revive an expired session."
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "source": "ADB1_07_指令调度修复_S1_队友封存_20261104.zip",
+  "source_sha256": "b872845acf632dd280583d5dbedaf2bec46b411805626c6d81a2bd9e508f5323",
+  "firmware_id": "41444231",
+  "schema": "41444203",
+  "wire_version": 3,
+  "variant": 16,
+  "files": {
+    "ADB1_07_CommandFlow_S1.fs": "41b9192fed5b4e887e458e1a69689ad7a660964ca8cf1ccacd6c4e31f7b4bf45"
+  }
+}

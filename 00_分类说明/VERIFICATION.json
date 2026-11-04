@@ -1,7 +1,7 @@
 {
   "status": "PASS",
-  "source_files_verified": 1305,
-  "original_archives_unchanged": 5,
+  "source_files_verified": 1763,
+  "original_archives_unchanged": 6,
   "original_local_sources_checked": 114,
   "forbidden_file_count": 0,
   "fs_file_count": 0,
@@ -50,6 +50,11 @@
   ],
   "gowin_projects": [
     {
+      "path": "06_上位机源码/host/ds13/releases/20261103_r2/DS13_App/V5/project/forest_d1_v5.gprj",
+      "enabled_inputs": 27,
+      "missing_inputs": []
+    },
+    {
       "path": "05_GOWIN画字与真实波形/画字控制与波形绘制/Native/forest_d1_v5.gprj",
       "enabled_inputs": 37,
       "missing_inputs": []
@@ -80,7 +85,7 @@
       "missing_inputs": []
     }
   ],
-  "python_files_parsed": 343,
+  "python_files_parsed": 572,
   "syntax_errors": [],
   "broken_generated_links": [],
   "native_coordinate_recheck": {
@@ -92,6 +97,13 @@
   "physical_log_fixture_sha_matches_original_provenance": true,
   "mapped_presentation_copies": [],
   "current_lettering_status": "Successful with good results, owner confirmation 2026-11-04",
+  "host_source_cleanup": {
+    "files": 458,
+    "txt_files": 0,
+    "md_files": 0,
+    "fs_files": 0,
+    "offline_fixture_files": 5
+  },
   "uploaded": false,
   "committed": false,
   "hardware_actions": 0,

@@ -1,0 +1,243 @@
+{
+  "schema": "ForestD1.Swingup.v1",
+  "profiles": [
+    {
+      "id": 0,
+      "name": "Single excitation",
+      "source": "SWM4 mode0"
+    },
+    {
+      "id": 1,
+      "name": "Inertia assisted",
+      "source": "SA21"
+    },
+    {
+      "id": 2,
+      "name": "Peak paired pulse",
+      "source": "archived144"
+    }
+  ],
+  "fields": [
+    {
+      "id": 0,
+      "name": "forward_percent",
+      "unit": "%",
+      "min": 1,
+      "max": 90,
+      "defaults": [
+        70,
+        70,
+        70
+      ],
+      "profiles": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "id": 1,
+      "name": "reverse_percent",
+      "unit": "%",
+      "min": 1,
+      "max": 90,
+      "defaults": [
+        60,
+        70,
+        null
+      ],
+      "profiles": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": 2,
+      "name": "forward_ms",
+      "unit": "ms",
+      "min": 1,
+      "max": 1000,
+      "defaults": [
+        240,
+        230,
+        null
+      ],
+      "profiles": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": 3,
+      "name": "bottom_qualify_ms",
+      "unit": "ms",
+      "min": 1,
+      "max": 1000,
+      "defaults": [
+        60,
+        60,
+        null
+      ],
+      "profiles": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": 4,
+      "name": "bottom_wait_ms",
+      "unit": "ms",
+      "min": 1,
+      "max": 10000,
+      "defaults": [
+        3000,
+        3000,
+        null
+      ],
+      "profiles": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": 5,
+      "name": "reverse_ms",
+      "unit": "ms",
+      "min": 1,
+      "max": 1000,
+      "defaults": [
+        230,
+        230,
+        null
+      ],
+      "profiles": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": 6,
+      "name": "coast_ms",
+      "unit": "ms",
+      "min": 20,
+      "max": 10000,
+      "defaults": [
+        1800,
+        1800,
+        null
+      ],
+      "profiles": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": 8,
+      "name": "attempts",
+      "unit": "count",
+      "min": 1,
+      "max": 10,
+      "defaults": [
+        1,
+        1,
+        null
+      ],
+      "profiles": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": 9,
+      "name": "retry_step_ms",
+      "unit": "ms",
+      "min": 0,
+      "max": 50,
+      "defaults": [
+        10,
+        10,
+        null
+      ],
+      "profiles": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": 64,
+      "name": "first_pair_ms",
+      "unit": "ms",
+      "min": 1,
+      "max": 255,
+      "defaults": [
+        null,
+        null,
+        90
+      ],
+      "profiles": [
+        2
+      ]
+    },
+    {
+      "id": 65,
+      "name": "second_pair_ms",
+      "unit": "ms",
+      "min": 1,
+      "max": 255,
+      "defaults": [
+        null,
+        null,
+        90
+      ],
+      "profiles": [
+        2
+      ]
+    },
+    {
+      "id": 66,
+      "name": "third_pair_ms",
+      "unit": "ms",
+      "min": 1,
+      "max": 254,
+      "defaults": [
+        null,
+        null,
+        90
+      ],
+      "profiles": [
+        2
+      ]
+    }
+  ],
+  "relations": [
+    "bottom_qualify_ms <= bottom_wait_ms"
+  ],
+  "selection": "Selecting a profile does not write any bank or start a session.",
+  "write_guard": "root STOP state and adapter not started/session_enable false",
+  "profile2_fixed": {
+    "startup_wait_ms": 60,
+    "capture_continuous_ms": 20,
+    "pair2_reverse_watch_states": [
+      24,
+      34
+    ],
+    "pair3_internal_minus_ms": 1,
+    "pair4_and_later": "third_pair_ms+1",
+    "not_three_pair_limited": true
+  },
+  "physical": {
+    "clock_hz": 50000000,
+    "quiet_adc_hz": 3125000,
+    "capture_alpha_rad_q20": 274517,
+    "capture_alpha_rate_q20": 3660218,
+    "capture_arm_rate_q20": 2196131,
+    "capture_ms": 20,
+    "angle_q20_per_raw_code": 6921,
+    "encoder_counts_per_turn": 1080,
+    "encoder_q20_rad_per_count": 6100,
+    "arm_rate_8ms_q20_per_count": 762546,
+    "normal_pwm_hz": 40000,
+    "archive_pwm_hz": 10000
+  },
+  "integration": "144 keeps swing-only circular16x1ms averaging of current quiet raw; physicalADC clock remains3.125MHz. No old balance core is present."
+}

@@ -1,0 +1,47 @@
+{
+  "status": "PASS",
+  "scope": "Actual Tk construction and containment at default/minimum size; window placed offscreen and destroyed. No BLE owner created.",
+  "sizes": [
+    {
+      "width": 1130,
+      "height": 800,
+      "widgets_checked": 58,
+      "outside": [],
+      "hidden": [],
+      "plot_height": 148,
+      "sibling_overlap": []
+    },
+    {
+      "width": 1000,
+      "height": 720,
+      "widgets_checked": 58,
+      "outside": [],
+      "hidden": [],
+      "plot_height": 49,
+      "sibling_overlap": []
+    }
+  ],
+  "keyboard_popup_sizes": [
+    {
+      "width": 860,
+      "height": 460,
+      "widgets_checked": 16,
+      "outside": [],
+      "hidden": []
+    },
+    {
+      "width": 760,
+      "height": 420,
+      "widgets_checked": 16,
+      "outside": [],
+      "hidden": []
+    }
+  ],
+  "gui_windows_created": 2,
+  "gui_windows_destroyed": 2,
+  "threads_started": 0,
+  "device_connections": 0,
+  "owner_created": false,
+  "rawinput_registrations": 0,
+  "keyboard_enumerations": 0
+}

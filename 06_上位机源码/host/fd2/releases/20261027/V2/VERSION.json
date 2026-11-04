@@ -1,0 +1,14 @@
+{
+  "variant": 2,
+  "name": "单圈及连续旋转",
+  "firmware_id": "0x46443432",
+  "wire_version": 3,
+  "schema": "0x46443402",
+  "part": "GW2A-LV55PG484C8/I7",
+  "clock_mhz": 50,
+  "ble_commands": false,
+  "ble_telemetry": false,
+  "usb_full_control_hz": 200,
+  "hardware_verified_in_this_task": false,
+  "optical_gesture": true
+}

@@ -1,13 +1,14 @@
 {
   "status": "COLLECTED_LOCAL_ONLY",
-  "files": 1305,
-  "bytes": 145821284,
+  "files": 1763,
+  "bytes": 157115962,
   "categories": {
     "01_平衡与手势控制": 254,
     "02_六位置控制": 169,
     "03_电脑蓝牙端": 124,
     "04_现场手绘": 146,
-    "05_GOWIN画字与真实波形": 612
+    "05_GOWIN画字与真实波形": 612,
+    "06_上位机源码": 458
   },
   "excluded_reasons": {
     "binary_capture_or_bitstream_image_removed": 28,
@@ -15,7 +16,8 @@
     "fs_extension_removed": 39,
     "bundled_runtime_or_cache_removed": 7976,
     "compiled_artifact_removed": 3,
-    "simulator_cache_or_old_viewport_removed": 38
+    "simulator_cache_or_old_viewport_removed": 38,
+    "user_requested_document_removal": 89
   },
   "uploaded": false,
   "committed": false,

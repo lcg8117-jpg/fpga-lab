@@ -1,0 +1,13 @@
+{
+  "schema": "J280.E1993.profile.v1",
+  "sample_seconds": 0.01,
+  "Ku": null,
+  "Tu_seconds": null,
+  "error_nodes_rad": [null, null, null],
+  "delta_nodes_rad_per_sample": [null, null, null],
+  "provenance": {
+    "kind": "unqualified",
+    "control_qualified": false,
+    "sources": []
+  }
+}

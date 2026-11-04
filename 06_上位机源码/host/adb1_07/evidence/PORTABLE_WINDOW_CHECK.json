@@ -1,0 +1,29 @@
+{
+  "observed_unix": 1793728362.9991958,
+  "pid": 37548,
+  "title": "J280 07号 · 指令调度修复 · S1 · P5/25ms",
+  "input_gains": [
+    53.78,
+    0.0,
+    210.14,
+    17.67,
+    0.0,
+    616.61
+  ],
+  "connected": false,
+  "authenticated": false,
+  "manual_gains": null,
+  "active_gains": null,
+  "independent_gains": null,
+  "mode": null,
+  "fault": null,
+  "actual_applied_q15": null,
+  "adaptive_enabled": null,
+  "firmware_id": 1094992433,
+  "schema": 1094992387,
+  "logging": null,
+  "automatic_gain_write": false,
+  "automatic_ZERO_RUN_SWING": false,
+  "passed": true,
+  "no_transport_created": true
+}

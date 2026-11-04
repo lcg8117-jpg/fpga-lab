@@ -1,0 +1,33 @@
+{
+  "status": "PASS",
+  "checks": 25,
+  "passed": [
+    "new PC starts with empty automatic COM,230400 and project BT10 default",
+    "default lists are independent across loads",
+    "legacy four-field settings load with keyboard selection disabled",
+    "settings file contains only five PC fields",
+    "optional unique keyboard device persists without enabling capture",
+    "successful atomic save leaves no transient file",
+    "failed atomic replacement preserves prior complete settings",
+    "failed replacement cleans only its own temporary file",
+    "corrupt settings recover defaults with visible error {not json",
+    "corrupt settings recover defaults with visible error []",
+    "corrupt settings recover defaults with visible error {\"usb_baud\": false}",
+    "corrupt settings recover defaults with visible error {\"position_keys\": [\"q\",\"q\",\"e\",\"a\",\"s\",\"d\"]}",
+    "duplicate case-insensitive keys report both positions",
+    "empty key reports its position",
+    "space cannot be mapped to a position",
+    "named space cannot be mapped",
+    "key map must contain exactly six values",
+    "multi-character mapping is rejected",
+    "PID settings are not accepted in PC configuration",
+    "noninteger baud is rejected",
+    "boolean baud is rejected",
+    "unsupported low baud is rejected",
+    "bad COM syntax is rejected",
+    "bad MAC syntax is rejected",
+    "Unicode punctuation separator is accepted"
+  ],
+  "hardware_connections": 0,
+  "hardware_commands": 0
+}

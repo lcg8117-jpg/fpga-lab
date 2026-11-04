@@ -1,0 +1,46 @@
+[
+  {
+    "path": "manifest.json",
+    "sha256": "24b0f8c86d62c9373800046795e1141e91dd1c10ae34388af56e750905b28890"
+  },
+  {
+    "path": "requirements.txt",
+    "sha256": "4e13a1c0eeb84bcfa6dd98bb08b6ff1c19d467001948c0950fd28b9e3e4f6f6c"
+  },
+  {
+    "path": "speed_control.py",
+    "sha256": "b799ab39c4ad31125a33c40f9d76c96dfb0d04953a533f9fec663ae4d6168038"
+  },
+  {
+    "path": "speed_protocol.py",
+    "sha256": "ce8fb7b718cd20c1b4be0d24fac166046ce18f46568066b155fea89d530612a5"
+  },
+  {
+    "path": "speed_transport.py",
+    "sha256": "d1e1caaeedaabb7d372204df7eccf1fae56e0e920021b5a03088e3af47566e72"
+  },
+  {
+    "path": "docs/API-Contract.md",
+    "sha256": "baccb1189a902ac7380be2551408a1da9860f83c8bb69e9dec70f32cb9dd6486"
+  },
+  {
+    "path": "docs/Quickstart.zh-CN.md",
+    "sha256": "34a7fed5fb3eb776e89eb57d3f9c6838cef078477ebe517715361d7707cae2e6"
+  },
+  {
+    "path": "docs/Recovery.zh-CN.md",
+    "sha256": "adee4f92a81458ca76db8da92ecd304ccf9a57c029781ed04a0fd03d9576a6cf"
+  },
+  {
+    "path": "firmware/build_report.json",
+    "sha256": "bdf4d4d96b3267bff08b767c1d789ab0a1c7803b763edcf7616817c0405b48b0"
+  },
+  {
+    "path": "firmware/car_speeddrive.bin",
+    "sha256": "e0c9770a6d50018bbd8b196e467b2c8cdb91b93c615b55b1d8cd260f8c70a740"
+  },
+  {
+    "path": "firmware/car_speeddrive.hex",
+    "sha256": "eec3ad7c0a4d906d963b307ff0e26c43daf2bc31192ce37af569f77ab927f532"
+  }
+]

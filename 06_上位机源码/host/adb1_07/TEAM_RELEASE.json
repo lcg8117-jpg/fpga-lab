@@ -1,0 +1,31 @@
+{
+  "release": "ADB1_07_CommandFlow_S1_TeamArchive",
+  "date": "2026-11-04",
+  "selected_order": 7,
+  "firmware_sha256": "41b9192fed5b4e887e458e1a69689ad7a660964ca8cf1ccacd6c4e31f7b4bf45",
+  "S1": [
+    53.78,
+    0,
+    210.14,
+    17.67,
+    0,
+    616.61
+  ],
+  "periods_ms": {
+    "angle_P": 5,
+    "angle_D": 5,
+    "position_P": 25,
+    "position_D": 25
+  },
+  "source_and_firmware_unchanged": true,
+  "new_compile": false,
+  "matching_host_schema": "41444203",
+  "S1_write_and_independent_readback_verified": true,
+  "automatic_board_actions_on_launch": false,
+  "host_launcher_changes": [
+    "S1 draft prefill",
+    "unique CH340 port prefill",
+    "start disconnected"
+  ],
+  "hardware_actions": 0
+}

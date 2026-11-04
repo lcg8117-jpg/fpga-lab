@@ -31,6 +31,9 @@ def load(file):
 manifest = load(CAT / 'source_manifest.json')
 inputs = load(CAT / 'input_hashes.json')
 excluded = load(CAT / 'excluded_files.json')
+host_report_path = CAT / 'Host_Source_Import.json'
+host_report = load(host_report_path) if host_report_path.exists() else {}
+allowed_fixtures = set(host_report.get('allowed_binary_fixtures', []))
 errors = []
 verified = 0
 with ExitStack() as stack:
@@ -50,8 +53,13 @@ with ExitStack() as stack:
             verified += 1
 
 files = [p for p in ROOT.rglob('*') if p.is_file()]
-forbidden = [p.relative_to(ROOT).as_posix() for p in files if p.suffix.lower() in FORBIDDEN]
+forbidden = [p.relative_to(ROOT).as_posix() for p in files if p.suffix.lower() in FORBIDDEN and p.relative_to(ROOT).as_posix() not in allowed_fixtures]
 errors.extend({'forbidden_file': name} for name in forbidden)
+host_dir = ROOT / '06_上位机源码'
+host_files = [p for p in host_dir.rglob('*') if p.is_file()] if host_dir.exists() else []
+host_docs = [p.relative_to(ROOT).as_posix() for p in host_files if p.suffix.lower() in {'.txt', '.md'}]
+errors.extend({'host_document_not_removed': name} for name in host_docs)
+host_cleanup = {'files': len(host_files), 'txt_files': sum(p.suffix.lower()=='.txt' for p in host_files), 'md_files': sum(p.suffix.lower()=='.md' for p in host_files), 'fs_files': sum(p.suffix.lower()=='.fs' for p in host_files), 'offline_fixture_files': len(allowed_fixtures)}
 containers = []
 for p in files:
     if p.suffix.lower() in {'.slx', '.npz'}:
@@ -134,7 +142,7 @@ report = {'status': 'PASS' if not errors else 'CHECK_REQUIRED', 'source_files_ve
                                       'maximum_y_error_rad_s': max_y_error, 'source_kind': 'native_RTL_Simulink_feedback'},
           'physical_log_fixture_sha_matches_original_provenance': physical_fixture_sha == provenance['fixture_sha256'],
           'mapped_presentation_copies': mapped_copies, 'current_lettering_status': 'Successful with good results, owner confirmation 2026-11-04',
-          'uploaded': False, 'committed': False, 'hardware_actions': 0, 'errors': errors}
+          'host_source_cleanup': host_cleanup, 'uploaded': False, 'committed': False, 'hardware_actions': 0, 'errors': errors}
 (CAT / 'VERIFICATION.json').write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
 print(json.dumps({k: v for k, v in report.items() if k not in ('checked_model_data_containers', 'gowin_projects', 'errors')}, ensure_ascii=False))
 print(json.dumps({'projects': projects, 'model_data_containers': len(containers), 'errors': errors}, ensure_ascii=False))

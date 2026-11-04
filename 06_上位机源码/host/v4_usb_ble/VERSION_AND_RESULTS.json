@@ -1,0 +1,97 @@
+{
+  "status": "PASS_COMPILED_AND_TIMING_VERIFIED_NOT_PHYSICALLY_PROGRAMMED",
+  "firmware": "5634523A",
+  "schema": "56345208",
+  "bitstream_sha256": "115a160ec7794a4929ab7a58cc33bfd353ed93171396c1083f080aad3077454e",
+  "fpga_changed_files": [
+    "src/forest_d1_link.v",
+    "src/forest_d1_system.v",
+    "src/forest_d1_top.v"
+  ],
+  "requested_gains": [
+    53.78,
+    0,
+    210.14,
+    17.67,
+    0,
+    616.61
+  ],
+  "control_period_us": {
+    "angle_P": 1000,
+    "position_P": 5000,
+    "angle_D": 5000,
+    "position_D": 25000
+  },
+  "upload_hz": 200,
+  "diagnostic_period_ms": 500,
+  "integral_disabled": true,
+  "final_fmax_mhz": 50.365,
+  "all_five_sta": {
+    "setup": {
+      "applicable": true,
+      "accepted": true,
+      "minimum_slack_ns": 0.145,
+      "reported_paths": 500,
+      "violated_endpoints": 0,
+      "negative_reported_paths": 0,
+      "proof": "Global ordered worst-path report has nonnegative minimum; endpoint count is only asserted when native summary supplies it.",
+      "report_anchor": "Setup_Slack_Table",
+      "requested_worst_paths": 500
+    },
+    "hold": {
+      "applicable": true,
+      "accepted": true,
+      "minimum_slack_ns": 0.077,
+      "reported_paths": 25,
+      "violated_endpoints": 0,
+      "negative_reported_paths": 0,
+      "proof": "Global ordered worst-path report has nonnegative minimum; endpoint count is only asserted when native summary supplies it.",
+      "report_anchor": "Hold_Slack_Table",
+      "requested_worst_paths": 25
+    },
+    "recovery": {
+      "applicable": true,
+      "accepted": true,
+      "minimum_slack_ns": 11.589,
+      "reported_paths": 25,
+      "violated_endpoints": null,
+      "negative_reported_paths": 0,
+      "proof": "Global ordered worst-path report has nonnegative minimum; endpoint count is only asserted when native summary supplies it.",
+      "report_anchor": "Recovery_Slack_Table",
+      "requested_worst_paths": 25
+    },
+    "removal": {
+      "applicable": true,
+      "accepted": true,
+      "minimum_slack_ns": 3.165,
+      "reported_paths": 25,
+      "violated_endpoints": null,
+      "negative_reported_paths": 0,
+      "proof": "Global ordered worst-path report has nonnegative minimum; endpoint count is only asserted when native summary supplies it.",
+      "report_anchor": "Removal_Slack_Table",
+      "requested_worst_paths": 25
+    },
+    "minimum_pulse_width": {
+      "applicable": true,
+      "accepted": true,
+      "minimum_slack_ns": 7.315,
+      "reported_paths": 10,
+      "violated_endpoints": null,
+      "negative_reported_paths": 0,
+      "proof": "Global ordered worst-path report has nonnegative minimum; endpoint count is only asserted when native summary supplies it.",
+      "report_anchor": "MIN_PULSE_WIDTH_TABLE",
+      "requested_worst_paths": 10,
+      "reported_pulse_types": [
+        "Low Pulse Width"
+      ],
+      "scope": "Global n-worst pulse checks; unlisted high/low types are not declared absent."
+    }
+  },
+  "hardware_programmed": false,
+  "teammate_physical_connection_verified": false,
+  "pc_package_sha256": "0c34720573c79cc95f562ba5f21da1c30a1c2e6efac346744747464d722454ba",
+  "local_sram_programmed": true,
+  "local_dual_link_hardware_verified": true,
+  "user_reported_usable": true,
+  "pc_interface": "USB+BLE simultaneous independent buttons, saved communication settings and keyboard binding"
+}

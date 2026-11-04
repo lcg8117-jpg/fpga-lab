@@ -1,0 +1,48 @@
+{
+  "files": {
+    "PC_Bluetooth/README_CN.md": {
+      "bytes": 4904,
+      "sha256": "858d9d86e3874a81cd131cf7c1a0a8abcccca9ad6a381310b4ed3348413434ac"
+    },
+    "PC_Bluetooth/VERSION.json": {
+      "bytes": 3529,
+      "sha256": "cfc05288dad8a53bf594e32e2ee2d42a30323546c3a90d8b390de6242f6046b2"
+    },
+    "PC_Bluetooth/app.py": {
+      "bytes": 32057,
+      "sha256": "58e735466d0d97016a7b976927dab522c0eb86fcbcb3fc354983f76413e40b21"
+    },
+    "PC_Bluetooth/dual_client.py": {
+      "bytes": 29173,
+      "sha256": "a5ceea7013566885847d549be2c8923379f233cbdc457902912c2d77fa55aca9"
+    },
+    "PC_Bluetooth/tests/DUAL_OWNER_OFFLINE_CHECKS.json": {
+      "bytes": 2055,
+      "sha256": "a47a1116f8feee53350385f6138ae6ff0110d84e58285e7ab41d1db36df22f8f"
+    },
+    "PC_Bluetooth/tests/test_dual_client_offline.py": {
+      "bytes": 14329,
+      "sha256": "7c4ba448c44c26d05a64706113a9cc1ea4616490db25ca2a1e510c317359c700"
+    },
+    "PC_Bluetooth/tests/test_secondary_failure_isolation.py": {
+      "bytes": 19556,
+      "sha256": "9953b0933917addcd4f475849f8ba033eff00e1fe7f382a3961c8f1bf89b4403"
+    },
+    "PC_Bluetooth/tests/SECONDARY_FAILURE_ISOLATION_CHECKS.json": {
+      "bytes": 97801,
+      "sha256": "05f8ac399ccc5b709a2bb8cc57f9bb4e49563346c2ed14aaf251268d9720af23"
+    },
+    "PC_Bluetooth/连续六键修复说明.txt": {
+      "bytes": 1608,
+      "sha256": "a07ff73da3d5a341649a90aba080921d23d82a89c3a7e8511004663a7de6bfc7"
+    },
+    "PC_Bluetooth/HOST_FILES_SHA256.json": {
+      "bytes": 342467,
+      "sha256": "c2f1cf1669818c4c1838b1261dcb6e2d2841b4b18148309d3ddd060c0f0be735"
+    },
+    "00_覆盖说明.txt": {
+      "bytes": 1608,
+      "sha256": "a07ff73da3d5a341649a90aba080921d23d82a89c3a7e8511004663a7de6bfc7"
+    }
+  }
+}

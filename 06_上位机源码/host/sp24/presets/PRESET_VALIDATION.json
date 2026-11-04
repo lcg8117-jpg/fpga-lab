@@ -1,0 +1,101 @@
+{
+  "scope": "OFFLINE_ENGINEERING_NO_PLANT_MODEL_NO_PHYSICAL_ACCEPTANCE",
+  "fixed_presets": [
+    "field_baseline",
+    "damping_d56",
+    "slow_i2"
+  ],
+  "profile_control_qualified": false,
+  "real_control_import_rejected": true,
+  "profile_fields_u32": {
+    "error_node_1": 18301,
+    "error_node_2": 91506,
+    "error_node_3": 274517,
+    "delta_node_1": 1830,
+    "delta_node_2": 9151,
+    "delta_node_3": 27452,
+    "kp_min": 978671,
+    "kp_max": 1835008,
+    "kd_min": 419430,
+    "kd_max": 786432
+  },
+  "position_filter_gamma": 0.2695942269638181,
+  "position_filter_equivalent_hz": 4.999932843550265,
+  "center_Kp_Ki_Kd_q24": [
+    1819324,
+    1415030,
+    779710
+  ],
+  "center_Kp_Ki_Kd_continuous": [
+    0.10844016075134277,
+    0.084342360496521,
+    0.046474337577819824
+  ],
+  "sampled_curve_points": 34225,
+  "sampled_curve_Kp_Ki_Kd_intervals": [
+    [
+      0.059268176555633545,
+      0.10844016075134277
+    ],
+    [
+      0.015116751194000244,
+      0.231475830078125
+    ],
+    [
+      0.025400638580322266,
+      0.046474337577819824
+    ]
+  ],
+  "sampled_extrema_inputs_error_delta_q20": [
+    [
+      [
+        -91506,
+        -54904
+      ],
+      [
+        -549034,
+        -54904
+      ]
+    ],
+    [
+      [
+        0,
+        -54904
+      ],
+      [
+        -549034,
+        -54904
+      ]
+    ],
+    [
+      [
+        -549034,
+        -54904
+      ],
+      [
+        -91506,
+        -54904
+      ]
+    ]
+  ],
+  "global_conservative_Ki_interval_continuous": [
+    0.014518499374389648,
+    0.23925799131393433
+  ],
+  "global_Ki_interval_note": "Safe algebraic envelope from independent bounds/gamma2..5; sampled extrema are NOT proof of continuous global extrema",
+  "slow_i2_integral_time_seconds": 56.0,
+  "moving_target_D_only_envelope_ref_degrees": {
+    "move50_degrees_2seconds": 2.197265625,
+    "circle360_degrees_2seconds": 15.8203125
+  },
+  "reference_sha256": "7dac35c1c991483bfc302758a06e9b4a3dea8fadead1bdfb3b8db66b7ef04512",
+  "profile_host_numerical_checks": "PASS",
+  "checks": [
+    "Q20/Q24 exact expected words",
+    "strict positive ordered nodes",
+    "all sampled weight sums exactly 2^32",
+    "gain and Ki representability",
+    "unqualified control import refused",
+    "no hardware I/O"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "ADB1_FASTP.fs": {
+    "sha256": "64a16095e2077ed6f0da54f7f8694b7ae078578ed88db02bef020011fb45e8c6",
+    "source": "D:\\FPGA\\上位机2\\delivery_analysis_20261103\\adb1\\ADB1_S1_队友交付封存_20261103\\原版完整包\\firmware\\J280_ADB1_FastP_1_5ms_50MHz.fs",
+    "bytes": 18588969
+  },
+  "V4_R28.fs": {
+    "sha256": "5649eeb4bca1a3c1ae88c42761a9d52e4d3213ed42605e7c57489e5d271bfebb",
+    "source": "D:\\FPGA\\上位机2\\delivery_analysis_20261103\\v4\\complete\\J280_V4_R28_56345239_20261103\\Bitstream\\J280_V4_FastP_56345239_Qualified.fs",
+    "bytes": 18588969
+  },
+  "G3_C1.fs": {
+    "sha256": "161a58690369608a8d1b1c0824c90c3c89a0c80a7dac2428f9b958990df5c9a4",
+    "source": "D:\\FPGA\\上位机2\\delivery_analysis_20261103\\g3\\GOWIN_G3_C1_Teammate_20261103_R2\\Firmware\\Bitstream\\J280_GOWIN_Only_G3_56354733_50MHz.fs",
+    "bytes": 18588969
+  },
+  "DS13.fs": {
+    "sha256": "677b66bdd36c9ceb49ffb6ac813e1acd9042e6f7db922208fd27969a90d067e7",
+    "source": "D:\\FPGA\\上位机2\\delivery_analysis_20261103\\ds13\\J280_DS13_S1平衡_现场手绘_队友包_20261103\\firmware\\J280_DS13_S1_LIVE.fs",
+    "bytes": 18588969
+  },
+  "V4_USB_BLE_5634523A.fs": {
+    "sha256": "115a160ec7794a4929ab7a58cc33bfd353ed93171396c1083f080aad3077454e",
+    "source": "J280_V4_串口蓝牙双连接_上位机完整包_20261103.zip / Bitstream/J280_V4_R28_USB_BLE_5634523A_Qualified.fs",
+    "bytes": 18588969
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "status": "PASS",
+  "case": "D:\\Codex_Scratch\\R28_USB_BLE_Restore_20261103\\reports\\link_snapshot_20261103_190156",
+  "marker": "PASS LINK_SNAPSHOT checks=914 fixed_bytes=304 legacy_bytes=304 old_validCRC_mixedEpoch_reproduced=1 immutableD=1 nextB=1\n",
+  "baseline_sha256": "a4cd3959ce500ea6c6c0d06a3539a3ad0221a77eebb56bfe9c7564cf5805eeff",
+  "fixed_sha256": "ec47f40dacecf0c3338ab50c7b04a9456995e33fd93488fd915e8747e8acacbb",
+  "runs": [
+    {
+      "stage": "vlib",
+      "exit": 0,
+      "seconds": 0.11000000000058208
+    },
+    {
+      "stage": "compile",
+      "exit": 0,
+      "seconds": 0.21800000000803266
+    },
+    {
+      "stage": "simulate",
+      "exit": 0,
+      "seconds": 6.312999999994645
+    }
+  ],
+  "hardware_actions": 0,
+  "native_compiles": 0
+}

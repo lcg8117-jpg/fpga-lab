@@ -1,0 +1,101 @@
+{
+  "stage": "PROGRAMMED_JTAG_IDENTITY_VERIFIED",
+  "programmed": true,
+  "source_delivery": "D:\\Codex_Scratch\\J280_ADB1_AUDITED_READY_20261031_024131",
+  "staged_image": "D:\\Codex_Scratch\\J280_ADB1_AUDITED_READY_20261031_024131\\firmware\\ADB1_AuditedCommandFlow_OpticalGuard_50MHz.fs",
+  "image_sha256": "41b9192fed5b4e887e458e1a69689ad7a660964ca8cf1ccacd6c4e31f7b4bf45",
+  "firmware_usercode": "41444231",
+  "confirmation": {
+    "human_confirmed": true,
+    "driver_off": true,
+    "old_gui_exited": true,
+    "FPGA_USB_on": true,
+    "confirmed_unix": 1793727805.7345345,
+    "target_image_sha256": "41b9192fed5b4e887e458e1a69689ad7a660964ca8cf1ccacd6c4e31f7b4bf45",
+    "user_reply": "已停机，驱动断电，FPGA/USB通电，立即烧07",
+    "automatic_start": false
+  },
+  "sram_attempts": 1,
+  "flash_written": false,
+  "automatic_ZERO_RUN_SWING_ADAPT": 0,
+  "full_bitstream_SHA_readback_claimed": false,
+  "calls": [
+    {
+      "name": "scan",
+      "argv": [
+        "D:\\Gowin\\Gowin_V1.9.12.03_x64\\Programmer\\bin\\programmer_cli.exe",
+        "--scan-cables"
+      ],
+      "state": "RETURNED",
+      "exit_code": 0,
+      "log_sha256": "c567e181a2625fa0b99712b78ac18c8b050d7ffde74e8480b15b8b2b82d559ea"
+    },
+    {
+      "name": "before",
+      "argv": [
+        "D:\\Gowin\\Gowin_V1.9.12.03_x64\\Programmer\\bin\\programmer_cli.exe",
+        "--device",
+        "GW2A-55C",
+        "--cable-index",
+        "0",
+        "--location",
+        "33",
+        "--operation_index",
+        "0"
+      ],
+      "state": "RETURNED",
+      "exit_code": 0,
+      "log_sha256": "20b8c87b61f3c4ccea6915369c6bae13a8e21b71c419416fc01d9982bed078d4"
+    },
+    {
+      "name": "sram",
+      "argv": [
+        "D:\\Gowin\\Gowin_V1.9.12.03_x64\\Programmer\\bin\\programmer_cli.exe",
+        "--device",
+        "GW2A-55C",
+        "--cable-index",
+        "0",
+        "--location",
+        "33",
+        "--operation_index",
+        "2",
+        "--fsFile",
+        "D:\\Codex_Scratch\\J280_ADB1_AUDITED_READY_20261031_024131\\firmware\\ADB1_AuditedCommandFlow_OpticalGuard_50MHz.fs"
+      ],
+      "state": "RETURNED",
+      "exit_code": 0,
+      "log_sha256": "e88809ae2b6fc1ac928214dd930ad5ed088021f893bd13037716827b583ca592"
+    },
+    {
+      "name": "after",
+      "argv": [
+        "D:\\Gowin\\Gowin_V1.9.12.03_x64\\Programmer\\bin\\programmer_cli.exe",
+        "--device",
+        "GW2A-55C",
+        "--cable-index",
+        "0",
+        "--location",
+        "33",
+        "--operation_index",
+        "0"
+      ],
+      "state": "RETURNED",
+      "exit_code": 0,
+      "log_sha256": "6162935ab7d95aad70af2a67a22e1715b91c4dcfd5a35bc8da10b8fe3570632b"
+    }
+  ],
+  "created_unix": 1793727806.0880365,
+  "driver_sha256": "cc99f9af14d5ac361fa5696cab0e8033357c5449e135f1b13ce91612b6aabc26",
+  "request_context": "User requests07 ADB1 CommandFlow and S1 gains53.78/0/210.14,17.67/0/616.61; no automaticZERO/RUN",
+  "before_codes": {
+    "id": 10267,
+    "user": 1094992433,
+    "status": 24608
+  },
+  "after_codes": {
+    "id": 10267,
+    "user": 1094992433,
+    "status": 24608
+  },
+  "finished_unix": 1793727827.7492256
+}

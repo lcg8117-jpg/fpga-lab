@@ -1,0 +1,30 @@
+{
+  "source": "../../../model-sources/ip570.step",
+  "sourceSha256": "99a7fa542987db39db40f5c85ebb82de1ed1824d97d0493bfde17e6b81f0ebfa",
+  "sourceUnit": "millimeter",
+  "assetUnit": "meter",
+  "meshCount": 28,
+  "flangePhaseDegrees": 41.1092176599315,
+  "motorPivotMillimeters": [
+    -4.860826429492,
+    -7.431691499701,
+    192.8
+  ],
+  "hingePivotMillimeters": [
+    -4.860826429492,
+    145.1683085003,
+    215.8
+  ],
+  "freeEndHoleCenterMeters": [
+    0.0205,
+    0.134,
+    0
+  ],
+  "boundsMeters": {
+    "max": [
+      0.0395,
+      0.135,
+      0.018
+    ]
+  }
+}

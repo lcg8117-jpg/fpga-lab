@@ -1,0 +1,32 @@
+{
+  "release": "J280_V1_V2_V5_Complete_20261027",
+  "date": "2026-10-27",
+  "versions": {
+    "1": {
+      "archive": "J280_V1_HandoffFix_20261027.zip",
+      "archive_sha256": "36def8d64682253bd0a6efb4d62791aaf2dc2271d3b99656ad1eae15f50d00d2",
+      "bitstream": "J280_V1_HandoffFix_20261027.fs",
+      "bitstream_sha256": "6abd375db7b6da81b7fb55e300e3652a3912cff949ae5793ef5c77601721f80a",
+      "original_payload_files": 2517
+    },
+    "2": {
+      "archive": "J280_V2_HandoffFix_20261027.zip",
+      "archive_sha256": "3aa8400861fb4fc38b523d1ad6a3a222d604a6c3bcfa0cba8327afda898de248",
+      "bitstream": "J280_V2_HandoffFix_20261027.fs",
+      "bitstream_sha256": "994071c9a0f29c02e02e8b565d0c2448609e92166b23cc80bb4712efbd45f5b1",
+      "original_payload_files": 2502
+    },
+    "5": {
+      "archive": "J280_V5_Existing_20261027.zip",
+      "archive_sha256": "c8a2549422cebe426c76e359a5e997bc415139789b178991330c019ca07b5663",
+      "bitstream": "J280_V5_Existing_20261027.fs",
+      "bitstream_sha256": "ff4329d5e6cca5c81dbe5245216ff3016734016b113dfd6e764f011d48b01eba",
+      "original_payload_files": 2720
+    }
+  },
+  "RTL_changes": 0,
+  "Host_changes": 0,
+  "bitstream_changes": 0,
+  "hardware_actions": 0,
+  "new_compilations": 0
+}

@@ -1,0 +1,55 @@
+{
+  "source": "../../../model-sources/l-arm.step",
+  "sourceName": "L型摆臂(1).STEP",
+  "sourceSha256": "63d8191a08b8494ab5c6ed651bf0fffc996cfd965e69f8a339696192e63746d3",
+  "sourceUnit": "millimeter",
+  "assetUnit": "meter",
+  "converter": "occt-import-js 0.0.23",
+  "sourceFaces": 36,
+  "vertices": 5004,
+  "triangles": 4984,
+  "cadPivotMillimeters": [
+    0,
+    -2,
+    67.5
+  ],
+  "cadToDisplayBasis": [
+    0,
+    0,
+    1,
+    0,
+    -1,
+    0,
+    0,
+    0,
+    0,
+    -1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1
+  ],
+  "boundsMeters": {
+    "min": [
+      -0.0010000000474974513,
+      -0.017999999225139618,
+      -0.017999999225139618
+    ],
+    "max": [
+      0.039000000804662704,
+      0.1340000033378601,
+      0.017999999225139618
+    ]
+  },
+  "freeEndHoleCenterMeters": [
+    0.021,
+    0.133,
+    0
+  ],
+  "triangulation": {
+    "linearDeflectionMillimeters": 0.02,
+    "angularDeflection": 0.15
+  }
+}

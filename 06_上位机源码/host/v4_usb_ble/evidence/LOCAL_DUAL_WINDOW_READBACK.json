@@ -1,0 +1,730 @@
+{
+  "pid": 1888,
+  "observed_unix": 1793714512.8101397,
+  "started_unix": 1793714111.794711,
+  "visible": false,
+  "window_closed": false,
+  "host_source": "D:\\Codex_Scratch\\R28_V4_FastP_Gains_20261103\\pc_dual_link_20261103",
+  "connected": true,
+  "ready": true,
+  "usb_text": "USB主路：已连接，有回包",
+  "ble_text": "蓝牙位置路：已连接，有回包",
+  "position_route": "ble",
+  "error": "",
+  "ui_error": "",
+  "log_error": "",
+  "actual_firmware": 1446269498,
+  "latest": {
+    "kind": "compact",
+    "wire_version": 4,
+    "variant": 4,
+    "flags": 145,
+    "mode": 4,
+    "sequence": 792442,
+    "board_ms": 4169647,
+    "control_epoch": 4169647,
+    "wide_encoder": 1761,
+    "wide_target": 1761,
+    "final_target": 1761,
+    "angle_error": 1010,
+    "target_angle_error": 0,
+    "actual_applied_q15": 0,
+    "measured_velocity": 0,
+    "fault": 1,
+    "motion_state": 0,
+    "coherent": true,
+    "range_valid": true
+  },
+  "diagnostic": {
+    "kind": "diagnostic",
+    "wire_version": 4,
+    "variant": 4,
+    "layout": 5,
+    "flags": 16,
+    "firmware_id": 1446269498,
+    "schema": 1446269448,
+    "sequence": 792413,
+    "board_ms": 4169500,
+    "last_completed_epoch": 4169499,
+    "last_completed_ms": 4169499,
+    "kit": 0,
+    "zero_valid": 1,
+    "physical_encoder_raw": 23406,
+    "physical_counts_per_rev": 1080,
+    "forest_counts_per_rev": 1040,
+    "measured_velocity": 0,
+    "reference_velocity": 0,
+    "active_revision": 0,
+    "stored_revision": 0,
+    "zero_q4": 9322,
+    "mean_adc12": 4095,
+    "captured_q4": 669,
+    "raw_adc": 40,
+    "motion_snapshot_epoch": 4169499,
+    "motion_snapshot_ms": 4169499,
+    "final_target": 1761,
+    "nominal_target": 1761,
+    "control_target": 1761,
+    "wide_encoder": 1761,
+    "control_fraction": 0,
+    "motion_flags": 0,
+    "mode": 4,
+    "requested_moto": -6900,
+    "rx_errors": 1,
+    "telemetry_dropped": 7307,
+    "reply_dropped": 0,
+    "session": 4009309047,
+    "config_revision": 0,
+    "fault": 1,
+    "control_profile": 1,
+    "angle_p_period_us": 1000,
+    "position_p_period_us": 5000,
+    "angle_d_period_us": 5000,
+    "position_d_period_us": 25000,
+    "upload_period_us": 5000,
+    "adc_batch_sequence": 4171499,
+    "angle_d_epoch": 4169495,
+    "position_d_epoch": 4169490,
+    "position_p_epoch": 4169496,
+    "completed_sample_epoch": 4169499,
+    "d_gain_revision": 0,
+    "active_gains": [
+      53.779998779296875,
+      0.0,
+      210.13999938964844,
+      17.670000076293945,
+      0.0,
+      616.6099853515625
+    ],
+    "tracking_settled": false,
+    "coherent": false
+  },
+  "last_ack": {
+    "request_id": 4509,
+    "stored_revision": 0,
+    "mutation_highwater": 3199,
+    "control_epoch": 4169588,
+    "kind": "ack",
+    "wire_version": 4,
+    "variant": 4,
+    "opcode": 1,
+    "status": 0,
+    "stored_gains": [
+      53.779998779296875,
+      0.0,
+      210.13999938964844,
+      17.670000076293945,
+      0.0,
+      616.6099853515625
+    ],
+    "mode": 4,
+    "fault": 1,
+    "flags": 17,
+    "active_revision": 0,
+    "firmware_id": 1446269498
+  },
+  "independent_gains": [
+    53.779998779296875,
+    0.0,
+    210.13999938964844,
+    17.670000076293945,
+    0.0,
+    616.6099853515625
+  ],
+  "routes": {
+    "usb": {
+      "connected": true,
+      "ready": true,
+      "connecting": false,
+      "error": "",
+      "last_rx": 141078.328,
+      "last_ack_rx": 141078.265,
+      "observed_firmware": 1446269498,
+      "observed_schema": 1446269448,
+      "crc_errors": 0,
+      "format_errors": 0,
+      "discarded_bytes": 15,
+      "metadata": {
+        "transport": "usb",
+        "port": "COM5",
+        "baudrate": 230400,
+        "timeout": 0,
+        "write_timeout": 0.2,
+        "route": 0
+      },
+      "sequence_gaps": 199,
+      "tx_bytes": 178176,
+      "rx_bytes": 4308799,
+      "received": 83820,
+      "unbound_frames": 1
+    },
+    "ble": {
+      "connected": true,
+      "ready": true,
+      "connecting": false,
+      "error": "",
+      "last_rx": 141078.328,
+      "last_ack_rx": 141077.984,
+      "observed_firmware": 1446269498,
+      "observed_schema": 1446269448,
+      "crc_errors": 0,
+      "format_errors": 0,
+      "discarded_bytes": 0,
+      "metadata": {
+        "stage": "connected",
+        "connection_tuning": {
+          "requested_policy": "ThroughputOptimized",
+          "request_state": "requested",
+          "before": {
+            "query_errors": {},
+            "mtu_size": 247,
+            "parameters": {
+              "connection_interval_units": 12,
+              "connection_interval_ms": 15.0,
+              "connection_latency_events": 0,
+              "link_timeout_units": 960,
+              "link_timeout_ms": 9600
+            },
+            "phy": {
+              "receive": {
+                "is_coded_phy": false,
+                "is_uncoded1_m_phy": false,
+                "is_uncoded2_m_phy": true
+              },
+              "transmit": {
+                "is_coded_phy": false,
+                "is_uncoded1_m_phy": false,
+                "is_uncoded2_m_phy": true
+              }
+            }
+          },
+          "effective_parameters_must_be_read_back": true,
+          "after_request": {
+            "query_errors": {},
+            "mtu_size": 247,
+            "parameters": {
+              "connection_interval_units": 12,
+              "connection_interval_ms": 15.0,
+              "connection_latency_events": 0,
+              "link_timeout_units": 960,
+              "link_timeout_ms": 9600
+            },
+            "phy": {
+              "receive": {
+                "is_coded_phy": false,
+                "is_uncoded1_m_phy": false,
+                "is_uncoded2_m_phy": true
+              },
+              "transmit": {
+                "is_coded_phy": false,
+                "is_uncoded1_m_phy": false,
+                "is_uncoded2_m_phy": true
+              }
+            }
+          },
+          "request_status_code": 1,
+          "request_status_name": "SUCCESS",
+          "after_startup_sync": {
+            "query_errors": {},
+            "mtu_size": 247,
+            "parameters": {
+              "connection_interval_units": 12,
+              "connection_interval_ms": 15.0,
+              "connection_latency_events": 0,
+              "link_timeout_units": 200,
+              "link_timeout_ms": 2000
+            },
+            "phy": {
+              "receive": {
+                "is_coded_phy": false,
+                "is_uncoded1_m_phy": false,
+                "is_uncoded2_m_phy": true
+              },
+              "transmit": {
+                "is_coded_phy": false,
+                "is_uncoded1_m_phy": false,
+                "is_uncoded2_m_phy": true
+              }
+            }
+          }
+        },
+        "default_adapter": {
+          "scope": "Windows default adapter; not proof of the selected physical radio",
+          "device_id": "\\\\?\\USB#VID_8087&PID_0026#5&1d6c2a3c&0&10#{92383b0e-f90e-4ac9-8d44-8c2d0d0ebda2}",
+          "bluetooth_address": 193822910465174,
+          "is_low_energy_supported": true,
+          "is_central_role_supported": true,
+          "is_low_energy_uncoded2_m_phy_supported": true,
+          "radio": {
+            "name": "蓝牙",
+            "state": 1,
+            "kind": 3
+          },
+          "device_information_error": "OSError(22, 'Property key syntax error.  A property key must either be specified as a canonical property name (preferred) or be of the form {fmtid} pid.', None, -2147319765)",
+          "status": "queried"
+        }
+      },
+      "sequence_gaps": 190,
+      "rx_bytes": 4051951,
+      "received": 80012,
+      "unbound_frames": 11,
+      "tx_bytes": 38756,
+      "unmatched_ack": 11
+    }
+  },
+  "received": 84615,
+  "timeouts": 0,
+  "request_counts": {
+    "usb:0x02": 1,
+    "usb:0x01": 3661,
+    "usb:0x21": 1,
+    "ble:0x01": 792,
+    "usb:0x10": 11,
+    "usb:0x13": 33,
+    "usb:0x11": 3,
+    "usb:0x12": 2,
+    "ble:0x45": 5
+  },
+  "control_requests": [
+    {
+      "unix": 1793714182.3929715,
+      "request_id": 774,
+      "opcode": 16,
+      "route": "usb",
+      "payload": "",
+      "session": 4009309047
+    },
+    {
+      "unix": 1793714182.8537192,
+      "request_id": 780,
+      "opcode": 16,
+      "route": "usb",
+      "payload": "",
+      "session": 4009309047
+    },
+    {
+      "unix": 1793714189.16492,
+      "request_id": 852,
+      "opcode": 16,
+      "route": "usb",
+      "payload": "",
+      "session": 4009309047
+    },
+    {
+      "unix": 1793714192.0042145,
+      "request_id": 885,
+      "opcode": 16,
+      "route": "usb",
+      "payload": "",
+      "session": 4009309047
+    },
+    {
+      "unix": 1793714192.2145317,
+      "request_id": 888,
+      "opcode": 16,
+      "route": "usb",
+      "payload": "",
+      "session": 4009309047
+    },
+    {
+      "unix": 1793714192.416248,
+      "request_id": 892,
+      "opcode": 16,
+      "route": "usb",
+      "payload": "",
+      "session": 4009309047
+    },
+    {
+      "unix": 1793714192.5801375,
+      "request_id": 894,
+      "opcode": 16,
+      "route": "usb",
+      "payload": "",
+      "session": 4009309047
+    },
+    {
+      "unix": 1793714192.7956707,
+      "request_id": 897,
+      "opcode": 16,
+      "route": "usb",
+      "payload": "",
+      "session": 4009309047
+    },
+    {
+      "unix": 1793714201.4017305,
+      "request_id": 994,
+      "opcode": 19,
+      "route": "usb",
+      "payload": "",
+      "session": 4009309047
+    },
+    {
+      "unix": 1793714202.2250054,
+      "request_id": 1004,
+      "opcode": 19,
+      "route": "usb",
+      "payload": "",
+      "session": 4009309047
+    },
+    {
+      "unix": 1793714202.4880643,
+      "request_id": 1009,
+      "opcode": 19,
+      "route": "usb",
+      "payload": "",
+      "session": 4009309047
+    },
+    {
+      "unix": 1793714202.6791859,
+      "request_id": 1012,
+      "opcode": 19,
+      "route": "usb",
+      "payload": "",
+      "session": 4009309047
+    },
+    {
+      "unix": 1793714202.8482254,
+      "request_id": 1014,
+      "opcode": 19,
+      "route": "usb",
+      "payload": "",
+      "session": 4009309047
+    },
+    {
+      "unix": 1793714203.050098,
+      "request_id": 1018,
+      "opcode": 19,
+      "route": "usb",
+      "payload": "",
+      "session": 4009309047
+    },
+    {
+      "unix": 1793714203.2090192,
+      "request_id": 1020,
+      "opcode": 19,
+      "route": "usb",
+      "payload": "",
+      "session": 4009309047
+    },
+    {
+      "unix": 1793714203.3812852,
+      "request_id": 1023,
+      "opcode": 19,
+      "route": "usb",
+      "payload": "",
+      "session": 4009309047
+    },
+    {
+      "unix": 1793714203.5406623,
+      "request_id": 1027,
+      "opcode": 19,
+      "route": "usb",
+      "payload": "",
+      "session": 4009309047
+    },
+    {
+      "unix": 1793714203.7106843,
+      "request_id": 1029,
+      "opcode": 19,
+      "route": "usb",
+      "payload": "",
+      "session": 4009309047
+    },
+    {
+      "unix": 1793714203.8658946,
+      "request_id": 1031,
+      "opcode": 19,
+      "route": "usb",
+      "payload": "",
+      "session": 4009309047
+    },
+    {
+      "unix": 1793714204.0489593,
+      "request_id": 1035,
+      "opcode": 19,
+      "route": "usb",
+      "payload": "",
+      "session": 4009309047
+    },
+    {
+      "unix": 1793714204.237921,
+      "request_id": 1038,
+      "opcode": 19,
+      "route": "usb",
+      "payload": "",
+      "session": 4009309047
+    },
+    {
+      "unix": 1793714204.393127,
+      "request_id": 1040,
+      "opcode": 19,
+      "route": "usb",
+      "payload": "",
+      "session": 4009309047
+    },
+    {
+      "unix": 1793714204.5960128,
+      "request_id": 1044,
+      "opcode": 19,
+      "route": "usb",
+      "payload": "",
+      "session": 4009309047
+    },
+    {
+      "unix": 1793714204.7782404,
+      "request_id": 1047,
+      "opcode": 19,
+      "route": "usb",
+      "payload": "",
+      "session": 4009309047
+    },
+    {
+      "unix": 1793714205.0059369,
+      "request_id": 1051,
+      "opcode": 19,
+      "route": "usb",
+      "payload": "",
+      "session": 4009309047
+    },
+    {
+      "unix": 1793714205.1439288,
+      "request_id": 1053,
+      "opcode": 19,
+      "route": "usb",
+      "payload": "",
+      "session": 4009309047
+    },
+    {
+      "unix": 1793714205.3386137,
+      "request_id": 1056,
+      "opcode": 19,
+      "route": "usb",
+      "payload": "",
+      "session": 4009309047
+    },
+    {
+      "unix": 1793714205.5041788,
+      "request_id": 1059,
+      "opcode": 19,
+      "route": "usb",
+      "payload": "",
+      "session": 4009309047
+    },
+    {
+      "unix": 1793714205.69122,
+      "request_id": 1062,
+      "opcode": 19,
+      "route": "usb",
+      "payload": "",
+      "session": 4009309047
+    },
+    {
+      "unix": 1793714206.7333498,
+      "request_id": 1075,
+      "opcode": 17,
+      "route": "usb",
+      "payload": "",
+      "session": 4009309047
+    },
+    {
+      "unix": 1793714212.7785738,
+      "request_id": 1143,
+      "opcode": 17,
+      "route": "usb",
+      "payload": "",
+      "session": 4009309047
+    },
+    {
+      "unix": 1793714215.9532454,
+      "request_id": 1180,
+      "opcode": 18,
+      "route": "usb",
+      "payload": "",
+      "session": 4009309047
+    },
+    {
+      "unix": 1793714222.9221525,
+      "request_id": 1259,
+      "opcode": 16,
+      "route": "usb",
+      "payload": "",
+      "session": 4009309047
+    },
+    {
+      "unix": 1793714271.0975542,
+      "request_id": 1796,
+      "opcode": 16,
+      "route": "usb",
+      "payload": "",
+      "session": 4009309047
+    },
+    {
+      "unix": 1793714275.414873,
+      "request_id": 1846,
+      "opcode": 19,
+      "route": "usb",
+      "payload": "",
+      "session": 4009309047
+    },
+    {
+      "unix": 1793714275.982177,
+      "request_id": 1853,
+      "opcode": 19,
+      "route": "usb",
+      "payload": "",
+      "session": 4009309047
+    },
+    {
+      "unix": 1793714276.1386824,
+      "request_id": 1855,
+      "opcode": 19,
+      "route": "usb",
+      "payload": "",
+      "session": 4009309047
+    },
+    {
+      "unix": 1793714276.2650921,
+      "request_id": 1857,
+      "opcode": 19,
+      "route": "usb",
+      "payload": "",
+      "session": 4009309047
+    },
+    {
+      "unix": 1793714276.5264628,
+      "request_id": 1862,
+      "opcode": 19,
+      "route": "usb",
+      "payload": "",
+      "session": 4009309047
+    },
+    {
+      "unix": 1793714276.5427334,
+      "request_id": 1863,
+      "opcode": 19,
+      "route": "usb",
+      "payload": "",
+      "session": 4009309047
+    },
+    {
+      "unix": 1793714276.7323039,
+      "request_id": 1866,
+      "opcode": 19,
+      "route": "usb",
+      "payload": "",
+      "session": 4009309047
+    },
+    {
+      "unix": 1793714276.8403263,
+      "request_id": 1868,
+      "opcode": 19,
+      "route": "usb",
+      "payload": "",
+      "session": 4009309047
+    },
+    {
+      "unix": 1793714277.1135507,
+      "request_id": 1872,
+      "opcode": 19,
+      "route": "usb",
+      "payload": "",
+      "session": 4009309047
+    },
+    {
+      "unix": 1793714277.2816224,
+      "request_id": 1875,
+      "opcode": 19,
+      "route": "usb",
+      "payload": "",
+      "session": 4009309047
+    },
+    {
+      "unix": 1793714277.435282,
+      "request_id": 1878,
+      "opcode": 19,
+      "route": "usb",
+      "payload": "",
+      "session": 4009309047
+    },
+    {
+      "unix": 1793714277.6260562,
+      "request_id": 1881,
+      "opcode": 19,
+      "route": "usb",
+      "payload": "",
+      "session": 4009309047
+    },
+    {
+      "unix": 1793714278.2741954,
+      "request_id": 1889,
+      "opcode": 17,
+      "route": "usb",
+      "payload": "",
+      "session": 4009309047
+    },
+    {
+      "unix": 1793714282.9636562,
+      "request_id": 1943,
+      "opcode": 18,
+      "route": "usb",
+      "payload": "",
+      "session": 4009309047
+    },
+    {
+      "unix": 1793714294.4823751,
+      "request_id": 2072,
+      "opcode": 69,
+      "route": "ble",
+      "payload": "01",
+      "session": 4009309047
+    },
+    {
+      "unix": 1793714374.946029,
+      "request_id": 2970,
+      "opcode": 69,
+      "route": "ble",
+      "payload": "01",
+      "session": 4009309047
+    },
+    {
+      "unix": 1793714376.0998576,
+      "request_id": 2983,
+      "opcode": 69,
+      "route": "ble",
+      "payload": "01",
+      "session": 4009309047
+    },
+    {
+      "unix": 1793714380.2757921,
+      "request_id": 3030,
+      "opcode": 69,
+      "route": "ble",
+      "payload": "02",
+      "session": 4009309047
+    },
+    {
+      "unix": 1793714385.7430449,
+      "request_id": 3092,
+      "opcode": 69,
+      "route": "ble",
+      "payload": "05",
+      "session": 4009309047
+    },
+    {
+      "unix": 1793714395.2088473,
+      "request_id": 3199,
+      "opcode": 16,
+      "route": "usb",
+      "payload": "",
+      "session": 4009309047
+    }
+  ],
+  "total_hello_requests": 1,
+  "session": 4009309047,
+  "automatic_ZERO_RUN_PID_CLEAR_POSITION": 0,
+  "automatic_usb_connect_once": true,
+  "automatic_ble_attach_once": true,
+  "automatic_read_gains_once": true,
+  "keyboard_capture_enabled": true,
+  "settings_file": "D:\\Codex_Scratch\\R28_V4_FastP_Gains_20261103\\pc_dual_link_20261103\\settings.json"
+}

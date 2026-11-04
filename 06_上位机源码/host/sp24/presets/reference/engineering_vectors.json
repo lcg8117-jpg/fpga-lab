@@ -1,0 +1,912 @@
+[
+  {
+    "index": 0,
+    "case": "membership_knots_all_signs",
+    "error_q20": -274517,
+    "delta_q20": -27452,
+    "expected_words": [
+      16469931,
+      307285,
+      131072,
+      1819324,
+      3883520,
+      426152
+    ]
+  },
+  {
+    "index": 1,
+    "case": "membership_knots_all_signs",
+    "error_q20": -274517,
+    "delta_q20": -9151,
+    "expected_words": [
+      16469931,
+      307285,
+      131072,
+      1819324,
+      3883520,
+      426152
+    ]
+  },
+  {
+    "index": 2,
+    "case": "membership_knots_all_signs",
+    "error_q20": -274517,
+    "delta_q20": -1830,
+    "expected_words": [
+      16469931,
+      307285,
+      131072,
+      1819324,
+      3883520,
+      426152
+    ]
+  },
+  {
+    "index": 3,
+    "case": "membership_knots_all_signs",
+    "error_q20": -274517,
+    "delta_q20": 0,
+    "expected_words": [
+      16469931,
+      307285,
+      131072,
+      1819324,
+      3883520,
+      426152
+    ]
+  },
+  {
+    "index": 4,
+    "case": "membership_knots_all_signs",
+    "error_q20": -274517,
+    "delta_q20": 1830,
+    "expected_words": [
+      16469931,
+      307285,
+      131072,
+      1819324,
+      3883520,
+      426152
+    ]
+  },
+  {
+    "index": 5,
+    "case": "membership_knots_all_signs",
+    "error_q20": -274517,
+    "delta_q20": 9151,
+    "expected_words": [
+      16469931,
+      307285,
+      131072,
+      1819324,
+      3883520,
+      426152
+    ]
+  },
+  {
+    "index": 6,
+    "case": "membership_knots_all_signs",
+    "error_q20": -274517,
+    "delta_q20": 27452,
+    "expected_words": [
+      16469931,
+      307285,
+      131072,
+      1819324,
+      3883520,
+      426152
+    ]
+  },
+  {
+    "index": 7,
+    "case": "membership_knots_all_signs",
+    "error_q20": -91506,
+    "delta_q20": -27452,
+    "expected_words": [
+      307285,
+      16469931,
+      196608,
+      994355,
+      422696,
+      779710
+    ]
+  },
+  {
+    "index": 8,
+    "case": "membership_knots_all_signs",
+    "error_q20": -91506,
+    "delta_q20": -9151,
+    "expected_words": [
+      16469931,
+      16469931,
+      196608,
+      1819324,
+      1415030,
+      779710
+    ]
+  },
+  {
+    "index": 9,
+    "case": "membership_knots_all_signs",
+    "error_q20": -91506,
+    "delta_q20": -1830,
+    "expected_words": [
+      16469931,
+      307285,
+      131072,
+      1819324,
+      3883520,
+      426152
+    ]
+  },
+  {
+    "index": 10,
+    "case": "membership_knots_all_signs",
+    "error_q20": -91506,
+    "delta_q20": 0,
+    "expected_words": [
+      16469931,
+      307285,
+      131072,
+      1819324,
+      3883520,
+      426152
+    ]
+  },
+  {
+    "index": 11,
+    "case": "membership_knots_all_signs",
+    "error_q20": -91506,
+    "delta_q20": 1830,
+    "expected_words": [
+      16469931,
+      307285,
+      131072,
+      1819324,
+      3883520,
+      426152
+    ]
+  },
+  {
+    "index": 12,
+    "case": "membership_knots_all_signs",
+    "error_q20": -91506,
+    "delta_q20": 9151,
+    "expected_words": [
+      16469931,
+      16469931,
+      196608,
+      1819324,
+      1415030,
+      779710
+    ]
+  },
+  {
+    "index": 13,
+    "case": "membership_knots_all_signs",
+    "error_q20": -91506,
+    "delta_q20": 27452,
+    "expected_words": [
+      307285,
+      16469931,
+      196608,
+      994355,
+      422696,
+      779710
+    ]
+  },
+  {
+    "index": 14,
+    "case": "membership_knots_all_signs",
+    "error_q20": -18301,
+    "delta_q20": -27452,
+    "expected_words": [
+      307285,
+      16469931,
+      262144,
+      994355,
+      317022,
+      779710
+    ]
+  },
+  {
+    "index": 15,
+    "case": "membership_knots_all_signs",
+    "error_q20": -18301,
+    "delta_q20": -9151,
+    "expected_words": [
+      307285,
+      16469931,
+      196608,
+      994355,
+      422696,
+      779710
+    ]
+  },
+  {
+    "index": 16,
+    "case": "membership_knots_all_signs",
+    "error_q20": -18301,
+    "delta_q20": -1830,
+    "expected_words": [
+      16469931,
+      16469931,
+      196608,
+      1819324,
+      1415030,
+      779710
+    ]
+  },
+  {
+    "index": 17,
+    "case": "membership_knots_all_signs",
+    "error_q20": -18301,
+    "delta_q20": 0,
+    "expected_words": [
+      16469931,
+      307285,
+      131072,
+      1819324,
+      3883520,
+      426152
+    ]
+  },
+  {
+    "index": 18,
+    "case": "membership_knots_all_signs",
+    "error_q20": -18301,
+    "delta_q20": 1830,
+    "expected_words": [
+      16469931,
+      16469931,
+      196608,
+      1819324,
+      1415030,
+      779710
+    ]
+  },
+  {
+    "index": 19,
+    "case": "membership_knots_all_signs",
+    "error_q20": -18301,
+    "delta_q20": 9151,
+    "expected_words": [
+      307285,
+      16469931,
+      196608,
+      994355,
+      422696,
+      779710
+    ]
+  },
+  {
+    "index": 20,
+    "case": "membership_knots_all_signs",
+    "error_q20": -18301,
+    "delta_q20": 27452,
+    "expected_words": [
+      307285,
+      16469931,
+      262144,
+      994355,
+      317022,
+      779710
+    ]
+  },
+  {
+    "index": 21,
+    "case": "membership_knots_all_signs",
+    "error_q20": 0,
+    "delta_q20": -27452,
+    "expected_words": [
+      307285,
+      16469931,
+      327680,
+      994355,
+      253617,
+      779710
+    ]
+  },
+  {
+    "index": 22,
+    "case": "membership_knots_all_signs",
+    "error_q20": 0,
+    "delta_q20": -9151,
+    "expected_words": [
+      307285,
+      16469931,
+      262144,
+      994355,
+      317022,
+      779710
+    ]
+  },
+  {
+    "index": 23,
+    "case": "membership_knots_all_signs",
+    "error_q20": 0,
+    "delta_q20": -1830,
+    "expected_words": [
+      307285,
+      16469931,
+      196608,
+      994355,
+      422696,
+      779710
+    ]
+  },
+  {
+    "index": 24,
+    "case": "membership_knots_all_signs",
+    "error_q20": 0,
+    "delta_q20": 0,
+    "expected_words": [
+      16469931,
+      16469931,
+      196608,
+      1819324,
+      1415030,
+      779710
+    ]
+  },
+  {
+    "index": 25,
+    "case": "membership_knots_all_signs",
+    "error_q20": 0,
+    "delta_q20": 1830,
+    "expected_words": [
+      307285,
+      16469931,
+      196608,
+      994355,
+      422696,
+      779710
+    ]
+  },
+  {
+    "index": 26,
+    "case": "membership_knots_all_signs",
+    "error_q20": 0,
+    "delta_q20": 9151,
+    "expected_words": [
+      307285,
+      16469931,
+      262144,
+      994355,
+      317022,
+      779710
+    ]
+  },
+  {
+    "index": 27,
+    "case": "membership_knots_all_signs",
+    "error_q20": 0,
+    "delta_q20": 27452,
+    "expected_words": [
+      307285,
+      16469931,
+      327680,
+      994355,
+      253617,
+      779710
+    ]
+  },
+  {
+    "index": 28,
+    "case": "membership_knots_all_signs",
+    "error_q20": 18301,
+    "delta_q20": -27452,
+    "expected_words": [
+      307285,
+      16469931,
+      262144,
+      994355,
+      317022,
+      779710
+    ]
+  },
+  {
+    "index": 29,
+    "case": "membership_knots_all_signs",
+    "error_q20": 18301,
+    "delta_q20": -9151,
+    "expected_words": [
+      307285,
+      16469931,
+      196608,
+      994355,
+      422696,
+      779710
+    ]
+  },
+  {
+    "index": 30,
+    "case": "membership_knots_all_signs",
+    "error_q20": 18301,
+    "delta_q20": -1830,
+    "expected_words": [
+      16469931,
+      16469931,
+      196608,
+      1819324,
+      1415030,
+      779710
+    ]
+  },
+  {
+    "index": 31,
+    "case": "membership_knots_all_signs",
+    "error_q20": 18301,
+    "delta_q20": 0,
+    "expected_words": [
+      16469931,
+      307285,
+      131072,
+      1819324,
+      3883520,
+      426152
+    ]
+  },
+  {
+    "index": 32,
+    "case": "membership_knots_all_signs",
+    "error_q20": 18301,
+    "delta_q20": 1830,
+    "expected_words": [
+      16469931,
+      16469931,
+      196608,
+      1819324,
+      1415030,
+      779710
+    ]
+  },
+  {
+    "index": 33,
+    "case": "membership_knots_all_signs",
+    "error_q20": 18301,
+    "delta_q20": 9151,
+    "expected_words": [
+      307285,
+      16469931,
+      196608,
+      994355,
+      422696,
+      779710
+    ]
+  },
+  {
+    "index": 34,
+    "case": "membership_knots_all_signs",
+    "error_q20": 18301,
+    "delta_q20": 27452,
+    "expected_words": [
+      307285,
+      16469931,
+      262144,
+      994355,
+      317022,
+      779710
+    ]
+  },
+  {
+    "index": 35,
+    "case": "membership_knots_all_signs",
+    "error_q20": 91506,
+    "delta_q20": -27452,
+    "expected_words": [
+      307285,
+      16469931,
+      196608,
+      994355,
+      422696,
+      779710
+    ]
+  },
+  {
+    "index": 36,
+    "case": "membership_knots_all_signs",
+    "error_q20": 91506,
+    "delta_q20": -9151,
+    "expected_words": [
+      16469931,
+      16469931,
+      196608,
+      1819324,
+      1415030,
+      779710
+    ]
+  },
+  {
+    "index": 37,
+    "case": "membership_knots_all_signs",
+    "error_q20": 91506,
+    "delta_q20": -1830,
+    "expected_words": [
+      16469931,
+      307285,
+      131072,
+      1819324,
+      3883520,
+      426152
+    ]
+  },
+  {
+    "index": 38,
+    "case": "membership_knots_all_signs",
+    "error_q20": 91506,
+    "delta_q20": 0,
+    "expected_words": [
+      16469931,
+      307285,
+      131072,
+      1819324,
+      3883520,
+      426152
+    ]
+  },
+  {
+    "index": 39,
+    "case": "membership_knots_all_signs",
+    "error_q20": 91506,
+    "delta_q20": 1830,
+    "expected_words": [
+      16469931,
+      307285,
+      131072,
+      1819324,
+      3883520,
+      426152
+    ]
+  },
+  {
+    "index": 40,
+    "case": "membership_knots_all_signs",
+    "error_q20": 91506,
+    "delta_q20": 9151,
+    "expected_words": [
+      16469931,
+      16469931,
+      196608,
+      1819324,
+      1415030,
+      779710
+    ]
+  },
+  {
+    "index": 41,
+    "case": "membership_knots_all_signs",
+    "error_q20": 91506,
+    "delta_q20": 27452,
+    "expected_words": [
+      307285,
+      16469931,
+      196608,
+      994355,
+      422696,
+      779710
+    ]
+  },
+  {
+    "index": 42,
+    "case": "membership_knots_all_signs",
+    "error_q20": 274517,
+    "delta_q20": -27452,
+    "expected_words": [
+      16469931,
+      307285,
+      131072,
+      1819324,
+      3883520,
+      426152
+    ]
+  },
+  {
+    "index": 43,
+    "case": "membership_knots_all_signs",
+    "error_q20": 274517,
+    "delta_q20": -9151,
+    "expected_words": [
+      16469931,
+      307285,
+      131072,
+      1819324,
+      3883520,
+      426152
+    ]
+  },
+  {
+    "index": 44,
+    "case": "membership_knots_all_signs",
+    "error_q20": 274517,
+    "delta_q20": -1830,
+    "expected_words": [
+      16469931,
+      307285,
+      131072,
+      1819324,
+      3883520,
+      426152
+    ]
+  },
+  {
+    "index": 45,
+    "case": "membership_knots_all_signs",
+    "error_q20": 274517,
+    "delta_q20": 0,
+    "expected_words": [
+      16469931,
+      307285,
+      131072,
+      1819324,
+      3883520,
+      426152
+    ]
+  },
+  {
+    "index": 46,
+    "case": "membership_knots_all_signs",
+    "error_q20": 274517,
+    "delta_q20": 1830,
+    "expected_words": [
+      16469931,
+      307285,
+      131072,
+      1819324,
+      3883520,
+      426152
+    ]
+  },
+  {
+    "index": 47,
+    "case": "membership_knots_all_signs",
+    "error_q20": 274517,
+    "delta_q20": 9151,
+    "expected_words": [
+      16469931,
+      307285,
+      131072,
+      1819324,
+      3883520,
+      426152
+    ]
+  },
+  {
+    "index": 48,
+    "case": "membership_knots_all_signs",
+    "error_q20": 274517,
+    "delta_q20": 27452,
+    "expected_words": [
+      16469931,
+      307285,
+      131072,
+      1819324,
+      3883520,
+      426152
+    ]
+  },
+  {
+    "index": 49,
+    "case": "signed_input_high_shoulders",
+    "error_q20": 2147483647,
+    "delta_q20": 2147483647,
+    "expected_words": [
+      16469931,
+      307285,
+      131072,
+      1819324,
+      3883520,
+      426152
+    ]
+  },
+  {
+    "index": 50,
+    "case": "signed_input_low_shoulders",
+    "error_q20": -2147483648,
+    "delta_q20": -2147483648,
+    "expected_words": [
+      16469931,
+      307285,
+      131072,
+      1819324,
+      3883520,
+      426152
+    ]
+  },
+  {
+    "index": 51,
+    "case": "opposite_shoulders",
+    "error_q20": 2147483647,
+    "delta_q20": -2147483648,
+    "expected_words": [
+      16469931,
+      307285,
+      131072,
+      1819324,
+      3883520,
+      426152
+    ]
+  },
+  {
+    "index": 52,
+    "case": "opposite_shoulders",
+    "error_q20": -2147483648,
+    "delta_q20": 2147483647,
+    "expected_words": [
+      16469931,
+      307285,
+      131072,
+      1819324,
+      3883520,
+      426152
+    ]
+  },
+  {
+    "index": 53,
+    "case": "quintic_target_50deg_2s_max_delta",
+    "error_q20": -18301,
+    "delta_q20": -8579,
+    "expected_words": [
+      738973,
+      15431077,
+      196608,
+      1016389,
+      454895,
+      756985
+    ]
+  },
+  {
+    "index": 54,
+    "case": "quintic_target_50deg_2s_max_delta",
+    "error_q20": 18301,
+    "delta_q20": 8579,
+    "expected_words": [
+      739117,
+      15430931,
+      196608,
+      1016397,
+      454904,
+      756982
+    ]
+  },
+  {
+    "index": 55,
+    "case": "quintic_target_360deg_2s_max_delta",
+    "error_q20": -18301,
+    "delta_q20": -61766,
+    "expected_words": [
+      307285,
+      16469931,
+      262144,
+      994355,
+      317022,
+      779710
+    ]
+  },
+  {
+    "index": 56,
+    "case": "quintic_target_360deg_2s_max_delta",
+    "error_q20": 18301,
+    "delta_q20": 61766,
+    "expected_words": [
+      307285,
+      16469931,
+      262144,
+      994355,
+      317022,
+      779710
+    ]
+  },
+  {
+    "index": 57,
+    "case": "triangle_interpolation",
+    "error_q20": 9150,
+    "delta_q20": 915,
+    "expected_words": [
+      9496659,
+      9497171,
+      180225,
+      1463396,
+      1241640,
+      627181
+    ]
+  },
+  {
+    "index": 58,
+    "case": "triangle_interpolation_sign_mirror",
+    "error_q20": -9150,
+    "delta_q20": -915,
+    "expected_words": [
+      9496787,
+      9497043,
+      180225,
+      1463403,
+      1241657,
+      627178
+    ]
+  },
+  {
+    "index": 59,
+    "case": "triangle_interpolation",
+    "error_q20": 54903,
+    "delta_q20": 5490,
+    "expected_words": [
+      9497427,
+      9496403,
+      180222,
+      1463435,
+      1241760,
+      627164
+    ]
+  },
+  {
+    "index": 60,
+    "case": "triangle_interpolation_sign_mirror",
+    "error_q20": -54903,
+    "delta_q20": -5490,
+    "expected_words": [
+      9497427,
+      9496403,
+      180222,
+      1463435,
+      1241760,
+      627164
+    ]
+  },
+  {
+    "index": 61,
+    "case": "triangle_interpolation",
+    "error_q20": 183011,
+    "delta_q20": 18301,
+    "expected_words": [
+      9497043,
+      8388864,
+      163841,
+      1463416,
+      1420760,
+      602937
+    ]
+  },
+  {
+    "index": 62,
+    "case": "triangle_interpolation_sign_mirror",
+    "error_q20": -183011,
+    "delta_q20": -18301,
+    "expected_words": [
+      9497043,
+      8388608,
+      163840,
+      1463416,
+      1420783,
+      602931
+    ]
+  },
+  {
+    "index": 63,
+    "case": "triangle_interpolation",
+    "error_q20": 6100,
+    "delta_q20": 3050,
+    "expected_words": [
+      6077411,
+      12291688,
+      203889,
+      1288872,
+      775748,
+      688311
+    ]
+  },
+  {
+    "index": 64,
+    "case": "triangle_interpolation_sign_mirror",
+    "error_q20": -6100,
+    "delta_q20": -3050,
+    "expected_words": [
+      6077720,
+      12291517,
+      203889,
+      1288888,
+      775772,
+      688307
+    ]
+  }
+]

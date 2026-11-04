@@ -1,0 +1,53 @@
+{
+  "gain_order": [
+    "angle_P",
+    "angle_I",
+    "angle_D",
+    "position_P",
+    "position_I",
+    "position_D"
+  ],
+  "gains": [
+    53.78,
+    0,
+    210.14,
+    17.67,
+    0,
+    616.61
+  ],
+  "IEEE754_hex": [
+    "42571eb8",
+    "00000000",
+    "435223d7",
+    "418d5c29",
+    "00000000",
+    "441a270a"
+  ],
+  "periods_ms": {
+    "angle_P": 5,
+    "angle_D": 5,
+    "position_P": 25,
+    "position_D": 25
+  },
+  "ADC_samples": 64,
+  "independent_readback": [
+    53.779998779296875,
+    0.0,
+    210.13999938964844,
+    17.670000076293945,
+    0.0,
+    616.6099853515625
+  ],
+  "firmware_sha256": "41b9192fed5b4e887e458e1a69689ad7a660964ca8cf1ccacd6c4e31f7b4bf45",
+  "firmware_id": "41444231",
+  "schema": "41444203",
+  "firmware_reset_gains": [
+    49,
+    0,
+    260,
+    25,
+    0,
+    620
+  ],
+  "write_S1_after_loading": true
+}

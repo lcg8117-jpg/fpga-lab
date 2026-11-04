@@ -1,0 +1,74 @@
+{
+  "status": "PASS",
+  "scope": "Real RTL BLE-UART bytes decoded and session-bound by shipping Host; no physical plant/hardware acceptance",
+  "capture": "D:\\Codex_Scratch\\R28_V4_FastP_Gains_20261103\\reports\\fastp_rtl_20261103_040807_712500\\wire_frames.bin",
+  "capture_sha256": "e4dc266ee07e6f72c1e4e894e61cdb72de86885ecf8f580d224ccb471aee7c29",
+  "bytes": 8224,
+  "counts": {
+    "diagnostic": 5,
+    "ack": 16,
+    "compact": 118
+  },
+  "parser_crc_errors": 0,
+  "parser_format_errors": 0,
+  "parser_discarded_bytes": 0,
+  "identity_session": 431,
+  "firmware": "56345239",
+  "schema": "56345208",
+  "layout": 5,
+  "observed_zero_q4": 0,
+  "active_gains": [
+    53.779998779296875,
+    0.0,
+    210.13999938964844,
+    17.670000076293945,
+    0.0,
+    616.6099853515625
+  ],
+  "fast_diagnostic_count": 2,
+  "final_fast_diagnostic": {
+    "session": 431,
+    "profile": 1,
+    "periods_us": [
+      1000,
+      5000,
+      5000,
+      25000,
+      5000
+    ],
+    "adc_batch_sequence": 499,
+    "angle_d_epoch": 497,
+    "position_d_epoch": 482,
+    "position_p_epoch": 498,
+    "completed_sample_epoch": 499,
+    "d_gain_revision": 0,
+    "active_revision": 0,
+    "active_gains": [
+      53.779998779296875,
+      0.0,
+      210.13999938964844,
+      17.670000076293945,
+      0.0,
+      616.6099853515625
+    ],
+    "last_completed_epoch": 499
+  },
+  "compact_nominal_period_ms": 5,
+  "compact_observed_epoch_steps": {
+    "5": 113,
+    "9": 1,
+    "2": 1
+  },
+  "compact_running_epoch_steps": {
+    "5": 112
+  },
+  "running_cadence_observed": true,
+  "actual_matched_read_request_id": 2,
+  "compact_before_identity_ignored": 2,
+  "compact_after_identity": 116,
+  "accepted_history": 116,
+  "threads_started": 0,
+  "windows_started": 0,
+  "device_connections": 0,
+  "hardware_commands_sent": 0
+}

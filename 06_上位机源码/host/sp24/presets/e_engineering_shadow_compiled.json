@@ -1,0 +1,19 @@
+{
+  "scope": "SHADOW_ONLY_NUMERICAL_WORDS_NOT_PAPER_CALIBRATION",
+  "profile_fields_u32": {
+    "error_node_1": 18301,
+    "error_node_2": 91506,
+    "error_node_3": 274517,
+    "delta_node_1": 1830,
+    "delta_node_2": 9151,
+    "delta_node_3": 27452,
+    "kp_min": 978671,
+    "kp_max": 1835008,
+    "kd_min": 419430,
+    "kd_max": 786432
+  },
+  "commit_value": 2,
+  "adaptive_mode_after_explicit_import": 0,
+  "optional_next_explicit_stopped_mode": 2,
+  "automatic_mode1_or_RUN": false
+}

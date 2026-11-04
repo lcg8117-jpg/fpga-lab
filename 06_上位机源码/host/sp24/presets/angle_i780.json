@@ -1,0 +1,48 @@
+{
+  "schema": "J280.SP24.fixed-preset.v1",
+  "id": "angle_i780",
+  "label": "双环独立试验：仅角度 I 870→780（D仍90）",
+  "firmware_uid_hex": "53503234",
+  "control_schema_hex": "53505424",
+  "evidence_grade": "engineering-unqualified",
+  "apply_policy": "explicit-STOP-only-ACK-and-independent-readback",
+  "no_RUN_ZERO_or_profile_commit": true,
+  "parameters": {
+    "angle_kp": 900,
+    "angle_ki": 780,
+    "angle_kd": 90,
+    "ki_enable": 1,
+    "angle_d_filter": 650,
+    "angle_window": 5,
+    "gesture_enable": 1,
+    "adaptive_mode": 0,
+    "position_kp": 112,
+    "position_ki": 0,
+    "position_kd": 48
+  },
+  "expected_readonly": {
+    "encoder_mode": 1,
+    "position_gamma": 578949194
+  },
+  "continuous_position_gains": {
+    "Kp": 0.109375,
+    "Ki_per_second": 0.0,
+    "Kd_seconds": 0.046875
+  },
+  "physical_acceptance": "pending; synthetic algebraic contribution check only; no measured rod-amplitude, stability, settling or hold-time improvement claim",
+  "continuous_angle_gains": {
+    "output_unit": "PWM percentage points; input angle rad; nominal inner period 0.001 s",
+    "Kp_percent_per_rad": 225.0,
+    "Ki_percent_per_rad_second": 195.0,
+    "Kd_percent_second_per_rad": 5.625,
+    "derivative_source": "negative filtered measured rod rate, not derivative of REF"
+  },
+  "comparison": {
+    "baseline": "field_baseline.json",
+    "single_changed_parameter": "angle_ki",
+    "baseline_raw": 870,
+    "candidate_raw": 780,
+    "other_parameters": "unchanged; compare independently rather than stacking angle trials",
+    "first_trial": false
+  }
+}

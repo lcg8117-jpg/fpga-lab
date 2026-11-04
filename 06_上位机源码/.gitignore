@@ -1,0 +1,48 @@
+# Dependencies and generated frontend output
+node_modules/
+dist/
+build/
+.vite/
+.workbench/
+
+# Python environments and caches
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+# Original FD2 portable runtime extensions are required dependencies.
+!host/fd2/upstream/**/*.pyd
+# The standard-library venv package is part of the supplied Python runtime.
+!host/fd2/upstream/runtime/Lib/venv/
+!host/fd2/upstream/runtime/Lib/venv/**
+# V4 双连接交付同样包含便携 Python 和 WinRT 原生扩展。
+!host/v4_usb_ble/PC_Bluetooth/**/*.pyd
+!host/v4_usb_ble/PC_Bluetooth/runtime/Lib/venv/
+!host/v4_usb_ble/PC_Bluetooth/runtime/Lib/venv/**
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Local credentials and runtime files
+.env
+.env.*
+!.env.example
+!.env.sample
+*.pem
+# Public CA bundles shipped with the original runtime (not private keys).
+!host/fd2/upstream/**/cacert.pem
+!host/fd2/upstream/runtime/Lib/codex-rejected-cas.pem
+!host/v4_usb_ble/PC_Bluetooth/runtime/Lib/codex-rejected-cas.pem
+*.key
+*.log
+logs/
+host/**/sessions/
+host/**/reports/
+host/v4_usb_ble/PC_Bluetooth/settings.json
+
+# Editor / operating system temporary files
+.history/
+*.swp
+*.tmp
+.DS_Store
+Thumbs.db

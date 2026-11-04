@@ -1,0 +1,61 @@
+{
+  "gains": [
+    53.779998779296875,
+    0.0,
+    210.13999938964844,
+    17.670000076293945,
+    0.0,
+    616.6099853515625
+  ],
+  "requested_gains": [
+    53.78,
+    0,
+    210.14,
+    17.67,
+    0,
+    616.61
+  ],
+  "binary32_payload_hex": "b81e574200000000d7235243295c8d41000000000a271a44",
+  "stored_revision": 1,
+  "set_ack": {
+    "request_id": 7,
+    "stored_revision": 1,
+    "mutation_highwater": 7,
+    "control_epoch": 0,
+    "config_read_value": 4294967295,
+    "config_revision": 0,
+    "flags": 0,
+    "active_revision": 0,
+    "adaptive_adoption_epoch": 0,
+    "firmware_id": 1094992433,
+    "kind": "ack",
+    "wire_version": 3,
+    "opcode": 32,
+    "status": 0,
+    "variant": 16,
+    "stored_gains": [
+      53.779998779296875,
+      0.0,
+      210.13999938964844,
+      17.670000076293945,
+      0.0,
+      616.6099853515625
+    ],
+    "config_group": 255,
+    "config_id": 184,
+    "mode": 0,
+    "fault": 0
+  },
+  "independent_READ_GAINS": true,
+  "mode": 0,
+  "fault": 0,
+  "actual_applied_q15": 0,
+  "adaptive_enabled": 0,
+  "friction_enabled": null,
+  "port": "COM5",
+  "console_pid": 23056,
+  "schema": "41444203",
+  "image_sha256": "41b9192fed5b4e887e458e1a69689ad7a660964ca8cf1ccacd6c4e31f7b4bf45",
+  "observed_unix": 1793727855.0432699,
+  "automatic_ZERO_RUN_SWING": false
+}

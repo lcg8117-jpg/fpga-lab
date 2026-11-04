@@ -1,0 +1,16 @@
+{
+  "variant": 5,
+  "name": "手动平衡、六位置与六轨迹",
+  "firmware_id": "0x46443435",
+  "wire_version": 5,
+  "schema": "0x46443405",
+  "part": "GW2A-LV55PG484C8/I7",
+  "clock_mhz": 50,
+  "ble_commands": true,
+  "ble_telemetry": false,
+  "usb_full_control_hz": 200,
+  "hardware_verified_in_this_task": false,
+  "optical_gesture": false,
+  "swing_up": false,
+  "manual_balance_start": true
+}

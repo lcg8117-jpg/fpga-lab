@@ -49078,5 +49078,539 @@
     "member": "cosim/cases/sequence_r03/j280_coupled_interval_mex.mexw64",
     "reason": "compiled_artifact_removed",
     "bytes": 48928
+  },
+  {
+    "input": "HOST",
+    "member": "J280_上位机源码_报告用_20261104/00_阅读说明.txt",
+    "reason": "user_requested_document_removal",
+    "bytes": 2522
+  },
+  {
+    "input": "HOST",
+    "member": "J280_上位机源码_报告用_20261104/01_报告代码索引.txt",
+    "reason": "user_requested_document_removal",
+    "bytes": 4854
+  },
+  {
+    "input": "HOST",
+    "member": "J280_上位机源码_报告用_20261104/03_本次检查记录.txt",
+    "reason": "user_requested_document_removal",
+    "bytes": 1144
+  },
+  {
+    "input": "HOST",
+    "member": "J280_上位机源码_报告用_20261104/AGENTS.md",
+    "reason": "user_requested_document_removal",
+    "bytes": 16443
+  },
+  {
+    "input": "HOST",
+    "member": "J280_上位机源码_报告用_20261104/DESIGN.md",
+    "reason": "user_requested_document_removal",
+    "bytes": 19743
+  },
+  {
+    "input": "HOST",
+    "member": "J280_上位机源码_报告用_20261104/README_CN.md",
+    "reason": "user_requested_document_removal",
+    "bytes": 16086
+  },
+  {
+    "input": "HOST",
+    "member": "J280_上位机源码_报告用_20261104/VERSIONING.md",
+    "reason": "user_requested_document_removal",
+    "bytes": 4637
+  },
+  {
+    "input": "HOST",
+    "member": "J280_上位机源码_报告用_20261104/backend/requirements.txt",
+    "reason": "user_requested_document_removal",
+    "bytes": 56
+  },
+  {
+    "input": "HOST",
+    "member": "J280_上位机源码_报告用_20261104/car/README.md",
+    "reason": "user_requested_document_removal",
+    "bytes": 4179
+  },
+  {
+    "input": "HOST",
+    "member": "J280_上位机源码_报告用_20261104/car/v83/SOURCE.md",
+    "reason": "user_requested_document_removal",
+    "bytes": 1289
+  },
+  {
+    "input": "HOST",
+    "member": "J280_上位机源码_报告用_20261104/car/v83/docs/API-Contract.md",
+    "reason": "user_requested_document_removal",
+    "bytes": 4731
+  },
+  {
+    "input": "HOST",
+    "member": "J280_上位机源码_报告用_20261104/car/v83/docs/Quickstart.zh-CN.md",
+    "reason": "user_requested_document_removal",
+    "bytes": 7742
+  },
+  {
+    "input": "HOST",
+    "member": "J280_上位机源码_报告用_20261104/car/v83/docs/Recovery.zh-CN.md",
+    "reason": "user_requested_document_removal",
+    "bytes": 2045
+  },
+  {
+    "input": "HOST",
+    "member": "J280_上位机源码_报告用_20261104/car/v83/requirements.txt",
+    "reason": "user_requested_document_removal",
+    "bytes": 33
+  },
+  {
+    "input": "HOST",
+    "member": "J280_上位机源码_报告用_20261104/docs/adb1-07-sync-20261104.md",
+    "reason": "user_requested_document_removal",
+    "bytes": 5815
+  },
+  {
+    "input": "HOST",
+    "member": "J280_上位机源码_报告用_20261104/docs/car-v83-validation-20261027.md",
+    "reason": "user_requested_document_removal",
+    "bytes": 5602
+  },
+  {
+    "input": "HOST",
+    "member": "J280_上位机源码_报告用_20261104/docs/design/2026-10-16/README.md",
+    "reason": "user_requested_document_removal",
+    "bytes": 762
+  },
+  {
+    "input": "HOST",
+    "member": "J280_上位机源码_报告用_20261104/docs/enc-follow-validation-20261101.md",
+    "reason": "user_requested_document_removal",
+    "bytes": 3714
+  },
+  {
+    "input": "HOST",
+    "member": "J280_上位机源码_报告用_20261104/docs/fd2-update-20261027.md",
+    "reason": "user_requested_document_removal",
+    "bytes": 4143
+  },
+  {
+    "input": "HOST",
+    "member": "J280_上位机源码_报告用_20261104/docs/fd2-validation-20261025.md",
+    "reason": "user_requested_document_removal",
+    "bytes": 3992
+  },
+  {
+    "input": "HOST",
+    "member": "J280_上位机源码_报告用_20261104/docs/history/README_CN_20261016.md",
+    "reason": "user_requested_document_removal",
+    "bytes": 13900
+  },
+  {
+    "input": "HOST",
+    "member": "J280_上位机源码_报告用_20261104/docs/superpowers/plans/2026-09-28-instrument-display.md",
+    "reason": "user_requested_document_removal",
+    "bytes": 3255
+  },
+  {
+    "input": "HOST",
+    "member": "J280_上位机源码_报告用_20261104/docs/superpowers/plans/2026-09-28-light-instrument.md",
+    "reason": "user_requested_document_removal",
+    "bytes": 968
+  },
+  {
+    "input": "HOST",
+    "member": "J280_上位机源码_报告用_20261104/docs/superpowers/plans/2026-10-13-competition-showcase.md",
+    "reason": "user_requested_document_removal",
+    "bytes": 2728
+  },
+  {
+    "input": "HOST",
+    "member": "J280_上位机源码_报告用_20261104/docs/superpowers/plans/2026-10-15-dual-console.md",
+    "reason": "user_requested_document_removal",
+    "bytes": 4159
+  },
+  {
+    "input": "HOST",
+    "member": "J280_上位机源码_报告用_20261104/docs/superpowers/plans/2026-10-15-pose-and-run.md",
+    "reason": "user_requested_document_removal",
+    "bytes": 2356
+  },
+  {
+    "input": "HOST",
+    "member": "J280_上位机源码_报告用_20261104/docs/superpowers/plans/2026-10-15-sg21-sa21-host.md",
+    "reason": "user_requested_document_removal",
+    "bytes": 2805
+  },
+  {
+    "input": "HOST",
+    "member": "J280_上位机源码_报告用_20261104/docs/superpowers/plans/2026-10-15-sp24.md",
+    "reason": "user_requested_document_removal",
+    "bytes": 5935
+  },
+  {
+    "input": "HOST",
+    "member": "J280_上位机源码_报告用_20261104/docs/superpowers/plans/2026-10-16-ui-refinement.md",
+    "reason": "user_requested_document_removal",
+    "bytes": 4420
+  },
+  {
+    "input": "HOST",
+    "member": "J280_上位机源码_报告用_20261104/docs/superpowers/plans/2026-10-25-fd2-five-variants.md",
+    "reason": "user_requested_document_removal",
+    "bytes": 4805
+  },
+  {
+    "input": "HOST",
+    "member": "J280_上位机源码_报告用_20261104/docs/superpowers/plans/2026-10-26-showcase-controls.md",
+    "reason": "user_requested_document_removal",
+    "bytes": 2251
+  },
+  {
+    "input": "HOST",
+    "member": "J280_上位机源码_报告用_20261104/docs/superpowers/plans/2026-10-27-car-v83.md",
+    "reason": "user_requested_document_removal",
+    "bytes": 3138
+  },
+  {
+    "input": "HOST",
+    "member": "J280_上位机源码_报告用_20261104/docs/superpowers/plans/2026-10-27-twin-pose-fix.md",
+    "reason": "user_requested_document_removal",
+    "bytes": 1310
+  },
+  {
+    "input": "HOST",
+    "member": "J280_上位机源码_报告用_20261104/docs/superpowers/plans/2026-11-01-enc-follow.md",
+    "reason": "user_requested_document_removal",
+    "bytes": 2897
+  },
+  {
+    "input": "HOST",
+    "member": "J280_上位机源码_报告用_20261104/docs/superpowers/plans/2026-11-01-waveform-layout.md",
+    "reason": "user_requested_document_removal",
+    "bytes": 3744
+  },
+  {
+    "input": "HOST",
+    "member": "J280_上位机源码_报告用_20261104/docs/superpowers/plans/2026-11-04-adb1-07-sync.md",
+    "reason": "user_requested_document_removal",
+    "bytes": 2430
+  },
+  {
+    "input": "HOST",
+    "member": "J280_上位机源码_报告用_20261104/docs/superpowers/specs/2026-10-15-dual-console-design.md",
+    "reason": "user_requested_document_removal",
+    "bytes": 4424
+  },
+  {
+    "input": "HOST",
+    "member": "J280_上位机源码_报告用_20261104/docs/superpowers/specs/2026-10-15-sp24-design.md",
+    "reason": "user_requested_document_removal",
+    "bytes": 5276
+  },
+  {
+    "input": "HOST",
+    "member": "J280_上位机源码_报告用_20261104/docs/superpowers/specs/2026-10-25-fd2-five-variants-design.md",
+    "reason": "user_requested_document_removal",
+    "bytes": 5925
+  },
+  {
+    "input": "HOST",
+    "member": "J280_上位机源码_报告用_20261104/docs/superpowers/specs/2026-10-27-car-v83-design.md",
+    "reason": "user_requested_document_removal",
+    "bytes": 4884
+  },
+  {
+    "input": "HOST",
+    "member": "J280_上位机源码_报告用_20261104/docs/v4-usb-ble-20261103.md",
+    "reason": "user_requested_document_removal",
+    "bytes": 5040
+  },
+  {
+    "input": "HOST",
+    "member": "J280_上位机源码_报告用_20261104/firmware/README.md",
+    "reason": "user_requested_document_removal",
+    "bytes": 2892
+  },
+  {
+    "input": "HOST",
+    "member": "J280_上位机源码_报告用_20261104/frontend/README_覆盖说明.txt",
+    "reason": "user_requested_document_removal",
+    "bytes": 1367
+  },
+  {
+    "input": "HOST",
+    "member": "J280_上位机源码_报告用_20261104/frontend/model-sources/README.md",
+    "reason": "user_requested_document_removal",
+    "bytes": 3047
+  },
+  {
+    "input": "HOST",
+    "member": "J280_上位机源码_报告用_20261104/host/README.md",
+    "reason": "user_requested_document_removal",
+    "bytes": 2993
+  },
+  {
+    "input": "HOST",
+    "member": "J280_上位机源码_报告用_20261104/host/adaptive/API-Contract.md",
+    "reason": "user_requested_document_removal",
+    "bytes": 3511
+  },
+  {
+    "input": "HOST",
+    "member": "J280_上位机源码_报告用_20261104/host/adaptive/host/HOST_GUIDE.md",
+    "reason": "user_requested_document_removal",
+    "bytes": 2653
+  },
+  {
+    "input": "HOST",
+    "member": "J280_上位机源码_报告用_20261104/host/adb1/README_IMPORT.md",
+    "reason": "user_requested_document_removal",
+    "bytes": 1974
+  },
+  {
+    "input": "HOST",
+    "member": "J280_上位机源码_报告用_20261104/host/adb1/requirements.txt",
+    "reason": "user_requested_document_removal",
+    "bytes": 159
+  },
+  {
+    "input": "HOST",
+    "member": "J280_上位机源码_报告用_20261104/host/adb1_07/README.md",
+    "reason": "user_requested_document_removal",
+    "bytes": 2247
+  },
+  {
+    "input": "HOST",
+    "member": "J280_上位机源码_报告用_20261104/host/adb1_07/host/README_CN.md",
+    "reason": "user_requested_document_removal",
+    "bytes": 169
+  },
+  {
+    "input": "HOST",
+    "member": "J280_上位机源码_报告用_20261104/host/adb1_07/host/requirements.txt",
+    "reason": "user_requested_document_removal",
+    "bytes": 159
+  },
+  {
+    "input": "HOST",
+    "member": "J280_上位机源码_报告用_20261104/host/adb1_07/release_evidence/审计结果_CN.md",
+    "reason": "user_requested_document_removal",
+    "bytes": 17012
+  },
+  {
+    "input": "HOST",
+    "member": "J280_上位机源码_报告用_20261104/host/adb1_07/先读我_给队友.txt",
+    "reason": "user_requested_document_removal",
+    "bytes": 1557
+  },
+  {
+    "input": "HOST",
+    "member": "J280_上位机源码_报告用_20261104/host/adb1_fastp/README.md",
+    "reason": "user_requested_document_removal",
+    "bytes": 878
+  },
+  {
+    "input": "HOST",
+    "member": "J280_上位机源码_报告用_20261104/host/adb1_fastp/host/README_CN.md",
+    "reason": "user_requested_document_removal",
+    "bytes": 169
+  },
+  {
+    "input": "HOST",
+    "member": "J280_上位机源码_报告用_20261104/host/adb1_fastp/host/requirements.txt",
+    "reason": "user_requested_document_removal",
+    "bytes": 159
+  },
+  {
+    "input": "HOST",
+    "member": "J280_上位机源码_报告用_20261104/host/baseline/SWM2/API-Contract.md",
+    "reason": "user_requested_document_removal",
+    "bytes": 9225
+  },
+  {
+    "input": "HOST",
+    "member": "J280_上位机源码_报告用_20261104/host/ds13/README.md",
+    "reason": "user_requested_document_removal",
+    "bytes": 2168
+  },
+  {
+    "input": "HOST",
+    "member": "J280_上位机源码_报告用_20261104/host/ds13/releases/20261103_r2/DS13_App/使用说明.txt",
+    "reason": "user_requested_document_removal",
+    "bytes": 170
+  },
+  {
+    "input": "HOST",
+    "member": "J280_上位机源码_报告用_20261104/host/ds13/releases/20261103_r2/DS13_App/先看这里_队友使用说明.txt",
+    "reason": "user_requested_document_removal",
+    "bytes": 2468
+  },
+  {
+    "input": "HOST",
+    "member": "J280_上位机源码_报告用_20261104/host/ds13/releases/20261103_r2/DS13_App/协议及测试说明.txt",
+    "reason": "user_requested_document_removal",
+    "bytes": 1131
+  },
+  {
+    "input": "HOST",
+    "member": "J280_上位机源码_报告用_20261104/host/ds13/releases/20261103_r2/DS13_App/编译与核验结果.txt",
+    "reason": "user_requested_document_removal",
+    "bytes": 921
+  },
+  {
+    "input": "HOST",
+    "member": "J280_上位机源码_报告用_20261104/host/ds13/releases/20261103_r2/使用说明.txt",
+    "reason": "user_requested_document_removal",
+    "bytes": 2468
+  },
+  {
+    "input": "HOST",
+    "member": "J280_上位机源码_报告用_20261104/host/fd2/README.md",
+    "reason": "user_requested_document_removal",
+    "bytes": 5015
+  },
+  {
+    "input": "HOST",
+    "member": "J280_上位机源码_报告用_20261104/host/fd2/releases/20261027/00_READ_FIRST_CN.md",
+    "reason": "user_requested_document_removal",
+    "bytes": 1810
+  },
+  {
+    "input": "HOST",
+    "member": "J280_上位机源码_报告用_20261104/host/fd2/releases/20261027/V1/README_CN.md",
+    "reason": "user_requested_document_removal",
+    "bytes": 4018
+  },
+  {
+    "input": "HOST",
+    "member": "J280_上位机源码_报告用_20261104/host/fd2/releases/20261027/V2/README_CN.md",
+    "reason": "user_requested_document_removal",
+    "bytes": 4715
+  },
+  {
+    "input": "HOST",
+    "member": "J280_上位机源码_报告用_20261104/host/fd2/releases/20261027/V5/README_CN.md",
+    "reason": "user_requested_document_removal",
+    "bytes": 478
+  },
+  {
+    "input": "HOST",
+    "member": "J280_上位机源码_报告用_20261104/host/fd2/releases/20261027/V5/REBUILD_CN.md",
+    "reason": "user_requested_document_removal",
+    "bytes": 1559
+  },
+  {
+    "input": "HOST",
+    "member": "J280_上位机源码_报告用_20261104/host/fd2/upstream/host/README_CN.md",
+    "reason": "user_requested_document_removal",
+    "bytes": 718
+  },
+  {
+    "input": "HOST",
+    "member": "J280_上位机源码_报告用_20261104/host/g3_c1/README.md",
+    "reason": "user_requested_document_removal",
+    "bytes": 783
+  },
+  {
+    "input": "HOST",
+    "member": "J280_上位机源码_报告用_20261104/host/gesture/API-Contract.md",
+    "reason": "user_requested_document_removal",
+    "bytes": 2406
+  },
+  {
+    "input": "HOST",
+    "member": "J280_上位机源码_报告用_20261104/host/gesture/host/HOST_GUIDE.md",
+    "reason": "user_requested_document_removal",
+    "bytes": 1714
+  },
+  {
+    "input": "HOST",
+    "member": "J280_上位机源码_报告用_20261104/host/sp24/00_READ_FIRST_CN.md",
+    "reason": "user_requested_document_removal",
+    "bytes": 4785
+  },
+  {
+    "input": "HOST",
+    "member": "J280_上位机源码_报告用_20261104/host/sp24/SOURCE.md",
+    "reason": "user_requested_document_removal",
+    "bytes": 407
+  },
+  {
+    "input": "HOST",
+    "member": "J280_上位机源码_报告用_20261104/host/sp24/Tech-Spec.md",
+    "reason": "user_requested_document_removal",
+    "bytes": 3466
+  },
+  {
+    "input": "HOST",
+    "member": "J280_上位机源码_报告用_20261104/host/sp24/Telemetry-Spec.md",
+    "reason": "user_requested_document_removal",
+    "bytes": 3288
+  },
+  {
+    "input": "HOST",
+    "member": "J280_上位机源码_报告用_20261104/host/sp24/gesture/API-Contract.md",
+    "reason": "user_requested_document_removal",
+    "bytes": 11597
+  },
+  {
+    "input": "HOST",
+    "member": "J280_上位机源码_报告用_20261104/host/sp24/gesture/host/HOST_GUIDE.md",
+    "reason": "user_requested_document_removal",
+    "bytes": 9271
+  },
+  {
+    "input": "HOST",
+    "member": "J280_上位机源码_报告用_20261104/host/v4_ble/README.md",
+    "reason": "user_requested_document_removal",
+    "bytes": 588
+  },
+  {
+    "input": "HOST",
+    "member": "J280_上位机源码_报告用_20261104/host/v4_r28/PC_Bluetooth/README_CN.md",
+    "reason": "user_requested_document_removal",
+    "bytes": 2259
+  },
+  {
+    "input": "HOST",
+    "member": "J280_上位机源码_报告用_20261104/host/v4_r28/README.md",
+    "reason": "user_requested_document_removal",
+    "bytes": 688
+  },
+  {
+    "input": "HOST",
+    "member": "J280_上位机源码_报告用_20261104/host/v4_usb_ble/00_先读我.txt",
+    "reason": "user_requested_document_removal",
+    "bytes": 3148
+  },
+  {
+    "input": "HOST",
+    "member": "J280_上位机源码_报告用_20261104/host/v4_usb_ble/PC_Bluetooth/README_CN.md",
+    "reason": "user_requested_document_removal",
+    "bytes": 4904
+  },
+  {
+    "input": "HOST",
+    "member": "J280_上位机源码_报告用_20261104/host/v4_usb_ble/PC_Bluetooth/连续六键修复说明.txt",
+    "reason": "user_requested_document_removal",
+    "bytes": 1608
+  },
+  {
+    "input": "HOST",
+    "member": "J280_上位机源码_报告用_20261104/host/v4_usb_ble/README.md",
+    "reason": "user_requested_document_removal",
+    "bytes": 1715
+  },
+  {
+    "input": "HOST",
+    "member": "J280_上位机源码_报告用_20261104/host/v4_usb_ble/patches/20261103_six_key/00_覆盖说明.txt",
+    "reason": "user_requested_document_removal",
+    "bytes": 1608
+  },
+  {
+    "input": "HOST",
+    "member": "J280_上位机源码_报告用_20261104/host/v4_usb_ble/patches/20261103_six_key/before/README_CN.md",
+    "reason": "user_requested_document_removal",
+    "bytes": 3148
   }
 ]

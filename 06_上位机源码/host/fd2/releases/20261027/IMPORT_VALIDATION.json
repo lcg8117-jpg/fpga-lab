@@ -1,0 +1,112 @@
+{
+  "date": "2026-10-27",
+  "archive": "J280_V1_V2_V5_Complete_20261027.zip",
+  "archive_sha256": "dccb1de03e45550319db5c6c4faac191c840285a4e3497adb81e14580c1ce1c0",
+  "archive_bytes": 74491263,
+  "archive_files_verified": 7748,
+  "root_manifest_entries_verified": 7747,
+  "versions": {
+    "V1": {
+      "version": {
+        "variant": 1,
+        "name": "三方案起摆与固定平衡",
+        "firmware_id": "0x46443231",
+        "wire_version": 2,
+        "schema": "0x46443203",
+        "part": "GW2A-LV55PG484C8/I7",
+        "clock_mhz": 50,
+        "ble_commands": false,
+        "ble_telemetry": false,
+        "usb_full_control_hz": 200,
+        "hardware_verified_in_this_task": false,
+        "optical_gesture": true
+      },
+      "bitstream": {
+        "path": "现场烧录固件/V1/J280_V1.fs",
+        "size": 18588969,
+        "sha256": "6abd375db7b6da81b7fb55e300e3652a3912cff949ae5793ef5c77601721f80a",
+        "archive_path": "V1/Code_and_Host/V1/bitstream/J280_V1.fs"
+      },
+      "shared_host_runtime_files_verified": 2250,
+      "shared_host_runtime_changed": 0,
+      "original_payload_manifest_entries": 2516
+    },
+    "V2": {
+      "version": {
+        "variant": 2,
+        "name": "单圈及连续旋转",
+        "firmware_id": "0x46443432",
+        "wire_version": 3,
+        "schema": "0x46443402",
+        "part": "GW2A-LV55PG484C8/I7",
+        "clock_mhz": 50,
+        "ble_commands": false,
+        "ble_telemetry": false,
+        "usb_full_control_hz": 200,
+        "hardware_verified_in_this_task": false,
+        "optical_gesture": true
+      },
+      "bitstream": {
+        "path": "现场烧录固件/V2/J280_V2.fs",
+        "size": 18588969,
+        "sha256": "994071c9a0f29c02e02e8b565d0c2448609e92166b23cc80bb4712efbd45f5b1",
+        "archive_path": "V2/Code_and_Host/V2/bitstream/J280_V2.fs"
+      },
+      "shared_host_runtime_files_verified": 2250,
+      "shared_host_runtime_changed": 0,
+      "original_payload_manifest_entries": 2501
+    },
+    "V5": {
+      "version": {
+        "variant": 5,
+        "name": "手动平衡、六位置与六轨迹",
+        "firmware_id": "0x46443435",
+        "wire_version": 5,
+        "schema": "0x46443405",
+        "part": "GW2A-LV55PG484C8/I7",
+        "clock_mhz": 50,
+        "ble_commands": true,
+        "ble_telemetry": false,
+        "usb_full_control_hz": 200,
+        "hardware_verified_in_this_task": false,
+        "optical_gesture": false,
+        "swing_up": false,
+        "manual_balance_start": true
+      },
+      "bitstream": {
+        "path": "现场烧录固件/V5/J280_V5.fs",
+        "size": 18588969,
+        "sha256": "ff4329d5e6cca5c81dbe5245216ff3016734016b113dfd6e764f011d48b01eba",
+        "archive_path": "V5/Code_and_Host/V5/bitstream/J280_V5.fs"
+      },
+      "shared_host_runtime_files_verified": 2250,
+      "shared_host_runtime_changed": 0,
+      "original_payload_manifest_entries": 2719
+    }
+  },
+  "unchanged_variants": [
+    "V3",
+    "V4"
+  ],
+  "original_source_and_runtime_unchanged": true,
+  "application_and_config_unchanged": true,
+  "hardware_programming_performed": false,
+  "production_commands_sent": 0,
+  "previous_bitstreams_backup": "历史版本备份/20261027-before-v1-v2-v5-update",
+  "original_archive_backup": "历史版本备份/原始压缩包/J280_V1_V2_V5_Complete_20261027.zip",
+  "software_checks": {
+    "backend_unittest": {
+      "passed": 114,
+      "failed": 0,
+      "process_only_config": "auto",
+      "temporary_directory": ".workbench/fd2-update-20261027-test-temp"
+    },
+    "frontend_node_test": {
+      "passed": 77,
+      "failed": 0
+    },
+    "frontend_build": "passed",
+    "unchanged_application_test_startup_bridge_config_hashes": 64,
+    "independent_artifact_review": "passed"
+  }
+}

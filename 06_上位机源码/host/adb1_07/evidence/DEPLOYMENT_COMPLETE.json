@@ -1,0 +1,30 @@
+{
+  "version": "07 ADB1 CommandFlow",
+  "programmed": true,
+  "port": "COM5",
+  "window_visible": true,
+  "manual_S1_readback": [
+    53.779998779296875,
+    0.0,
+    210.13999938964844,
+    17.670000076293945,
+    0.0,
+    616.6099853515625
+  ],
+  "readback_verified": true,
+  "state_at_write": {
+    "mode": 0,
+    "drive": 0,
+    "adaptive": 0
+  },
+  "latest_observed_state": {
+    "mode": 0,
+    "fault": 0,
+    "adaptive": 0
+  },
+  "automatic_ZERO_RUN_SWING": false,
+  "programming_receipt": "C:\\Users\\董晨阳\\Documents\\Codex\\2026-10-24\\forest-d1-online-tuning-5ms-config\\work\\adb1_07_s1_deploy_20261104_014325\\PROGRAMMING_RECEIPT_01.json",
+  "PID_readback": "C:\\Users\\董晨阳\\Documents\\Codex\\2026-10-24\\forest-d1-online-tuning-5ms-config\\work\\adb1_07_s1_deploy_20261104_014325\\S1_WRITTEN_AND_READBACK.json",
+  "console_pid": 23056,
+  "observed_unix": 1793727855.0563948
+}

@@ -1,0 +1,33 @@
+{
+  "schema": "J280.SP24.fixed-preset.v1",
+  "id": "slow_i2",
+  "label": "工程试验：仅位置 I 改为 2",
+  "firmware_uid_hex": "53503234",
+  "control_schema_hex": "53505424",
+  "evidence_grade": "engineering-unqualified",
+  "apply_policy": "explicit-STOP-only-ACK-and-independent-readback",
+  "no_RUN_ZERO_or_profile_commit": true,
+  "parameters": {
+    "angle_kp": 900,
+    "angle_ki": 870,
+    "angle_kd": 90,
+    "ki_enable": 1,
+    "angle_d_filter": 650,
+    "angle_window": 5,
+    "gesture_enable": 1,
+    "adaptive_mode": 0,
+    "position_kp": 112,
+    "position_ki": 2,
+    "position_kd": 48
+  },
+  "expected_readonly": {
+    "encoder_mode": 1,
+    "position_gamma": 578949194
+  },
+  "continuous_position_gains": {
+    "Kp": 0.109375,
+    "Ki_per_second": 0.001953125,
+    "Kd_seconds": 0.046875
+  },
+  "physical_acceptance": "pending; no stability, settling-time or improvement claim"
+}

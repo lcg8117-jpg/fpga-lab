@@ -1,0 +1,30 @@
+{
+  "schema": "J280.E1993.profile.v1",
+  "sample_seconds": 0.01,
+  "Ku": 0.18229166666666669,
+  "Tu_seconds": 1.7142857142857142,
+  "error_nodes_rad": [
+    0.017453292519943295,
+    0.08726646259971647,
+    0.2617993877991494
+  ],
+  "delta_nodes_rad_per_sample": [
+    0.0017453292519943296,
+    0.008726646259971648,
+    0.026179938779914945
+  ],
+  "design_anchor_semantics": "Ku/Tu are Equation12-equivalent envelope design coefficients only; NOT measured ultimate gain/period, NOT identified plant values",
+  "provenance": {
+    "kind": "synthetic",
+    "control_qualified": false,
+    "engineering_grade": "UNIT_MATCHED_ENGINEERING_SHADOW_ONLY",
+    "sources": [
+      "request/INTEGRATION_REQUEST_CN.txt: supplied field position gains 112/0/48 and outer sample 10ms",
+      "actual RTL: legacy position fields/1024, E error Q20 rad and delta rad/sample",
+      "presets/reference/zhao1993.py: preserved Paper E Tables I-III and Eqs7-12 numerical reference"
+    ],
+    "method": "Set proposed Kp/Kd upper bounds equal to field PD gains, use Eq12 ratios for lower bounds. Choose explicit 1/5/15 degree and 0.1/0.5/1.5 degree-per-sample engineering input scales.",
+    "model_fit": "not available; no residual, holdout validation or physical qualification asserted",
+    "limits": "Shadow evaluation only. Current Ki multiplies historical integral; moving-target D differs from legacy measurement D. No automatic mode1 enable or RUN."
+  }
+}

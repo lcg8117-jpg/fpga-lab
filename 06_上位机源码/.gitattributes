@@ -1,0 +1,10 @@
+# 保留 STEP 原件字节，避免换行转换破坏资产元数据中的 SHA256。
+frontend/model-sources/*.step binary
+
+# 原始交付依赖保持逐字节一致，避免 Windows 自动换行破坏来源哈希。
+host/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+car/vendor/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+car/v83/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+
+# 文本位流也必须保留原字节，下载后才能匹配已验收 SHA256。
+firmware/**/*.fs binary

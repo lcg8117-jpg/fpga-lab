@@ -1,0 +1,14 @@
+{
+  "variant": 1,
+  "name": "三方案起摆与固定平衡",
+  "firmware_id": "0x46443231",
+  "wire_version": 2,
+  "schema": "0x46443203",
+  "part": "GW2A-LV55PG484C8/I7",
+  "clock_mhz": 50,
+  "ble_commands": false,
+  "ble_telemetry": false,
+  "usb_full_control_hz": 200,
+  "hardware_verified_in_this_task": false,
+  "optical_gesture": true
+}

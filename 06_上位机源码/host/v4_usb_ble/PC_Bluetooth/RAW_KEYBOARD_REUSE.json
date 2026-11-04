@@ -1,0 +1,9 @@
+{
+  "status": "PASS_BYTE_IDENTICAL_REUSE",
+  "original": "D:/Codex_Scratch/J280_PC_Host_20261029/PC_V4_BLE/work/host/raw_keyboard.py",
+  "copy": "D:/Codex_Scratch/R28_V4_FastP_Gains_20261103/pc_dual_link_20261103/raw_keyboard.py",
+  "bytes": 7781,
+  "sha256": "35e28331231c396e55ff32cb908184a86c5d4745defae1077061d0f98b53aa8b",
+  "original_source_edited": false,
+  "real_rawinput_registrations": 0
+}

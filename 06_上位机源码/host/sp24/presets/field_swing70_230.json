@@ -1,0 +1,17 @@
+{
+  "schema": "J280.SP24.swing-preset.v1",
+  "id": "field_swing70_230",
+  "label": "现场记录起摆：70% / 230ms，70% / 230ms，最多 1 次",
+  "firmware_uid_hex": "53503234",
+  "control_schema_hex": "53505424",
+  "evidence_grade": "owner-supplied-field-readback-not-universal-recommendation",
+  "apply_policy": "explicit-STOP-only-ACK-and-independent-readback",
+  "parameters": {
+    "forward_percent": 70,
+    "reverse_percent": 70,
+    "forward_ms": 230,
+    "reverse_ms": 230,
+    "max_attempts": 1
+  },
+  "no_RUN_ZERO_or_profile_commit": true
+}

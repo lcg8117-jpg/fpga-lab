@@ -1,0 +1,77 @@
+{
+  "00_READ_FIRST_CN.md": {
+    "archive_path": "00_READ_FIRST_CN.md",
+    "size": 1810,
+    "sha256": "d95f9289d0b3a48e0ab03a7ebf0922cb38c46bdbb58f548e241f88844022ee6b"
+  },
+  "PROVENANCE.json": {
+    "archive_path": "PROVENANCE.json",
+    "size": 1245,
+    "sha256": "5349f995491f2a471b5d3758e83da22877641c1a83bcfe858d0526a7125dcd82"
+  },
+  "MANIFEST.json": {
+    "archive_path": "MANIFEST.json",
+    "size": 1359564,
+    "sha256": "0801e33a1549de5df0fe719df038350f14f1b0a3155f1924dfb79e9355319770"
+  },
+  "V1/README_CN.md": {
+    "archive_path": "V1/Code_and_Host/README_CN.md",
+    "size": 4018,
+    "sha256": "2c29b903f5e8d9a4d1aeff2ccc00c4ef43927edf76b963c33d8ec2e5fd5d78c9"
+  },
+  "V1/VERSION.json": {
+    "archive_path": "V1/Code_and_Host/V1/VERSION.json",
+    "size": 358,
+    "sha256": "7b234fbfb45c583c6d21767b897dbb34c1910489e29565ca9b56b7b113f0c70a"
+  },
+  "V1/QUALIFICATION.json": {
+    "archive_path": "V1/Code_and_Host/QUALIFICATION.json",
+    "size": 21218,
+    "sha256": "e84d082f3e67a842aedb4dbcbbc912d89765a85de4182e5ccfbf4e401e741abf"
+  },
+  "V1/NATIVE_RESULT.json": {
+    "archive_path": "V1/Code_and_Host/V1/native/RESULT.json",
+    "size": 8842,
+    "sha256": "e6118f220712478ab65d06997da1f941d6e5acee5c5871798920734742afd3c0"
+  },
+  "V2/README_CN.md": {
+    "archive_path": "V2/Code_and_Host/README_CN.md",
+    "size": 4715,
+    "sha256": "b2c3e88a4a07b73ec52bf12a1fe62ed9dcdd19acd835ed2a7eb2ab5c51d719f4"
+  },
+  "V2/VERSION.json": {
+    "archive_path": "V2/Code_and_Host/V2/VERSION.json",
+    "size": 349,
+    "sha256": "b20ff1a2ee976a1f1ac6b6c9ac70ca2c1670a74cf96fed96be3585ce2916ddb5"
+  },
+  "V2/QUALIFICATION.json": {
+    "archive_path": "V2/Code_and_Host/QUALIFICATION.json",
+    "size": 14214,
+    "sha256": "98567edb798282933830c51b90f14abd5bde593ca90d00073470de74ed04c5fc"
+  },
+  "V2/NATIVE_RESULT.json": {
+    "archive_path": "V2/Code_and_Host/V2/native/RESULT.json",
+    "size": 9414,
+    "sha256": "8339c855409f8bb20fa464536ab15ff805f4a376dafd2cb590f9de8e103d8abc"
+  },
+  "V5/README_CN.md": {
+    "archive_path": "V5/Code_and_Host/README_CN.md",
+    "size": 478,
+    "sha256": "e56825faacdca6bb94121f5cbf27cf59f30a049cef6f6511f85cabb0881fdc61"
+  },
+  "V5/VERSION.json": {
+    "archive_path": "V5/Code_and_Host/V5/VERSION.json",
+    "size": 419,
+    "sha256": "71bf330efe307a3093b51d561f59ef83db2490315a4209c02805603cc2434dc3"
+  },
+  "V5/NATIVE_RESULT.json": {
+    "archive_path": "V5/Code_and_Host/V5/native/RESULT.json",
+    "size": 9421,
+    "sha256": "6afa93f18323ce4eddca459e77ad8c571b9f9a580bf530f95678eee172ae730a"
+  },
+  "V5/REBUILD_CN.md": {
+    "archive_path": "V5/Code_and_Host/docs/REBUILD_CN.md",
+    "size": 1559,
+    "sha256": "229e6c2808cdd63148be54554940242b44eaaa243005518df5dc3b5d76570c30"
+  }
+}
