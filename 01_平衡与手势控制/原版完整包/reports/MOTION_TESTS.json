@@ -1,0 +1,50 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "name": "library",
+      "passed": true
+    },
+    {
+      "name": "compile",
+      "passed": true
+    },
+    {
+      "name": "tb_finite_scurve",
+      "passed": true
+    },
+    {
+      "name": "tb_motion_brake_queue",
+      "passed": true
+    },
+    {
+      "name": "tb_motion_coordinates",
+      "passed": true
+    },
+    {
+      "name": "tb_gesture_start_guard",
+      "passed": true
+    },
+    {
+      "name": "tb_brake_step",
+      "passed": true
+    },
+    {
+      "name": "tb_optical_interval_980",
+      "passed": true
+    }
+  ],
+  "source_sha256": {
+    "forest_motion_finite_scurve.v": "d4e3a5c2ed2c84eca79e525cdd311527e4af05a56df2a3b71d8e2cce7a9085aa",
+    "forest_motion_planner.v": "c4df3c14b2c629e25e17518be285d3d0c8ce6007269f0845a1cb23d92a696ae5",
+    "forest_motion_coordinates.v": "592a703611beb38f2bc4dd27e75d9bde080432a7133f64ba2214ba9f03e155f9",
+    "forest_motion_tables.v": "664f382e6742a53593bf6ac29d7f28b1b3e7db7ff4c8d107ee7dd3897d43b357",
+    "forest_d1_gesture_decode.v": "e5451aeda09cb0ddda269de678f71d56ab9f65708f34b41d4ccf5231d0a5e43e",
+    "forest_motion_brake_step.v": "3a0ef622993d3c84d8aba0a9d68e07a7caad5511c1bc3d3a4116ab757ed624bc",
+    "forest_motion_reference_shape.v": "ae3ef70575b86fc1d6313cb335ce8c625bf534279bbd83e670db21a8c5c0bedc"
+  },
+  "stage": "D:\\Codex_Scratch\\ADB1_BRAKE_QUEUE_TEST_1793573820631451600",
+  "hardware_actions": 0,
+  "physical_overshoot_verified": false,
+  "scope": "Discrete reference endpoint/caps, exact serial arithmetic, both encoder kits, one pending command, original continuous opposite-swipe braking, STOP cancellation. Ideal follower is not a mechanical plant."
+}

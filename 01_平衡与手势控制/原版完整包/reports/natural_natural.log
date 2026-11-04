@@ -1,0 +1,64 @@
+Reading D:/modeltech64_10.4/tcl/vsim/pref.tcl
+
+# 10.4
+
+# vsim -c -onfinish exit work.natural_tb -do "onerror {quit -code 2};run -all;quit -code 0" 
+# Start time: 07:36:15 on Nov 02,2026
+# ** Note: (vsim-3812) Design is being optimized...
+# 
+# ** Warning: forest_d1_swingup.v(150): (vopt-2685) [TFMPC] - Too few port connections for 'source_0'.  Expected 38, found 26.
+# 
+# ** Warning: forest_d1_swingup.v(150): (vopt-2718) [TFMPC] - Missing connection for port 'session_revision'.
+# 
+# ** Warning: forest_d1_swingup.v(150): (vopt-2718) [TFMPC] - Missing connection for port 'session_mode'.
+# 
+# ** Warning: forest_d1_swingup.v(150): (vopt-2718) [TFMPC] - Missing connection for port 'session_reverse_ms'.
+# 
+# ** Warning: forest_d1_swingup.v(150): (vopt-2718) [TFMPC] - Missing connection for port 'effective_forward_ms'.
+# 
+# ** Warning: forest_d1_swingup.v(150): (vopt-2718) [TFMPC] - Missing connection for port 'phase_elapsed_ms'.
+# 
+# ** Warning: forest_d1_swingup.v(150): (vopt-2718) [TFMPC] - Missing connection for port 'adaptive_action'.
+# 
+# ** Warning: forest_d1_swingup.v(150): (vopt-2718) [TFMPC] - Missing connection for port 'adaptive_retry_count'.
+# 
+# ** Warning: forest_d1_swingup.v(150): (vopt-2718) [TFMPC] - Missing connection for port 'final_work_percent'.
+# 
+# ** Warning: forest_d1_swingup.v(150): (vopt-2718) [TFMPC] - Missing connection for port 'final_shot_done'.
+# 
+# ** Warning: forest_d1_swingup.v(150): (vopt-2718) [TFMPC] - Missing connection for port 'final_armed'.
+# 
+# ** Warning: forest_d1_swingup.v(150): (vopt-2718) [TFMPC] - Missing connection for port 'top_center12'.
+# 
+# ** Warning: forest_d1_swingup.v(150): (vopt-2718) [TFMPC] - Missing connection for port 'swing_adc12'.
+# 
+# ** Warning: forest_d1_system.v(36): (vopt-2685) [TFMPC] - Too few port connections for 'adc'.  Expected 18, found 16.
+# 
+# ** Warning: forest_d1_system.v(36): (vopt-2718) [TFMPC] - Missing connection for port 'io_sample_word'.
+# 
+# ** Warning: forest_d1_system.v(36): (vopt-2718) [TFMPC] - Missing connection for port 'io_sample_valid'.
+# 
+# //  ModelSim SE-64 10.4 Dec  3 2014 
+# //
+# //  Copyright 1991-2014 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  THIS WORK CONTAINS TRADE SECRET AND PROPRIETARY INFORMATION
+# //  WHICH IS THE PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS
+# //  LICENSORS AND IS SUBJECT TO LICENSE TERMS.
+# //  THIS DOCUMENT CONTAINS TRADE SECRETS AND COMMERCIAL OR FINANCIAL
+# //  INFORMATION THAT ARE PRIVILEGED, CONFIDENTIAL, AND EXEMPT FROM
+# //  DISCLOSURE UNDER THE FREEDOM OF INFORMATION ACT, 5 U.S.C. SECTION 552.
+# //  FURTHERMORE, THIS INFORMATION IS PROHIBITED FROM DISCLOSURE UNDER
+# //  THE TRADE SECRETS ACT, 18 U.S.C. SECTION 1905.
+# //
+# Loading sv_std.std
+# Loading work.natural_tb(fast)
+# onerror {quit -code 2}
+#  Warning: onerror command for use within macro
+# run -all
+# PASS NATURAL_SYSTEM clocks=33385692 checks=14 done=620 pwm_high=153814 replies=21 T=125 D=16 E=14 no_force=1
+# ** Note: $finish    : natural_tb.sv(165)
+#    Time: 667713840 ns  Iteration: 1  Instance: /natural_tb
+# End time: 07:36:41 on Nov 02,2026, Elapsed time: 0:00:26
+# Errors: 0, Warnings: 16

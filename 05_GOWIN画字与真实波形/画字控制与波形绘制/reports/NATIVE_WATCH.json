@@ -1,0 +1,11 @@
+{
+  "driver_pid": 30960,
+  "time_limit_seconds": 1200,
+  "total_bytes_limit": 268435456,
+  "minimum_disk_free_bytes": 10737418240,
+  "hardware_actions": 0,
+  "status": "EXITED",
+  "elapsed_seconds": 614.8,
+  "total_bytes": 180671684.0,
+  "exit_code": 0
+}

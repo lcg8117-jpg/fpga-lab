@@ -1,0 +1,11 @@
+{
+  "status": "EXECUTED_CONDITIONAL_CASE_NOT_ACCEPTANCE",
+  "requested_duration_s": 119.4,
+  "executed_samples": 119401,
+  "last_time_s": 119.4,
+  "native_fault_stop": false,
+  "last_outer_fault": 0,
+  "first_WAVE_s": 0,
+  "complete_sequence_and_tail": true,
+  "physical_acceptance": false
+}

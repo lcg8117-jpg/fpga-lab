@@ -1,0 +1,485 @@
+- V e r i l a t i o n   R e p o r t: Verilator 5.050 2026-07-01 rev vUNKNOWN-built20260702
+- Verilator: Built from 3.256 MB sources in 31 modules, into 2.021 MB in 7 C++ files needing 0.007 MB
+- Verilator: Walltime 0.936 s (elab=0.111, cvt=0.601, bld=0.000); cpu 0.000 s on 1 threads; allocated 46.551 MB
+%Warning-PINMISSING: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_d1_system.v:30:94: Instance has missing pin: 'io_sample_valid'
+   30 |  j280_adc_capture_trace #(.DIAGNOSTIC_SWITCHES(1),.QUIET_CACHE_WORDS(1),.WINDOW_SAMPLES(64)) adc(
+      |                                                                                              ^~~
+                     D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\j280_adc_capture_trace.v:24:16: ... Location of port declaration
+   24 |     output reg io_sample_valid,
+      |                ^~~~~~~~~~~~~~~
+                     ... For warning description see https://verilator.org/warn/PINMISSING?v=5.050
+                     ... Use "/* verilator lint_off PINMISSING */" and lint_on around source to disable this message.
+%Warning-PINMISSING: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_d1_system.v:30:94: Instance has missing pin: 'io_sample_word'
+   30 |  j280_adc_capture_trace #(.DIAGNOSTIC_SWITCHES(1),.QUIET_CACHE_WORDS(1),.WINDOW_SAMPLES(64)) adc(
+      |                                                                                              ^~~
+                     D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\j280_adc_capture_trace.v:25:23: ... Location of port declaration
+   25 |     output reg [31:0] io_sample_word,
+      |                       ^~~~~~~~~~~~~~
+%Warning-PINMISSING: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_d1_system.v:260:109: Instance has missing pin: 'run_session_controls'
+  260 |  forest_d1_safety #(.ALLOW_SWING(SWING_ENABLED),.ZERO_SAMPLES(ZERO_SAMPLES),.USE_SPLIT_MOTOR_INVALIDATE(1)) safety(
+      |                                                                                                             ^~~~~~
+                     D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_d1_safety.v:28:16: ... Location of port declaration
+   28 |     output reg run_session_controls  ,
+      |                ^~~~~~~~~~~~~~~~~~~~
+%Warning-WIDTHEXPAND: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_d1_serial_format.v:15:41: Operator SUB expects 8 bits on the RHS, but RHS's VARREF 'fractional' generates 6 bits.
+                                                                                                                                 : ... note: In instance 'system_probe.dut.core.fast.formatter'
+   15 |      guard<=0;sticky<=0;exponent<=8'd150-fractional;phase<=0;busy<=1;
+      |                                         ^
+                      ... For warning description see https://verilator.org/warn/WIDTHEXPAND?v=5.050
+                      ... Use "/* verilator lint_off WIDTHEXPAND */" and lint_on around source to disable this message.
+%Warning-WIDTHEXPAND: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_d1_fp_functions.vh:10:30: Operator ASSIGN expects 32 bits on the Assign RHS, but Assign RHS's SEL generates 8 bits.
+                                                                                                                                 : ... note: In instance 'system_probe.dut.core.original.arithmetic'
+   10 |    m={x[30:23]!=0,x[22:0]}; e=x[30:23];
+      |                              ^
+                      D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_d1_fp64.v:9:1: ... note: In file included from 'forest_d1_fp64.v'
+%Warning-WIDTHTRUNC: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_d1_fp_functions.vh:17:21: Operator ASSIGN expects 11 bits on the Assign RHS, but Assign RHS's VARREF 'e' generates 32 bits.
+                                                                                                                                : ... note: In instance 'system_probe.dut.core.original.arithmetic'
+   17 |    f32_to_f64[62:52]=e;
+      |                     ^
+                     D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_d1_fp64.v:9:1: ... note: In file included from 'forest_d1_fp64.v'
+                     ... For warning description see https://verilator.org/warn/WIDTHTRUNC?v=5.050
+                     ... Use "/* verilator lint_off WIDTHTRUNC */" and lint_on around source to disable this message.
+%Warning-WIDTHEXPAND: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_d1_fp_functions.vh:47:14: Operator SUB expects 32 bits on the LHS, but LHS's SEL generates 11 bits.
+                                                                                                                                 : ... note: In instance 'system_probe.dut.core.original.arithmetic'
+   47 |    e=x[62:52]-1023+127;
+      |              ^
+                      D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_d1_fp64.v:9:1: ... note: In file included from 'forest_d1_fp64.v'
+%Warning-WIDTHTRUNC: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_d1_fp_functions.vh:57:71: Operator ASSIGN expects 8 bits on the Assign RHS, but Assign RHS's VARREF 'e' generates 32 bits.
+                                                                                                                                : ... note: In instance 'system_probe.dut.core.original.arithmetic'
+   57 |    else begin f64_to_f32={x[63],8'd0,rounded[22:0]}; f64_to_f32[30:23]=e; end
+      |                                                                       ^
+                     D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_d1_fp64.v:9:1: ... note: In file included from 'forest_d1_fp64.v'
+%Warning-WIDTHTRUNC: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_d1_fp_functions.vh:67:47: Operator ASSIGN expects 5 bits on the Assign RHS, but Assign RHS's VARREF 'j' generates 32 bits.
+                                                                                                                                : ... note: In instance 'system_probe.dut.core.original.arithmetic'
+   67 |   for(j=0;j<32;j=j+1) if(mag[j]) highest_bit32=j;
+      |                                               ^
+                     D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_d1_fp64.v:9:1: ... note: In file included from 'forest_d1_fp64.v'
+%Warning-WIDTHEXPAND: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_d1_fp_functions.vh:83:18: Operator ADD expects 8 bits on the RHS, but RHS's VARREF 'lead' generates 5 bits.
+                                                                                                                                 : ... note: In instance 'system_probe.dut.core.original.arithmetic'
+   83 |   exponent=8'd127+lead;guard_bit=0;sticky=0;discard=0;
+      |                  ^
+                      D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_d1_fp64.v:9:1: ... note: In file included from 'forest_d1_fp64.v'
+%Warning-WIDTHTRUNC: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_d1_fp_functions.vh:86:11: Operator ASSIGN expects 4 bits on the Assign RHS, but Assign RHS's SUB generates 32 or 5 bits.
+                                                                                                                                : ... note: In instance 'system_probe.dut.core.original.arithmetic'
+   86 |    discard=lead-23;significand=mag>>discard;
+      |           ^
+                     D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_d1_fp64.v:9:1: ... note: In file included from 'forest_d1_fp64.v'
+%Warning-WIDTHEXPAND: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_d1_fp_functions.vh:87:17: Bit extraction of var[31:0] requires 5 bit index, not 4 bits.
+                                                                                                                                 : ... note: In instance 'system_probe.dut.core.original.arithmetic'
+   87 |    guard_bit=mag[discard-1'b1];
+      |                 ^
+                      D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_d1_fp64.v:9:1: ... note: In file included from 'forest_d1_fp64.v'
+%Warning-WIDTHEXPAND: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_d1_fp_functions.vh:88:35: Operator SUB expects 32 bits on the LHS, but LHS's VARREF 'discard' generates 4 bits.
+                                                                                                                                 : ... note: In instance 'system_probe.dut.core.original.arithmetic'
+   88 |    for(j=0;j<7;j=j+1) if(j<discard-1) sticky=sticky|mag[j];
+      |                                   ^
+                      D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_d1_fp64.v:9:1: ... note: In file included from 'forest_d1_fp64.v'
+%Warning-WIDTHEXPAND: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_d1_fp_functions.vh:110:13: Operator SUB expects 32 bits on the LHS, but LHS's SEL generates 8 bits.
+                                                                                                                                  : ... note: In instance 'system_probe.dut.core.original.arithmetic'
+  110 |   e=x[30:23]-127;
+      |             ^
+                      D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_d1_fp64.v:9:1: ... note: In file included from 'forest_d1_fp64.v'
+%Warning-WIDTHEXPAND: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_d1_fp64.v:31:8: Operator ASSIGNDLY expects 32 bits on the Assign RHS, but Assign RHS's SEL generates 11 bits.
+                                                                                                                       : ... note: In instance 'system_probe.dut.core.original.arithmetic'
+   31 |      ea<=a[62:52]; eb<=b[62:52];
+      |        ^~
+%Warning-WIDTHEXPAND: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_d1_fp64.v:31:22: Operator ASSIGNDLY expects 32 bits on the Assign RHS, but Assign RHS's SEL generates 11 bits.
+                                                                                                                        : ... note: In instance 'system_probe.dut.core.original.arithmetic'
+   31 |      ea<=a[62:52]; eb<=b[62:52];
+      |                      ^~
+%Warning-WIDTHTRUNC: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_d1_fp64.v:38:13: Operator ASSIGNDLY expects 6 bits on the Assign RHS, but Assign RHS's COND generates 32 bits.
+                                                                                                                       : ... note: In instance 'system_probe.dut.core.original.arithmetic'
+   38 |      shift_a<=(saved_a[62:52]==0&&am!=0) ? 52-k : 0;
+      |             ^~
+%Warning-WIDTHTRUNC: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_d1_fp64.v:40:13: Operator ASSIGNDLY expects 6 bits on the Assign RHS, but Assign RHS's COND generates 32 bits.
+                                                                                                                       : ... note: In instance 'system_probe.dut.core.original.arithmetic'
+   40 |      shift_b<=(saved_b[62:52]==0&&bm!=0) ? 52-k : 0;
+      |             ^~
+%Warning-WIDTHEXPAND: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_d1_fp64.v:44:55: Operator SUB expects 32 bits on the RHS, but RHS's VARREF 'shift_a' generates 6 bits.
+                                                                                                                        : ... note: In instance 'system_probe.dut.core.original.arithmetic'
+   44 |      if(saved_a[62:52]==0) begin am<=am<<shift_a;ea<=1-shift_a;end
+      |                                                       ^
+%Warning-WIDTHEXPAND: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_d1_fp64.v:45:55: Operator SUB expects 32 bits on the RHS, but RHS's VARREF 'shift_b' generates 6 bits.
+                                                                                                                        : ... note: In instance 'system_probe.dut.core.original.arithmetic'
+   45 |      if(saved_b[62:52]==0) begin bm<=bm<<shift_b;eb<=1-shift_b;end
+      |                                                       ^
+%Warning-WIDTHTRUNC: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_d1_fp64.v:103:83: Operator ASSIGNDLY expects 11 bits on the Assign RHS, but Assign RHS's ADD generates 32 bits.
+                                                                                                                        : ... note: In instance 'system_probe.dut.core.original.arithmetic'
+  103 |      else if(rounded[53]) begin result<={sign_z,11'd0,rounded[52:1]};result[62:52]<=rounded_exp+1;end
+      |                                                                                   ^~
+%Warning-WIDTHTRUNC: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_d1_fp64.v:106:20: Operator ASSIGNDLY expects 11 bits on the Assign RHS, but Assign RHS's COND generates 32 bits.
+                                                                                                                        : ... note: In instance 'system_probe.dut.core.original.arithmetic'
+  106 |       result[62:52]<=(rounded_exp==0&&rounded[52]) ? 1 : rounded_exp;
+      |                    ^~
+%Warning-WIDTHEXPAND: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\j280_pwm_motor_safe.v:36:26: Operator ASSIGNW expects 13 bits on the Assign RHS, but Assign RHS's VARREF 'carrier_count' generates 11 bits.
+                                                                                                                             : ... note: In instance 'system_probe.dut.actuator.motor_driver'
+   36 |     wire [12:0] pwm_count=carrier_count;
+      |                          ^
+%Warning-WIDTHEXPAND: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\j280_pwm_motor_safe.v:37:37: Operator ASSIGNW expects 13 bits on the Assign RHS, but Assign RHS's VARREF 'frame_count' generates 2 bits.
+                                                                                                                             : ... note: In instance 'system_probe.dut.actuator.motor_driver'
+   37 |     wire [12:0] command_period_count=frame_count;
+      |                                     ^
+%Warning-WIDTHTRUNC: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\j280_pwm_motor_safe.v:46:67: Logical operator LOGAND expects 1 bit on the LHS, but LHS's VARREF 'DIAGNOSTIC_SWITCHES' generates 32 bits.
+                                                                                                                            : ... note: In instance 'system_probe.dut.actuator.motor_driver'
+   46 |     wire [15:0] requested_duty_clamped_abs = (DIAGNOSTIC_SWITCHES && requested_duty_raw_abs > 16'd29491) ?
+      |                                                                   ^~
+%Warning-WIDTHTRUNC: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\j280_pwm_motor_safe.v:54:51: Logical operator COND expects 1 bit on the Conditional Test, but Conditional Test's VARREF 'DIAGNOSTIC_SWITCHES' generates 32 bits.
+                                                                                                                            : ... note: In instance 'system_probe.dut.actuator.motor_driver'
+   54 |     wire requested_negative = DIAGNOSTIC_SWITCHES ? requested_negative_prepared : raw_negative;
+      |                                                   ^
+%Warning-WIDTHTRUNC: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\j280_pwm_motor_safe.v:55:58: Logical operator COND expects 1 bit on the Conditional Test, but Conditional Test's VARREF 'DIAGNOSTIC_SWITCHES' generates 32 bits.
+                                                                                                                            : ... note: In instance 'system_probe.dut.actuator.motor_driver'
+   55 |     wire [15:0] requested_duty_abs = DIAGNOSTIC_SWITCHES ? requested_duty_prepared : requested_duty_clamped_abs;
+      |                                                          ^
+%Warning-WIDTHTRUNC: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\j280_pwm_motor_safe.v:60:10: Logical operator LOGNOT expects 1 bit on the LHS, but LHS's VARREF 'DIAGNOSTIC_SWITCHES' generates 32 bits.
+                                                                                                                            : ... note: In instance 'system_probe.dut.actuator.motor_driver'
+   60 |         (!DIAGNOSTIC_SWITCHES || soft_rise_enable) &&
+      |          ^
+%Warning-WIDTHTRUNC: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\j280_pwm_motor_safe.v:73:31: Operator ASSIGNW expects 14 bits on the Assign RHS, but Assign RHS's SHIFTR generates 29 bits.
+                                                                                                                            : ... note: In instance 'system_probe.dut.actuator.motor_driver'
+   73 |     wire [13:0] compare_count = duty_product >> 15;
+      |                               ^
+%Warning-WIDTHEXPAND: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\j280_pwm_motor_safe.v:81:46: Operator LT expects 14 bits on the LHS, but LHS's VARREF 'pwm_count' generates 13 bits.
+                                                                                                                             : ... note: In instance 'system_probe.dut.actuator.motor_driver'
+   81 |     assign PWMA = drive_active && (pwm_count < compare_count);
+      |                                              ^
+%Warning-WIDTHEXPAND: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\j280_pwm_motor_safe.v:85:43: Operator EQ expects 32 bits on the LHS, but LHS's VARREF 'pwm_count' generates 13 bits.
+                                                                                                                             : ... note: In instance 'system_probe.dut.actuator.motor_driver'
+   85 |         else if(!motor_enable || pwm_count==PWM_PERIOD-1) carrier_count<=0;
+      |                                           ^~
+%Warning-WIDTHEXPAND: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\j280_pwm_motor_safe.v:100:38: Operator EQ expects 32 bits on the LHS, but LHS's VARREF 'command_period_count' generates 13 bits.
+                                                                                                                              : ... note: In instance 'system_probe.dut.actuator.motor_driver'
+  100 |             if (command_period_count == COMMAND_PERIODS - 1) begin
+      |                                      ^~
+%Warning-WIDTHEXPAND: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\j280_pwm_motor_safe.v:99:32: Operator EQ expects 32 bits on the LHS, but LHS's VARREF 'pwm_count' generates 13 bits.
+                                                                                                                             : ... note: In instance 'system_probe.dut.actuator.motor_driver'
+   99 |         end else if (pwm_count == PWM_PERIOD - 1) begin
+      |                                ^~
+%Warning-WIDTHEXPAND: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\j280_encoder_velocity.v:47:96: Operator SHIFTRS expects 34 bits on the LHS, but LHS's VARREF 'm_error' generates 33 bits.
+                                                                                                                               : ... note: In instance 'system_probe.dut.safety.velocity_guard'
+   47 |  wire signed [33:0] m_next=$signed({{2{legacy_velocity_q20[31]}},legacy_velocity_q20})+(m_error>>>2);
+      |                                                                                                ^~~
+%Warning-WIDTHEXPAND: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\j280_encoder_velocity.v:50:40: Operator GT expects 34 bits on the RHS, but RHS's VARREF 'PERIOD_TIMEOUT_CYCLES' generates 32 bits.
+                                                                                                                               : ... note: In instance 'system_probe.dut.safety.velocity_guard'
+   50 |  wire [31:0] expire_cycles=four_periods>PERIOD_TIMEOUT_CYCLES ? PERIOD_TIMEOUT_CYCLES : four_periods[31:0];
+      |                                        ^
+%Warning-WIDTHEXPAND: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_d1_pid.v:36:59: Operator SUB expects 32 bits on the LHS, but LHS's VARREF 'sampled_angle' generates 12 bits.
+                                                                                                                       : ... note: In instance 'system_probe.dut.core.original'
+   36 |  wire angle_i_outward=(moto>=6900 && $signed(sampled_angle-32'd3085)<0) ||
+      |                                                           ^
+%Warning-WIDTHEXPAND: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_d1_pid.v:37:59: Operator SUB expects 32 bits on the LHS, but LHS's VARREF 'sampled_angle' generates 12 bits.
+                                                                                                                       : ... note: In instance 'system_probe.dut.core.original'
+   37 |                      (moto<=-6900 && $signed(sampled_angle-32'd3085)>0);
+      |                                                           ^
+%Warning-WIDTHEXPAND: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_d1_pid.v:50:84: Operator SUB expects 32 bits on the LHS, but LHS's SIGNED generates 16 bits.
+                                                                                                                       : ... note: In instance 'system_probe.dut.core.original'
+   50 |    if(position_div==4)begin position_div<=0;least_integer<=$signed(sampled_encoder)-target;state<=17;end
+      |                                                                                    ^
+%Warning-WIDTHEXPAND: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_d1_pid.v:77:63: Operator SUB expects 32 bits on the LHS, but LHS's SIGNED generates 13 bits.
+                                                                                                                       : ... note: In instance 'system_probe.dut.core.original'
+   77 |      balance_bias_bits<=int_to_f32($signed({1'b0,angle_adc12})-32'sd3085);state<=1;
+      |                                                               ^
+%Warning-WIDTHTRUNC: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_d1_link.v:269:44: Operator ASSIGNDLY expects 8 bits on the Assign RHS, but Assign RHS's SUB generates 32 bits.
+                                                                                                                        : ... note: In instance 'system_probe.dut.link.transmitter'
+  269 |                 serial_out<=0;busy<=1;timer<=CLKS_PER_BIT-1;bit_index<=0;shift<=data;
+      |                                            ^~
+%Warning-WIDTHTRUNC: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_d1_link.v:273:18: Operator ASSIGNDLY expects 8 bits on the Assign RHS, but Assign RHS's SUB generates 32 bits.
+                                                                                                                        : ... note: In instance 'system_probe.dut.link.transmitter'
+  273 |             timer<=CLKS_PER_BIT-1;
+      |                  ^~
+%Warning-WIDTHTRUNC: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_d1_link.v:236:51: Operator ASSIGNDLY expects 8 bits on the Assign RHS, but Assign RHS's SUB generates 32 bits.
+                                                                                                                        : ... note: In instance 'system_probe.dut.link.receiver'
+  236 |                 0:if(!synchronizer[1]) begin timer<=CLKS_PER_BIT/2-1;state<=1;end
+      |                                                   ^~
+%Warning-WIDTHTRUNC: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_d1_link.v:239:35: Operator ASSIGNDLY expects 8 bits on the Assign RHS, but Assign RHS's SUB generates 32 bits.
+                                                                                                                        : ... note: In instance 'system_probe.dut.link.receiver'
+  239 |                   else begin timer<=CLKS_PER_BIT-1;bit_index<=0;state<=2;end
+      |                                   ^~
+%Warning-WIDTHTRUNC: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_d1_link.v:242:62: Operator ASSIGNDLY expects 8 bits on the Assign RHS, but Assign RHS's SUB generates 32 bits.
+                                                                                                                        : ... note: In instance 'system_probe.dut.link.receiver'
+  242 |                       shift[bit_index]<=synchronizer[1];timer<=CLKS_PER_BIT-1;
+      |                                                              ^~
+%Warning-WIDTHEXPAND: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_d1_fast_p_fixed.v:52:38: Operator SUB expects 32 bits on the LHS, but LHS's SIGNED generates 9 bits.
+                                                                                                                                : ... note: In instance 'system_probe.dut.core.fast'
+   52 |    shift=$signed({1'b0,value[30:23]})-150+fractional;
+      |                                      ^
+%Warning-WIDTHTRUNC: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_d1_fast_p_fixed.v:68:16: Operator ASSIGN expects 25 bits on the Assign RHS, but Assign RHS's SHIFTR generates 48 bits.
+                                                                                                                               : ... note: In instance 'system_probe.dut.core.fast'
+   68 |     significand=magnitude>>shift;
+      |                ^
+%Warning-WIDTHTRUNC: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_d1_fast_p_fixed.v:71:24: Operator ASSIGN expects 25 bits on the Assign RHS, but Assign RHS's SHIFTL generates 48 bits.
+                                                                                                                               : ... note: In instance 'system_probe.dut.core.fast'
+   71 |    end else significand=magnitude<<(-shift);
+      |                        ^
+%Warning-WIDTHTRUNC: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_d1_fast_p_fixed.v:78:15: Operator ASSIGN expects 32 bits on the Assign RHS, but Assign RHS's ADD generates 64 bits.
+                                                                                                                               : ... note: In instance 'system_probe.dut.core.fast'
+   78 |   begin tz_q16=(value>>>16)+(value[63] && |value[15:0]);end
+      |               ^
+%Warning-WIDTHEXPAND: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_d1_fast_p_fixed.v:107:46: Operator SUB expects 17 bits on the LHS, but LHS's SIGNED generates 13 bits.
+                                                                                                                                 : ... note: In instance 'system_probe.dut.core.fast'
+  107 |      angle_error<=$signed({1'b0,angle_adc12})-17'sd3085;position_error<=$signed(encoder)-17'sd10000;
+      |                                              ^
+%Warning-WIDTHEXPAND: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_d1_fast_p_fixed.v:128:86: Operator SHIFTL expects 40 bits on the LHS, but LHS's SIGNED generates 17 bits.
+                                                                                                                                 : ... note: In instance 'system_probe.dut.core.fast'
+  128 |      if(update_p && !anchor && filter_tick)begin difference<=($signed(position_error)<<<20)-bias;state<=4;end
+      |                                                                                      ^~~
+%Warning-WIDTHEXPAND: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_d1_fast_p_fixed.v:133:23: Operator ADD expects 64 bits on the LHS, but LHS's VARREF 'bias' generates 40 bits.
+                                                                                                                                 : ... note: In instance 'system_probe.dut.core.fast'
+  133 |     6:begin bias<=bias+rounded24(filtered_delta);state<=8;end
+      |                       ^
+%Warning-WIDTHTRUNC: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_d1_fast_p_fixed.v:133:17: Operator ASSIGNDLY expects 40 bits on the Assign RHS, but Assign RHS's ADD generates 64 bits.
+                                                                                                                                : ... note: In instance 'system_probe.dut.core.fast'
+  133 |     6:begin bias<=bias+rounded24(filtered_delta);state<=8;end
+      |                 ^~
+%Warning-WIDTHTRUNC: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_d1_fast_p_fixed.v:135:23: Operator ASSIGNDLY expects 64 bits on the Assign RHS, but Assign RHS's SHIFTRS generates 72 bits.
+                                                                                                                                : ... note: In instance 'system_probe.dut.core.fast'
+  135 |     9:begin position_p<=product>>>20;position_p_epoch<=epoch;state<=11;end
+      |                       ^~
+%Warning-WIDTHTRUNC: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_d1_diagnostics.v:29:51: Operator ASSIGN expects 8 bits on the Assign RHS, but Assign RHS's VARREF 'WIRE_VERSION' generates 32 bits.
+                                                                                                                              : ... note: In instance 'system_probe.dut.diagnostics'
+   29 |   packet=0;packet[31:0]=32'h44324446;packet[39:32]=WIRE_VERSION;packet[47:40]=VARIANT;
+      |                                                   ^
+%Warning-WIDTHTRUNC: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_d1_diagnostics.v:29:78: Operator ASSIGN expects 8 bits on the Assign RHS, but Assign RHS's VARREF 'VARIANT' generates 32 bits.
+                                                                                                                              : ... note: In instance 'system_probe.dut.diagnostics'
+   29 |   packet=0;packet[31:0]=32'h44324446;packet[39:32]=WIRE_VERSION;packet[47:40]=VARIANT;
+      |                                                                              ^
+%Warning-WIDTHTRUNC: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_d1_window_sampler.v:34:38: Logical operator COND expects 1 bit on the Conditional Test, but Conditional Test's VARREF 'SEPARATE_RAW_GUARD' generates 32 bits.
+                                                                                                                                 : ... note: In instance 'system_probe.dut.sampler'
+   34 |  wire guard_valid=SEPARATE_RAW_GUARD ? raw_angle_valid:angle_valid;
+      |                                      ^
+%Warning-WIDTHTRUNC: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_d1_window_sampler.v:35:45: Logical operator COND expects 1 bit on the Conditional Test, but Conditional Test's VARREF 'SEPARATE_RAW_GUARD' generates 32 bits.
+                                                                                                                                 : ... note: In instance 'system_probe.dut.sampler'
+   35 |  wire [11:0] guard_angle=SEPARATE_RAW_GUARD ? raw_angle_in:angle_in;
+      |                                             ^
+%Warning-WIDTHTRUNC: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_d1_safety.v:61:42: Logical operator LOGNOT expects 1 bit on the LHS, but LHS's VARREF 'ALLOW_SWING' generates 32 bits.
+                                                                                                                         : ... note: In instance 'system_probe.dut.safety'
+   61 |     wire source_angle_bad=zero_valid && (!ALLOW_SWING || mode==BALANCE || mode==ARMED) &&
+      |                                          ^
+%Warning-WIDTHTRUNC: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_d1_safety.v:77:131: Logical operator LOGAND expects 1 bit on the LHS, but LHS's VARREF 'ALLOW_SWING' generates 32 bits.
+                                                                                                                          : ... note: In instance 'system_probe.dut.safety'
+   77 |     wire automatic_fault=angle_bad || source_angle_bad || adc_bad || encoder_bad || speed_bad || arithmetic_fault || (ALLOW_SWING && mode==SWING && swing_failed);
+      |                                                                                                                                   ^~
+%Warning-WIDTHTRUNC: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_d1_safety.v:82:63: Logical operator COND expects 1 bit on the Conditional Test, but Conditional Test's VARREF 'USE_SPLIT_MOTOR_INVALIDATE' generates 32 bits.
+                                                                                                                         : ... note: In instance 'system_probe.dut.safety'
+   82 |     wire motor_calibration_invalid=USE_SPLIT_MOTOR_INVALIDATE ? motor_invalidate_calibration:invalidate_calibration;
+      |                                                               ^
+%Warning-WIDTHTRUNC: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_d1_safety.v:89:40: Logical operator LOGAND expects 1 bit on the LHS, but LHS's VARREF 'ALLOW_SWING' generates 32 bits.
+                                                                                                                         : ... note: In instance 'system_probe.dut.safety'
+   89 |     assign swing_permitted=ALLOW_SWING && mode==SWING && run_session && zero_valid && !capture_active && !motor_calibration_invalid &&
+      |                                        ^~
+%Warning-WIDTHTRUNC: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_d1_safety.v:123:48: Logical operator LOGAND expects 1 bit on the LHS, but LHS's VARREF 'ALLOW_SWING' generates 32 bits.
+                                                                                                                          : ... note: In instance 'system_probe.dut.safety'
+  123 |                 speed_bad ? 8'h07:(ALLOW_SWING && mode==SWING && swing_failed) ? 8'h09:8'h08;
+      |                                                ^~
+%Warning-WIDTHEXPAND: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_d1_safety.v:144:47: Operator DIV expects 32 bits on the LHS, but LHS's VARREF 'capture_final_sum' generates 25 bits.
+                                                                                                                           : ... note: In instance 'system_probe.dut.safety'
+  144 |                     zero_q4<=capture_final_sum/ZERO_SAMPLES;
+      |                                               ^
+%Warning-WIDTHTRUNC: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_d1_safety.v:144:28: Operator ASSIGNDLY expects 14 bits on the Assign RHS, but Assign RHS's DIV generates 32 bits.
+                                                                                                                          : ... note: In instance 'system_probe.dut.safety'
+  144 |                     zero_q4<=capture_final_sum/ZERO_SAMPLES;
+      |                            ^~
+%Warning-WIDTHEXPAND: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_d1_safety.v:143:33: Operator EQ expects 32 bits on the LHS, but LHS's VARREF 'capture_count' generates 11 bits.
+                                                                                                                           : ... note: In instance 'system_probe.dut.safety'
+  143 |                 if(capture_count==ZERO_SAMPLES-1)begin
+      |                                 ^~
+%Warning-WIDTHTRUNC: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_d1_safety.v:133:33: Logical operator LOGAND expects 1 bit on the LHS, but LHS's VARREF 'ALLOW_SWING' generates 32 bits.
+                                                                                                                          : ... note: In instance 'system_probe.dut.safety'
+  133 |         end else if(ALLOW_SWING && handoff_pulse && mode==SWING && run_session && inside_handoff && !latest_source_mean_bad && !(source_sample_en && source_mean_outside))begin
+      |                                 ^~
+%Warning-WIDTHTRUNC: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_d1_safety.v:131:33: Logical operator LOGAND expects 1 bit on the LHS, but LHS's VARREF 'ALLOW_SWING' generates 32 bits.
+                                                                                                                          : ... note: In instance 'system_probe.dut.safety'
+  131 |         end else if(ALLOW_SWING && hold_pulse && mode==SWING)begin
+      |                                 ^~
+%Warning-WIDTHTRUNC: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_d1_safety.v:129:33: Logical operator LOGAND expects 1 bit on the LHS, but LHS's VARREF 'ALLOW_SWING' generates 32 bits.
+                                                                                                                          : ... note: In instance 'system_probe.dut.safety'
+  129 |         end else if(ALLOW_SWING && start_swing_pulse)begin
+      |                                 ^~
+%Warning-WIDTHTRUNC: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_motion_planner.v:133:46: Operator ASSIGNW expects 32 bits on the Assign RHS, but Assign RHS's COND generates 33 bits.
+                                                                                                                               : ... note: In instance 'system_probe.dut.motion'
+  133 |  wire signed [31:0] proportional_acceleration=velocity_error[32] ?
+      |                                              ^
+%Warning-WIDTHEXPAND: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_motion_planner.v:240:89: Operator COND expects 65 bits on the Conditional True, but Conditional True's CONST '9'h1ff' generates 9 bits.
+                                                                                                                                : ... note: In instance 'system_probe.dut.motion'
+  240 |        distance_index<=(current_reference_error>2047 || current_reference_error< -2047) ? 9'd511:
+      |                                                                                         ^
+%Warning-WIDTHTRUNC: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_motion_planner.v:240:22: Operator ASSIGNDLY expects 9 bits on the Assign RHS, but Assign RHS's COND generates 65 bits.
+                                                                                                                               : ... note: In instance 'system_probe.dut.motion'
+  240 |        distance_index<=(current_reference_error>2047 || current_reference_error< -2047) ? 9'd511:
+      |                      ^~
+%Warning-WIDTHTRUNC: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_d1_run_inputs.v:27:32: Logical operator COND expects 1 bit on the Conditional Test, but Conditional Test's VARREF 'USE_Q4_INPUT' generates 32 bits.
+                                                                                                                             : ... note: In instance 'system_probe.dut.fast_inputs'
+   27 |   captured_delta=(USE_Q4_INPUT ? $signed({2'b0,adc_q4}) :
+      |                                ^
+%Warning-WIDTHEXPAND: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_d1_run_inputs.v:27:32: Operator COND expects 16 bits on the Conditional False, but Conditional False's SIGNED generates 15 bits.
+                                                                                                                              : ... note: In instance 'system_probe.dut.fast_inputs'
+   27 |   captured_delta=(USE_Q4_INPUT ? $signed({2'b0,adc_q4}) :
+      |                                ^
+%Warning-WIDTHTRUNC: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_d1_run_inputs.v:41:19: Operator ASSIGNDLY expects 14 bits on the Assign RHS, but Assign RHS's COND generates 16 bits.
+                                                                                                                             : ... note: In instance 'system_probe.dut.fast_inputs'
+   41 |    angle_magnitude<=delta_q4[15] ? -delta_q4 : delta_q4;
+      |                   ^~
+%Warning-WIDTHEXPAND: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_d1_link.v:33:24: Operator EQ expects 32 bits on the LHS, but LHS's SEL generates 8 bits.
+                                                                                                                        : ... note: In instance 'system_probe.dut.link'
+   33 |   receive_window[39:32]==EMERGENCY_WIRE_VERSION &&
+      |                        ^~
+%Warning-WIDTHEXPAND: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_command_router.v:66:61: Operator EQ expects 32 bits on the LHS, but LHS's SEL generates 8 bits.
+                                                                                                                               : ... note: In instance 'system_probe.dut.router'
+   66 |    frame_layout_ok=frame[31:0]==32'h43324446 && frame[39:32]==WIRE_VERSION &&
+      |                                                             ^~
+%Warning-WIDTHEXPAND: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_command_router.v:76:66: Operator EQ expects 32 bits on the LHS, but LHS's SEL generates 8 bits.
+                                                                                                                               : ... note: In instance 'system_probe.dut.router'
+   76 |   begin emergency_shape=frame[31:0]==32'h43324446 && frame[39:32]==WIRE_VERSION &&
+      |                                                                  ^~
+%Warning-WIDTHTRUNC: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_command_router.v:80:48: Logical operator COND expects 1 bit on the Conditional Test, but Conditional Test's VARREF 'PREDECODED_EMERGENCY' generates 32 bits.
+                                                                                                                              : ... note: In instance 'system_probe.dut.router'
+   80 |  wire usb_emergency_shape=PREDECODED_EMERGENCY ? usb_emergency_decode[0]:emergency_shape(usb_data);
+      |                                                ^
+%Warning-WIDTHTRUNC: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_command_router.v:81:48: Logical operator COND expects 1 bit on the Conditional Test, but Conditional Test's VARREF 'PREDECODED_EMERGENCY' generates 32 bits.
+                                                                                                                              : ... note: In instance 'system_probe.dut.router'
+   81 |  wire ble_emergency_shape=PREDECODED_EMERGENCY ? ble_emergency_decode[0]:emergency_shape(ble_data);
+      |                                                ^
+%Warning-WIDTHTRUNC: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_command_router.v:83:81: Logical operator COND expects 1 bit on the Conditional Test, but Conditional Test's VARREF 'PREDECODED_EMERGENCY' generates 32 bits.
+                                                                                                                              : ... note: In instance 'system_probe.dut.router'
+   83 |  assign urgent_estop=(usb_valid && usb_emergency_shape && (PREDECODED_EMERGENCY ? usb_emergency_decode[1]:usb_data[47:40]==8'h14)) ||
+      |                                                                                 ^
+%Warning-WIDTHTRUNC: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_command_router.v:84:62: Logical operator COND expects 1 bit on the Conditional Test, but Conditional Test's VARREF 'PREDECODED_EMERGENCY' generates 32 bits.
+                                                                                                                              : ... note: In instance 'system_probe.dut.router'
+   84 |   (ble_valid && ble_emergency_shape && (PREDECODED_EMERGENCY ? ble_emergency_decode[1]:ble_data[47:40]==8'h14));
+      |                                                              ^
+%Warning-WIDTHTRUNC: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_command_router.v:86:32: Logical operator LOGAND expects 1 bit on the RHS, but RHS's VARREF 'PREDECODED_EMERGENCY' generates 32 bits.
+                                                                                                                              : ... note: In instance 'system_probe.dut.router'
+   86 |  always @(posedge clk)if(rst_n && PREDECODED_EMERGENCY)begin
+      |                                ^~
+%Warning-WIDTHTRUNC: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_command_router.v:108:88: Operator ASSIGN expects 3 bits on the Assign RHS, but Assign RHS's VARREF 'k' generates 32 bits.
+                                                                                                                               : ... note: In instance 'system_probe.dut.router'
+  108 |   for(k=0;k<8;k=k+1)if(cache_valid[k] && cached_event[k]==event_id)begin hit=1;hit_slot=k;end
+      |                                                                                        ^
+%Warning-WIDTHTRUNC: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_command_router.v:114:49: Operator ASSIGN expects 8 bits on the Assign RHS, but Assign RHS's VARREF 'WIRE_VERSION' generates 32 bits.
+                                                                                                                               : ... note: In instance 'system_probe.dut.router'
+  114 |    value=0;value[31:0]=32'h41324446;value[39:32]=WIRE_VERSION;
+      |                                                 ^
+%Warning-WIDTHTRUNC: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_command_router.v:115:56: Operator ASSIGN expects 8 bits on the Assign RHS, but Assign RHS's VARREF 'VARIANT' generates 32 bits.
+                                                                                                                               : ... note: In instance 'system_probe.dut.router'
+  115 |    value[47:40]=opcode;value[55:48]=status;value[63:56]=VARIANT;
+      |                                                        ^
+%Warning-WIDTHEXPAND: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_d1_gateway.v:47:62: Operator EQ expects 32 bits on the LHS, but LHS's SEL generates 8 bits.
+                                                                                                                           : ... note: In instance 'system_probe.dut.gateway'
+   47 |  wire layout_ok=request[31:0]==32'h43324446 && request[39:32]==WIRE_VERSION && request_id!=0 && request[367:360]==0 && request[359:352]<=2 && padding_ok;
+      |                                                              ^~
+%Warning-WIDTHTRUNC: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_d1_gateway.v:167:54: Operator ASSIGNDLY expects 8 bits on the Assign RHS, but Assign RHS's VARREF 'WIRE_VERSION' generates 32 bits.
+                                                                                                                           : ... note: In instance 'system_probe.dut.gateway'
+  167 |      reply_data[31:0]<=32'h41324446;reply_data[39:32]<=WIRE_VERSION;reply_data[47:40]<=opcode;
+      |                                                      ^~
+%Warning-WIDTHTRUNC: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_d1_gateway.v:168:56: Operator ASSIGNDLY expects 8 bits on the Assign RHS, but Assign RHS's VARREF 'VARIANT' generates 32 bits.
+                                                                                                                           : ... note: In instance 'system_probe.dut.gateway'
+  168 |      reply_data[55:48]<=result_status;reply_data[63:56]<=VARIANT;
+      |                                                        ^~
+%Warning-WIDTHEXPAND: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\j280_key_debounce.v:31:39: Operator LT expects 32 bits on the LHS, but LHS's VARREF 'stable_count' generates 20 bits.
+                                                                                                                           : ... note: In instance 'system_probe.dut.keys[3].key'
+   31 |             end else if (stable_count < STABLE_CYCLES) begin
+      |                                       ^
+%Warning-WIDTHEXPAND: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\j280_adc_capture_trace.v:207:26: Operator ASSIGNDLY expects 7 bits on the Assign RHS, but Assign RHS's CONST '5'h0' generates 5 bits.
+                                                                                                                                 : ... note: In instance 'system_probe.dut.adc'
+  207 |             sample_count <= 5'd0;
+      |                          ^~
+%Warning-WIDTHEXPAND: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\j280_adc_capture_trace.v:209:34: Operator ASSIGNDLY expects 18 bits on the Assign RHS, but Assign RHS's CONST '16'sh0' generates 16 bits.
+                                                                                                                                 : ... note: In instance 'system_probe.dut.adc'
+  209 |             sample_sum_unwrapped <= 16'sd0;
+      |                                  ^~
+%Warning-WIDTHEXPAND: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\j280_adc_capture_trace.v:265:34: Operator ASSIGNDLY expects 7 bits on the Assign RHS, but Assign RHS's CONST '5'h1' generates 5 bits.
+                                                                                                                                 : ... note: In instance 'system_probe.dut.adc'
+  265 |                     sample_count <= 5'd1;
+      |                                  ^~
+%Warning-WIDTHTRUNC: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\j280_adc_capture_trace.v:270:61: Logical operator LOGAND expects 1 bit on the LHS, but LHS's VARREF 'DIAGNOSTIC_SWITCHES' generates 32 bits.
+                                                                                                                                : ... note: In instance 'system_probe.dut.adc'
+  270 |                     adc_filtered_q4 <= (DIAGNOSTIC_SWITCHES && !average_enable) ?
+      |                                                             ^~
+%Warning-WIDTHEXPAND: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\j280_adc_capture_trace.v:272:42: Operator ASSIGNDLY expects 18 bits on the Assign RHS, but Assign RHS's CONST '16'sh0' generates 16 bits.
+                                                                                                                                 : ... note: In instance 'system_probe.dut.adc'
+  272 |                     sample_sum_unwrapped <= 16'sd0;
+      |                                          ^~
+%Warning-WIDTHEXPAND: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\j280_adc_capture_trace.v:273:34: Operator ASSIGNDLY expects 7 bits on the Assign RHS, but Assign RHS's CONST '5'h0' generates 5 bits.
+                                                                                                                                 : ... note: In instance 'system_probe.dut.adc'
+  273 |                     sample_count <= 5'd0;
+      |                                  ^~
+%Warning-WIDTHEXPAND: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\j280_adc_capture_trace.v:276:50: Operator ADD expects 7 bits on the RHS, but RHS's CONST '5'h1' generates 5 bits.
+                                                                                                                                 : ... note: In instance 'system_probe.dut.adc'
+  276 |                     sample_count <= sample_count + 5'd1;
+      |                                                  ^
+%Warning-WIDTHEXPAND: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\j280_adc_capture_trace.v:266:43: Operator EQ expects 32 bits on the LHS, but LHS's VARREF 'sample_count' generates 7 bits.
+                                                                                                                                 : ... note: In instance 'system_probe.dut.adc'
+  266 |                 end else if (sample_count == WINDOW_SAMPLES-1) begin
+      |                                           ^~
+%Warning-WIDTHEXPAND: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\j280_adc_capture_trace.v:262:34: Operator EQ expects 7 bits on the RHS, but RHS's CONST '5'h0' generates 5 bits.
+                                                                                                                                 : ... note: In instance 'system_probe.dut.adc'
+  262 |                 if (sample_count == 5'd0) begin
+      |                                  ^~
+%Warning-WIDTHEXPAND: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\j280_adc_capture_trace.v:289:45: Operator EQ expects 32 bits on the LHS, but LHS's VARREF 'sample_count' generates 7 bits.
+                                                                                                                                 : ... note: In instance 'system_probe.dut.adc'
+  289 |     wire [13:0] trace_q4_result=sample_count==WINDOW_SAMPLES-1 ?
+      |                                             ^~
+%Warning-WIDTHEXPAND: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\j280_adc_capture_trace.v:332:26: Operator EQ expects 32 bits on the LHS, but LHS's VARREF 'sample_count' generates 7 bits.
+                                                                                                                                 : ... note: In instance 'system_probe.dut.adc'
+  332 |           if(sample_count==WINDOW_SAMPLES-1)trace_batch<=trace_batch+1'b1;
+      |                          ^~
+%Warning-WIDTHEXPAND: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\j280_encoder_x4.v:37:36: Operator GTE expects 32 bits on the LHS, but LHS's VARREF 'filter_phase' generates 7 bits.
+                                                                                                                         : ... note: In instance 'system_probe.dut.encoder'
+   37 |     wire filter_sample=filter_phase>=FILTER_PHASE_MODULUS-FILTER_PHASE_STEP;
+      |                                    ^~
+%Warning-WIDTHEXPAND: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\j280_encoder_x4.v:44:56: Operator SUB expects 32 bits on the LHS, but LHS's VARREF 'filter_phase' generates 7 bits.
+                                                                                                                         : ... note: In instance 'system_probe.dut.encoder'
+   44 |             if(filter_sample)filter_phase<=filter_phase-(FILTER_PHASE_MODULUS-FILTER_PHASE_STEP);
+      |                                                        ^
+%Warning-WIDTHTRUNC: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\j280_encoder_x4.v:44:42: Operator ASSIGNDLY expects 7 bits on the Assign RHS, but Assign RHS's SUB generates 32 bits.
+                                                                                                                        : ... note: In instance 'system_probe.dut.encoder'
+   44 |             if(filter_sample)filter_phase<=filter_phase-(FILTER_PHASE_MODULUS-FILTER_PHASE_STEP);
+      |                                          ^~
+%Warning-WIDTHEXPAND: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\j280_encoder_x4.v:45:44: Operator ADD expects 32 bits on the LHS, but LHS's VARREF 'filter_phase' generates 7 bits.
+                                                                                                                         : ... note: In instance 'system_probe.dut.encoder'
+   45 |             else filter_phase<=filter_phase+FILTER_PHASE_STEP;
+      |                                            ^
+%Warning-WIDTHTRUNC: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\j280_encoder_x4.v:45:30: Operator ASSIGNDLY expects 7 bits on the Assign RHS, but Assign RHS's ADD generates 32 bits.
+                                                                                                                        : ... note: In instance 'system_probe.dut.encoder'
+   45 |             else filter_phase<=filter_phase+FILTER_PHASE_STEP;
+      |                              ^~
+%Warning-WIDTHEXPAND: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\j280_encoder_x4.v:48:38: Operator EQ expects 32 bits on the LHS, but LHS's VARREF 'a_consecutive' generates 3 bits.
+                                                                                                                         : ... note: In instance 'system_probe.dut.encoder'
+   48 |                 else if(a_consecutive==FILTER_SAMPLES-1)begin
+      |                                      ^~
+%Warning-WIDTHEXPAND: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\j280_encoder_x4.v:52:38: Operator EQ expects 32 bits on the LHS, but LHS's VARREF 'b_consecutive' generates 3 bits.
+                                                                                                                         : ... note: In instance 'system_probe.dut.encoder'
+   52 |                 else if(b_consecutive==FILTER_SAMPLES-1)begin
+      |                                      ^~
+%Warning-WIDTHEXPAND: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_d1_p_compare.v:69:109: Operator SUB expects 16 bits on the LHS, but LHS's SIGNED generates 13 bits.
+                                                                                                                              : ... note: In instance 'system_probe.dut.core'
+   69 |  assign observation_delta=active_fast ? completed_delta:(prime_history ? 16'sd0:($signed({1'b0,angle_adc12})-16'sd3085)-previous_error);
+      |                                                                                                             ^
+%Warning-WIDTHEXPAND: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_d1_p_compare.v:91:63: Operator SUB expects 32 or 16 bits on the LHS, but LHS's SIGNED generates 13 bits.
+                                                                                                                             : ... note: In instance 'system_probe.dut.core'
+   91 |     slow_delta<=prime_history ? 0:($signed({1'b0,angle_adc12})-16'sd3085)-previous_error;
+      |                                                               ^
+%Warning-WIDTHEXPAND: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_d1_p_compare.v:92:48: Operator SUB expects 16 bits on the LHS, but LHS's SIGNED generates 13 bits.
+                                                                                                                             : ... note: In instance 'system_probe.dut.core'
+   92 |     previous_error<=$signed({1'b0,angle_adc12})-16'sd3085;
+      |                                                ^
+%Warning-WIDTHEXPAND: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_d1_system.v:410:54: Operator SUB expects 16 bits on the LHS, but LHS's SIGNED generates 13 bits.
+                                                                                                                           : ... note: In instance 'system_probe.dut'
+  410 |     captured_error<=$signed({1'b0,observation_angle})-16'sd3085;
+      |                                                      ^
+%Warning-WIDTHEXPAND: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_d1_system.v:412:42: Operator SUB expects 16 bits on the LHS, but LHS's SIGNED generates 13 bits.
+                                                                                                                           : ... note: In instance 'system_probe.dut'
+  412 |     previous_error<=$signed({1'b0,angle})-16'sd3085;
+      |                                          ^
+%Warning-WIDTHTRUNC: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_d1_system.v:469:49: Operator ASSIGNDLY expects 8 bits on the Assign RHS, but Assign RHS's VARREF 'WIRE_VERSION' generates 32 bits.
+                                                                                                                          : ... note: In instance 'system_probe.dut'
+  469 |     tlm_data[31:0]<=32'h54324446;tlm_data[39:32]<=WIRE_VERSION;tlm_data[47:40]<=VARIANT;
+      |                                                 ^~
+%Warning-WIDTHTRUNC: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_d1_system.v:469:79: Operator ASSIGNDLY expects 8 bits on the Assign RHS, but Assign RHS's VARREF 'VARIANT' generates 32 bits.
+                                                                                                                          : ... note: In instance 'system_probe.dut'
+  469 |     tlm_data[31:0]<=32'h54324446;tlm_data[39:32]<=WIRE_VERSION;tlm_data[47:40]<=VARIANT;
+      |                                                                               ^~
+%Warning-WIDTHEXPAND: D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\V5\project\src\forest_d1_system.v:495:68: Operator SUB expects 32 bits on the LHS, but LHS's SIGNED generates 16 bits.
+                                                                                                                           : ... note: In instance 'system_probe.dut'
+  495 |     tlm_data[799:768]<=publish_control ? ($signed(captured_encoder)-32'sd10000):32'd0;
+      |                                                                    ^

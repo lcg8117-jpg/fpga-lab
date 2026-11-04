@@ -1,0 +1,60 @@
+Model Technology ModelSim SE-64 vlog 10.4 Compiler 2014.12 Dec  3 2014
+Start time: 07:36:11 on Nov 02,2026
+vlog -work fast_probe_lib -sv dd1_i2c_byte.v dd1_init_rom.v forest_d1_fp64.v forest_d1_gateway.v forest_d1_gesture_decode.v forest_d1_gesture_reader.v forest_d1_link.v forest_d1_pid.v forest_d1_reset.v forest_d1_run_actuator.v forest_d1_run_inputs.v forest_d1_safety.v forest_d1_swing_observer.v forest_d1_swing_pwm40k.v forest_d1_swingup.v forest_d1_system.v forest_d1_top.v forest_d1_window_sampler.v j280_adc_capture_trace.v j280_encoder_velocity.v j280_encoder_x4.v j280_key_debounce.v j280_pwm_motor_safe.v j280_swing_source_swm4.v forest_d1_diagnostics.v forest_d1_adaptive.v forest_d1_adaptive_features.v forest_d1_adaptive_motion.v forest_motion_planner.v forest_motion_coordinates.v forest_motion_tables.v forest_motion_finite_scurve.v forest_motion_brake_step.v forest_motion_reference_shape.v forest_d1_fast_p_fixed.v forest_d1_serial_mul.v forest_d1_serial_format.v forest_d1_p_compare.v probe.sv 
+-- Compiling module dd1_i2c_byte
+-- Compiling module dd1_init_rom
+-- Compiling module forest_d1_fp64
+-- Compiling module forest_d1_gateway
+-- Compiling module forest_d1_gesture_decode
+-- Compiling module forest_d1_gesture_reader
+-- Compiling module forest_d1_link
+-- Compiling module forest_d1_window_uart_rx
+-- Compiling module forest_d1_window_uart_tx
+-- Compiling module forest_d1_pid
+-- Compiling module forest_d1_reset
+-- Compiling module forest_d1_run_actuator
+-- Compiling module forest_d1_run_inputs
+-- Compiling module forest_d1_safety
+-- Compiling module forest_d1_swing_observer
+-- Compiling module forest_d1_swing_archive_average
+-- Compiling module forest_d1_swing_pwm40k
+-- Compiling module forest_d1_swingup
+-- Compiling module forest_d1_system
+-- Compiling module forest_d1_top
+-- Compiling module forest_d1_window_sampler
+-- Compiling module j280_adc_capture_trace
+-- Compiling module j280_adc_io_stats
+-- Compiling module j280_encoder_velocity
+-- Compiling module j280_encoder_x4
+-- Compiling module j280_key_debounce
+-- Compiling module j280_pwm_motor_safe
+-- Compiling module j280_swing_source_swm4
+-- Compiling module forest_d1_diagnostics
+-- Compiling module forest_d1_adaptive
+-- Compiling module forest_d1_adaptive_scale
+-- Compiling module forest_d1_adaptive_features
+-- Compiling module forest_d1_adaptive_motion
+-- Compiling module forest_motion_planner
+-- Compiling module forest_motion_signed_le32
+-- Compiling module forest_motion_coordinates
+-- Compiling module forest_motion_tables
+-- Compiling module forest_motion_finite_scurve
+-- Compiling module forest_motion_serial_math
+-- Compiling module forest_motion_brake_step
+-- Compiling module forest_motion_reference_shape
+-- Compiling module forest_d1_fast_p_fixed
+-- Compiling module forest_d1_serial_mul
+-- Compiling module forest_d1_serial_format
+-- Compiling module forest_d1_serial_q
+-- Compiling module forest_d1_p_compare
+-- Compiling module tb
+
+Top level modules:
+	forest_d1_swing_archive_average
+	forest_d1_top
+	j280_adc_io_stats
+	forest_d1_adaptive_scale
+	forest_motion_brake_step
+	tb
+End time: 07:36:11 on Nov 02,2026, Elapsed time: 0:00:00
+Errors: 0, Warnings: 0

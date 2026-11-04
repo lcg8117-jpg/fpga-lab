@@ -1,0 +1,44 @@
+{
+  "name": "J280_DS13_S1平衡_现场手绘_队友包_20261103",
+  "accepted": true,
+  "functions": [
+    "S1 balance",
+    "live mouse drawing"
+  ],
+  "firmware_id": "44533133",
+  "schema": "44535002",
+  "hardware_actions": 0,
+  "physical_tracking_verified": false,
+  "fpga": "GW2A-LV55PG484C8/I7",
+  "clock_mhz": 50,
+  "fmax_mhz": 54.97,
+  "setup_slack_ns": 1.808,
+  "hold_slack_ns": 0.206,
+  "resources": {
+    "Logic": "30866/54720",
+    "Register": "14453/42000",
+    "CLS": "19788/27360",
+    "BSRAM": "17/140",
+    "DSP": "14/20",
+    "PRIMARY": "3/8",
+    "LW": "8/8"
+  },
+  "bitstream_sha256": "677b66bdd36c9ceb49ffb6ac813e1acd9042e6f7db922208fd27969a90d067e7",
+  "compiled_unix": 1793661015.4195983,
+  "packaged_unix": 1793662240.0014844,
+  "default_disconnected": true,
+  "automatic_parameters": false,
+  "automatic_ZERO_RUN": false,
+  "tests": {
+    "full_system": true,
+    "live_planner_checks": 13060,
+    "host_tests": 19,
+    "portable_gui": true,
+    "manual_balance_sealed_equivalent": true,
+    "ds12_negative_control_detected": true
+  },
+  "host_revision": "curve-display-1",
+  "firmware_unchanged": true,
+  "reprogramming_required": false,
+  "user_requested_teammate_package": true
+}

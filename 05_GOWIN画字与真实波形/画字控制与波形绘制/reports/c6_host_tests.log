@@ -1,0 +1,29 @@
+test_each_upload_sets_and_independently_reads_its_mode (test_c6_tracking.TrackingContract.test_each_upload_sets_and_independently_reads_its_mode) ... ok
+test_host_matches_frozen_matlab_input_not_a_different_trajectory (test_c6_tracking.TrackingContract.test_host_matches_frozen_matlab_input_not_a_different_trajectory) ... ok
+test_mismatched_independent_mode_readback_is_rejected (test_c6_tracking.TrackingContract.test_mismatched_independent_mode_readback_is_rejected) ... ok
+test_mode_zero_crc_is_legacy_and_mode_is_bound_to_commit (test_c6_tracking.TrackingContract.test_mode_zero_crc_is_legacy_and_mode_is_bound_to_commit) ... ok
+test_ordinary_file_entry_cannot_silently_play_compensated_word (test_c6_tracking.TrackingContract.test_ordinary_file_entry_cannot_silently_play_compensated_word) ... FAIL
+test_word_history_covers_the_whole_declared_program (test_c6_tracking.TrackingContract.test_word_history_covers_the_whole_declared_program) ... ERROR
+
+======================================================================
+ERROR: test_word_history_covers_the_whole_declared_program (test_c6_tracking.TrackingContract.test_word_history_covers_the_whole_declared_program)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\C6_ClosedLoopFix_20261030\Source\tests\new_host\test_c6_tracking.py", line 62, in test_word_history_covers_the_whole_declared_program
+    self.assertGreaterEqual(HostState().word_history.maxlen,24000)
+                            ~~~~~~~~~^^
+TypeError: HostState.__init__() missing 1 required positional argument: 'variant'
+
+======================================================================
+FAIL: test_ordinary_file_entry_cannot_silently_play_compensated_word (test_c6_tracking.TrackingContract.test_ordinary_file_entry_cannot_silently_play_compensated_word)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\C6_ClosedLoopFix_20261030\Source\tests\new_host\test_c6_tracking.py", line 74, in test_ordinary_file_entry_cannot_silently_play_compensated_word
+    self.assertIn('����ר���ϴ����',panel.status.get());self.assertIsNone(panel.uploaded)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: '����ר���ϴ����' not found in '������64KiB����JSON�켣'
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.471s
+
+FAILED (failures=1, errors=1)

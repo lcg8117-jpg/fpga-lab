@@ -1,0 +1,36 @@
+{
+  "passed": true,
+  "tests": 19,
+  "hardware_actions": 0,
+  "input_sha256": {
+    "host/app.py": "f474c7eaec12f0fdd9f981ffa6dc2dd19b5b908910ab4b08cf5d78ebdee34c16",
+    "host/client.py": "96d60015dd316b2549ebd126a99f319f72b1cfa128a6eda277f516a37ba71ec0",
+    "host/draw_editor.py": "924ba7e773deb8f16a5b80e1acde1f53123d3d2f140d5245b1b068617a329978",
+    "host/hardware_mutex.py": "59fb67b71a686865ebc3a63679cd6314875930049dfe8c6b195bfbd33658de55",
+    "host/live_control.py": "664dbb863ca1d95a2d3ea1718fb0c7e14b7c8c67130664afbd5cedabfb3df6f0",
+    "host/protocol.py": "7b1a246332f12c5e185a2114798fce619a6dd520de885b073e1621c0036e7dcb",
+    "host/timeline.py": "e88b291a3619df19283a1afe179d7ab59a73c99dd317c5bdac6dce3bd85b92fa",
+    "tests/test_host.py": "262fb8c5ef0f70226fe1a452720e1bc143483aa67ef54103648536e337d55146",
+    "tests/gui_smoke.py": "f85ea6a883217c554fc2aeae24eb06968234f32159c3338de11cb80d20ec62ea",
+    "start_host.py": "24bf3e6fc1cfecc1d1bc7b69ca17f3b4cfa8af5c589cf75ed5daf368e54c5b3f"
+  },
+  "evidence_sha256": {
+    "reports/host_tests.log": "ea01b936538df932f68b44ae60848209463eece0fafcd8cbd58d01fa3ef5fec4",
+    "reports/gui_smoke.json": "fd9640f07e0d3876c1fd28bcafc2b6ee10101f0fe8c860d55c6b219d0e8130f0",
+    "reports/RUNTIME_SMOKE.json": "6880228d633274f0eaa919995bde32ca20bcf83d17bbec6d9f9abab2fd285c78",
+    "reports/UI_OFFLINE_PREVIEW.png": "39aa2f42701e3ba759f10f641b495e6d33cb707fbd4a348ad662cc4ca45feb0f",
+    "tests/system_run/uart_rx.bin": "2c54bdec33986d1380df471fc2c30a65fc20c6c92e8d14b1e89a4ac95c2fa493"
+  },
+  "source_rules": [
+    "qualified V5 sends without waiting for all ACKs",
+    "sealed ADB1 independent 100ms heartbeat before/during/after receive",
+    "V5 timeout measured after serial write"
+  ],
+  "actual_hardware_communication_test": false,
+  "delay_cases_ms": [
+    62,
+    70,
+    94,
+    125
+  ]
+}

@@ -1,0 +1,295 @@
+{
+  "status": "PASS",
+  "scope": "All project files compared against immutable C5",
+  "allowed_changes": [
+    "forest_d1_v5.gprj",
+    "src/forest_draw_buffer.v",
+    "src/forest_draw_clocked.v",
+    "src/forest_motion_planner.v",
+    "src/forest_word_follow.v",
+    "src/forest_d1_system.v",
+    "src/forest_d1_top.v"
+  ],
+  "files": [
+    {
+      "path": "forest_d1_v5.gprj",
+      "sha256": "276998fd465cee191e4b1bf4c42dd706f9ea90f936bcfab7bd5019a51e21d95a",
+      "baseline_sha256": "8ddd2b0743677bc453f3d1e523753b10913e734452505b386c42baea6580b38d",
+      "changed": true,
+      "protected": false
+    },
+    {
+      "path": "src/dd1_i2c_byte.v",
+      "sha256": "988d36dee019e774628b6e27e10e3a0ba1301ee2f61468dc9111f0e9f756a85b",
+      "baseline_sha256": "988d36dee019e774628b6e27e10e3a0ba1301ee2f61468dc9111f0e9f756a85b",
+      "changed": false,
+      "protected": true
+    },
+    {
+      "path": "src/dd1_init_rom.v",
+      "sha256": "386a8337f1e70e26fd1affcf6c42b0af85c0e3b0a2064bdb718659856e1f392e",
+      "baseline_sha256": "386a8337f1e70e26fd1affcf6c42b0af85c0e3b0a2064bdb718659856e1f392e",
+      "changed": false,
+      "protected": true
+    },
+    {
+      "path": "src/forest_command_router.v",
+      "sha256": "1d203372ba3250151bbab038aa50680d0bc836b680dde5752eceeecf9504a1fa",
+      "baseline_sha256": "1d203372ba3250151bbab038aa50680d0bc836b680dde5752eceeecf9504a1fa",
+      "changed": false,
+      "protected": true
+    },
+    {
+      "path": "src/forest_d1_board.sdc",
+      "sha256": "b875aa623ef6342803daaf60d60b1abf7abf3383e9b8a578b6f9641618454503",
+      "baseline_sha256": "b875aa623ef6342803daaf60d60b1abf7abf3383e9b8a578b6f9641618454503",
+      "changed": false,
+      "protected": true
+    },
+    {
+      "path": "src/forest_d1_diagnostics.v",
+      "sha256": "616eb7c1b6a8bd09e5c7d2c88af82d3062ca84289b0f661e70bc8fe70a4689d5",
+      "baseline_sha256": "616eb7c1b6a8bd09e5c7d2c88af82d3062ca84289b0f661e70bc8fe70a4689d5",
+      "changed": false,
+      "protected": true
+    },
+    {
+      "path": "src/forest_d1_fp_functions.vh",
+      "sha256": "11ea724bdf52e6cd49f456eb2a78dffa95123e5c2305f243cea43eee8a1a7c8e",
+      "baseline_sha256": "11ea724bdf52e6cd49f456eb2a78dffa95123e5c2305f243cea43eee8a1a7c8e",
+      "changed": false,
+      "protected": true
+    },
+    {
+      "path": "src/forest_d1_fp64.v",
+      "sha256": "9e24ccf029718f78bd4f9a9111072d3f28cc683fa1fb6c982237ac0759413b4c",
+      "baseline_sha256": "9e24ccf029718f78bd4f9a9111072d3f28cc683fa1fb6c982237ac0759413b4c",
+      "changed": false,
+      "protected": true
+    },
+    {
+      "path": "src/forest_d1_gateway.v",
+      "sha256": "3830f8bf57e707ef4070be15817354ef600d42d4c728b5164b2b3fc2b53db6bb",
+      "baseline_sha256": "3830f8bf57e707ef4070be15817354ef600d42d4c728b5164b2b3fc2b53db6bb",
+      "changed": false,
+      "protected": true
+    },
+    {
+      "path": "src/forest_d1_gesture_decode.v",
+      "sha256": "487ce77bd5acb9847c116a96ba8e37d02495604e78df526a80d2a588d504356f",
+      "baseline_sha256": "487ce77bd5acb9847c116a96ba8e37d02495604e78df526a80d2a588d504356f",
+      "changed": false,
+      "protected": true
+    },
+    {
+      "path": "src/forest_d1_gesture_reader.v",
+      "sha256": "5eba2b78cc7a83c7bcf796c20ff16168db7f0b3d9beacf89bdbefed2939422dc",
+      "baseline_sha256": "5eba2b78cc7a83c7bcf796c20ff16168db7f0b3d9beacf89bdbefed2939422dc",
+      "changed": false,
+      "protected": true
+    },
+    {
+      "path": "src/forest_d1_link.v",
+      "sha256": "037bad3fb520f2faeaef716575bc2a247a668b2e3e96ed8e94db98e93f53220f",
+      "baseline_sha256": "037bad3fb520f2faeaef716575bc2a247a668b2e3e96ed8e94db98e93f53220f",
+      "changed": false,
+      "protected": true
+    },
+    {
+      "path": "src/forest_d1_motion_target.v",
+      "sha256": "aaa4043961a696d2c02d469bc721519253c1b5cd0282ee808f48727f0ac9c4c6",
+      "baseline_sha256": "aaa4043961a696d2c02d469bc721519253c1b5cd0282ee808f48727f0ac9c4c6",
+      "changed": false,
+      "protected": true
+    },
+    {
+      "path": "src/forest_d1_pid.v",
+      "sha256": "d91779196f25851f00d529e6848adb049b1fa2d70ca5501149e00392e1ebfdf9",
+      "baseline_sha256": "d91779196f25851f00d529e6848adb049b1fa2d70ca5501149e00392e1ebfdf9",
+      "changed": false,
+      "protected": true
+    },
+    {
+      "path": "src/forest_d1_reset.v",
+      "sha256": "8ce1007d2d4c5d432adeb65bb729b0fc406095994c1901da43ca426bdf3fecce",
+      "baseline_sha256": "8ce1007d2d4c5d432adeb65bb729b0fc406095994c1901da43ca426bdf3fecce",
+      "changed": false,
+      "protected": true
+    },
+    {
+      "path": "src/forest_d1_run_actuator.v",
+      "sha256": "42bdda196e5c7e7c6cf900ba202c3c4224e7bedeeccfbf8ea63ccf2430c99598",
+      "baseline_sha256": "42bdda196e5c7e7c6cf900ba202c3c4224e7bedeeccfbf8ea63ccf2430c99598",
+      "changed": false,
+      "protected": true
+    },
+    {
+      "path": "src/forest_d1_run_inputs.v",
+      "sha256": "c1eb158404d0a03b4a9d1d8ca895d19ff5dd69fbf2d45e9772318dd3c02de842",
+      "baseline_sha256": "c1eb158404d0a03b4a9d1d8ca895d19ff5dd69fbf2d45e9772318dd3c02de842",
+      "changed": false,
+      "protected": true
+    },
+    {
+      "path": "src/forest_d1_safety.v",
+      "sha256": "42d81d52e43608704b7bfbd51a184c856078c4ff585fd92da71cced4b73db474",
+      "baseline_sha256": "42d81d52e43608704b7bfbd51a184c856078c4ff585fd92da71cced4b73db474",
+      "changed": false,
+      "protected": true
+    },
+    {
+      "path": "src/forest_d1_swing_observer.v",
+      "sha256": "2343cdcc7b99708a0b965f893c8ad1187bac04435671a8f211058bec908663ba",
+      "baseline_sha256": "2343cdcc7b99708a0b965f893c8ad1187bac04435671a8f211058bec908663ba",
+      "changed": false,
+      "protected": true
+    },
+    {
+      "path": "src/forest_d1_swing_pwm40k.v",
+      "sha256": "58973290e142b16967783f656cf93da94f9d8138789a78b8c4c9f2707c013573",
+      "baseline_sha256": "58973290e142b16967783f656cf93da94f9d8138789a78b8c4c9f2707c013573",
+      "changed": false,
+      "protected": true
+    },
+    {
+      "path": "src/forest_d1_swingup.v",
+      "sha256": "3302bafea08ef657ff29bfa5832e93d7049b1feaf44eba160a5e8011aa26942d",
+      "baseline_sha256": "3302bafea08ef657ff29bfa5832e93d7049b1feaf44eba160a5e8011aa26942d",
+      "changed": false,
+      "protected": true
+    },
+    {
+      "path": "src/forest_d1_system.v",
+      "sha256": "6aea719a81859ddd302a1f803c29a83dabc781d619aefea013ac931ae01438f1",
+      "baseline_sha256": "9af262af43db43fa60a9a9c4ad48aabf0cd123930fe8c77bc3e752623a2788a0",
+      "changed": true,
+      "protected": false
+    },
+    {
+      "path": "src/forest_d1_top.v",
+      "sha256": "96c5d2daf5db22d8ec0bc40041b2749b72afbfb406c3886174bb4835b1fd6a73",
+      "baseline_sha256": "9af6963d58ca10de3b34ffc519370762980864af6cc3b90b3a5855c2b4b4c381",
+      "changed": true,
+      "protected": false
+    },
+    {
+      "path": "src/forest_d1_window_sampler.v",
+      "sha256": "eb1bc8ec98a614013a0d2b513aad6778d81353ca22e1b30428865b40d11094d5",
+      "baseline_sha256": "eb1bc8ec98a614013a0d2b513aad6778d81353ca22e1b30428865b40d11094d5",
+      "changed": false,
+      "protected": true
+    },
+    {
+      "path": "src/forest_draw_buffer.v",
+      "sha256": "80924f14f255bbcfd312856c00074db2e781cdf5f4c880f07e0bf1108affdb29",
+      "baseline_sha256": "6b943f7875886347f5a027b4678b0585083ab5e12ebb2202843864853eaed323",
+      "changed": true,
+      "protected": false
+    },
+    {
+      "path": "src/forest_draw_clocked.v",
+      "sha256": "3e625c84c9f5ebccf4f54a511aac2cb01474ea4f9c762efb9eee394d9e1c8906",
+      "baseline_sha256": "4661ece97ae765ffcc8b649b0d18541e62518dfbee51eecdfca9b4303fe46cd2",
+      "changed": true,
+      "protected": false
+    },
+    {
+      "path": "src/forest_motion_coordinates.v",
+      "sha256": "268ccde1a37b2e914efa14c2634fd10b7a70d54e0f875a918caadf5c34eed0bd",
+      "baseline_sha256": "268ccde1a37b2e914efa14c2634fd10b7a70d54e0f875a918caadf5c34eed0bd",
+      "changed": false,
+      "protected": true
+    },
+    {
+      "path": "src/forest_motion_planner.v",
+      "sha256": "359456af750ef34a1c7373996a6a4c1110c17534f49d2e2577645167092bed03",
+      "baseline_sha256": "9b8c5ad376c69ae5ab336388d2ce35db665e4958546771b61bbe9965d545299d",
+      "changed": true,
+      "protected": false
+    },
+    {
+      "path": "src/forest_motion_tables.v",
+      "sha256": "704f6db4476e53b975acfe6cf1242d0bd34524d4ddd52f18fa8533ea1b84a2da",
+      "baseline_sha256": "704f6db4476e53b975acfe6cf1242d0bd34524d4ddd52f18fa8533ea1b84a2da",
+      "changed": false,
+      "protected": true
+    },
+    {
+      "path": "src/forest_word_follow.v",
+      "sha256": "88a8435acf09cffedefcfb4dfa4fdbc4b3dc13f8d57af03facf3f5980aed82d0",
+      "baseline_sha256": null,
+      "changed": true,
+      "protected": false
+    },
+    {
+      "path": "src/j280_adc_capture_trace.v",
+      "sha256": "069fd990d6593d1766ff2e826184740ccd4db86a0ec2dfb3d7334d1e81b29cdf",
+      "baseline_sha256": "069fd990d6593d1766ff2e826184740ccd4db86a0ec2dfb3d7334d1e81b29cdf",
+      "changed": false,
+      "protected": true
+    },
+    {
+      "path": "src/j280_encoder_velocity.v",
+      "sha256": "d4aba72acdb8b9a5a7d2f6adf766affd955a36a24fe340ab927b47b26ff94813",
+      "baseline_sha256": "d4aba72acdb8b9a5a7d2f6adf766affd955a36a24fe340ab927b47b26ff94813",
+      "changed": false,
+      "protected": true
+    },
+    {
+      "path": "src/j280_encoder_x4.v",
+      "sha256": "1d80cdf9be06f78ca0f186231027b830f92e467199bef1149ac1b52e314d89c1",
+      "baseline_sha256": "1d80cdf9be06f78ca0f186231027b830f92e467199bef1149ac1b52e314d89c1",
+      "changed": false,
+      "protected": true
+    },
+    {
+      "path": "src/j280_key_debounce.v",
+      "sha256": "8f1e39e19ab024978362cc0e2082f9a17ed335bb97a07638836daf4b243ce336",
+      "baseline_sha256": "8f1e39e19ab024978362cc0e2082f9a17ed335bb97a07638836daf4b243ce336",
+      "changed": false,
+      "protected": true
+    },
+    {
+      "path": "src/j280_official_interface.cst",
+      "sha256": "43f0f2f1f4ff46ebcd5179d70c8ab11730aeb59c0949384a7b54d563c133e8cf",
+      "baseline_sha256": "43f0f2f1f4ff46ebcd5179d70c8ab11730aeb59c0949384a7b54d563c133e8cf",
+      "changed": false,
+      "protected": true
+    },
+    {
+      "path": "src/j280_pwm_motor_safe.v",
+      "sha256": "99dd05ce105945223542d42f793627a979d426cd551615b7c4c713bcd60d90a5",
+      "baseline_sha256": "99dd05ce105945223542d42f793627a979d426cd551615b7c4c713bcd60d90a5",
+      "changed": false,
+      "protected": true
+    },
+    {
+      "path": "src/j280_pwm_source_144.v",
+      "sha256": "4461133661cfe39992def33af9b147eaface09a5cbf19604e37448753b6b117e",
+      "baseline_sha256": "4461133661cfe39992def33af9b147eaface09a5cbf19604e37448753b6b117e",
+      "changed": false,
+      "protected": true
+    },
+    {
+      "path": "src/j280_swing_source_144.v",
+      "sha256": "ef77618edd1f724e4a42c82653536d881bbef36be1d2add086ffa5e8373c43f5",
+      "baseline_sha256": "ef77618edd1f724e4a42c82653536d881bbef36be1d2add086ffa5e8373c43f5",
+      "changed": false,
+      "protected": true
+    },
+    {
+      "path": "src/j280_swing_source_sa21.v",
+      "sha256": "ca2f7aa3f70180a7b66e282ce47956e920c83ae81e739608bb4a2b34a5bc95dc",
+      "baseline_sha256": "ca2f7aa3f70180a7b66e282ce47956e920c83ae81e739608bb4a2b34a5bc95dc",
+      "changed": false,
+      "protected": true
+    },
+    {
+      "path": "src/j280_swing_source_swm4.v",
+      "sha256": "ec4ae341f340b1c643778f88506a7b21639e9172f11646c78eed7c11fd7503ee",
+      "baseline_sha256": "ec4ae341f340b1c643778f88506a7b21639e9172f11646c78eed7c11fd7503ee",
+      "changed": false,
+      "protected": true
+    }
+  ]
+}

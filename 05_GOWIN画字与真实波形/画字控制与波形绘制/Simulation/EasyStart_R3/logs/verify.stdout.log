@@ -1,0 +1,16 @@
+GOWIN_NATIVE_AND_INDEPENDENT_PID_PASS rows=24000 rms=0.774148277 Xcorr=0.999700046 Ycorr=0.990466408
+EasyStart_NATIVE_AND_INDEPENDENT_PID_PASS rows=24000 rms=1.368697678 Xcorr=0.999584127 Ycorr=0.973388379
+                                 status: 'PASS'
+                            native_rows: 48000
+                  native_fields_per_row: 8
+                                results: [1¡Á2 struct]
+    review_model_functionally_identical: 1
+                            block_count: 39
+                       connection_count: 74
+                          visual_review: 'Tracks inherited rounded target contours with visible integer stairs; not typeset lettering'
+            model_specific_compensation: 1
+                    physical_validation: 0
+
+NATIVE_DATA_PID_AND_PREDECLARED_CRITERIA_PASS
+FONT3_REFERENCE_ORACLE_READY knots=508 samples=20201
+C6_FINAL_FONT_EXPORTS_AND_ORACLE_PASS

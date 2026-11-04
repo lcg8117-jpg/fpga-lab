@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "hardware_actions": 0,
+  "synthetic_input": true,
+  "raw_rows": 200,
+  "target_vertices": 12,
+  "actual_vertices": 200,
+  "gap_segments": 2,
+  "matching_target_in_both_plots": true,
+  "raw_data_unchanged": true,
+  "artificial_staircase_removed": true,
+  "firmware_changed": false,
+  "wire_sampling_changed": false
+}

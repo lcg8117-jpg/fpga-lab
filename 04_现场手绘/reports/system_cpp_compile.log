@@ -1,0 +1,26 @@
+D:\Codex_Scratch\ADB1_S1_ADL1_OFFLINE_BUILD_20261102_J280\work\integrated_S1\tools\verilator\ucrt64\share\verilator\include\verilated.cpp:78: warning: "STDOUT_FILENO" redefined
+ # define STDOUT_FILENO _fileno(stdout)
+ 
+In file included from D:/Users/������/Downloads/x86_64-8.1.0-release-posix-seh-rt_v6-rev0/mingw64/x86_64-w64-mingw32/include/locale.h:12,
+                 from D:/Users/������/Downloads/x86_64-8.1.0-release-posix-seh-rt_v6-rev0/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/clocale:42,
+                 from D:/Users/������/Downloads/x86_64-8.1.0-release-posix-seh-rt_v6-rev0/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32/bits/c++locale.h:41,
+                 from D:/Users/������/Downloads/x86_64-8.1.0-release-posix-seh-rt_v6-rev0/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/localefwd.h:40,
+                 from D:/Users/������/Downloads/x86_64-8.1.0-release-posix-seh-rt_v6-rev0/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/string:43,
+                 from D:\Codex_Scratch\ADB1_S1_ADL1_OFFLINE_BUILD_20261102_J280\work\integrated_S1\tools\verilator\ucrt64\share\verilator\include\verilatedos.h:653,
+                 from D:\Codex_Scratch\ADB1_S1_ADL1_OFFLINE_BUILD_20261102_J280\work\integrated_S1\tools\verilator\ucrt64\share\verilator\include\verilated.cpp:51:
+D:/Users/������/Downloads/x86_64-8.1.0-release-posix-seh-rt_v6-rev0/mingw64/x86_64-w64-mingw32/include/stdio.h:60: note: this is the location of the previous definition
+ #define STDOUT_FILENO 1
+ 
+D:\Codex_Scratch\ADB1_S1_ADL1_OFFLINE_BUILD_20261102_J280\work\integrated_S1\tools\verilator\ucrt64\share\verilator\include\verilated.cpp:79: warning: "STDERR_FILENO" redefined
+ # define STDERR_FILENO _fileno(stderr)
+ 
+In file included from D:/Users/������/Downloads/x86_64-8.1.0-release-posix-seh-rt_v6-rev0/mingw64/x86_64-w64-mingw32/include/locale.h:12,
+                 from D:/Users/������/Downloads/x86_64-8.1.0-release-posix-seh-rt_v6-rev0/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/clocale:42,
+                 from D:/Users/������/Downloads/x86_64-8.1.0-release-posix-seh-rt_v6-rev0/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32/bits/c++locale.h:41,
+                 from D:/Users/������/Downloads/x86_64-8.1.0-release-posix-seh-rt_v6-rev0/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/localefwd.h:40,
+                 from D:/Users/������/Downloads/x86_64-8.1.0-release-posix-seh-rt_v6-rev0/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/string:43,
+                 from D:\Codex_Scratch\ADB1_S1_ADL1_OFFLINE_BUILD_20261102_J280\work\integrated_S1\tools\verilator\ucrt64\share\verilator\include\verilatedos.h:653,
+                 from D:\Codex_Scratch\ADB1_S1_ADL1_OFFLINE_BUILD_20261102_J280\work\integrated_S1\tools\verilator\ucrt64\share\verilator\include\verilated.cpp:51:
+D:/Users/������/Downloads/x86_64-8.1.0-release-posix-seh-rt_v6-rev0/mingw64/x86_64-w64-mingw32/include/stdio.h:61: note: this is the location of the previous definition
+ #define STDERR_FILENO 2
+ 

@@ -1,0 +1,20 @@
+{
+  "status": "PASS",
+  "changed_parameter": "CommShowInfo",
+  "old_value": "on",
+  "new_value": "off",
+  "computational_graph_identical": true,
+  "block_count": 39,
+  "connection_count": 74,
+  "original_model_preserved": true,
+  "figure_files_opened": [
+    "GOWIN_word.fig",
+    "EasyStart_word.fig",
+    "GOWIN_time_traces.fig",
+    "EasyStart_time_traces.fig",
+    "EasyStart_actual_only.fig"
+  ],
+  "hardware_actions": 0,
+  "closed_loop_simulation_restarted": false,
+  "keep_native_windows_open": true
+}

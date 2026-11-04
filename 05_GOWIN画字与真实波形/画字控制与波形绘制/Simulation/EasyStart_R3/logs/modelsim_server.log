@@ -1,0 +1,91 @@
+# Model Technology ModelSim SE-64 vmap 10.4 Lib Mapping Utility 2014.12 Dec  3 2014
+# vmap -modelsim_quiet work work 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vlog 10.4 Compiler 2014.12 Dec  3 2014
+# Start time: 01:57:31 on Oct 30,2026
+# vlog -reportprogress 300 -sv "+incdir+rtl" "+incdir+data" rtl/forest_d1_fp64.v rtl/forest_d1_pid.v rtl/forest_motion_coordinates.v rtl/forest_motion_tables.v rtl/forest_motion_planner.v rtl/forest_draw_buffer.v rtl/forest_draw_clocked.v rtl/forest_word_follow.v word_closed_loop.sv 
+# -- Compiling module forest_d1_fp64
+# -- Compiling module forest_d1_pid
+# -- Compiling module forest_motion_coordinates
+# -- Compiling module forest_motion_tables
+# -- Compiling module forest_motion_planner
+# -- Compiling module forest_draw_buffer
+# -- Compiling module forest_draw_clocked
+# -- Compiling module forest_word_follow
+# -- Compiling module word_control_lane
+# -- Compiling module word_closed_loop
+# 
+# Top level modules:
+# 	word_closed_loop
+# End time: 01:57:31 on Oct 30,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim -do "start_word_cosim.do" 
+# Start time: 01:57:31 on Oct 30,2026
+# ** Note: (vsim-3812) Design is being optimized...
+# 
+# ** Note: (vopt-143) Recognized 1 FSM in module "forest_d1_fp64(fast)".
+# 
+# ** Warning: word_closed_loop.sv(61): (vopt-2685) [TFMPC] - Too few port connections for 'controller'.  Expected 31, found 20.
+# 
+# ** Warning: word_closed_loop.sv(61): (vopt-2718) [TFMPC] - Missing connection for port 'position_div'.
+# 
+# ** Warning: word_closed_loop.sv(61): (vopt-2718) [TFMPC] - Missing connection for port 'position_d_bits'.
+# 
+# ** Warning: word_closed_loop.sv(61): (vopt-2718) [TFMPC] - Missing connection for port 'position_i_bits'.
+# 
+# ** Warning: word_closed_loop.sv(61): (vopt-2718) [TFMPC] - Missing connection for port 'position_p_bits'.
+# 
+# ** Warning: word_closed_loop.sv(61): (vopt-2718) [TFMPC] - Missing connection for port 'angle_d_bits'.
+# 
+# ** Warning: word_closed_loop.sv(61): (vopt-2718) [TFMPC] - Missing connection for port 'angle_i_bits'.
+# 
+# ** Warning: word_closed_loop.sv(61): (vopt-2718) [TFMPC] - Missing connection for port 'angle_p_bits'.
+# 
+# ** Warning: word_closed_loop.sv(61): (vopt-2718) [TFMPC] - Missing connection for port 'angle_diff_bits'.
+# 
+# ** Warning: word_closed_loop.sv(61): (vopt-2718) [TFMPC] - Missing connection for port 'balance_bias_bits'.
+# 
+# ** Warning: word_closed_loop.sv(61): (vopt-2718) [TFMPC] - Missing connection for port 'position_diff_bits'.
+# 
+# ** Warning: word_closed_loop.sv(61): (vopt-2718) [TFMPC] - Missing connection for port 'position_bias_bits'.
+# 
+# ** Warning: word_closed_loop.sv(61): (vopt-2685) [TFMPC] - Too few port connections for 'controller'.  Expected 31, found 20.
+# 
+# ** Warning: word_closed_loop.sv(61): (vopt-2718) [TFMPC] - Missing connection for port 'position_div'.
+# 
+# ** Warning: word_closed_loop.sv(61): (vopt-2718) [TFMPC] - Missing connection for port 'position_d_bits'.
+# 
+# ** Warning: word_closed_loop.sv(61): (vopt-2718) [TFMPC] - Missing connection for port 'position_i_bits'.
+# 
+# ** Warning: word_closed_loop.sv(61): (vopt-2718) [TFMPC] - Missing connection for port 'position_p_bits'.
+# 
+# ** Warning: word_closed_loop.sv(61): (vopt-2718) [TFMPC] - Missing connection for port 'angle_d_bits'.
+# 
+# ** Warning: word_closed_loop.sv(61): (vopt-2718) [TFMPC] - Missing connection for port 'angle_i_bits'.
+# 
+# ** Warning: word_closed_loop.sv(61): (vopt-2718) [TFMPC] - Missing connection for port 'angle_p_bits'.
+# 
+# ** Warning: word_closed_loop.sv(61): (vopt-2718) [TFMPC] - Missing connection for port 'angle_diff_bits'.
+# 
+# ** Warning: word_closed_loop.sv(61): (vopt-2718) [TFMPC] - Missing connection for port 'balance_bias_bits'.
+# 
+# ** Warning: word_closed_loop.sv(61): (vopt-2718) [TFMPC] - Missing connection for port 'position_diff_bits'.
+# 
+# ** Warning: word_closed_loop.sv(61): (vopt-2718) [TFMPC] - Missing connection for port 'position_bias_bits'.
+# 
+# ** Note: (vopt-143) Recognized 1 FSM in module "forest_word_follow(fast)".
+# 
+# Loading sv_std.std
+# Loading work.word_closed_loop(fast)
+# Loading work.word_control_lane(fast)
+# Loading work.forest_draw_buffer(fast)
+# Loading work.forest_motion_planner(fast)
+# Loading work.forest_motion_coordinates(fast)
+# Loading work.forest_draw_clocked(fast)
+# Loading work.forest_word_follow(fast)
+# Loading work.forest_motion_tables(fast)
+# Loading work.forest_d1_pid(fast)
+# Loading work.forest_d1_fp64(fast)
+# Loading work.word_control_lane(fast__1)
+# Loading D:/Program Files/MATLAB/R2025b/toolbox/edalink/extensions/modelsim/windows64/liblfmhdls_tmwvs.dll
+# Simulation halt requested by foreign interface.

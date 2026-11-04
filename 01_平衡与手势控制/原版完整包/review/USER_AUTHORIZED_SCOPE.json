@@ -1,0 +1,19 @@
+{
+  "request": "修新版本 烧录；修正停后大回走、独立范围P/D搜索、所有手势1秒保护",
+  "adaptive_old_sha256": "ea1b63f6599aa2cb955aaa2b65eba8c574e0c80b954731d9f797aa5db3b55997",
+  "adaptive_new_sha256": "a9f4a622982802ea3156d3d626248440e3a247b9c1498c12913c881c67b34269",
+  "reason": "User-requested P/D replacement; I and position gains direct/manual by invariant, removing redundant routes without altering those gains.",
+  "all_other_numerical_baseline_hashes_unchanged": true,
+  "checks": "RECOVERY_TESTS and MOTION_TESTS passed; physical validation pending",
+  "retimed_finite_helper": "d4e3a5c2ed2c84eca79e525cdd311527e4af05a56df2a3b71d8e2cce7a9085aa",
+  "numerical_permission_pipeline": "one FPGA clock; independent physical motor STOP unchanged",
+  "nonadaptive_bank_direct": true,
+  "registered_raw_evidence": true,
+  "registered_numerical_guards": true,
+  "physical_motor_stop_unchanged": true,
+  "parent_cancel_immediate": true,
+  "continuous_reference_restored": true,
+  "finite_only_reference_shape": true,
+  "velocity_scale_pipeline": "Exact modulo32 shift-add times200; 2 FPGA clocks; sampled5ms motion preserved, physical STOP unchanged",
+  "reference_selection_pipeline": "1 FPGA clock; split finite/continuous selection from wide coordinate arithmetic;5ms samples unchanged"
+}

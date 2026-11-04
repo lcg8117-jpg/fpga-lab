@@ -1,0 +1,69 @@
+# do compile.do
+# Model Technology ModelSim SE-64 vmap 10.4 Lib Mapping Utility 2014.12 Dec  3 2014
+# vmap -modelsim_quiet -c 
+# Copying E:/Moildesim/win64/../modelsim.ini to modelsim.ini
+# ** Warning: Copied E:/Moildesim/win64/../modelsim.ini to modelsim.ini.
+# Model Technology ModelSim SE-64 vmap 10.4 Lib Mapping Utility 2014.12 Dec  3 2014
+# vmap -modelsim_quiet work work 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vlog 10.4 Compiler 2014.12 Dec  3 2014
+# Start time: 01:13:09 on Oct 30,2026
+# vlog -sv "+incdir+D:/C6_ClosedLoopFix_20261030/Source/V5/project/src" D:/C6_ClosedLoopFix_20261030/Source/V5/project/src/forest_draw_buffer.v D:/C6_ClosedLoopFix_20261030/Source/V5/project/src/forest_draw_clocked.v D:/C6_ClosedLoopFix_20261030/Source/V5/project/src/forest_word_follow.v D:/C6_ClosedLoopFix_20261030/Source/V5/project/src/dd1_i2c_byte.v D:/C6_ClosedLoopFix_20261030/Source/V5/project/src/dd1_init_rom.v D:/C6_ClosedLoopFix_20261030/Source/V5/project/src/forest_d1_fp64.v D:/C6_ClosedLoopFix_20261030/Source/V5/project/src/forest_d1_gateway.v D:/C6_ClosedLoopFix_20261030/Source/V5/project/src/forest_d1_gesture_decode.v D:/C6_ClosedLoopFix_20261030/Source/V5/project/src/forest_d1_gesture_reader.v D:/C6_ClosedLoopFix_20261030/Source/V5/project/src/forest_d1_link.v D:/C6_ClosedLoopFix_20261030/Source/V5/project/src/forest_d1_pid.v D:/C6_ClosedLoopFix_20261030/Source/V5/project/src/forest_d1_reset.v D:/C6_ClosedLoopFix_20261030/Source/V5/project/src/forest_d1_run_actuator.v D:/C6_ClosedLoopFix_20261030/Source/V5/project/src/forest_d1_run_inputs.v D:/C6_ClosedLoopFix_20261030/Source/V5/project/src/forest_d1_safety.v D:/C6_ClosedLoopFix_20261030/Source/V5/project/src/forest_d1_swing_observer.v D:/C6_ClosedLoopFix_20261030/Source/V5/project/src/forest_d1_swing_pwm40k.v D:/C6_ClosedLoopFix_20261030/Source/V5/project/src/forest_d1_swingup.v D:/C6_ClosedLoopFix_20261030/Source/V5/project/src/forest_d1_system.v D:/C6_ClosedLoopFix_20261030/Source/V5/project/src/forest_d1_top.v D:/C6_ClosedLoopFix_20261030/Source/V5/project/src/forest_d1_window_sampler.v D:/C6_ClosedLoopFix_20261030/Source/V5/project/src/j280_adc_capture_trace.v D:/C6_ClosedLoopFix_20261030/Source/V5/project/src/j280_encoder_velocity.v D:/C6_ClosedLoopFix_20261030/Source/V5/project/src/j280_encoder_x4.v D:/C6_ClosedLoopFix_20261030/Source/V5/project/src/j280_key_debounce.v D:/C6_ClosedLoopFix_20261030/Source/V5/project/src/j280_pwm_motor_safe.v D:/C6_ClosedLoopFix_20261030/Source/V5/project/src/j280_pwm_source_144.v 
+# D:/C6_ClosedLoopFix_20261030/Source/V5/project/src/j280_swing_source_144.v D:/C6_ClosedLoopFix_20261030/Source/V5/project/src/j280_swing_source_sa21.v D:/C6_ClosedLoopFix_20261030/Source/V5/project/src/j280_swing_source_swm4.v D:/C6_ClosedLoopFix_20261030/Source/V5/project/src/forest_d1_diagnostics.v D:/C6_ClosedLoopFix_20261030/Source/V5/project/src/forest_motion_planner.v D:/C6_ClosedLoopFix_20261030/Source/V5/project/src/forest_motion_coordinates.v D:/C6_ClosedLoopFix_20261030/Source/V5/project/src/forest_motion_tables.v D:/C6_ClosedLoopFix_20261030/Source/V5/project/src/forest_command_router.v D:/C6_ClosedLoopFix_20261030/Source/tests/planner/c4_reference_tb.sv D:/C6_ClosedLoopFix_20261030/Source/tests/planner/c4_guard_tb.sv D:/C6_ClosedLoopFix_20261030/Source/tests/planner/c5_fixed_tb.sv D:/C6_ClosedLoopFix_20261030/Source/tests/system/c4_system_tb.sv D:/C6_ClosedLoopFix_20261030/Regression/c6_buffer_tb.sv D:/C6_ClosedLoopFix_20261030/Regression/c6_follow_tb.sv D:/C6_ClosedLoopFix_20261030/Regression/c6_reference_tb.sv 
+# -- Compiling module forest_draw_buffer
+# -- Compiling module forest_draw_clocked
+# -- Compiling module forest_word_follow
+# -- Compiling module dd1_i2c_byte
+# -- Compiling module dd1_init_rom
+# -- Compiling module forest_d1_fp64
+# -- Compiling module forest_d1_gateway
+# -- Compiling module forest_d1_gesture_decode
+# -- Compiling module forest_d1_gesture_reader
+# -- Compiling module forest_d1_link
+# -- Compiling module forest_d1_window_uart_rx
+# -- Compiling module forest_d1_window_uart_tx
+# -- Compiling module forest_d1_pid
+# -- Compiling module forest_d1_reset
+# -- Compiling module forest_d1_run_actuator
+# -- Compiling module forest_d1_run_inputs
+# -- Compiling module forest_d1_safety
+# -- Compiling module forest_d1_swing_observer
+# -- Compiling module forest_d1_swing_archive_average
+# -- Compiling module forest_d1_swing_pwm40k
+# -- Compiling module forest_d1_swingup
+# -- Compiling module forest_d1_system
+# -- Compiling module forest_d1_top
+# -- Compiling module forest_d1_window_sampler
+# -- Compiling module j280_adc_capture_trace
+# -- Compiling module j280_encoder_velocity
+# -- Compiling module j280_encoder_x4
+# -- Compiling module j280_key_debounce
+# -- Compiling module j280_pwm_motor_safe
+# -- Compiling module j280_pwm_source_144
+# -- Compiling module j280_swing_source_144
+# -- Compiling module j280_swing_source_sa21
+# -- Compiling module j280_swing_source_swm4
+# -- Compiling module forest_d1_diagnostics
+# -- Compiling module forest_motion_planner
+# -- Compiling module forest_motion_coordinates
+# -- Compiling module forest_motion_tables
+# -- Compiling module forest_command_router
+# -- Compiling module c4_reference_tb
+# -- Compiling module c4_guard_tb
+# -- Compiling module c5_fixed_tb
+# -- Compiling module c4_system_tb
+# -- Compiling module c6_buffer_tb
+# -- Compiling module c6_follow_tb
+# -- Compiling module c6_reference_tb
+# 
+# Top level modules:
+# 	forest_d1_top
+# 	c4_reference_tb
+# 	c4_guard_tb
+# 	c5_fixed_tb
+# 	c4_system_tb
+# 	c6_buffer_tb
+# 	c6_follow_tb
+# 	c6_reference_tb
+# End time: 01:13:09 on Oct 30,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0

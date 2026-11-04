@@ -1,0 +1,39 @@
+{
+  "gains": [
+    53.78,
+    0,
+    210.14,
+    17.67,
+    0,
+    616.61
+  ],
+  "order": [
+    "angle_P",
+    "angle_I",
+    "angle_D",
+    "position_P",
+    "position_I",
+    "position_D"
+  ],
+  "ieee754_hex": [
+    "42571eb8",
+    "00000000",
+    "435223d7",
+    "418d5c29",
+    "00000000",
+    "441a270a"
+  ],
+  "period_ms": {
+    "angle_P": 1,
+    "angle_D": 5,
+    "position_P": 5,
+    "position_D": 25
+  },
+  "adc_samples_per_ms": 64,
+  "position_filter_numerator": 732284,
+  "position_filter_denominator": 16777216,
+  "firmware_id": "44533133",
+  "schema": "44535002",
+  "default_auto_connect": false,
+  "default_auto_write": false
+}

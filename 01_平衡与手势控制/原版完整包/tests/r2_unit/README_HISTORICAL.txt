@@ -1,0 +1,1 @@
+policy.sv is the archived relative-offset algorithm specification, superseded by tests/tb_absolute_search.sv. Historical logs are excluded from delivery. scale.sv remains a helper reference. Use the current tools/run_* entry points and source-bound reports.

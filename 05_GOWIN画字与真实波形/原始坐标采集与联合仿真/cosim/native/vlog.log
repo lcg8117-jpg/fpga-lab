@@ -1,0 +1,34 @@
+Model Technology ModelSim SE-64 vlog 10.4 Compiler 2014.12 Dec  3 2014
+Start time: 18:21:16 on Nov 02,2026
+vlog -modelsimini modelsim.ini -sv "+incdir+." forest_d1_fast_balance.v forest_d1_fast_p_fixed.v forest_d1_fp64.v forest_d1_pid.v forest_d1_run_actuator.v forest_d1_safety.v forest_d1_serial_format.v forest_d1_serial_mul.v forest_draw_buffer.v forest_draw_clocked.v forest_fixed_scan_rom.v forest_motion_coordinates.v forest_motion_planner.v forest_motion_tables.v forest_preset_rom.v forest_program_store.v forest_word_follow.v j280_encoder_velocity.v j280_pwm_motor_safe.v outer_guard_macro.sv v5_actuator_interval.sv v5_cosim_core.sv 
+-- Compiling module forest_d1_fast_balance
+-- Compiling module forest_d1_fast_p_fixed
+-- Compiling module forest_d1_fp64
+-- Compiling module forest_d1_pid
+-- Compiling module forest_d1_run_actuator
+-- Compiling module forest_d1_safety
+-- Compiling module forest_d1_serial_format
+-- Compiling module forest_d1_serial_q
+-- Compiling module forest_d1_serial_mul
+-- Compiling module forest_draw_buffer
+-- Compiling module forest_draw_clocked
+-- Compiling module forest_fixed_scan_rom
+-- Compiling module forest_motion_coordinates
+-- Compiling module forest_motion_planner
+-- Compiling module forest_motion_tables
+-- Compiling module forest_preset_rom
+-- Compiling module forest_program_store
+-- Compiling module forest_word_follow
+-- Compiling module j280_encoder_velocity
+-- Compiling module j280_pwm_motor_safe
+-- Compiling module source_m_guard
+-- Compiling module outer_guard_macro
+-- Compiling module tb_source_m_guard
+-- Compiling module v5_actuator_interval
+-- Compiling module v5_cosim_core
+
+Top level modules:
+	tb_source_m_guard
+	v5_cosim_core
+End time: 18:21:16 on Nov 02,2026, Elapsed time: 0:00:00
+Errors: 0, Warnings: 0

@@ -1,0 +1,44 @@
+{
+  "new_numerical_modules": {
+    "forest_d1_pid.v": "d91779196f25851f00d529e6848adb049b1fa2d70ca5501149e00392e1ebfdf9",
+    "forest_d1_fp64.v": "9e24ccf029718f78bd4f9a9111072d3f28cc683fa1fb6c982237ac0759413b4c",
+    "forest_d1_fp_functions.vh": "11ea724bdf52e6cd49f456eb2a78dffa95123e5c2305f243cea43eee8a1a7c8e",
+    "forest_d1_adaptive.v": "ea1b63f6599aa2cb955aaa2b65eba8c574e0c80b954731d9f797aa5db3b55997",
+    "j280_adc_capture_trace.v": "25672d1b39b8757934e4ccb38673f5934ac685bcf0101a3bf1863cc0ee26d2e6",
+    "forest_d1_window_sampler.v": "f7d837a2ca85ee172752ce9dc0032d32cf8bd65ae0a491c220edbe2d85938239",
+    "forest_d1_run_inputs.v": "c1eb158404d0a03b4a9d1d8ca895d19ff5dd69fbf2d45e9772318dd3c02de842",
+    "forest_d1_run_actuator.v": "42bdda196e5c7e7c6cf900ba202c3c4224e7bedeeccfbf8ea63ccf2430c99598",
+    "j280_pwm_motor_safe.v": "99dd05ce105945223542d42f793627a979d426cd551615b7c4c713bcd60d90a5",
+    "j280_swing_source_swm4.v": "93d449b9649c017961343fee5855dd118df3d8dea62e4beb225fe2df62e8e2df",
+    "j280_encoder_x4.v": "1d80cdf9be06f78ca0f186231027b830f92e467199bef1149ac1b52e314d89c1",
+    "j280_encoder_velocity.v": "d4aba72acdb8b9a5a7d2f6adf766affd955a36a24fe340ab927b47b26ff94813",
+    "j280_official_interface.cst": "22178bb76a8dd850c0e624d84970f14d5adda6c6fe5e0b3626fd8a7487422e9e",
+    "forest_d1_board.sdc": "b875aa623ef6342803daaf60d60b1abf7abf3383e9b8a578b6f9641618454503"
+  },
+  "legacy_glue": {
+    "forest_d1_system.v": "2951e49c662726df40acbea197fd36dd15241dffd9471ecb540338e3b30171e5",
+    "forest_d1_top.v": "ebe4d94cd7c79bdbe9d097c90c9416743fcfa151daf1dba719111094ba850655",
+    "forest_d1_gateway.v": "27364ee87094b9a326ab061e237119fb9ec7da21c87e84adb35aeed2e3e91604",
+    "forest_d1_safety.v": "966c7c49d68ecce6a622c359791406ea794aeda2763a7a84007debf704b14002",
+    "forest_d1_diagnostics.v": "bd8b708673d49db1ebebe59ec2bc56413d4dccc3ba00d5c59a79338b3be81c23",
+    "forest_d1_adaptive_features.v": "8512a10c62d78d93306c0a87f961bb0d25f2732679276e8ff77f6c1968c0c91b",
+    "forest_d1_gesture_reader.v": "5eba2b78cc7a83c7bcf796c20ff16168db7f0b3d9beacf89bdbefed2939422dc",
+    "forest_d1_gesture_decode.v": "487ce77bd5acb9847c116a96ba8e37d02495604e78df526a80d2a588d504356f",
+    "forest_motion_planner.v": "dcfb71c3b761fe114c2806cc440c69c944f1a95b9e9a12b041499ed0070a76fc",
+    "forest_motion_coordinates.v": "592a703611beb38f2bc4dd27e75d9bde080432a7133f64ba2214ba9f03e155f9",
+    "forest_motion_tables.v": "664f382e6742a53593bf6ac29d7f28b1b3e7db7ff4c8d107ee7dd3897d43b357"
+  },
+  "excluded": [
+    "forest_d1_fast_p.v",
+    "forest_d1_fast_p_fixed.v",
+    "forest_d1_p_compare.v",
+    "forest_d1_serial_format.v",
+    "forest_d1_serial_mul.v",
+    "j280_pwm_source_144.v",
+    "j280_swing_autoreturn.v",
+    "j280_swing_source_144.v",
+    "j280_swing_source_sa21.v"
+  ],
+  "hardware_actions": 0,
+  "source": "ADC64 R2 plus confirmed C10 V2 motion glue"
+}

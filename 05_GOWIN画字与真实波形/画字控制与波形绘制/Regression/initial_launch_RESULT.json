@@ -1,0 +1,7 @@
+{
+  "status": "FAIL",
+  "cases": [],
+  "hardware_actions": 0,
+  "scope": "Actual source ModelSim regression; ideal/external stimuli for digital tests, not plant validation",
+  "error": "HDL case failed: buffer"
+}

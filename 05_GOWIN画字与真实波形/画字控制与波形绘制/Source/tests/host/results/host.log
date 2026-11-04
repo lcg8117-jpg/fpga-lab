@@ -1,0 +1,31 @@
+METRIC keepalive_max_gap_ms=110.000 coherent_records=194 saved_frames=204 log_queue_peak_bytes=18476
+METRIC log_roundtrip_frames=2000 raw_record_bytes=548000 zip_bytes=61306 no_duplicate_raw_payload=True
+test_200Hz_logging_and_keepalive_without_UI (test_host.ClientTests.test_200Hz_logging_and_keepalive_without_UI) ... ok
+test_control_diagnostic_and_learning_sequences_are_independent (test_host.ClientTests.test_control_diagnostic_and_learning_sequences_are_independent) ... ok
+test_handshake_highwater_once_set_independent_read_drafts (test_host.ClientTests.test_handshake_highwater_once_set_independent_read_drafts) ... ok
+test_identity_failure_is_latched_until_explicit_reconnect (test_host.ClientTests.test_identity_failure_is_latched_until_explicit_reconnect) ... ok
+test_identity_mismatch_blocks_mutation (test_host.ClientTests.test_identity_mismatch_blocks_mutation) ... ok
+test_kit_explicit_stop_only_and_independent_readback (test_host.ClientTests.test_kit_explicit_stop_only_and_independent_readback) ... ok
+test_logging_failure_blocks_non_stop_but_not_keepalive (test_host.ClientTests.test_logging_failure_blocks_non_stop_but_not_keepalive) ... ok
+test_manual_I_live_guard_and_variant_capabilities (test_host.ClientTests.test_manual_I_live_guard_and_variant_capabilities) ... ok
+test_real_refresh_never_overwrites_editable_PID_drafts (test_host.ClientTests.test_real_refresh_never_overwrites_editable_PID_drafts) ... ok
+test_stale_and_unmatched_ACK_cannot_claim_success_or_replay (test_host.ClientTests.test_stale_and_unmatched_ACK_cannot_claim_success_or_replay) ... ok
+test_unframed_legacy_substring_is_not_identity_evidence (test_host.ClientTests.test_unframed_legacy_substring_is_not_identity_evidence) ... ok
+test_unknown_timeout_never_replays_mutation (test_host.ClientTests.test_unknown_timeout_never_replays_mutation) ... ok
+test_v2_reference_origin_board_time_history_and_gesture_observation (test_host.ClientTests.test_v2_reference_origin_board_time_history_and_gesture_observation) ... ok
+test_wrong_diagnostic_schema_and_old_firmware_latch_identity_failure (test_host.ClientTests.test_wrong_diagnostic_schema_and_old_firmware_latch_identity_failure) ... ok
+test_actual_time_weighted_windows_keep_rapid_values_and_base_fallback (test_host.GainAverageTests.test_actual_time_weighted_windows_keep_rapid_values_and_base_fallback) ... ok
+test_average_resets_on_gap_stop_fault_switch_manual_and_epoch (test_host.GainAverageTests.test_average_resets_on_gap_stop_fault_switch_manual_and_epoch) ... ok
+test_2000_frames_once_zip_roundtrip_and_index (test_host.LoggerTests.test_2000_frames_once_zip_roundtrip_and_index) ... ok
+test_queue_limit_and_disk_limits_preserve_history (test_host.LoggerTests.test_queue_limit_and_disk_limits_preserve_history) ... ok
+test_all_signed_fields_and_float_banks (test_host.ProtocolTests.test_all_signed_fields_and_float_banks) ... ok
+test_crc_and_request_layout (test_host.ProtocolTests.test_crc_and_request_layout) ... ok
+test_diagnostic_layout_and_independent_packet_kind (test_host.ProtocolTests.test_diagnostic_layout_and_independent_packet_kind) ... ok
+test_fieldfix_identity_stage_action_and_reference_phase (test_host.ProtocolTests.test_fieldfix_identity_stage_action_and_reference_phase) ... ok
+test_request_groups_and_reserved_contract (test_host.ProtocolTests.test_request_groups_and_reserved_contract) ... ok
+test_resync_crc_and_partial_frames (test_host.ProtocolTests.test_resync_crc_and_partial_frames) ... ok
+
+----------------------------------------------------------------------
+Ran 24 tests in 3.728s
+
+OK

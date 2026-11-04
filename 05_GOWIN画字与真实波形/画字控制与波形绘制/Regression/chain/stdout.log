@@ -1,0 +1,34 @@
+Reading E:/Moildesim/tcl/vsim/pref.tcl
+
+# 10.4
+
+# vsim -modelsimini D:/C6_ClosedLoopFix_20261030/Regression/modelsim.ini -c -t 1ps -wlf none.wlf -gCHAIN_TEST=1 work.c5_fixed_tb -do "D:/C6_ClosedLoopFix_20261030/Regression/run.do" -l run.log 
+# Start time: 01:20:27 on Oct 30,2026
+# ** Note: (vsim-3812) Design is being optimized...
+# 
+# ** Warning: D:/C6_ClosedLoopFix_20261030/Source/tests/planner/c5_fixed_tb.sv(17): (vopt-2685) [TFMPC] - Too few port connections for 'buffer'.  Expected 17, found 16.
+# 
+# ** Warning: D:/C6_ClosedLoopFix_20261030/Source/tests/planner/c5_fixed_tb.sv(17): (vopt-2718) [TFMPC] - Missing connection for port 'tracking_mode'.
+# 
+# //  ModelSim SE-64 10.4 Dec  3 2014 
+# //
+# //  Copyright 1991-2014 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  THIS WORK CONTAINS TRADE SECRET AND PROPRIETARY INFORMATION
+# //  WHICH IS THE PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS
+# //  LICENSORS AND IS SUBJECT TO LICENSE TERMS.
+# //  THIS DOCUMENT CONTAINS TRADE SECRETS AND COMMERCIAL OR FINANCIAL
+# //  INFORMATION THAT ARE PRIVILEGED, CONFIDENTIAL, AND EXEMPT FROM
+# //  DISCLOSURE UNDER THE FREEDOM OF INFORMATION ACT, 5 U.S.C. SECTION 552.
+# //  FURTHERMORE, THIS INFORMATION IS PROHIBITED FROM DISCLOSURE UNDER
+# //  THE TRADE SECRETS ACT, 18 U.S.C. SECTION 1905.
+# //
+# Loading sv_std.std
+# Loading work.c5_fixed_tb(fast)
+# do D:/C6_ClosedLoopFix_20261030/Regression/run.do
+# PASS C5_CHAIN referenceEndNotPhysicalRest=1 offset8counts=1 nextFixedAccepted=1 uploadReady=1 activeStillRejected=1 noReferenceJump=1 STOPpriority=1
+# ** Note: $finish    : D:/C6_ClosedLoopFix_20261030/Source/tests/planner/c5_fixed_tb.sv(169)
+#    Time: 14246060 ns  Iteration: 1  Instance: /c5_fixed_tb
+# End time: 01:20:29 on Oct 30,2026, Elapsed time: 0:00:02
+# Errors: 0, Warnings: 2

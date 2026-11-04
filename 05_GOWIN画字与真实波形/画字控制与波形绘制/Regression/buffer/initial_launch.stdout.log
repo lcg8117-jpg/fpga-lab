@@ -1,0 +1,12 @@
+Reading E:/Moildesim/tcl/vsim/pref.tcl
+
+# 10.4
+
+# vsim -modelsimini D:\C6_ClosedLoopFix_20261030\Regression\modelsim.ini -c -t 1ps -wlf none.wlf work.c6_buffer_tb -do "D:\C6_ClosedLoopFix_20261030\Regression\run.do" -l run.log 
+# Start time: 01:14:30 on Oct 30,2026
+# ** Error: (vsim-7) Failed to open -modelsimini file "{D:\C6_ClosedLoopFix_20261030\Regression\modelsim.ini}" in read mode.
+# 
+# Invalid argument. (errno = EINVAL)
+# Error loading design
+# End time: 01:14:30 on Oct 30,2026, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0

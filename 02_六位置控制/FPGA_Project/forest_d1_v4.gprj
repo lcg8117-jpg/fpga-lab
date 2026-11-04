@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Project>
+  <Template>FPGA</Template>
+  <Version>5</Version>
+  <Device name="GW2A-55C" pn="GW2A-LV55PG484C8/I7">gw2a55c-005</Device>
+  <FileList>
+    <File path="src/forest_command_router.v" type="file.verilog" enable="1" />
+    <File path="src/forest_d1_board.sdc" type="file.sdc" enable="1" />
+    <File path="src/forest_d1_fp64.v" type="file.verilog" enable="1" />
+    <File path="src/forest_d1_gateway.v" type="file.verilog" enable="1" />
+    <File path="src/forest_d1_link.v" type="file.verilog" enable="1" />
+    <File path="src/forest_d1_pid.v" type="file.verilog" enable="1" />
+    <File path="src/forest_d1_reset.v" type="file.verilog" enable="1" />
+    <File path="src/forest_d1_run_inputs.v" type="file.verilog" enable="1" />
+    <File path="src/forest_d1_safety.v" type="file.verilog" enable="1" />
+    <File path="src/forest_d1_system.v" type="file.verilog" enable="1" />
+    <File path="src/forest_d1_top.v" type="file.verilog" enable="1" />
+    <File path="src/forest_d1_window_sampler.v" type="file.verilog" enable="1" />
+    <File path="src/forest_motion_brake_step.v" type="file.verilog" enable="1" />
+    <File path="src/forest_motion_coordinates.v" type="file.verilog" enable="1" />
+    <File path="src/forest_motion_finite_scurve.v" type="file.verilog" enable="1" />
+    <File path="src/forest_motion_reference_shape.v" type="file.verilog" enable="1" />
+    <File path="src/forest_motion_v4_r21.v" type="file.verilog" enable="1" />
+    <File path="src/j280_adc_capture_trace.v" type="file.verilog" enable="1" />
+    <File path="src/j280_encoder_x4.v" type="file.verilog" enable="1" />
+    <File path="src/j280_key_debounce.v" type="file.verilog" enable="1" />
+    <File path="src/j280_official_interface.cst" type="file.cst" enable="1" />
+    <File path="src/j280_pwm_motor_safe.v" type="file.verilog" enable="1" />
+    <File path="src/r25_run_actuator_rom.v" type="file.verilog" enable="1" />
+    <File path="src/j280_encoder_velocity.v" type="file.verilog" enable="1" />
+    <File path="src/forest_d1_fast_p_fixed.v" type="file.verilog" enable="1" />
+    <File path="src/forest_d1_p_compare.v" type="file.verilog" enable="1" />
+    <File path="src/forest_d1_serial_mul.v" type="file.verilog" enable="1" />
+    <File path="src/forest_d1_serial_format.v" type="file.verilog" enable="1" />
+  </FileList>
+</Project>

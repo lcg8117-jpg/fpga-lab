@@ -1,0 +1,32 @@
+Reading D:/modeltech64_10.4/tcl/vsim/pref.tcl
+
+# 10.4
+
+# vsim -c -onfinish exit fast_probe_lib.tb -do "onerror {quit -code 2};run -all;quit -code 0" 
+# Start time: 07:36:15 on Nov 02,2026
+# ** Note: (vsim-8009) Loading existing optimized design _opt
+# 
+# //  ModelSim SE-64 10.4 Dec  3 2014 
+# //
+# //  Copyright 1991-2014 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  THIS WORK CONTAINS TRADE SECRET AND PROPRIETARY INFORMATION
+# //  WHICH IS THE PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS
+# //  LICENSORS AND IS SUBJECT TO LICENSE TERMS.
+# //  THIS DOCUMENT CONTAINS TRADE SECRETS AND COMMERCIAL OR FINANCIAL
+# //  INFORMATION THAT ARE PRIVILEGED, CONFIDENTIAL, AND EXEMPT FROM
+# //  DISCLOSURE UNDER THE FREEDOM OF INFORMATION ACT, 5 U.S.C. SECTION 552.
+# //  FURTHERMORE, THIS INFORMATION IS PROHIBITED FROM DISCLOSURE UNDER
+# //  THE TRADE SECRETS ACT, 18 U.S.C. SECTION 1905.
+# //
+# Loading sv_std.std
+# Loading work.tb(fast)
+# onerror {quit -code 2}
+#  Warning: onerror command for use within macro
+# run -all
+# PASS fast1ms=64 originalD5ms=13 positionP5ms=13 positionD25ms=2 telemetry200Hz=13 packets=19
+# ** Note: $finish    : probe.sv(66)
+#    Time: 68000300 ns  Iteration: 1  Instance: /tb
+# End time: 07:36:18 on Nov 02,2026, Elapsed time: 0:00:03
+# Errors: 0, Warnings: 0

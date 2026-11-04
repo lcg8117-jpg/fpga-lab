@@ -1,0 +1,41 @@
+Reading E:/Moildesim/tcl/vsim/pref.tcl
+
+# 10.4
+
+# vsim -modelsimini D:/C6_ClosedLoopFix_20261030/Regression/modelsim.ini -c -t 1ps -wlf none.wlf "+COUNT=438" work.c6_reference_tb -do "D:/C6_ClosedLoopFix_20261030/Regression/run.do" -l run.log 
+# Start time: 01:19:12 on Oct 30,2026
+# ** Note: (vsim-3812) Design is being optimized...
+# 
+# ** Warning: D:/C6_ClosedLoopFix_20261030/Regression/c6_reference_tb.sv(13): (vopt-2685) [TFMPC] - Too few port connections for 'buffer'.  Expected 17, found 16.
+# 
+# ** Warning: D:/C6_ClosedLoopFix_20261030/Regression/c6_reference_tb.sv(13): (vopt-2718) [TFMPC] - Missing connection for port 'tracking_mode'.
+# 
+# //  ModelSim SE-64 10.4 Dec  3 2014 
+# //
+# //  Copyright 1991-2014 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  THIS WORK CONTAINS TRADE SECRET AND PROPRIETARY INFORMATION
+# //  WHICH IS THE PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS
+# //  LICENSORS AND IS SUBJECT TO LICENSE TERMS.
+# //  THIS DOCUMENT CONTAINS TRADE SECRETS AND COMMERCIAL OR FINANCIAL
+# //  INFORMATION THAT ARE PRIVILEGED, CONFIDENTIAL, AND EXEMPT FROM
+# //  DISCLOSURE UNDER THE FREEDOM OF INFORMATION ACT, 5 U.S.C. SECTION 552.
+# //  FURTHERMORE, THIS INFORMATION IS PROHIBITED FROM DISCLOSURE UNDER
+# //  THE TRADE SECRETS ACT, 18 U.S.C. SECTION 1905.
+# //
+# Loading sv_std.std
+# Loading work.c6_reference_tb(fast)
+# do D:/C6_ClosedLoopFix_20261030/Regression/run.do
+# ** Warning: (vsim-PLI-3404) Address 17400 is out of bounds 0 to 10200.
+# 
+#     : D:/C6_ClosedLoopFix_20261030/Regression/c6_reference_tb.sv(45)
+#    Time: 0 ps  Iteration: 0  Instance: /c6_reference_tb
+# ** Warning: (vsim-PLI-3407) Too many data words read on line 10202 of file "oracle.hex". (Current address [10201], address range [0:10200])    : D:/C6_ClosedLoopFix_20261030/Regression/c6_reference_tb.sv(45)
+#    Time: 0 ps  Iteration: 0  Instance: /c6_reference_tb
+# ** Fatal: reference mismatch kit=0 dir=0 offset=0 tick=10201 actual=34 expected=x q=x
+#    Time: 26144160 ns  Scope: c6_reference_tb File: D:/C6_ClosedLoopFix_20261030/Regression/c6_reference_tb.sv Line: 62
+# ** Note: $finish    : D:/C6_ClosedLoopFix_20261030/Regression/c6_reference_tb.sv(62)
+#    Time: 26144160 ns  Iteration: 1  Instance: /c6_reference_tb
+# End time: 01:19:14 on Oct 30,2026, Elapsed time: 0:00:02
+# Errors: 1, Warnings: 4

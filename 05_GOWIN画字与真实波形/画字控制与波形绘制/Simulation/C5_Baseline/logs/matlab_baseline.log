@@ -1,0 +1,4 @@
+WORD_MODEL_READY baseline
+LANE1 samples=12001 transactions=12000 peakAngle=51.455803 peakTracking=66 state=0
+LANE2 samples=12001 transactions=12000 peakAngle=52.985608 peakTracking=61 state=0
+PASS WORD_RTL_SIMULINK_BASELINE

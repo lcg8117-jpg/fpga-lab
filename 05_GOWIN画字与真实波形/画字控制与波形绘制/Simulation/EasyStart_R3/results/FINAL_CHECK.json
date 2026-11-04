@@ -1,0 +1,6 @@
+{
+  "status": "PASS",
+  "stage": "COMPLETE",
+  "hardware_actions": 0,
+  "signedness_conversion": "Unsigned9-bit index retained; signed32-bit feedback and signed16-bit correction decoded explicitly"
+}

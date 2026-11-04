@@ -1,0 +1,191 @@
+{
+  "passed": true,
+  "hardware_actions": 0,
+  "serial_open_attempts": 0,
+  "window_size": [
+    1240,
+    720
+  ],
+  "widgets": [
+    {
+      "widget": ".!frame",
+      "x": 0,
+      "y": 0,
+      "w": 1240,
+      "h": 720
+    },
+    {
+      "widget": ".!frame.!frame",
+      "x": 14,
+      "y": 14,
+      "w": 1212,
+      "h": 35
+    },
+    {
+      "widget": ".!frame.!frame.!combobox",
+      "x": 14,
+      "y": 20,
+      "w": 80,
+      "h": 22
+    },
+    {
+      "widget": ".!frame.!frame.!button",
+      "x": 102,
+      "y": 14,
+      "w": 68,
+      "h": 35
+    },
+    {
+      "widget": ".!frame.!frame.!button2",
+      "x": 176,
+      "y": 14,
+      "w": 68,
+      "h": 35
+    },
+    {
+      "widget": ".!frame.!frame.!button3",
+      "x": 250,
+      "y": 14,
+      "w": 68,
+      "h": 35
+    },
+    {
+      "widget": ".!frame.!frame.!button4",
+      "x": 324,
+      "y": 14,
+      "w": 68,
+      "h": 35
+    },
+    {
+      "widget": ".!frame.!frame.!button5",
+      "x": 405,
+      "y": 14,
+      "w": 68,
+      "h": 35
+    },
+    {
+      "widget": ".!frame.!frame.!button6",
+      "x": 479,
+      "y": 14,
+      "w": 68,
+      "h": 35
+    },
+    {
+      "widget": ".!frame.!frame.!button7",
+      "x": 1158,
+      "y": 14,
+      "w": 68,
+      "h": 35
+    },
+    {
+      "widget": ".!frame.!frame.!label",
+      "x": 1028,
+      "y": 21,
+      "w": 116,
+      "h": 21
+    },
+    {
+      "widget": ".!frame.!draweditor",
+      "x": 14,
+      "y": 57,
+      "w": 1212,
+      "h": 649
+    },
+    {
+      "widget": ".!frame.!draweditor.!frame",
+      "x": 14,
+      "y": 57,
+      "w": 1212,
+      "h": 603
+    },
+    {
+      "widget": ".!frame.!draweditor.!frame.!label",
+      "x": 22,
+      "y": 62,
+      "w": 36,
+      "h": 26
+    },
+    {
+      "widget": ".!frame.!draweditor.!frame.!label2",
+      "x": 628,
+      "y": 62,
+      "w": 36,
+      "h": 26
+    },
+    {
+      "widget": ".!frame.!draweditor.!frame.!canvas",
+      "x": 14,
+      "y": 93,
+      "w": 599,
+      "h": 536
+    },
+    {
+      "widget": ".!frame.!draweditor.!frame.!canvas2",
+      "x": 627,
+      "y": 93,
+      "w": 599,
+      "h": 536
+    },
+    {
+      "widget": ".!frame.!draweditor.!frame.!label3",
+      "x": 22,
+      "y": 634,
+      "w": 28,
+      "h": 21
+    },
+    {
+      "widget": ".!frame.!draweditor.!frame.!label4",
+      "x": 628,
+      "y": 634,
+      "w": 113,
+      "h": 21
+    },
+    {
+      "widget": ".!frame.!draweditor.!frame2",
+      "x": 14,
+      "y": 668,
+      "w": 1212,
+      "h": 35
+    },
+    {
+      "widget": ".!frame.!draweditor.!frame2.!button",
+      "x": 20,
+      "y": 668,
+      "w": 103,
+      "h": 35
+    },
+    {
+      "widget": ".!frame.!draweditor.!frame2.!button2",
+      "x": 135,
+      "y": 668,
+      "w": 103,
+      "h": 35
+    },
+    {
+      "widget": ".!frame.!draweditor.!frame2.!label",
+      "x": 1216,
+      "y": 675,
+      "w": 4,
+      "h": 21
+    }
+  ],
+  "mouse_events": [
+    [
+      "point",
+      192
+    ],
+    [
+      "begin",
+      192
+    ],
+    [
+      "point",
+      191
+    ],
+    [
+      "end",
+      "\u9f20\u6807\u79bb\u5f00\u7ed8\u56fe\u533a\uff0c\u5e73\u6ed1\u505c\u6b62"
+    ]
+  ],
+  "no_upload_or_play_controls": true
+}

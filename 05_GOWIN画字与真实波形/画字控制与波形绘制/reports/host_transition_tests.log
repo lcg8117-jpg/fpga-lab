@@ -1,0 +1,32 @@
+test_cancelled_or_bad_readback_upload_never_plays (test_draw.DrawTests.test_cancelled_or_bad_readback_upload_never_plays) ... ok
+test_existing_finite_motion_finishes_without_disarming_or_preemption (test_draw.DrawTests.test_existing_finite_motion_finishes_without_disarming_or_preemption) ... ok
+test_prepare_preserves_order_and_adds_bounded_zero_return (test_draw.DrawTests.test_prepare_preserves_order_and_adds_bounded_zero_return) ... ok
+test_real_owner_tickets_do_not_accept_other_request_ack (test_draw.DrawTests.test_real_owner_tickets_do_not_accept_other_request_ack) ... ok
+test_reject_nonfinite_overlong_and_unsafe_files (test_draw.DrawTests.test_reject_nonfinite_overlong_and_unsafe_files) ... ok
+test_representative_recordings_obey_integer_speed_acceleration_and_travel (test_draw.DrawTests.test_representative_recordings_obey_integer_speed_acceleration_and_travel) ... ok
+test_staging_needs_fresh_ACK_but_not_quiet_balance_control (test_draw.DrawTests.test_staging_needs_fresh_ACK_but_not_quiet_balance_control) ... ok
+test_upload_preserves_balance_and_never_runs_or_stops_motor (test_draw.DrawTests.test_upload_preserves_balance_and_never_runs_or_stops_motor) ... ok
+test_usb_route_is_used_for_upload_without_mirroring (test_draw.DrawTests.test_usb_route_is_used_for_upload_without_mirroring) ... ok
+test_complete_requires_all_exact_time_slots (test_word_progress.ProgressTests.test_complete_requires_all_exact_time_slots) ... ok
+test_latched_onset_is_not_shifted_after_ring_rollover (test_word_progress.ProgressTests.test_latched_onset_is_not_shifted_after_ring_rollover) ... ok
+test_phase_uses_board_time (test_word_progress.ProgressTests.test_phase_uses_board_time) ... ok
+test_reference_done_alone_does_not_mean_actually_settled (test_word_progress.ProgressTests.test_reference_done_alone_does_not_mean_actually_settled) ... ok
+test_same_request_fresh_settled_required (test_word_progress.ProgressTests.test_same_request_fresh_settled_required) ... ok
+test_stop_fault_and_expired_control_cannot_pass (test_word_progress.ProgressTests.test_stop_fault_and_expired_control_cannot_pass) ... ok
+test_ui_preserves_completed_trace_after_history_rollover (test_word_progress.ProgressTests.test_ui_preserves_completed_trace_after_history_rollover) ... ok
+test_known_point_rejection_identifies_point_and_never_commits (test_stopped_upload.StopUploadTests.test_known_point_rejection_identifies_point_and_never_commits) ... ok
+test_pose_fault_does_not_block_staging_or_get_cleared (test_stopped_upload.StopUploadTests.test_pose_fault_does_not_block_staging_or_get_cleared) ... ok
+test_stopped_upload_works_without_RUN_and_without_fresh_balance (test_stopped_upload.StopUploadTests.test_stopped_upload_works_without_RUN_and_without_fresh_balance) ... ok
+test_ui_enables_play_only_after_complete_stopped_upload (test_stopped_upload.StopUploadTests.test_ui_enables_play_only_after_complete_stopped_upload) ... ok
+test_matching_firmware_identity_required (test_w1_upload.W1Tests.test_matching_firmware_identity_required) ... ok
+test_one_click_upload_and_STOP_keep_completed_data (test_w1_upload.W1Tests.test_one_click_upload_and_STOP_keep_completed_data) ... ok
+test_staging_all_nonmotion_modes_without_pose_or_control_sample_gate (test_w1_upload.W1Tests.test_staging_all_nonmotion_modes_without_pose_or_control_sample_gate) ... ok
+test_fixed_span_uses_only_actual_matched_encoder_history (test_c5_field.FieldTests.test_fixed_span_uses_only_actual_matched_encoder_history) ... ok
+test_lost_interior_sample_does_not_erase_two_real_endpoints (test_c5_field.FieldTests.test_lost_interior_sample_does_not_erase_two_real_endpoints) ... ok
+test_result_has_a_dedicated_page_and_remains_after_new_plan (test_c5_field.FieldTests.test_result_has_a_dedicated_page_and_remains_after_new_plan) ... ok
+test_saved_C4_run_recovers3599_unmodified_actual_pairs (test_c5_field.FieldTests.test_saved_C4_run_recovers3599_unmodified_actual_pairs) ... ok
+
+----------------------------------------------------------------------
+Ran 27 tests in 1.737s
+
+OK

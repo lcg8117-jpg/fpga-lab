@@ -1,0 +1,25 @@
+{
+  "status": "PASS",
+  "scope": "Actual Tk construction and containment at default/minimum size; window placed offscreen and destroyed. No BLE owner created.",
+  "sizes": [
+    {
+      "width": 1130,
+      "height": 800,
+      "widgets_checked": 43,
+      "outside": [],
+      "sibling_overlap": []
+    },
+    {
+      "width": 1000,
+      "height": 720,
+      "widgets_checked": 43,
+      "outside": [],
+      "sibling_overlap": []
+    }
+  ],
+  "gui_windows_created": 1,
+  "gui_windows_destroyed": 1,
+  "threads_started": 0,
+  "device_connections": 0,
+  "owner_created": false
+}

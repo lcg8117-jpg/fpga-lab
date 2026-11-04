@@ -1,0 +1,1 @@
+time=770000000000 mode=1 fault=00 ready=1 zero=1 capture=0 status=0 samples=153 acks=115 motion=0 committed=1

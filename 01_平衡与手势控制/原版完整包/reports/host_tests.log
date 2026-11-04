@@ -1,0 +1,23 @@
+test_action_rejection_is_not_hidden_by_keepalive_or_readback (test_host.OwnerTests.test_action_rejection_is_not_hidden_by_keepalive_or_readback) ... ok
+test_crc_loss_marking_without_smoothing_or_reindex (test_host.OwnerTests.test_crc_loss_marking_without_smoothing_or_reindex) ... ok
+test_identity_mismatch_blocks_controls (test_host.OwnerTests.test_identity_mismatch_blocks_controls) ... ok
+test_independent_readback_and_mutation_highwater (test_host.OwnerTests.test_independent_readback_and_mutation_highwater) ... ok
+test_keepalive_200hz_lossless_when_ui_and_compression_wait (test_host.OwnerTests.test_keepalive_200hz_lossless_when_ui_and_compression_wait) ... ok
+test_logging_failure_single_stop_ack_then_close (test_host.OwnerTests.test_logging_failure_single_stop_ack_then_close) ... ok
+test_logging_failure_unknown_stop_no_keepalive_or_retry (test_host.OwnerTests.test_logging_failure_unknown_stop_no_keepalive_or_retry) ... ok
+test_logging_failure_without_identity_closes_without_unknown_id (test_host.OwnerTests.test_logging_failure_without_identity_closes_without_unknown_id) ... ok
+test_stale_receive_locks_mutations (test_host.OwnerTests.test_stale_receive_locks_mutations) ... ok
+test_unknown_command_result_is_never_replayed (test_host.OwnerTests.test_unknown_command_result_is_never_replayed) ... ok
+test_base_source_fields_and_hard_caps (test_host.ProtocolTests.test_base_source_fields_and_hard_caps) ... ok
+test_crc_golden_and_request_shape (test_host.ProtocolTests.test_crc_golden_and_request_shape) ... ok
+test_extension_context_live_optical_and_distinct_epochs (test_host.ProtocolTests.test_extension_context_live_optical_and_distinct_epochs) ... ok
+test_fragmented_stream_crc_and_raw_counts (test_host.ProtocolTests.test_fragmented_stream_crc_and_raw_counts) ... ok
+test_machine_contract_identity_and_every_extension_field (test_host.ProtocolTests.test_machine_contract_identity_and_every_extension_field) ... ok
+test_motion_start_guard_field_and_reasons (test_host.ProtocolTests.test_motion_start_guard_field_and_reasons) ... ok
+test_nonfinite_wire_evidence_rejected (test_host.ProtocolTests.test_nonfinite_wire_evidence_rejected) ... ok
+test_signed_pose_final_target_and_gain_transactions (test_host.ProtocolTests.test_signed_pose_final_target_and_gain_transactions) ... ok
+
+----------------------------------------------------------------------
+Ran 18 tests in 3.149s
+
+OK

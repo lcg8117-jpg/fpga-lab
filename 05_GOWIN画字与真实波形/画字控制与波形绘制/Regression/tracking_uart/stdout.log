@@ -1,0 +1,30 @@
+Reading E:/Moildesim/tcl/vsim/pref.tcl
+
+# 10.4
+
+# vsim -modelsimini D:/C6_ClosedLoopFix_20261030/Regression/modelsim.ini -c -t 1ps -wlf none.wlf -gTRACKING_UART=1 work.c4_system_tb -do "D:/C6_ClosedLoopFix_20261030/Regression/run.do" -l run.log 
+# Start time: 01:27:14 on Oct 30,2026
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# 
+# //  ModelSim SE-64 10.4 Dec  3 2014 
+# //
+# //  Copyright 1991-2014 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  THIS WORK CONTAINS TRADE SECRET AND PROPRIETARY INFORMATION
+# //  WHICH IS THE PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS
+# //  LICENSORS AND IS SUBJECT TO LICENSE TERMS.
+# //  THIS DOCUMENT CONTAINS TRADE SECRETS AND COMMERCIAL OR FINANCIAL
+# //  INFORMATION THAT ARE PRIVILEGED, CONFIDENTIAL, AND EXEMPT FROM
+# //  DISCLOSURE UNDER THE FREEDOM OF INFORMATION ACT, 5 U.S.C. SECTION 552.
+# //  FURTHERMORE, THIS INFORMATION IS PROHIBITED FROM DISCLOSURE UNDER
+# //  THE TRADE SECRETS ACT, 18 U.S.C. SECTION 1905.
+# //
+# Loading sv_std.std
+# Loading work.c4_system_tb(fast)
+# do D:/C6_ClosedLoopFix_20261030/Regression/run.do
+# PASS C6_TRACKING_UART checks=179 ACK=34 modeBoundCRC=1 poseFaultUpload=1 readback=1 STOPpreserves=1 noAutoMotion=1
+# ** Note: $finish    : D:/C6_ClosedLoopFix_20261030/Source/tests/system/c4_system_tb.sv(285)
+#    Time: 37386871 ns  Iteration: 0  Instance: /c4_system_tb
+# End time: 01:27:17 on Oct 30,2026, Elapsed time: 0:00:03
+# Errors: 0, Warnings: 0

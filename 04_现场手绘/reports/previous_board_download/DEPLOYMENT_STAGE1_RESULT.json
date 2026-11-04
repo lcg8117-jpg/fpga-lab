@@ -1,0 +1,202 @@
+{
+  "status": "FAILED_OR_UNKNOWN_REVIEW_BEFORE_RETRY",
+  "sram_attempts": 1,
+  "nonvolatile_flash_written": false,
+  "ZERO_sent": false,
+  "RUN_sent": false,
+  "motion_sent": false,
+  "SET_GAINS_sent": false,
+  "hardware_actions": 1,
+  "uart_requests": [],
+  "calls": [
+    {
+      "label": "JTAG_SCAN",
+      "args": [
+        "--scan-cables"
+      ],
+      "status": "RETURNED",
+      "exit_code": 0,
+      "log_sha256": "4666baaa274d1dd20fe401304139526f850059d90234c0009bb5f382a60953af"
+    },
+    {
+      "label": "JTAG_BEFORE",
+      "args": [
+        "--device",
+        "GW2A-55C",
+        "--cable-index",
+        "0",
+        "--location",
+        "33",
+        "--operation_index",
+        "0"
+      ],
+      "status": "RETURNED",
+      "exit_code": 0,
+      "log_sha256": "dcc507c59c96f339319784ba3ecd6f88c82b2c0a55911f1844688dc8bc1d3869"
+    },
+    {
+      "label": "SRAM_PROGRAM",
+      "args": [
+        "--device",
+        "GW2A-55C",
+        "--cable-index",
+        "0",
+        "--location",
+        "33",
+        "--operation_index",
+        "2",
+        "--fsFile",
+        "D:\\Codex_Scratch\\J280_LIVE_S1_FIX_DS13_20261103_CHAT\\deploy\\20261103_071329\\draw_s1.fs"
+      ],
+      "status": "RETURNED",
+      "exit_code": 0,
+      "log_sha256": "545883d0605417e6caf20d88346dd86f6cabc62488bdffa61e60d9f9abc3b8fb"
+    },
+    {
+      "label": "JTAG_AFTER",
+      "args": [
+        "--device",
+        "GW2A-55C",
+        "--cable-index",
+        "0",
+        "--location",
+        "33",
+        "--operation_index",
+        "0"
+      ],
+      "status": "RETURNED",
+      "exit_code": 0,
+      "log_sha256": "ab8260d62df903936691daf2af78d57151e5fe9cb445bd9e70905481d5ce37d6"
+    }
+  ],
+  "authorization": "User explicitly repeated 直接烧录 after being informed the K100 window had appeared; switch the stopped board from K100 to qualified DS13, without ZERO/RUN or closing other processes.",
+  "physical_tracking_verified": false,
+  "package": "C:\\Users\\董晨阳\\Documents\\Codex\\2026-11-02\\j280-adb1-s1-adaptive-integrated-build\\outputs\\J280_DS13_S1平衡还原_现场手绘修复_20261103",
+  "firmware_sha256": "677b66bdd36c9ceb49ffb6ac813e1acd9042e6f7db922208fd27969a90d067e7",
+  "port": {
+    "name": "COM5",
+    "hwid": "USB VID:PID=1A86:7523 SER= LOCATION=1-2"
+  },
+  "programmer_sha256": "6cadcfe296ad8d58a2b9f23e855d39c3d18d59b61bbd4de68594139727ca5b93",
+  "firmware": "D:\\Codex_Scratch\\J280_LIVE_S1_FIX_DS13_20261103_CHAT\\deploy\\20261103_071329\\draw_s1.fs",
+  "before_uart": {
+    "frames": 549,
+    "bytes": 140800,
+    "errors": 0,
+    "sha256": "d475c978532dbc185e70c3e965202fd7f8d7cd543c1c9300e39acfdea6399ff8",
+    "latest": {
+      "telemetry": {
+        "sequence": 150560,
+        "board_ms": 929246,
+        "control_epoch": 929246,
+        "active_revision": 0,
+        "stored_revision": 0,
+        "adaptive_adoption_epoch": 1462,
+        "firmware_id": 1261514800,
+        "schema": 1261514753,
+        "position_component_epoch": 929245,
+        "gesture_event_seq": 9,
+        "gesture_poll_seq": 613506,
+        "telemetry_dropped": 5840,
+        "rx_errors": 0,
+        "config_revision": 3,
+        "learning_revision": 0,
+        "candidate_feature_epoch": 533725,
+        "fault": 1,
+        "swing_profile": 0,
+        "swing_stage": 0,
+        "motion_state": 0,
+        "gesture_code": 4,
+        "action_reason": 6,
+        "freeze_reason": 2,
+        "direction": 0,
+        "raw_adc": 41,
+        "zero_q4": 9193,
+        "quiet_q4": 652,
+        "mean_adc12": 4095,
+        "raw_guard_mean": 4095,
+        "angle_error": 1010,
+        "angle_diff": 0,
+        "actual_applied_q15": 0,
+        "physical_encoder_raw": 1057,
+        "local_encoder": 10009,
+        "local_target": 10000,
+        "wide_encoder": 9,
+        "wide_target": 9,
+        "final_target": 9,
+        "position_error": 9,
+        "requested_moto": -6900,
+        "angle_pwm": -54317,
+        "position_pwm": 159,
+        "target_angle_adc12": 3085,
+        "control_period_us": 1000,
+        "gesture_errors": 15,
+        "raw43": 0,
+        "raw44": 0,
+        "center_p_offset": 0,
+        "center_d_offset": 0,
+        "fast_p_offset": 0,
+        "fast_d_offset": 0,
+        "manual_gains": [
+          53.779998779296875,
+          0.0,
+          210.13999938964844,
+          17.670000076293945,
+          0.0,
+          616.6099853515625
+        ],
+        "active_gains": [
+          53.779998779296875,
+          0.0,
+          210.13999938964844,
+          17.670000076293945,
+          0.0,
+          616.6099853515625
+        ],
+        "adaptive_target_gains": [
+          53.779998779296875,
+          0.0,
+          210.13999938964844,
+          17.670000076293945,
+          0.0,
+          616.6099853515625
+        ],
+        "components": [
+          -54317.796875,
+          0.0,
+          -0.0,
+          159.02993774414062,
+          0.0,
+          0.0
+        ],
+        "kind": "telemetry",
+        "wire_version": 3,
+        "variant": 16,
+        "flags": 17,
+        "mode": 4,
+        "coherent": true,
+        "adaptive_enabled_at_launch": false,
+        "adaptive_used_at_launch": false,
+        "motor_permitted_at_completion": false,
+        "actual_pwm_at_transaction_launch": 0,
+        "requested_moto_at_completion": -6900,
+        "tracking_error": 9,
+        "control_epoch_stride": 5,
+        "control_log_decimation": 5,
+        "control_profile": 1
+      },
+      "diagnostic": null,
+      "ack": null
+    }
+  },
+  "before_jtag": {
+    "id": 10267,
+    "user": 1261514800
+  },
+  "after_jtag": {
+    "id": 10267,
+    "user": 1146302771
+  },
+  "error": "TypeError(\"'NoneType' object is not subscriptable\")",
+  "finished_local": "2026-11-03T07:14:04.864716+08:00"
+}

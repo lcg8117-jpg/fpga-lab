@@ -1,0 +1,1560 @@
+--- baseline/forest_d1_v1.gprj
++++ modified/forest_d1_v1.gprj
+@@ -32,5 +32,13 @@
+     <File path="src/j280_swing_source_swm4.v" type="file.verilog" enable="1" />
+     <File path="src/forest_d1_diagnostics.v" type="file.verilog" enable="1" />
+     <File path="src/forest_d1_adaptive.v" type="file.verilog" enable="1" />
+-  <File path="src/forest_d1_adaptive_features.v" type="file.verilog" enable="1" /><File path="src/forest_d1_adaptive_motion.v" type="file.verilog" enable="1" /><File path="src/forest_motion_planner.v" type="file.verilog" enable="1" /><File path="src/forest_motion_coordinates.v" type="file.verilog" enable="1" /><File path="src/forest_motion_tables.v" type="file.verilog" enable="1" /></FileList>
+-</Project>+    <File path="src/forest_d1_adaptive_features.v" type="file.verilog" enable="1" />
++    <File path="src/forest_d1_adaptive_motion.v" type="file.verilog" enable="1" />
++    <File path="src/forest_motion_planner.v" type="file.verilog" enable="1" />
++    <File path="src/forest_motion_coordinates.v" type="file.verilog" enable="1" />
++    <File path="src/forest_motion_tables.v" type="file.verilog" enable="1" />
++    <File path="src/forest_motion_finite_scurve.v" type="file.verilog" enable="1" />
++    <File path="src/forest_motion_brake_step.v" type="file.verilog" enable="1" />
++    <File path="src/forest_motion_reference_shape.v" type="file.verilog" enable="1" />
++  </FileList>
++</Project>
+--- baseline/src/forest_d1_adaptive.v
++++ modified/src/forest_d1_adaptive.v
+@@ -1,5 +1,4 @@
+-// Response-conditioned damping memory; no plant identification or optimum claim.
+-// Based on qualified20261025 V3. P +/-16/256; total D0..112/256.
++// Absolute P/D response search with before/trial/after comparison; no global-optimum claim.
+ module forest_d1_adaptive(
+  input clk,rst_n,sample_valid,commit_tick,run_balance,stop,
+  input manual_write,enable_write,enable_value,
+@@ -8,7 +7,7 @@
+  input signed [15:0] angle_error,angle_diff,
+  input signed [31:0] position_error,requested_moto,
+  input signed [15:0] actual_q15,
+- input saturating,fault,
++ input saturating,fault,input evidence_pause,
+  output wire [191:0] target_gains,
+  output reg enabled,
+  output wire active,
+@@ -26,283 +25,263 @@
+  output wire [5:0] diagnostic_window_samples,
+  output wire [3:0] diagnostic_cooldown
+ );
++
++ // Absolute, bidirectional coordinate search. A manual value is the starting
++ // point, never the centre of a percentage-limited search interval.
++ // P32..80, D96..448; I and both position gains retain manual values.
+  localparam [7:0] OFF=0,STOPPED=1,FAULT=2,INTEGRAL=3,GAIN=4,
+-  SATURATION=5,ENVELOPE=6,NOISE=7,WARMUP=8,TRIAL=9,COOLDOWN=10;
+- reg [6:0] center_d,fast_d;
+- reg signed [7:0] fast_p,applied_p,applied_d;
++  SATURATION=5,ENVELOPE=6,NOISE=7,WARMUP=8,TRIAL=9,COOLDOWN=10,QUIET=13;
++ localparam [13:0] P_MIN=512,P_MAX=1280,D_MIN=1536,D_MAX=7168;
++ reg ready;
++ reg [191:0] manual_bank;
++ reg [13:0] best_p,best_d,wanted_p,wanted_d,applied_p,applied_d,probe_p,probe_d;
++ reg axis,negative,tried_reverse;
++ reg [9:0] step_p,step_d;
+  reg [1:0] phase;
+- reg [3:0] cooldown,valid_windows;
+- reg [1:0] bad_windows;
+- reg [6:0] trial_backup;
+- reg trial_down,unloading;
+- reg [31:0] reference_energy,reference_position,previous_energy;
+- reg [15:0] reference_peak,learned_period;
+- reg [5:0] sample_count;
+- reg [31:0] energy,position_cost;
+- reg [15:0] peak;
+- reg signed [15:0] previous_e,previous_de;
+- reg history,period_valid,cross_seen;
+- reg [7:0] reversals;
+- reg [15:0] since_cross,period;
+- reg pending;
+- reg [31:0] pending_epoch,captured_epoch,captured_revision;
+- reg [191:0] captured_gains,candidate_gains;
+- reg signed [7:0] captured_p,captured_d,candidate_p,candidate_d;
+- reg candidate_valid,scale_start,scale_armed;
+- // One coherent feature arrives every 5ms. Four internal stages separate the
+- // magnitude, square, accumulation and acceptance comparison before adoption.
+- reg [3:0] feature_valid;
+- reg signed [15:0] feature_error,feature_diff,feature_actual;
+- reg signed [31:0] feature_position,feature_requested;
+- reg feature_saturating;
+- reg [31:0] feature_epoch,feature_revision;
+- reg [191:0] feature_gains;
+- reg [15:0] magnitude_e,magnitude_de,square_e;
+- reg [31:0] magnitude_position;
+- reg feature_range_bad,feature_saturated;
+- reg [31:0] next_energy,next_position;
+- reg [15:0] next_peak;
+- reg position_ok,peak_ok,improve_up,improve_down,poor_window;
+- wire p_valid,d_valid;
+- wire [31:0] scaled_p,scaled_d;
++ reg [7:0] warmup;
++ reg [5:0] samples;
++ reg half_window;
++ reg [31:0] cost,half_cost,baseline_cost,probe_cost;
++ reg [15:0] peak,baseline_peak,probe_peak,half_peak;
++ reg [31:0] last_epoch;
++ reg [3:0] evaluate_pipe;
++ reg [31:0] evaluate_cost;reg [15:0] evaluate_peak;
++ reg [32:0] evaluate_pair;reg [39:0] evaluate_weight;
++ reg [16:0] evaluate_peak_limit;reg evaluate_peak_ok,evaluate_better;
++ reg [3:0] feature_pipe;
++ reg paused;
++ reg signed [15:0] raw_error,raw_difference,raw_actual;
++ reg signed [31:0] raw_position,raw_request;
++ reg raw_saturating;reg [31:0] raw_epoch;
++ reg [15:0] magnitude_e,magnitude_d,magnitude_u;
++ reg [8:0] magnitude_x;
++ reg invalid_one,invalid_two,invalid_three,saturated_one;
++ reg [7:0] invalid_reason_one,invalid_reason_two,invalid_reason_three;
++ reg [15:0] square_e,square_d;
++ reg [17:0] square_x;
++ reg [31:0] sample_cost;
++ reg [15:0] peak_one,peak_two,peak_three;
++ reg [31:0] epoch_one,epoch_two,epoch_three;
++ wire [15:0] abs_e=raw_error[15] ? -raw_error:raw_error;
++ wire [15:0] abs_d=raw_difference[15] ? -raw_difference:raw_difference;
++ wire [31:0] abs_x=raw_position[31] ? -raw_position:raw_position;
++ wire [31:0] abs_request=raw_request[31] ? -raw_request:raw_request;
++ wire [15:0] abs_u=raw_actual[15] ? -raw_actual:raw_actual;
++ function [13:0] from_float;
++  input [31:0] value;reg [23:0] mantissa;integer shift;
++  begin
++   mantissa={1'b1,value[22:0]};shift=146-value[30:23];
++   if(value[31] || value[30:23]<123)from_float=0;
++   else if(value[30:23]>136)from_float=14'h3fff;
++   else from_float=mantissa>>shift;
++  end
++ endfunction
++ function [31:0] to_float;
++  input [13:0] value;integer i,leading;reg [7:0] exponent;reg [23:0] normalized;
++  begin
++   leading=0;for(i=0;i<14;i=i+1)if(value[i])leading=i;
++   exponent=123+leading;normalized={10'd0,value}<<(23-leading);
++   to_float=value==0 ? 32'd0:{1'b0,exponent,normalized[22:0]};
++  end
++ endfunction
++ wire [13:0] manual_p=from_float(gains_base[31:0]);
++ wire [13:0] manual_d=from_float(gains_base[95:64]);
+  wire integral_nonzero=(|gains_base[62:32]) || (|gains_base[158:128]);
+- wire eligible=gains_base[31:0]>=32'h3f800000 && gains_base[31:0]<=32'h461c4000 &&
+-  gains_base[95:64]>=32'h3f800000 && gains_base[95:64]<=32'h461c4000;
+- wire allowed=enabled && run_balance && !stop && !fault && !integral_nonzero && eligible;
+- assign active=allowed && candidate_valid && candidate_revision==manual_revision &&
++ wire eligible=!gains_base[31] && !gains_base[95] &&
++  gains_base[30:23]!=255 && gains_base[94:87]!=255 &&
++  manual_p>=P_MIN && manual_p<=P_MAX && manual_d>=D_MIN && manual_d<=D_MAX;
++ reg allowed;
++ wire allowed_now=enabled && ready && run_balance && !stop && !fault && !integral_nonzero && eligible &&
++  candidate_revision==manual_revision && !manual_write;
++ // Numerical ownership is registered; the independent physical/serial STOP
++ // still gates motor pins immediately. Never route raw gesture STOP through
++ // the wide gain bank and the FP core in the same20ns cycle.
++ assign active=allowed && ready && enabled && candidate_revision==manual_revision &&
+   !manual_write && !(enable_write && !enable_value);
+- assign target_gains=active ? candidate_gains:gains_base;
+- assign center_p_q8=16'sd0;
+- assign center_d_q8=$signed({9'd0,center_d});
+- assign fast_p_q8={{8{fast_p[7]}},fast_p};
+- wire [6:0] limited_fast_d=fast_d>7'd112-center_d ? 7'd112-center_d:fast_d;
+- assign fast_d_q8=$signed({9'd0,limited_fast_d});
+- wire [15:0] abs_e=feature_error[15] ? -feature_error:feature_error;
+- wire [15:0] abs_de=feature_diff[15] ? -feature_diff:feature_diff;
+- wire [15:0] abs_previous_de=previous_de[15] ? -previous_de:previous_de;
+- wire [31:0] abs_position=feature_position[31] ? -feature_position:feature_position;
+- wire [31:0] abs_requested=feature_requested[31] ? -feature_requested:feature_requested;
+- wire [15:0] abs_actual=feature_actual[15] ? -feature_actual:feature_actual;
+- wire range_bad=abs_e>=256 || abs_position>=300;
+- wire saturated=feature_saturating || abs_requested>=6000 || abs_actual>=30000;
+- wire [3:0] reversal_count={3'd0,reversals[0]}+{3'd0,reversals[1]}+
+-  {3'd0,reversals[2]}+{3'd0,reversals[3]}+{3'd0,reversals[4]}+
+-  {3'd0,reversals[5]}+{3'd0,reversals[6]}+{3'd0,reversals[7]};
+- wire noisy=reversal_count>=5;
+- wire reversal=history && magnitude_de>=2 && abs_previous_de>=2 && feature_diff[15]!=previous_de[15];
+- wire [15:0] next_since=since_cross==65535 ? 16'hffff:since_cross+1'b1;
+- wire crossing=history && feature_error>0 && previous_e<=0;
+- wire new_period_valid=crossing && cross_seen && next_since>=20 && next_since<=1200;
+- wire [15:0] observed_period=new_period_valid ? next_since:period;
+- wire observed_period_valid=new_period_valid || period_valid;
+- wire changed_period=observed_period_valid && learned_period>=24 &&
+-  ({3'd0,observed_period}*3'd5)<({3'd0,learned_period}<<2);
+- function signed [7:0] slew;
+-  input signed [7:0] actual,wanted;
++ // I and position gains are never adapted. Send the stored manual wires
++ // directly, removing128 redundant FF/mux routes from numerical ownership.
++ assign target_gains={gains_base[191:96],(active ? to_float(applied_d):gains_base[95:64]),
++  gains_base[63:32],(active ? to_float(applied_p):gains_base[31:0])};
++ // Existing16-bit telemetry slots now explicitly carry absolute Q4 centres.
++ assign center_p_q8=$signed({2'd0,best_p});assign center_d_q8=$signed({2'd0,best_d});
++ assign fast_p_q8=0;assign fast_d_q8=0;
++ assign diagnostic_phase=phase;assign diagnostic_window_samples=samples;
++ assign diagnostic_cooldown=warmup==0 ? 4'd0:4'd2;
++ wire [31:0] next_cost=cost+sample_cost;
++ wire [15:0] next_peak=peak>peak_three ? peak:peak_three;
++ wire [31:0] block_cost=half_cost+next_cost;
++ wire [15:0] block_peak=half_peak>next_peak ? half_peak:next_peak;
++ wire [32:0] baseline_pair={1'b0,baseline_cost}+{1'b0,block_cost};
++ wire [39:0] trial_weight={8'd0,probe_cost}<<7;
++ wire [39:0] pair_weight=({7'd0,baseline_pair}<<6)-({7'd0,baseline_pair}<<1);
++ wire trial_better=trial_weight<pair_weight &&
++  {1'b0,probe_peak}<={1'b0,(baseline_peak>block_peak ? baseline_peak:block_peak)}+17'd8;
++ wire [13:0] current_step=axis ? {4'd0,step_p}:{4'd0,step_d};
++ wire [13:0] best_axis=axis ? best_p:best_d;
++ wire [13:0] minimum_axis=axis ? P_MIN:D_MIN;
++ wire [13:0] maximum_axis=axis ? P_MAX:D_MAX;
++ wire signed [14:0] proposed_axis=negative ? $signed({1'b0,best_axis})-$signed({1'b0,current_step}):
++  $signed({1'b0,best_axis})+$signed({1'b0,current_step});
++ wire proposed_ok=proposed_axis>=$signed({1'b0,minimum_axis}) && proposed_axis<=$signed({1'b0,maximum_axis});
++ function [13:0] ramp;
++  input [13:0] current,target;input [4:0] amount;
+   begin
+-   if($signed(wanted)>$signed(actual)+9'sd2)slew=actual+8'sd2;
+-   else if($signed(wanted)<$signed(actual)-9'sd2)slew=actual-8'sd2;
+-   else slew=wanted;
++   if({1'b0,target}>{1'b0,current}+amount)ramp=current+amount;
++   else if({1'b0,current}>{1'b0,target}+amount)ramp=current-amount;
++   else ramp=target;
+   end
+  endfunction
+- wire signed [7:0] total_d=$signed({1'b0,center_d})+$signed({1'b0,limited_fast_d});
+- wire signed [7:0] prepare_p=slew(applied_p,fast_p);
+- wire signed [7:0] prepare_d=slew(applied_d,total_d);
+- assign diagnostic_phase=phase;
+- assign diagnostic_window_samples=sample_count;
+- assign diagnostic_cooldown=cooldown;
+-
+- // Observe policy decisions without feeding a diagnostic signal back into the
+- // numerical policy. A policy event is distinct from a committed gain bank.
+- reg [1:0] observed_phase;
+- reg [6:0] observed_center;
+- reg [31:0] observed_learn_revision;
+- reg observed_allowed,command_seen;
+- task record_decision;
+-  input [7:0] code,reason;
+-  input [31:0] epoch,window_energy;
+-  input [15:0] window_peak;
+-  input [6:0] before_center,after_center;
++ task clear_window;
++  begin samples<=0;cost<=0;peak<=0;half_window<=0;half_cost<=0;half_peak<=0;evaluate_pipe<=0;end
++ endtask
++ task decision;
++  input [7:0] code,why;input [31:0] energy_value;input [15:0] peak_value;
+   begin
+-   diagnostic_pulse<=1;diagnostic_seq<=diagnostic_seq+1'b1;
+-   diagnostic_epoch<=epoch;diagnostic_code<=code;diagnostic_reason<=reason;
+-   diagnostic_center_before<=$signed({1'b0,before_center});
+-   diagnostic_center_after<=$signed({1'b0,after_center});
+-   diagnostic_reference_energy<=reference_energy;diagnostic_window_energy<=window_energy;
+-   diagnostic_reference_peak<=reference_peak;diagnostic_window_peak<=window_peak;
+-   diagnostic_event_samples<=code>=8'd6 ? 7'd64:{1'b0,sample_count};
++   diagnostic_pulse<=1;diagnostic_seq<=diagnostic_seq+1'b1;diagnostic_epoch<=epoch_three;
++   diagnostic_code<=code;diagnostic_reason<=why;
++   // Diagnostic8-bit centres are D/4; full absolute P/D are in16-bit Q4 slots.
++   diagnostic_center_before<=$signed({1'b0,best_d[12:6]});
++   diagnostic_center_after<=$signed({1'b0,probe_d[12:6]});
++   diagnostic_reference_energy<=baseline_cost;diagnostic_window_energy<=energy_value;
++   diagnostic_reference_peak<=baseline_peak;diagnostic_window_peak<=peak_value;diagnostic_event_samples<=64;
+   end
+  endtask
+  always @(posedge clk or negedge rst_n)begin
+   if(!rst_n)begin
+-   diagnostic_pulse<=0;diagnostic_seq<=0;diagnostic_epoch<=0;
+-   diagnostic_code<=0;diagnostic_reason<=OFF;
+-   diagnostic_center_before<=0;diagnostic_center_after<=0;
+-   diagnostic_reference_energy<=0;diagnostic_window_energy<=0;
+-   diagnostic_reference_peak<=0;diagnostic_window_peak<=0;
+-   diagnostic_event_samples<=0;
+-   observed_phase<=0;observed_center<=0;observed_learn_revision<=0;
+-   observed_allowed<=0;command_seen<=0;
++   paused<=1;raw_error<=0;raw_difference<=0;raw_position<=0;raw_request<=0;raw_actual<=0;raw_saturating<=0;raw_epoch<=0;
++   allowed<=0;enabled<=0;ready<=0;manual_bank<=0;freeze_reason<=OFF;best_p<=784;best_d<=4160;
++   wanted_p<=784;wanted_d<=4160;applied_p<=784;applied_d<=4160;probe_p<=784;probe_d<=4160;
++   axis<=0;negative<=0;tried_reverse<=0;step_p<=16;step_d<=256;phase<=0;warmup<=128;
++   samples<=0;half_window<=0;cost<=0;half_cost<=0;peak<=0;half_peak<=0;
++   baseline_cost<=0;probe_cost<=0;baseline_peak<=0;probe_peak<=0;last_epoch<=0;
++   evaluate_pipe<=0;evaluate_cost<=0;evaluate_peak<=0;evaluate_pair<=0;evaluate_weight<=0;
++   evaluate_peak_limit<=0;evaluate_peak_ok<=0;evaluate_better<=0;
++   feature_pipe<=0;invalid_one<=0;invalid_two<=0;invalid_three<=0;saturated_one<=0;
++   magnitude_e<=0;magnitude_d<=0;magnitude_x<=0;magnitude_u<=0;
++   square_e<=0;square_d<=0;square_x<=0;sample_cost<=0;peak_one<=0;peak_two<=0;peak_three<=0;
++   epoch_one<=0;epoch_two<=0;epoch_three<=0;
++   invalid_reason_one<=0;invalid_reason_two<=0;invalid_reason_three<=0;
++   learn_revision<=0;adapt_epoch<=0;candidate_epoch<=0;candidate_revision<=0;
++   diagnostic_pulse<=0;diagnostic_seq<=0;diagnostic_epoch<=0;diagnostic_code<=0;diagnostic_reason<=0;
++   diagnostic_center_before<=0;diagnostic_center_after<=0;diagnostic_reference_energy<=0;
++   diagnostic_window_energy<=0;diagnostic_reference_peak<=0;diagnostic_window_peak<=0;diagnostic_event_samples<=0;
+   end else begin
+-   diagnostic_pulse<=0;observed_phase<=phase;observed_center<=center_d;
+-   observed_learn_revision<=learn_revision;observed_allowed<=allowed;
+-   command_seen<=manual_write || enable_write;
+-   if(manual_write)
+-    record_decision(8'd3,OFF,sample_epoch,energy,peak,center_d,7'd0);
+-   else if(enable_write)
+-    record_decision(enable_value ? 8'd1:8'd2,enable_value ? WARMUP:OFF,
+-     sample_epoch,energy,peak,center_d,7'd0);
+-   else if(!command_seen && observed_allowed && !allowed)
+-    record_decision(8'd4,fault ? FAULT:stop || !run_balance ? STOPPED:
+-     integral_nonzero ? INTEGRAL:GAIN,sample_epoch,energy,peak,center_d,
+-     phase==1 || phase==2 ? trial_backup:center_d);
+-   else if(allowed && feature_valid[3] && feature_revision==manual_revision &&
+-           (feature_saturated || feature_range_bad || noisy))
+-    record_decision(8'd5,feature_saturated ? SATURATION:feature_range_bad ? ENVELOPE:NOISE,
+-     feature_epoch,energy,peak,center_d,phase==1 || phase==2 ? trial_backup:center_d);
+-   else if(observed_phase==0 && phase==1)
+-    record_decision(trial_down ? 8'd7:8'd6,TRIAL,feature_epoch,
+-     previous_energy,next_peak,observed_center,center_d);
+-   else if(observed_learn_revision!=learn_revision)
+-    record_decision(8'd8,8'd0,feature_epoch,previous_energy,next_peak,observed_center,center_d);
+-   else if(observed_phase==2 && phase==3 && freeze_reason==TRIAL)
+-    record_decision(8'd9,COOLDOWN,feature_epoch,previous_energy,next_peak,observed_center,center_d);
+-   else if(observed_phase==3 && phase==0 && freeze_reason==COOLDOWN)
+-    record_decision(8'd10,8'd0,feature_epoch,previous_energy,next_peak,observed_center,center_d);
+-  end
+- end
+- forest_d1_adaptive_scale p_scale(clk,rst_n,scale_start,captured_gains[31:0],captured_p,p_valid,scaled_p);
+- forest_d1_adaptive_scale d_scale(clk,rst_n,scale_start,captured_gains[95:64],captured_d,d_valid,scaled_d);
+- task clear_evidence;
+-  begin
+-   if(phase==1 || phase==2)center_d<=trial_backup;
+-   phase<=0;cooldown<=0;sample_count<=0;energy<=0;position_cost<=0;peak<=0;previous_energy<=0;
+-   bad_windows<=0;valid_windows<=0;history<=0;period_valid<=0;cross_seen<=0;
+-   previous_e<=0;previous_de<=0;reversals<=0;since_cross<=0;period<=0;
+-   fast_p<=0;fast_d<=0;candidate_valid<=0;pending<=0;feature_valid<=0;scale_armed<=0;
+-  end
+- endtask
+- always @(posedge clk or negedge rst_n)begin
+-  if(!rst_n)begin
+-   enabled<=0;freeze_reason<=OFF;center_d<=0;fast_p<=0;fast_d<=0;applied_p<=0;applied_d<=0;
+-   learn_revision<=0;adapt_epoch<=0;candidate_epoch<=0;candidate_revision<=0;
+-   phase<=0;cooldown<=0;valid_windows<=0;bad_windows<=0;trial_backup<=0;trial_down<=0;unloading<=0;
+-   reference_energy<=0;reference_position<=0;reference_peak<=0;previous_energy<=0;learned_period<=0;
+-   sample_count<=0;energy<=0;position_cost<=0;peak<=0;previous_e<=0;previous_de<=0;
+-   history<=0;period_valid<=0;cross_seen<=0;reversals<=0;since_cross<=0;period<=0;
+-   pending<=0;pending_epoch<=0;captured_epoch<=0;captured_revision<=0;captured_gains<=0;
+-   captured_p<=0;captured_d<=0;candidate_gains<=0;candidate_p<=0;candidate_d<=0;candidate_valid<=0;scale_start<=0;scale_armed<=0;
+-   feature_valid<=0;feature_error<=0;feature_diff<=0;feature_actual<=0;
+-   feature_position<=0;feature_requested<=0;feature_saturating<=0;
+-   feature_epoch<=0;feature_revision<=0;feature_gains<=0;
+-   magnitude_e<=0;magnitude_de<=0;magnitude_position<=0;square_e<=0;
+-   feature_range_bad<=0;feature_saturated<=0;next_energy<=0;next_position<=0;next_peak<=0;
+-   position_ok<=0;peak_ok<=0;improve_up<=0;improve_down<=0;poor_window<=0;
+-  end else begin
+-   scale_start<=0;pending<=0;feature_valid<={feature_valid[2:0],1'b0};
+-   if(manual_write)begin
+-    enabled<=0;clear_evidence;center_d<=0;learned_period<=0;unloading<=0;
+-    applied_p<=0;applied_d<=0;freeze_reason<=OFF;
+-   end else if(enable_write)begin
+-    enabled<=enable_value;clear_evidence;center_d<=0;learned_period<=0;unloading<=0;
+-    applied_p<=0;applied_d<=0;freeze_reason<=enable_value ? WARMUP:OFF;
++   allowed<=allowed_now;paused<=evidence_pause;
++   diagnostic_pulse<=0;feature_pipe<={feature_pipe[2:0],1'b0};evaluate_pipe<={evaluate_pipe[2:0],1'b0};
++   if(manual_write)begin enabled<=0;ready<=0;feature_pipe<=0;clear_window;phase<=0;freeze_reason<=OFF;end
++   else if(enable_write)begin
++    enabled<=enable_value;ready<=enable_value && eligible && !integral_nonzero;
++    manual_bank<=gains_base;candidate_revision<=manual_revision;candidate_epoch<=sample_epoch;
++    best_p<=manual_p;best_d<=manual_d;wanted_p<=manual_p;wanted_d<=manual_d;
++    applied_p<=manual_p;applied_d<=manual_d;probe_p<=manual_p;probe_d<=manual_d;
++    axis<=0;negative<=0;tried_reverse<=0;step_p<=16;step_d<=256;phase<=0;warmup<=128;
++    feature_pipe<=0;clear_window;freeze_reason<=enable_value ? WARMUP:OFF;
+    end else if(!allowed)begin
+-    clear_evidence;applied_p<=0;applied_d<=0;
++    feature_pipe<=0;clear_window;phase<=0;warmup<=128;wanted_p<=best_p;wanted_d<=best_d;applied_p<=best_p;applied_d<=best_d;
+     if(!enabled)freeze_reason<=OFF;
+     else if(fault)freeze_reason<=FAULT;
+     else if(stop || !run_balance)freeze_reason<=STOPPED;
+     else if(integral_nonzero)freeze_reason<=INTEGRAL;
+     else freeze_reason<=GAIN;
+    end else begin
+-    if(sample_valid)begin
+-     feature_valid[0]<=1;feature_error<=angle_error;feature_diff<=angle_diff;
+-     feature_actual<=actual_q15;feature_position<=position_error;feature_requested<=requested_moto;
+-     feature_saturating<=saturating;feature_epoch<=sample_epoch;
+-     feature_revision<=manual_revision;feature_gains<=gains_base;
++    if(commit_tick)begin
++     applied_p<=ramp(applied_p,wanted_p,5'd2);applied_d<=ramp(applied_d,wanted_d,5'd16);
++     candidate_epoch<=last_epoch;adapt_epoch<=adapt_epoch+1'b1;
+     end
+-    if(feature_valid[0])begin
+-     magnitude_e<=abs_e;magnitude_de<=abs_de;magnitude_position<=abs_position;
+-     // |e|>=256 is rejected before its energy can enter any state. A qualified
+-     // 64-sample window is at most64*255^2=4161600 (22 bits).
+-     square_e<=abs_e[7:0]*abs_e[7:0];
+-     feature_range_bad<=range_bad;feature_saturated<=saturated;
+-    end
+-    if(feature_valid[1])begin
+-     next_energy<={10'd0,(energy[21:0]+{6'd0,square_e})};
+-     next_position<={17'd0,(position_cost[14:0]+{6'd0,magnitude_position[8:0]})};
+-     next_peak<=peak>magnitude_e ? peak:magnitude_e;
+-    end
+-    if(feature_valid[2])begin
+-     // Qualified position cost<=64*299 and peak<=255. Widen BEFORE shifting
+-     // or adding so these narrower comparisons preserve every old threshold.
+-     position_ok<={1'b0,next_position[14:0]}<=
+-       {1'b0,reference_position[14:0]}+({1'b0,reference_position[14:0]}>>2)+16'd256;
+-     peak_ok<={1'b0,next_peak[7:0]}<={1'b0,reference_peak[7:0]}+9'd8;
+-     improve_up<=({6'd0,next_energy[21:0]}<<6)<=
+-       ({6'd0,reference_energy[21:0]}<<6)-{6'd0,reference_energy[21:0]};
+-     improve_down<=({5'd0,next_energy[21:0]}<<4)<=
+-       ({5'd0,reference_energy[21:0]}<<4)+{5'd0,reference_energy[21:0]}+27'd16384;
+-     poor_window<=previous_energy>=1024 && ({3'd0,next_energy[21:0]}<<3)>={3'd0,previous_energy[21:0]};
+-    end
+-    if(commit_tick && active)begin
+-     applied_p<=candidate_p;applied_d<=candidate_d;adapt_epoch<=adapt_epoch+1'b1;
+-    end
+-    if(p_valid && d_valid && scale_armed && captured_revision==manual_revision)begin
+-     scale_armed<=0;
+-     candidate_gains<={captured_gains[191:96],scaled_d,captured_gains[63:32],scaled_p};
+-     candidate_p<=captured_p;candidate_d<=captured_d;
+-     candidate_epoch<=captured_epoch;candidate_revision<=captured_revision;candidate_valid<=1;
+-    end
+-    if(pending)begin
+-     captured_gains<=feature_gains;captured_revision<=feature_revision;captured_epoch<=pending_epoch;
+-     captured_p<=prepare_p;captured_d<=prepare_d;scale_start<=1;scale_armed<=1;
+-    end
+-    if(feature_valid[3] && feature_revision==manual_revision)begin
+-     pending<=1;pending_epoch<=feature_epoch;
+-     if(feature_saturated || feature_range_bad || noisy)begin
+-      clear_evidence;pending<=1;pending_epoch<=feature_epoch;phase<=3;cooldown<=4;
+-      freeze_reason<=feature_saturated ? SATURATION:feature_range_bad ? ENVELOPE:NOISE;
+-     end else begin
+-      previous_e<=feature_error;previous_de<=feature_diff;history<=1;reversals<={reversals[6:0],reversal};
+-      since_cross<=crossing ? 16'd0:next_since;
+-      if(crossing)cross_seen<=1;
+-      if(new_period_valid)begin period<=next_since;period_valid<=1;end
+-      if(magnitude_e<4)begin fast_p<=0;fast_d<=0;end
+-      else if(feature_error!=0 && feature_diff!=0 && feature_error[15]!=feature_diff[15])begin fast_p<=-8'sd16;fast_d<=12;end
+-      else if(magnitude_e>=12)begin fast_p<=16;fast_d<=24;end
+-      else begin fast_p<=0;fast_d<=magnitude_de>=2 ? 7'd4:7'd0;end
+-      sample_count<=sample_count+1'b1;energy<=next_energy;position_cost<=next_position;peak<=next_peak;
+-      freeze_reason<=phase==1 || phase==2 ? TRIAL:phase==3 ? COOLDOWN:valid_windows<2 ? WARMUP:8'd0;
+-      if(sample_count==63)begin
+-       sample_count<=0;energy<=0;position_cost<=0;peak<=0;previous_energy<=next_energy;
+-       if(valid_windows<15)valid_windows<=valid_windows+1'b1;
+-       case(phase)
+-        3:begin cooldown<=cooldown-1'b1;if(cooldown==1)phase<=0;end
+-        1:phase<=2;
+-        2:begin
+-         bad_windows<=0;
+-         if(position_ok && peak_ok && (trial_down ? improve_down:improve_up))begin
+-          learn_revision<=learn_revision+1'b1;phase<=0;
+-          if(observed_period_valid && !trial_down)learned_period<=observed_period;
+-          if(trial_down && center_d==0)begin learned_period<=observed_period_valid ? observed_period:16'd0;unloading<=0;end
+-         end else begin center_d<=trial_backup;phase<=3;cooldown<=4;unloading<=0;end
++    if(paused)begin
++     // Learning pauses without throwing away the learned gain bank. A trial
++     // interrupted by motion is rolled back; motor commands are never gated.
++     wanted_p<=best_p;wanted_d<=best_d;phase<=0;warmup<=128;feature_pipe<=0;clear_window;
++     freeze_reason<=WARMUP;
++    end else begin
++     if(sample_valid)begin
++      feature_pipe[0]<=1;raw_error<=angle_error;raw_difference<=angle_diff;
++      raw_position<=position_error;raw_request<=requested_moto;raw_actual<=actual_q15;
++      raw_saturating<=saturating;raw_epoch<=sample_epoch;
++     end
++     if(feature_pipe[0])begin
++      magnitude_e<=abs_e;magnitude_d<=abs_d>127 ? 16'd127:abs_d;
++      magnitude_x<=abs_x[8:0];magnitude_u<=abs_u;
++      invalid_one<=raw_saturating || abs_request>=6000 || abs_u>=30000 || abs_e>=256 || abs_x>=300;
++      invalid_reason_one<=(raw_saturating || abs_request>=6000 || abs_u>=30000) ? SATURATION:ENVELOPE;
++      peak_one<=abs_e;epoch_one<=raw_epoch;
++     end
++     if(feature_pipe[1])begin
++      square_e<=magnitude_e[7:0]*magnitude_e[7:0];square_d<=magnitude_d[6:0]*magnitude_d[6:0];
++      square_x<=magnitude_x*magnitude_x;invalid_two<=invalid_one;invalid_reason_two<=invalid_reason_one;
++      peak_two<=peak_one;epoch_two<=epoch_one;
++     end
++     if(feature_pipe[2])begin
++      sample_cost<=({16'd0,square_e}<<4)+({16'd0,square_d}<<2)+{14'd0,square_x}+{20'd0,magnitude_u[15:4]};
++      invalid_three<=invalid_two;invalid_reason_three<=invalid_reason_two;peak_three<=peak_two;epoch_three<=epoch_two;
++     end
++     if(feature_pipe[3])begin
++      last_epoch<=epoch_three;
++      if(invalid_three)begin
++       wanted_p<=best_p;wanted_d<=best_d;phase<=0;warmup<=128;clear_window;
++       freeze_reason<=invalid_reason_three;decision(5,invalid_reason_three,0,peak_three);
++      end else if(applied_p!=wanted_p || applied_d!=wanted_d)begin clear_window;warmup<=128;freeze_reason<=WARMUP;end
++      else if(warmup!=0)begin warmup<=warmup-1'b1;clear_window;freeze_reason<=WARMUP;end
++      else begin
++       freeze_reason<=phase==0 ? 8'd0:TRIAL;
++       cost<=next_cost;peak<=next_peak;samples<=samples+1'b1;
++       if(samples==63)begin
++        samples<=0;cost<=0;peak<=0;
++        if(!half_window)begin half_window<=1;half_cost<=next_cost;half_peak<=next_peak;end
++        else begin
++         half_window<=0;half_cost<=0;half_peak<=0;
++         evaluate_cost<=block_cost;evaluate_peak<=block_peak;evaluate_pipe[0]<=1;
+         end
+-        default:begin
+-         if(next_energy>=1024 && next_peak>=8 && valid_windows>=1)begin
+-          if(poor_window)begin if(bad_windows<3)bad_windows<=bad_windows+1'b1;end
+-          else bad_windows<=0;
+-          if(changed_period && center_d>=4)unloading<=1;
+-          if(((unloading || changed_period) && center_d>=4) ||
+-             (poor_window && bad_windows>=2 && center_d<=92))begin
+-           trial_backup<=center_d;trial_down<=(unloading || changed_period) && center_d>=4;
+-           center_d<=(unloading || changed_period) && center_d>=4 ? center_d-7'd4:center_d+7'd4;
+-           reference_energy<=next_energy;reference_position<=next_position;reference_peak<=next_peak;
+-           phase<=1;bad_windows<=0;
++       end
++      end
++     end
++     if(evaluate_pipe[0])begin
++      evaluate_pair<={1'b0,baseline_cost}+{1'b0,evaluate_cost};
++      evaluate_peak_limit<={1'b0,(baseline_peak>evaluate_peak ? baseline_peak:evaluate_peak)}+17'd8;
++     end
++     if(evaluate_pipe[1])begin
++      evaluate_weight<=({7'd0,evaluate_pair}<<6)-({7'd0,evaluate_pair}<<1);
++      evaluate_peak_ok<={1'b0,probe_peak}<=evaluate_peak_limit;
++     end
++     if(evaluate_pipe[2])evaluate_better<=({8'd0,probe_cost}<<7)<evaluate_weight && evaluate_peak_ok;
++     if(evaluate_pipe[3] && !(feature_pipe[3] && invalid_three))begin
++         case(phase)
++          0:begin
++           baseline_cost<=evaluate_cost;baseline_peak<=evaluate_peak;
++           if(evaluate_peak<5)begin freeze_reason<=QUIET;end
++           else if(!proposed_ok)begin
++            if(!tried_reverse)begin negative<=!negative;tried_reverse<=1;end
++            else begin axis<=!axis;negative<=0;tried_reverse<=0;end
++           end else begin
++            probe_p<=axis ? proposed_axis[13:0]:best_p;probe_d<=axis ? best_d:proposed_axis[13:0];
++            wanted_p<=axis ? proposed_axis[13:0]:best_p;wanted_d<=axis ? best_d:proposed_axis[13:0];
++            phase<=1;warmup<=128;decision(negative ? 7:6,TRIAL,evaluate_cost,evaluate_peak);
++           end
+           end
+-         end else bad_windows<=0;
+-        end
+-       endcase
+-      end
++          1:begin
++           probe_cost<=evaluate_cost;probe_peak<=evaluate_peak;wanted_p<=best_p;wanted_d<=best_d;
++           phase<=2;warmup<=128;decision(11,TRIAL,evaluate_cost,evaluate_peak);
++          end
++          2:begin
++           phase<=0;warmup<=128;
++           if(evaluate_better)begin
++            best_p<=probe_p;best_d<=probe_d;wanted_p<=probe_p;wanted_d<=probe_d;
++            learn_revision<=learn_revision+1'b1;tried_reverse<=0;
++            if(axis)begin if(step_p<32)step_p<=step_p<<1;end
++            else begin if(step_d<512)step_d<=step_d<<1;end
++            decision(8,0,probe_cost,probe_peak);
++           end else begin
++            if(!tried_reverse)begin negative<=!negative;tried_reverse<=1;end
++            else begin
++             if(axis)begin if(step_p>4)step_p<=step_p>>1;end
++             else begin if(step_d>32)step_d<=step_d>>1;end
++             axis<=!axis;negative<=0;tried_reverse<=0;
++            end
++            decision(9,COOLDOWN,probe_cost,probe_peak);
++           end
++          end
++          default:begin phase<=0;warmup<=128;wanted_p<=best_p;wanted_d<=best_d;end
++         endcase
+      end
+     end
+    end
+--- baseline/src/forest_d1_adaptive_motion.v
++++ modified/src/forest_d1_adaptive_motion.v
+@@ -32,7 +32,8 @@
+   .rst_n(rst_n),
+   .sample_valid(sample_valid),
+   .commit_tick(commit_tick),
+-  .run_balance(run_balance && !evidence_freeze),
++  .run_balance(run_balance),
++  .evidence_pause(evidence_freeze),
+   .stop(stop),
+   .manual_write(manual_write),
+   .enable_write(enable_write),
+--- baseline/src/forest_d1_gesture_decode.v
++++ modified/src/forest_d1_gesture_decode.v
+@@ -1,7 +1,8 @@
+ // Stateless optical classification plus release-based event ownership.
+-// Wave preempts normal arming and never waits for a gesture quit delay.
++// The accepted-command interval blocks ALL optical events, including down.
++// Physical ESTOP and serial STOP are separate immediate paths.
+ module forest_d1_gesture_decode(
+- input clk,input rst_n,input flush,input sample_valid,
++ input clk,input rst_n,input flush,input sample_valid,input motion_inhibit,
+  input [7:0] raw43,raw44,input [2:0] map_flags,
+  output reg event_valid,output reg [3:0] event_code,
+  output reg [31:0] event_seq,suppressed_count,
+@@ -9,7 +10,7 @@
+  output wire [7:0] diagnostic_state,output reg armed
+ );
+  reg [1:0] zero_count;
+- reg normal_held,wave_held;
++ reg normal_held,wave_held,down_held;
+  assign diagnostic_state={3'd0,wave_held,zero_count,normal_held,armed};
+  reg [3:0] decoded,mapped;
+  always @* begin
+@@ -26,13 +27,19 @@
+  always @(posedge clk or negedge rst_n)begin
+   if(!rst_n)begin
+    event_valid<=0;event_code<=0;event_seq<=0;suppressed_count<=0;
+-   decode_reason<=1;zero_count<=0;normal_held<=0;wave_held<=0;armed<=0;
++   decode_reason<=1;zero_count<=0;normal_held<=0;wave_held<=0;down_held<=0;armed<=0;
+   end else begin
+    event_valid<=0;
+    if(flush)begin armed<=0;normal_held<=0;zero_count<=0;decode_reason<=1;end
+    if(sample_valid)begin
+-    // Even a mixed or otherwise invalid frame may request the safe STOP.
+-    if(raw44[0])begin
++    if(motion_inhibit && (raw43!=0 || raw44!=0))begin
++     // A lowering hand after a circle is not a new down-slide command.
++     // Remember blocked special holds too, preventing replay at expiry.
++     zero_count<=0;normal_held<=1;armed<=0;decode_reason<=4;
++     if(raw43==8'h08 && raw44==0)down_held<=1;
++     if(raw44[0])wave_held<=1;
++     if(suppressed_count!=32'hffffffff)suppressed_count<=suppressed_count+1'b1;
++    end else if(raw44[0])begin
+      zero_count<=0;normal_held<=1;armed<=0;
+      if(!wave_held)begin
+       event_valid<=1;event_code<=9;event_seq<=event_seq+1'b1;decode_reason<=0;
+@@ -41,10 +48,21 @@
+       decode_reason<=2;
+      end
+      wave_held<=1;
++    end else if(raw43==8'h08 && raw44==0)begin
++     // Down-slide STOP stays available even after a blocked motion consumed
++     // normal arming. One STOP event per hold, just like the wave priority.
++     zero_count<=0;normal_held<=1;armed<=0;
++     if(!down_held)begin
++      event_valid<=1;event_code<=4;event_seq<=event_seq+1'b1;decode_reason<=0;
++     end else begin
++      if(suppressed_count!=32'hffffffff)suppressed_count<=suppressed_count+1'b1;
++      decode_reason<=2;
++     end
++     down_held<=1;
+     end else if(raw43==0 && raw44==0)begin
+      if(!flush)begin
+       if(zero_count==1)begin
+-       zero_count<=2;normal_held<=0;wave_held<=0;armed<=1;decode_reason<=0;
++       zero_count<=2;normal_held<=0;wave_held<=0;down_held<=0;armed<=1;decode_reason<=0;
+       end else if(zero_count==0)zero_count<=1;
+      end
+     end else begin
+--- baseline/src/forest_d1_gesture_reader.v
++++ modified/src/forest_d1_gesture_reader.v
+@@ -10,7 +10,7 @@
+  parameter integer RETRY_CYCLES=CLK_HZ/2,
+  parameter integer I2C_TIMEOUT_CYCLES=CLK_HZ/100
+ )(
+- input clk,input rst_n,input restart,input flush,input [2:0] map_flags,
++ input clk,input rst_n,input restart,input flush,input motion_inhibit,input [2:0] map_flags,
+  inout scl,inout sda,
+  output reg ready,output wire busy,
+  output reg [7:0] error_code,output reg [15:0] error_count,
+@@ -42,7 +42,7 @@
+   .busy(transport_busy),.done(transport_done),.error_code(transport_error),
+   .read_data(low_byte),.read_high(high_byte),.read_count(read_count));
+  forest_d1_gesture_decode decoder(.clk(clk),.rst_n(local_rst_n),
+-  .flush(flush || decode_flush),.sample_valid(pair_valid),
++  .flush(flush || decode_flush),.sample_valid(pair_valid),.motion_inhibit(motion_inhibit),
+   .raw43(raw43),.raw44(raw44),.map_flags(map_flags),
+   .event_valid(event_valid),.event_code(event_code),.event_seq(event_seq),
+   .suppressed_count(suppressed_count),.decode_reason(decode_reason),.armed(),.diagnostic_state(diagnostic_state));
+--- baseline/src/forest_d1_system.v
++++ modified/src/forest_d1_system.v
+@@ -85,7 +85,7 @@
+  reg planner_read_invalid;
+  always @*begin
+   planner_read_invalid=1;
+-  case(cfg_id)0,1,2,3,4,5,6,7,8,9:planner_read_invalid=0;default:begin end endcase
++  case(cfg_id)0,1,2,3,4,5,6,7,8,9,10:planner_read_invalid=0;default:begin end endcase
+  end
+  wire cfg_read_invalid=(FEATURE_MOTION && cfg_group==251) ? planner_read_invalid:
+   (FEATURE_AUTORETURN && cfg_group==253) ? (cfg_read_value==32'hffffffff):source_read_invalid(cfg_group[1:0],cfg_id);
+@@ -101,6 +101,7 @@
+  wire [31:0] frames;
+  wire adaptation_enabled,adaptation_active;
+  wire gesture_ready,gesture_busy,gesture_event;wire [3:0] gesture_code;
++ wire motion_guard_active;
+  wire [7:0] gesture_error,gesture_id0,gesture_id1,gesture_init,raw43,raw44,decode_reason;
+  wire [7:0] gesture_decode_state;
+  wire [15:0] gesture_errors;wire [31:0] gesture_poll,gesture_sequence,suppressed_gestures;
+@@ -144,7 +145,7 @@
+   .tlm_dropped(tlm_dropped),.reply_dropped(reply_dropped),.busy(link_busy));
+  generate if(FEATURE_GESTURE)begin:gesture_hardware
+   forest_d1_gesture_reader reader(.clk(clk_50m),.rst_n(control_rst_n),.restart(!gesture_enabled),
+-   .flush(stopping || estop || fault!=0 || config_changed),.map_flags(gesture_map),
++   .flush(stopping || estop || fault!=0 || config_changed),.motion_inhibit(motion_guard_active),.map_flags(gesture_map),
+    .scl(gesture_scl),.sda(gesture_sda),.ready(gesture_ready),.busy(gesture_busy),.error_code(gesture_error),
+    .error_count(gesture_errors),.id0(gesture_id0),.id1(gesture_id1),.init_index(gesture_init),
+    .raw43(raw43),.raw44(raw44),.poll_seq(gesture_poll),.event_seq(gesture_sequence),
+@@ -295,6 +296,7 @@
+  wire [7:0] planner_action;wire [3:0] planner_phase;
+  wire signed [63:0] motion_origin,motion_final;
+  wire signed [31:0] planner_velocity_q,planner_acceleration_q;
++ wire signed [31:0] nominal_velocity_q,nominal_acceleration_q;
+  wire motion_velocity_valid;
+  wire reanchor;
+  reg motion_session;
+@@ -343,10 +345,11 @@
+    .cfg_write(cfg_write && cfg_group==251),.cfg_id(cfg_id),.cfg_value(cfg_value),
+    .cfg_ok(planner_cfg_ok),.cfg_error(planner_cfg_error),.cfg_revision(planner_cfg_revision),.cfg_read_value(planner_cfg_read_value),
+    .origin_wide(motion_origin),.final_wide(motion_final),.last_request_id(planner_request),.last_action(planner_action),
+-   .planner_phase(planner_phase),.velocity_q(planner_velocity_q),.acceleration_q(planner_acceleration_q),
++   .planner_phase(planner_phase),.velocity_q(nominal_velocity_q),.acceleration_q(nominal_acceleration_q),
++   .controller_velocity_q(planner_velocity_q),.controller_acceleration_q(planner_acceleration_q),
+    .velocity_valid(motion_velocity_valid),.left_positive(left_positive),.cw_positive(cw_positive),
+    .enc_wide_physical(wide_physical),.encoder_wide(wide_encoder),.target_wide(wide_target),
+-   .encoder_local(motion_encoder),.target_local(motion_target),.active(motion_active),.state(motion_state),
++   .encoder_local(motion_encoder),.target_local(motion_target),.active(motion_active),.motion_guard_active(motion_guard_active),.state(motion_state),
+    .direction(motion_direction),.fault(motion_fault),.accepted(motion_accepted),.rejected(motion_rejected),
+    .reason(motion_reason),.event_count(motion_events),.kit_ip570(kit_ip570),
+    .trajectory_done(trajectory_done),.tracking_settled(tracking_settled),.measured_velocity_cps(measured_velocity_cps),
+@@ -357,11 +360,12 @@
+  end else begin:no_motion
+   assign planner_cfg_read_value=32'hffffffff;assign planner_cfg_revision=0;assign planner_cfg_ok=0;assign planner_cfg_error=0;
+   assign motion_origin=0;assign motion_final=0;assign planner_request=0;assign planner_action=0;assign planner_phase=0;
+-  assign planner_velocity_q=0;assign planner_acceleration_q=0;assign motion_velocity_valid=0;
++  assign planner_velocity_q=0;assign planner_acceleration_q=0;assign nominal_velocity_q=0;assign nominal_acceleration_q=0;assign motion_velocity_valid=0;
+   assign wide_physical={{32{encoder_relative[31]}},encoder_relative};
+   assign wide_encoder=$signed(mapped_encoder)-64'sd10000;assign wide_target=0;
+   assign motion_encoder=mapped_encoder;assign motion_target=10000;
+   assign motion_active=0;assign motion_state=0;assign motion_direction=0;assign motion_fault=0;
++  assign motion_guard_active=0;
+   assign trajectory_done=0;assign tracking_settled=0;assign measured_velocity_cps=0;assign reference_velocity_cps=0;
+   assign tracking_error=0;assign settle_ticks=0;assign motion_stop_reason=0;
+   assign motion_accepted=0;assign motion_rejected=0;assign motion_reason=0;assign motion_events=0;
+@@ -429,8 +433,22 @@
+  assign BN2=swing_bn2 | balance_bn2 | return_bn2;
+  assign PWMB=swing_pwm | balance_pwm_pin | return_pwm;
+  assign actuator_diag=mode==5 ? (auto_preparing ? return_diag:swing_diag):balance_diag;
+- wire signed [15:0] actual_q15=(!actuator_diag[16] || actuator_diag[18]) ? 16'sd0:
+-  actuator_diag[17] ? -$signed(actuator_diag[15:0]):$signed(actuator_diag[15:0]);
++ // Calculate each signed diagnostic before the late mode selection. This is
++ // the same combinational value at the same clock edge; no actuator/ADC/PID
++ // input, state, sample period or protection predicate changes.
++ function signed [15:0] diagnostic_actual_q15;
++  input [31:0] value;
++  begin diagnostic_actual_q15=(!value[16] || value[18]) ? 16'sd0:
++   value[17] ? -$signed(value[15:0]):$signed(value[15:0]);end
++ endfunction
++ wire signed [15:0] actual_balance_q15 /* synthesis syn_keep=1 */;
++ wire signed [15:0] actual_swing_q15 /* synthesis syn_keep=1 */;
++ wire signed [15:0] actual_return_q15 /* synthesis syn_keep=1 */;
++ assign actual_balance_q15=diagnostic_actual_q15(balance_diag);
++ assign actual_swing_q15=diagnostic_actual_q15(swing_diag);
++ assign actual_return_q15=diagnostic_actual_q15(return_diag);
++ wire signed [15:0] actual_q15=mode==5 ?
++  (auto_preparing ? actual_return_q15:actual_swing_q15):actual_balance_q15;
+  reg captured_adaptive_used,captured_adaptive_enabled;reg [7:0] captured_freeze;
+  reg [31:0] captured_feature_epoch;
+  reg [31:0] captured_ms,captured_epoch,captured_revision,captured_stored_revision,captured_adaptive_epoch;
+@@ -571,17 +589,25 @@
+  wire [7:0] learning_code,learning_reason;wire signed [7:0] diagnostic_center_before,diagnostic_center_after;
+  wire [15:0] diagnostic_reference_peak,diagnostic_window_peak;wire [1:0] diagnostic_phase;
+  wire [5:0] diagnostic_window_samples;wire [3:0] diagnostic_cooldown;wire [6:0] diagnostic_event_samples;
++ reg numerical_calibrated,numerical_history_clear;
++ always @(posedge clk_50m or negedge control_rst_n)begin
++  if(!control_rst_n)begin numerical_calibrated<=0;numerical_history_clear<=1;end
++  else begin
++   numerical_calibrated<=zero_valid && !capture_active;
++   numerical_history_clear<=mode!=3 || !actual_balance_permission || prime_pending || hold_pulse || manual_write || motion_accepted;
++  end
++ end
+  generate if(FEATURE_ADAPTIVE)begin:adaptive_hardware
+-  forest_d1_adaptive_features features(.clk(clk_50m),.rst_n(control_rst_n && zero_valid && !capture_active),
++  forest_d1_adaptive_features features(.clk(clk_50m),.rst_n(control_rst_n && numerical_calibrated),
+    .control_done(done && source_rst_n),
+-   .history_clear(mode!=3 || !actual_balance_permission || prime_pending || hold_pulse || manual_write || motion_accepted),
++   .history_clear(numerical_history_clear),
+    .transaction_epoch(captured_epoch),.angle_adc12(captured_angle[11:0]),
+    .sampled_encoder_local(captured_encoder),.transaction_target_local(captured_local_target),
+    .reference_velocity_cps(captured_reference_velocity),.reference_acceleration_q(captured_acceleration_q),
+    .motion_braking(captured_motion_state==3),.feature_valid(feature_valid),.feature_epoch(feature_epoch),
+    .angle_error(feature_error),.angle_diff(feature_difference),.position_error(feature_position),
+    .evidence_freeze(feature_freeze),.evidence_reason(feature_reason));
+-  forest_d1_adaptive_motion adaptive(.clk(clk_50m),.rst_n(control_rst_n && zero_valid && !capture_active),
++  forest_d1_adaptive_motion adaptive(.clk(clk_50m),.rst_n(control_rst_n && numerical_calibrated),
+    .sample_valid(motion_session ? feature_valid:(done && source_rst_n)),.commit_tick(adaptive_commit),.run_balance(mode==3 && actual_balance_permission),
+    .stop(stopping || estop || !run_session),.manual_write(manual_write),.enable_write(adapt_enable_write),.enable_value(adapt_enable_value),
+    .gains_base(stored_gains),.manual_revision(stored_revision),.sample_epoch(motion_session ? feature_epoch:captured_epoch),
+--- baseline/src/forest_motion_brake_step.v
++++ modified/src/forest_motion_brake_step.v
+@@ -0,0 +1,83 @@
++// Fastest monotone velocity step inside the EXISTING brake A/J limits.
++// Future jerk-release distance is summed over at most20 FPGA clocks. A small
++// binary search finds the strongest feasible deceleration; no divider/DSP.
++module forest_motion_brake_step(
++ input clk,rst_n,start,cancel,
++ input signed [31:0] velocity,acceleration,
++ output reg busy,done,fault,
++ output reg signed [31:0] next_velocity,next_acceleration
++);
++ localparam signed [15:0] LIMIT_A=16'sd1966,LIMIT_J=16'sd98;
++ reg [3:0] state;
++ reg negative;
++ reg [31:0] speed,cost;
++ reg signed [15:0] initial_a,lower,upper,candidate;
++ reg [15:0] ramp;
++ reg [1:0] search;
++ reg [8:0] clocks;
++ wire signed [32:0] after_step=$signed({1'b0,speed})+$signed({{17{candidate[15]}},candidate});
++ wire feasible=after_step>=0 && $unsigned(after_step)>={1'b0,cost};
++ always @(posedge clk or negedge rst_n)begin
++  if(!rst_n)begin
++   busy<=0;done<=0;fault<=0;state<=0;negative<=0;speed<=0;cost<=0;
++   initial_a<=0;lower<=0;upper<=0;candidate<=0;ramp<=0;search<=0;clocks<=0;
++   next_velocity<=0;next_acceleration<=0;
++  end else if(cancel)begin busy<=0;done<=0;fault<=0;state<=0;clocks<=0;end
++  else if(start)begin
++   busy<=1;done<=0;fault<=0;state<=1;clocks<=0;
++   negative<=velocity==0 ? acceleration[31]:velocity[31];
++   speed<=velocity[31] ? -velocity:velocity;
++   initial_a<=(velocity==0 ? acceleration[31]:velocity[31]) ? -acceleration[15:0]:acceleration[15:0];
++   if(acceleration>32'sd1966 || acceleration< -32'sd1966)begin
++    busy<=0;done<=1;fault<=1;state<=0;
++   end
++  end else if(busy)begin
++   clocks<=clocks+1'b1;
++   if(clocks==511)begin busy<=0;done<=1;fault<=1;state<=0;end
++   else case(state)
++    1:begin
++     if(speed==0 && initial_a>=-LIMIT_J && initial_a<=LIMIT_J)begin
++      next_velocity<=0;next_acceleration<=0;busy<=0;done<=1;state<=0;
++     end else begin
++      lower<=initial_a-LIMIT_J < -LIMIT_A ? -LIMIT_A:initial_a-LIMIT_J;
++      upper<=initial_a+LIMIT_J > LIMIT_A ? LIMIT_A:initial_a+LIMIT_J;
++      state<=2;
++     end
++    end
++    2:begin candidate<=lower;search<=0;state<=3;end
++    3:begin ramp<=candidate[15] ? -candidate:16'd0;cost<=0;state<=4;end
++    4:begin
++     if(ramp>LIMIT_J)begin ramp<=ramp-LIMIT_J;cost<=cost+ramp-LIMIT_J;end
++     else state<=5;
++    end
++    5:begin
++     if(search==0)begin
++      if(feasible)state<=7;
++      else begin candidate<=upper;search<=1;state<=3;end
++     end else if(search==1)begin
++      if(!feasible)begin busy<=0;done<=1;fault<=1;state<=0;end
++      else if(upper-lower<=1)begin candidate<=upper;state<=7;end
++      else begin
++       lower<=lower+1'b1;candidate<=($signed(lower)+16'sd1+$signed(upper))>>>1;
++       search<=2;state<=3;
++      end
++     end else if(feasible)begin
++      upper<=candidate;
++      if(candidate==lower)state<=7;
++      else begin candidate<=($signed(lower)+$signed(candidate))>>>1;state<=3;end
++     end else begin
++      lower<=candidate+1'b1;
++      if(candidate+1'b1==upper)begin candidate<=upper;state<=7;end
++      else begin candidate<=($signed(candidate)+16'sd1+$signed(upper))>>>1;state<=3;end
++     end
++    end
++    7:begin
++     next_velocity<=negative ? -$signed(after_step[31:0]):$signed(after_step[31:0]);
++     next_acceleration<=negative ? -$signed({{16{candidate[15]}},candidate}):$signed({{16{candidate[15]}},candidate});
++     busy<=0;done<=1;state<=0;
++    end
++    default:begin busy<=0;done<=1;fault<=1;state<=0;end
++   endcase
++  end
++ end
++endmodule
+--- baseline/src/forest_motion_finite_scurve.v
++++ modified/src/forest_motion_finite_scurve.v
+@@ -0,0 +1,204 @@
++// Exact discrete seven-phase reference for one1040-count turn.
++// All planning is on FPGA. A shared bit-serial unit avoids extra DSPs and
++// wide combinational division. The integral weights finish exactly at D.
++module forest_motion_finite_scurve(
++ input clk,rst_n,start,cancel,tick,
++ input [17:0] speed_q16,input [15:0] acceleration_limit_q16,jerk_limit_q16,
++ output reg active,ready,sample_valid,finished,fault,
++ output reg [31:0] offset_q16,velocity_q16,
++ output reg signed [31:0] acceleration_q16
++);
++ localparam [31:0] DISTANCE_Q16=32'd68157440;
++ reg [4:0] state;
++ reg [17:0] speed;
++ reg [15:0] accel_limit,jerk_limit,ramp,middle,accel_ticks,cruise,den_ticks;
++ reg [31:0] peak_weight,total_weight,velocity_weight,position_weight;
++ reg signed [15:0] acceleration_weight,next_acceleration_weight;
++ reg [2:0] segment;
++ reg [15:0] segment_tick,segment_length;
++ reg signed [32:0] next_velocity_weight;
++ reg [32:0] next_position_weight;
++ reg [31:0] step_velocity,step_position;
++ reg signed [15:0] step_acceleration,prepared_acceleration;
++ reg signed [32:0] prepared_velocity;reg [32:0] prepared_position;
++ reg last_step;
++ reg math_start,math_multiply;
++ reg [63:0] math_numerator;
++ reg [31:0] math_divisor,math_left,math_right;
++ wire math_done,math_busy,math_error;
++ wire [63:0] math_result;
++ forest_motion_serial_math arithmetic(.clk(clk),.rst_n(rst_n),
++  .cancel(cancel||start||fault),.start(math_start),.multiply(math_multiply),
++  .numerator(math_numerator),.divisor(math_divisor),.left(math_left),.right(math_right),
++  .busy(math_busy),.done(math_done),.error(math_error),.result(math_result));
++ function [63:0] scaled_weight;
++  input [31:0] value;
++  begin scaled_weight=({32'd0,value}<<26)+({32'd0,value}<<20);end
++ endfunction
++ wire [15:0] step_acceleration_abs=step_acceleration[15] ? -step_acceleration:step_acceleration;
++ always @*begin
++  next_acceleration_weight=acceleration_weight;
++  case(segment)
++   0,6:next_acceleration_weight=acceleration_weight+16'sd1;
++   2,4:next_acceleration_weight=acceleration_weight-16'sd1;
++   3:next_acceleration_weight=0;
++   default:;
++  endcase
++  next_velocity_weight=$signed({1'b0,velocity_weight})+
++    $signed({{17{next_acceleration_weight[15]}},next_acceleration_weight});
++  next_position_weight={1'b0,position_weight}+{1'b0,next_velocity_weight[31:0]};
++  case(segment)
++   1,5:segment_length=middle-ramp;
++   3:segment_length=cruise;
++   default:segment_length=ramp;
++  endcase
++ end
++ always @(posedge clk or negedge rst_n)begin
++  if(!rst_n)begin
++   state<=0;active<=0;ready<=0;sample_valid<=0;finished<=0;fault<=0;
++   offset_q16<=0;velocity_q16<=0;acceleration_q16<=0;
++   speed<=0;accel_limit<=0;jerk_limit<=0;ramp<=0;middle<=0;accel_ticks<=0;
++   cruise<=0;den_ticks<=0;peak_weight<=0;total_weight<=0;
++   velocity_weight<=0;position_weight<=0;acceleration_weight<=0;
++   segment<=0;segment_tick<=0;step_velocity<=0;step_position<=0;step_acceleration<=0;prepared_acceleration<=0;prepared_velocity<=0;prepared_position<=0;last_step<=0;
++   math_start<=0;math_multiply<=0;math_numerator<=0;math_divisor<=0;math_left<=0;math_right<=0;
++  end else begin
++   sample_valid<=0;finished<=0;math_start<=0;
++   if(cancel)begin
++    state<=0;active<=0;ready<=0;fault<=0;
++    offset_q16<=0;velocity_q16<=0;acceleration_q16<=0;
++   end else if(start)begin
++    state<=1;active<=1;ready<=0;fault<=0;
++    offset_q16<=0;velocity_q16<=0;acceleration_q16<=0;
++    speed<=speed_q16;accel_limit<=acceleration_limit_q16;jerk_limit<=jerk_limit_q16;
++    velocity_weight<=0;position_weight<=0;acceleration_weight<=0;segment<=0;segment_tick<=0;
++    if(speed_q16==0 || acceleration_limit_q16==0 || jerk_limit_q16==0)begin fault<=1;active<=0;state<=0;end
++   end else if(active)begin
++    if(math_error || (tick && state>=12))begin fault<=1;active<=0;ready<=0;state<=0;end
++    else case(state)
++     // r=ceil(A/J); m=max(r,ceil(V/A)); acceleration duration=r+m.
++     1:begin math_multiply<=0;math_numerator<={48'd0,accel_limit}+{48'd0,jerk_limit}-1'b1;math_divisor<={16'd0,jerk_limit};math_start<=1;state<=2;end
++     2:if(math_done)begin
++      if(math_result==0 || math_result>65535)begin fault<=1;active<=0;state<=0;end
++      else begin ramp<=math_result[15:0];state<=3;end
++     end
++     3:begin math_multiply<=0;math_numerator<={46'd0,speed}+{48'd0,accel_limit}-1'b1;math_divisor<={16'd0,accel_limit};math_start<=1;state<=4;end
++     4:if(math_done)begin
++      if(math_result>65535 || math_result+{48'd0,ramp}>65535)begin fault<=1;active<=0;state<=0;end
++      else begin
++       middle<=math_result<ramp ? ramp:math_result[15:0];
++       accel_ticks<=math_result<ramp ? {ramp[14:0],1'b0}:math_result[15:0]+ramp;state<=5;
++      end
++     end
++     // Denominator ticks=max(acceleration duration,ceil(D/V)); cruise fills
++     // any remaining duration. Peak speed never exceeds the requested cap.
++     5:begin math_multiply<=0;math_numerator<={32'd0,DISTANCE_Q16}+{46'd0,speed}-1'b1;math_divisor<={14'd0,speed};math_start<=1;state<=6;end
++     6:if(math_done)begin
++      if(math_result>65535)begin fault<=1;active<=0;state<=0;end
++      else begin
++       den_ticks<=math_result>accel_ticks ? math_result[15:0]:accel_ticks;
++       cruise<=math_result>accel_ticks ? math_result[15:0]-accel_ticks:16'd0;state<=7;
++      end
++     end
++     7:begin math_multiply<=1;math_left<={16'd0,ramp};math_right<={16'd0,middle};math_start<=1;state<=8;end
++     8:if(math_done)begin
++      if(math_result==0 || math_result[63:32]!=0)begin fault<=1;active<=0;state<=0;end
++      else begin peak_weight<=math_result[31:0];state<=9;end
++     end
++     9:begin math_multiply<=1;math_left<=peak_weight;math_right<={16'd0,den_ticks};math_start<=1;state<=10;end
++     10:if(math_done)begin
++      if(math_result==0 || math_result[63:31]!=0)begin fault<=1;active<=0;state<=0;end
++      else begin total_weight<=math_result[31:0];ready<=1;state<=11;end
++     end
++     11:if(tick)begin ready<=0;prepared_acceleration<=next_acceleration_weight;state<=17;end
++     17:begin prepared_velocity<=$signed({1'b0,velocity_weight})+
++       $signed({{17{prepared_acceleration[15]}},prepared_acceleration});state<=18;end
++     18:begin prepared_position<={1'b0,position_weight}+{1'b0,prepared_velocity[31:0]};state<=19;end
++     19:begin
++      if(prepared_velocity<0 || prepared_velocity>$signed({1'b0,peak_weight}) ||
++         prepared_position>{1'b0,total_weight} ||
++         (segment==6 && segment_tick+1>=ramp &&
++          (prepared_velocity!=0 || prepared_acceleration!=0 || prepared_position!={1'b0,total_weight})))begin
++       fault<=1;active<=0;ready<=0;state<=0;
++      end else begin
++       ready<=0;step_acceleration<=prepared_acceleration;
++       step_velocity<=prepared_velocity[31:0];step_position<=prepared_position[31:0];
++       acceleration_weight<=prepared_acceleration;velocity_weight<=prepared_velocity[31:0];position_weight<=prepared_position[31:0];
++       last_step<=segment==6 && segment_tick+1>=ramp;
++       if(segment_tick+1>=segment_length)begin
++        segment_tick<=0;
++        case(segment)
++         0:segment<=middle==ramp ? 2:1;
++         2:segment<=cruise==0 ? 4:3;
++         4:segment<=middle==ramp ? 6:5;
++         default:segment<=segment+1'b1;
++        endcase
++       end else segment_tick<=segment_tick+1'b1;
++       state<=20;
++      end
++     end
++     20:begin math_multiply<=0;math_numerator<=scaled_weight(step_position);math_divisor<=total_weight;math_start<=1;state<=12;end
++     12:if(math_done)begin
++      if(math_result>DISTANCE_Q16)begin fault<=1;active<=0;state<=0;end
++      else begin offset_q16<=math_result[31:0];state<=13;end
++     end
++     13:begin math_multiply<=0;math_numerator<=scaled_weight(step_velocity);math_divisor<=total_weight;math_start<=1;state<=14;end
++     14:if(math_done)begin
++      if(math_result>speed)begin fault<=1;active<=0;state<=0;end
++      else begin velocity_q16<=math_result[31:0];state<=15;end
++     end
++     15:begin math_multiply<=0;math_numerator<=scaled_weight({16'd0,step_acceleration_abs});math_divisor<=total_weight;math_start<=1;state<=16;end
++     16:if(math_done)begin
++      if(math_result>accel_limit)begin fault<=1;active<=0;state<=0;end
++      else begin
++       acceleration_q16<=step_acceleration[15] ? -$signed(math_result[31:0]):$signed(math_result[31:0]);
++       sample_valid<=1;finished<=last_step;ready<=!last_step;
++       if(last_step)begin active<=0;state<=0;end else state<=11;
++      end
++     end
++     default:begin fault<=1;active<=0;ready<=0;state<=0;end
++    endcase
++   end
++  end
++ end
++endmodule
++
++// Bounded-latency unsigned32x32 multiply / unsigned64-by32 division.
++// No DSP or combinational divider; each operation uses32 or64 FPGA clocks.
++module forest_motion_serial_math(
++ input clk,rst_n,cancel,start,multiply,
++ input [63:0] numerator,input [31:0] divisor,left,right,
++ output reg busy,done,error,output reg [63:0] result
++);
++ reg operation;
++ reg [5:0] iteration;
++ reg [63:0] shift_value,accumulator;
++ reg [31:0] denominator,multiplier;
++ reg [32:0] remainder;
++ wire [32:0] trial={remainder[31:0],shift_value[63]};
++ wire subtract=trial>={1'b0,denominator};
++ always @(posedge clk or negedge rst_n)begin
++  if(!rst_n)begin busy<=0;done<=0;error<=0;result<=0;operation<=0;iteration<=0;shift_value<=0;accumulator<=0;denominator<=0;multiplier<=0;remainder<=0;end
++  else begin
++   done<=0;
++   if(cancel)begin busy<=0;done<=0;error<=0;end
++   else if(start && !busy)begin
++    operation<=multiply;iteration<=0;accumulator<=0;remainder<=0;busy<=1;error<=0;
++    shift_value<=multiply ? {32'd0,left}:numerator;denominator<=divisor;multiplier<=right;
++    if(!multiply && divisor==0)begin busy<=0;done<=1;error<=1;result<=0;end
++   end else if(busy)begin
++    if(operation)begin
++     accumulator<=accumulator+(multiplier[0] ? shift_value:64'd0);
++     shift_value<=shift_value<<1;multiplier<=multiplier>>1;
++     if(iteration==31)begin result<=accumulator+(multiplier[0] ? shift_value:64'd0);busy<=0;done<=1;end
++    end else begin
++     shift_value<=shift_value<<1;
++     remainder<=subtract ? trial-{1'b0,denominator}:trial;
++     accumulator<={accumulator[62:0],subtract};
++     if(iteration==63)begin result<={accumulator[62:0],subtract};busy<=0;done<=1;end
++    end
++    iteration<=iteration+1'b1;
++   end
++  end
++ end
++endmodule
+--- baseline/src/forest_motion_planner.v
++++ modified/src/forest_motion_planner.v
+@@ -8,14 +8,16 @@
+  output reg cfg_ok,cfg_error,output reg [31:0] cfg_revision,
+  output reg [31:0] cfg_read_value,
+  output wire signed [63:0] enc_wide_physical,encoder_wide,
+- output reg signed [63:0] target_wide,origin_wide,final_wide,
++ output wire signed [63:0] target_wide,
++ output reg signed [63:0] origin_wide,final_wide,
+  output wire signed [15:0] encoder_local,target_local,
+- output wire active,fault,output reg [2:0] state,
++ output wire active,fault,motion_guard_active,output reg [2:0] state,
+  output reg signed [1:0] direction,output reg accepted,rejected,
+  output reg [7:0] reason,stop_reason,output reg [31:0] event_count,last_request_id,
+- output reg [7:0] last_action,output reg trajectory_done,tracking_settled,
++ output reg [7:0] last_action,output wire trajectory_done,output reg tracking_settled,
+  output wire signed [31:0] measured_velocity_cps,output wire velocity_valid,
+  output reg signed [31:0] reference_velocity_cps,
++ output wire signed [31:0] controller_velocity_q,controller_acceleration_q,
+  output wire signed [63:0] tracking_error,output reg [7:0] settle_ticks,
+  output reg [3:0] planner_phase,
+  output reg signed [31:0] velocity_q,acceleration_q
+@@ -24,7 +26,65 @@
+   WAVE_CAPTURE=5,WAVE_PLAY=6;
+  wire coordinate_fault;
+  reg planner_fault;
+- assign fault=coordinate_fault || planner_fault;
++ wire shape_fault;
++ reg signed [63:0] nominal_target_wide;
++ reg nominal_done,shape_mode;
++ reg numerical_seed_nominal;
++ wire signed [63:0] shaped_target;
++ wire signed [31:0] shaped_velocity_q,shaped_acceleration_q;
++ reg numerical_cancel,numerical_rebase,numerical_finite_start;
++ reg signed [63:0] numerical_reset_target;
++ reg signed [31:0] nominal_reference_velocity_cps;
++ // Isolate the finite/continuous selector from the wide coordinate arithmetic.
++ // This cache settles one50MHz clock after the generator, well before the
++ // next5ms control transaction; no measurement or physical STOP is delayed.
++ reg signed [63:0] selected_target;
++ reg signed [31:0] selected_velocity,selected_acceleration;
++ always @(posedge clk or negedge rst_n)begin
++  if(!rst_n)begin selected_target<=0;selected_velocity<=0;selected_acceleration<=0;end
++  else begin
++   selected_target<=VARIANT==2 && shape_mode ? shaped_target:nominal_target_wide;
++   selected_velocity<=VARIANT==2 && shape_mode ? shaped_velocity_q:velocity_q;
++   selected_acceleration<=VARIANT==2 && shape_mode ? shaped_acceleration_q:acceleration_q;
++  end
++ end
++ assign target_wide=selected_target;
++ assign controller_velocity_q=selected_velocity;
++ assign controller_acceleration_q=selected_acceleration;
++ assign fault=coordinate_fault || planner_fault || (shape_mode && shape_fault);
++ // Exact modulo32 scaling, split before the sign-preserving shift. These
++ // numerical caches settle within40ns; the planner consumes them5ms apart.
++ // Keep the wide planner control enables off a DSP input-register path.
++ reg signed [31:0] selected_scale192,selected_scale8;
++ reg signed [31:0] nominal_scale192,nominal_scale8;
++ reg signed [31:0] velocity_cps_now;
++ wire signed [31:0] selected_scale_sum=selected_scale192+selected_scale8;
++ wire signed [31:0] nominal_scale_sum=nominal_scale192+nominal_scale8;
++ always @(posedge clk or negedge rst_n)begin
++  if(!rst_n)begin
++   selected_scale192<=0;selected_scale8<=0;nominal_scale192<=0;nominal_scale8<=0;
++   reference_velocity_cps<=0;velocity_cps_now<=0;
++  end else begin
++   selected_scale192<=($signed(controller_velocity_q)<<<7)+($signed(controller_velocity_q)<<<6);
++   selected_scale8<=$signed(controller_velocity_q)<<<3;
++   nominal_scale192<=($signed(velocity_q)<<<7)+($signed(velocity_q)<<<6);
++   nominal_scale8<=$signed(velocity_q)<<<3;
++   reference_velocity_cps<=selected_scale_sum>>>16;
++   velocity_cps_now<=nominal_scale_sum>>>16;
++  end
++ end
++ assign trajectory_done=nominal_done && (VARIANT!=2 ||
++   (target_wide==nominal_target_wide && controller_velocity_q==0));
++ generate if(VARIANT==2)begin:reference_preconditioning
++  forest_motion_reference_shape shape(.clk(clk),.rst_n(rst_n),.tick(tick_5ms),
++   .rebase(numerical_rebase),
++   .stationary(velocity_q==0 && acceleration_q==0),
++   .reset_target(numerical_seed_nominal ? nominal_target_wide:numerical_reset_target),.nominal_target(nominal_target_wide),
++   .target(shaped_target),.velocity_q(shaped_velocity_q),
++   .acceleration_q(shaped_acceleration_q),.fault(shape_fault));
++ end else begin:no_preconditioning
++  assign shape_fault=0;
++ end endgenerate
+  assign active=state!=HOLD;
+  forest_motion_coordinates coordinates(
+   .clk(clk),.rst_n(rst_n),.tick_5ms(tick_5ms),.reanchor(reanchor),
+@@ -39,6 +99,9 @@
+  reg [13:0] period_ticks;
+  reg [3:0] cycles;
+  reg positive;
++ reg [10:0] start_guard_ms;
++ reg [8:0] start_guard_ticks,start_guard_remaining;
++ assign motion_guard_active=VARIANT==2 && start_guard_remaining!=0;
+  wire stopped_for_config=!balance_active && !active;
+  wire [28:0] finite_speed_product=finite_speed*19'd335544;
+  wire [17:0] finite_speed_q=finite_speed_product[27:10];
+@@ -52,14 +115,16 @@
+    3:cfg_read_value=600;4:cfg_read_value=200;5:cfg_read_value=12;
+    6:cfg_read_value={31'd0,positive};7:cfg_read_value={22'd0,amplitude};
+    8:cfg_read_value={16'd0,period_ms};9:cfg_read_value={28'd0,cycles};
++   10:cfg_read_value={21'd0,start_guard_ms};
+    default:cfg_read_value=32'hffffffff;
+   endcase
+  end
+  always @(posedge clk or negedge rst_n)begin
+   if(!rst_n)begin
+-   finite_speed<=260;acceleration_limit_q<=524;jerk_limit_q<=13;
++   finite_speed<=VARIANT==2 ? 520:260;acceleration_limit_q<=524;jerk_limit_q<=13;
+    amplitude<=87;period_ms<=16000;period_ticks<=3200;cycles<=2;positive<=1;
+    cfg_ok<=0;cfg_error<=0;cfg_revision<=0;
++   start_guard_ms<=1000;start_guard_ticks<=201;
+   end else begin
+    cfg_ok<=0;cfg_error<=0;
+    if(cfg_write)begin
+@@ -97,6 +162,17 @@
+        default:;
+       endcase
+       9:if(cfg_value>=1 && cfg_value<=8)begin cycles<=cfg_value[3:0];cfg_ok<=1;cfg_error<=0;end
++      10:case(cfg_value)
++       0,200,300,500,750,1000,1500,2000:begin
++        start_guard_ms<=cfg_value[10:0];cfg_ok<=1;cfg_error<=0;
++        case(cfg_value)
++         0:start_guard_ticks<=0;200:start_guard_ticks<=41;300:start_guard_ticks<=61;
++         500:start_guard_ticks<=101;750:start_guard_ticks<=151;1000:start_guard_ticks<=201;
++         1500:start_guard_ticks<=301;default:start_guard_ticks<=401;
++        endcase
++       end
++       default:;
++      endcase
+       default:;
+      endcase
+     end
+@@ -133,10 +209,9 @@
+ 
+  wire signed [63:0] current_goal=VARIANT==5 && state==WAVE_PLAY ? wave_goal:final_wide;
+  wire signed [64:0] current_reference_error=
+-  $signed({current_goal[63],current_goal})-$signed({target_wide[63],target_wide});
++  $signed({current_goal[63],current_goal})-$signed({nominal_target_wide[63],nominal_target_wide});
+  wire signed [64:0] current_actual_error=
+   $signed({current_goal[63],current_goal})-$signed({encoder_wide[63],encoder_wide});
+- wire signed [31:0] velocity_cps_now=($signed(velocity_q)*32'sd200)>>>16;
+  wire [31:0] measured_magnitude=measured_velocity_cps[31] ? -measured_velocity_cps:measured_velocity_cps;
+  wire [31:0] reference_magnitude=velocity_cps_now[31] ? -velocity_cps_now:velocity_cps_now;
+  wire [31:0] larger_velocity=measured_magnitude>reference_magnitude ? measured_magnitude:reference_magnitude;
+@@ -157,10 +232,12 @@
+   .right(terminal_negative_velocity),.result(terminal_at_least_lower));
+  wire signed [33:0] position_sum=$signed({18'd0,fraction})+
+    $signed({{2{next_velocity[31]}},next_velocity});
+- wire signed [64:0] integrated_reference=$signed({target_wide[63],target_wide})+
++ wire signed [64:0] integrated_reference=$signed({nominal_target_wide[63],nominal_target_wide})+
+    $signed({{47{position_sum[33]}},position_sum[33:16]});
+  wire reference_overflow=integrated_reference[64]!=integrated_reference[63];
+- wire settled_now=velocity_valid && tracking_error>=-64'sd5 && tracking_error<=64'sd5 &&
++ wire settled_now=velocity_valid &&
++   (VARIANT==2 ? ($signed(encoder_local)>=16'sd9995 && $signed(encoder_local)<=16'sd10005):
++    (tracking_error>=-64'sd5 && tracking_error<=64'sd5)) &&
+    measured_velocity_cps>=-32'sd10 && measured_velocity_cps<=32'sd10;
+  wire capture_arrived=velocity_valid && current_actual_error>=-65'sd5 && current_actual_error<=65'sd5 &&
+    measured_velocity_cps>=-32'sd10 && measured_velocity_cps<=32'sd10;
+@@ -187,82 +264,213 @@
+  wire legacy_action=action_kind==0 && VARIANT==2 && command>=1 && command<=5;
+  wire cancel_action=action_kind==3 && (VARIANT==4 || VARIANT==5);
+  wire legal_action=cancel_action || (extended_action && action_index>=1 && action_index<=6) || legacy_action;
+- wire ready_legacy=state==HOLD || (state==SETTLING && trajectory_done && velocity_q==0);
++ // Tracking quality is reported independently. A physical error or a noisy
++ // velocity estimate must never hold the next task hostage after reference end.
++ wire ready_legacy=state==HOLD || (state==SETTLING && nominal_done && velocity_q==0 &&
++  acceleration_q==0);
+  wire legacy_start=legacy_action && command<5 && ready_legacy;
+- wire start_error_bad=tracking_error< -64'sd200 || tracking_error>64'sd200;
++ wire start_error_bad=VARIANT==2 ?
++  ($signed(encoder_local)<16'sd9800 || $signed(encoder_local)>16'sd10200):
++  (tracking_error< -64'sd200 || tracking_error>64'sd200);
+  // Prepare both constant sums before command selection, keeping that
+  // late control bit outside the wide carry chain. No new clock boundary.
+  wire signed [64:0] legacy_forward_goal /* synthesis syn_keep=1 */;
+  wire signed [64:0] legacy_reverse_goal /* synthesis syn_keep=1 */;
+- assign legacy_forward_goal=$signed({target_wide[63],target_wide})+65'sd1040;
+- assign legacy_reverse_goal=$signed({target_wide[63],target_wide})-65'sd1040;
++ assign legacy_forward_goal=$signed({nominal_target_wide[63],nominal_target_wide})+65'sd1040;
++ assign legacy_reverse_goal=$signed({nominal_target_wide[63],nominal_target_wide})-65'sd1040;
+  wire signed [64:0] proposed_goal=legacy_start && command<=2 ?
+   (requested_direction[1] ? legacy_reverse_goal:legacy_forward_goal):
+   $signed({encoder_wide[63],encoder_wide})+$signed({relative_delta[63],relative_delta});
+  wire goal_overflow=proposed_goal[64]!=proposed_goal[63];
+  wire busy_legacy_reject=legacy_action && !ready_legacy && command<5 &&
+   !((command==3 || command==4) && requested_direction!=direction);
++ reg queued_valid;
++ reg [2:0] queued_command;
++ reg signed [1:0] queued_direction;
++ reg [31:0] queued_request_id;
+  wire idle_cancel_reject=(cancel_action || (legacy_action && (command==5 || !ready_legacy))) &&
+-  (state==BRAKING || ready_legacy);
+- wire admitted_request=command_valid && legal_action && !(legacy_start && start_error_bad) &&
++  (state==BRAKING || ready_legacy) && !queued_valid;
++ wire queue_needed=VARIANT==2 && legacy_action && command<5 &&
++  (queued_valid || state==FINITE || state==BRAKING || (state==SETTLING && !ready_legacy));
++ wire start_guard_reject=VARIANT==2 && start_guard_remaining!=0 && legacy_action && command<5;
++ // After the explicitly requested command interval, the newest next-task
++ // intent replaces an older pending intent instead of an indefinite busy gate.
++ wire queue_submit=command_valid && !start_guard_reject && queue_needed;
++ wire admitted_regular=command_valid && !start_guard_reject && !queue_needed && legal_action && !(legacy_start && start_error_bad) &&
+   !((extended_action || (legacy_start && command<=2)) && goal_overflow) && !busy_legacy_reject && !idle_cancel_reject;
++ wire admitted_request=queue_submit || admitted_regular;
++ wire dispatch_pending=VARIANT==2 && queued_valid && ready_legacy && !command_valid &&
++  balance_active && !fault && !cancel && !reanchor && !capture_hold;
++ wire signed [64:0] queued_goal=queued_direction[1] ? legacy_reverse_goal:legacy_forward_goal;
++ wire queued_goal_bad=queued_command<=2 && queued_goal[64]!=queued_goal[63];
++ reg finite_reference;
++ reg signed [63:0] finite_origin;
++ wire finite_start=VARIANT==2 && ((admitted_regular && legacy_start && command<=2) ||
++  (dispatch_pending && queued_command<=2 && !queued_goal_bad && !start_error_bad));
++ // Only an explicit motion STOP can interrupt an active finite plan. Other
++ // movement requests are rejected by the start guard or stored, never cancel.
++ wire finite_cancel=reanchor || cancel || capture_hold || fault || !balance_active ||
++  (command_valid && legacy_action && command==5);
++ wire finite_active,finite_ready,finite_sample,finite_done,finite_fault;
++ wire [31:0] finite_offset,finite_velocity;
++ wire signed [31:0] finite_acceleration;
++ wire [17:0] finite_requested_speed=finite_speed==520 ? 18'd170394:finite_speed_q;
++ forest_motion_finite_scurve one_turn(.clk(clk),.rst_n(rst_n),.start(numerical_finite_start),
++  .cancel(numerical_cancel || (command_valid && legacy_action && command==5)),.tick(tick_5ms && finite_reference),.speed_q16(finite_requested_speed),
++  .acceleration_limit_q16(acceleration_limit_q),.jerk_limit_q16(jerk_limit_q),
++  .active(finite_active),.ready(finite_ready),.sample_valid(finite_sample),.finished(finite_done),.fault(finite_fault),
++  .offset_q16(finite_offset),.velocity_q16(finite_velocity),.acceleration_q16(finite_acceleration));
++ wire [16:0] finite_integer_magnitude={1'b0,finite_offset[31:16]}+
++  ((direction[1] && finite_offset[15:0]!=0) ? 17'd1:17'd0);
++ wire signed [64:0] finite_reference_position=direction[1] ?
++  $signed({finite_origin[63],finite_origin})-$signed({48'd0,finite_integer_magnitude}):
++  $signed({finite_origin[63],finite_origin})+$signed({48'd0,finite_integer_magnitude});
++ wire signed [31:0] finite_signed_velocity=direction[1] ? -$signed(finite_velocity):$signed(finite_velocity);
++ always @(posedge clk or negedge rst_n)begin
++  if(!rst_n)begin numerical_cancel<=1;numerical_rebase<=1;numerical_seed_nominal<=0;numerical_finite_start<=0;numerical_reset_target<=0;end
++  else begin
++   numerical_cancel<=reanchor || cancel || capture_hold || fault || !balance_active;
++   numerical_rebase<=reanchor || cancel || capture_hold || !balance_active || !shape_mode;
++   numerical_seed_nominal<=!shape_mode && !(reanchor || cancel || capture_hold || !balance_active);
++   numerical_finite_start<=finite_start;
++   numerical_reset_target<=reanchor ? 64'sd0:encoder_wide;
++  end
++ end
++ // Continuous motion and opposite-swipe brake deliberately retain the
++ // qualified original reference path. The single-turn preconditioner is not
++ // inserted into an otherwise-good continuous stop.
++ // Exactly one interval per accepted command. Internal queue dispatch must
++ // not silently add a second interval. Rejected repeats never renew it.
++ always @(posedge clk or negedge rst_n)begin
++  if(!rst_n)start_guard_remaining<=0;
++  else if(reanchor || cancel || capture_hold || fault || !balance_active ||
++          (command_valid && legacy_action && command==5))start_guard_remaining<=0;
++  else if(queue_submit || (admitted_regular && legacy_action && command<5))
++   start_guard_remaining<=start_guard_ticks;
++  else if(tick_5ms && start_guard_remaining!=0)start_guard_remaining<=start_guard_remaining-1'b1;
++ end
+ 
+  always @(posedge clk or negedge rst_n)begin
+   if(!rst_n)begin
+-   target_wide<=0;origin_wide<=0;final_wide<=0;state<=HOLD;direction<=0;
++   nominal_target_wide<=0;origin_wide<=0;final_wide<=0;state<=HOLD;direction<=0;
+    accepted<=0;rejected<=0;reason<=0;stop_reason<=0;event_count<=0;last_request_id<=0;last_action<=0;
+-   planner_fault<=0;fraction<=0;velocity_q<=0;acceleration_q<=0;reference_velocity_cps<=0;
+-   trajectory_done<=0;tracking_settled<=0;settle_ticks<=0;settling_age<=0;
++   planner_fault<=0;fraction<=0;velocity_q<=0;acceleration_q<=0;nominal_reference_velocity_cps<=0;
++   nominal_done<=0;tracking_settled<=0;settle_ticks<=0;settling_age<=0;
+    wave_shape<=0;wave_tick<=0;wave_remainder<=0;wave_phase<=0;wave_cycle<=0;wave_goal<=0;
+    calculation_epoch<=0;reference_error_ext<=0;actual_error_ext<=0;error_q<=0;error_magnitude<=0;
+    speed_magnitude<=0;distance_index<=0;speed_index<=0;prepared_cap<=0;prepared_stop_distance<=0;
+    desired_velocity<=0;desired_acceleration<=0;next_acceleration<=0;next_velocity<=0;planner_phase<=0;
++   queued_valid<=0;queued_command<=0;queued_direction<=0;queued_request_id<=0;
++   finite_reference<=0;finite_origin<=0;shape_mode<=0;
+   end else begin
+    accepted<=0;rejected<=0;
+    if(reanchor || cancel || capture_hold)begin
+-    target_wide<=reanchor ? 64'sd0:encoder_wide;
++    queued_valid<=0;finite_reference<=0;shape_mode<=0;
++    nominal_target_wide<=reanchor ? 64'sd0:encoder_wide;
+     origin_wide<=reanchor ? 64'sd0:encoder_wide;final_wide<=reanchor ? 64'sd0:encoder_wide;
+     state<=HOLD;direction<=0;planner_fault<=0;fraction<=0;velocity_q<=0;acceleration_q<=0;
+-    planner_phase<=0;reference_velocity_cps<=0;trajectory_done<=0;tracking_settled<=0;
++    planner_phase<=0;nominal_reference_velocity_cps<=0;nominal_done<=0;tracking_settled<=0;
+     settle_ticks<=0;settling_age<=0;wave_shape<=0;wave_tick<=0;wave_remainder<=0;wave_phase<=0;
+     wave_cycle<=0;stop_reason<=reanchor || capture_hold ? 7:6;
+     if(command_valid)begin rejected<=1;reason<=6;end
+    end else if(fault || !balance_active)begin
++    queued_valid<=0;finite_reference<=0;shape_mode<=0;
+     state<=HOLD;direction<=0;velocity_q<=0;acceleration_q<=0;fraction<=0;planner_phase<=0;
+-    reference_velocity_cps<=0;trajectory_done<=0;tracking_settled<=0;settle_ticks<=0;
++    nominal_reference_velocity_cps<=0;nominal_done<=0;tracking_settled<=0;settle_ticks<=0;
+     if(command_valid)begin rejected<=1;reason<=fault ? 8:1;end
+    end else begin
+     if(command_valid)begin
+-     if(!legal_action)begin rejected<=1;reason<=4;end
++     if(start_guard_reject)begin rejected<=1;reason<=17;end
++     else if(queue_needed)begin
++       queued_valid<=1;queued_command<=command;queued_direction<=requested_direction;queued_request_id<=request_id;
++       accepted<=1;reason<=16;event_count<=event_count+1'b1;
++       last_request_id<=request_id;last_action<={5'd0,command};
++     end else if(!legal_action)begin rejected<=1;reason<=4;end
+      else if(legacy_start && start_error_bad)begin rejected<=1;reason<=12;end
+      else if((extended_action || (legacy_start && command<=2)) && goal_overflow)begin rejected<=1;reason<=5;end
+      else if(legacy_action && !ready_legacy && command<5 &&
+              !((command==3 || command==4) && requested_direction!=direction))begin
+       rejected<=1;reason<=requested_direction==direction ? 3:2;
+      end else if((cancel_action || (legacy_action && (command==5 || !ready_legacy))) &&
+-                 (state==BRAKING || ready_legacy))begin rejected<=1;reason<=3;end
++                 (state==BRAKING || ready_legacy) && !queued_valid)begin rejected<=1;reason<=3;end
+      else begin
+       accepted<=1;reason<=0;stop_reason<=0;event_count<=event_count+1'b1;
+       last_request_id<=request_id;last_action<=action_kind==0 ? {5'd0,command}:
+        action_kind==1 ? (8'h10+{5'd0,action_index}):action_kind==2 ? (8'h20+{5'd0,action_index}):8'h30;
+-      origin_wide<=encoder_wide;trajectory_done<=0;tracking_settled<=0;settle_ticks<=0;settling_age<=0;
++      origin_wide<=encoder_wide;nominal_done<=0;tracking_settled<=0;settle_ticks<=0;settling_age<=0;
+       // Retain reference, velocity and acceleration when replacing a plan.
+       if(cancel_action || (legacy_action && (command==5 || !ready_legacy)))begin
++       queued_valid<=0;finite_reference<=0;
++       if(VARIANT==2 && shape_mode)begin
++        nominal_target_wide<=target_wide;fraction<=0;
++        velocity_q<=controller_velocity_q;acceleration_q<=controller_acceleration_q;
++       end
++       shape_mode<=0;
+        state<=BRAKING;stop_reason<=cancel_action || command==5 ? 14:13;wave_shape<=0;
+       end else if(VARIANT==5 && action_kind==2)begin
+        state<=WAVE_CAPTURE;wave_shape<=action_index;final_wide<=encoder_wide;wave_goal<=encoder_wide;
+        wave_tick<=0;wave_phase<=0;wave_remainder<=0;wave_cycle<=0;direction<=positive ? 2'sd1:-2'sd1;
+       end else if(legacy_start && command>=3)begin
++       finite_reference<=0;
++       if(VARIANT==2 && shape_mode)begin
++        nominal_target_wide<=target_wide;fraction<=0;
++        velocity_q<=controller_velocity_q;acceleration_q<=controller_acceleration_q;
++       end
++       shape_mode<=0;
+        state<=CONTINUOUS;direction<=requested_direction;wave_shape<=0;
+       end else begin
+        state<=FINITE;direction<=action_kind==1 ? (positive ? 2'sd1:-2'sd1):requested_direction;
+        final_wide<=proposed_goal[63:0];wave_shape<=0;
++       if(VARIANT==2 && legacy_start && command<=2)begin finite_reference<=1;shape_mode<=1;finite_origin<=nominal_target_wide;fraction<=0;end
+       end
+       // Recompute a pending tick instead of committing an obsolete goal.
+-      if(planner_phase!=0 || tick_5ms)planner_phase<=1;
++      if(finite_start)planner_phase<=0;
++      else if(VARIANT==2 && (cancel_action || (legacy_action && (command==5 || !ready_legacy))))planner_phase<=0;
++      else if(planner_phase!=0 || tick_5ms)planner_phase<=1;
+      end
+     end
+-    if(tick_5ms && !admitted_request)begin
++    // Acceptance and execution are distinct: the first next command is kept,
++    // without changing the current turn or requiring a repeated gesture.
++    if(dispatch_pending)begin
++     queued_valid<=0;last_request_id<=queued_request_id;last_action<={5'd0,queued_command};
++     reason<=0;stop_reason<=0;origin_wide<=encoder_wide;
++     nominal_done<=0;tracking_settled<=0;settle_ticks<=0;settling_age<=0;wave_shape<=0;
++     // Preserve the original explicit large-error protection, but fail the
++     // pending task visibly now rather than waiting for it forever.
++     if(start_error_bad)begin reason<=12;stop_reason<=12;nominal_done<=1;end
++     else if(queued_goal_bad)begin planner_fault<=1;state<=HOLD;reason<=5;stop_reason<=5;finite_reference<=0;end
++     else if(queued_command<=2)begin
++      state<=FINITE;direction<=queued_direction;finite_reference<=1;shape_mode<=1;finite_origin<=nominal_target_wide;
++      final_wide<=queued_goal[63:0];fraction<=0;planner_phase<=0;
++     end else begin
++      state<=CONTINUOUS;direction<=queued_direction;finite_reference<=0;planner_phase<=0;
++       if(VARIANT==2 && shape_mode)begin
++        nominal_target_wide<=target_wide;fraction<=0;
++        velocity_q<=controller_velocity_q;acceleration_q<=controller_acceleration_q;
++       end
++       shape_mode<=0;
++     end
++    end
++    if(finite_reference && !finite_cancel && !dispatch_pending)begin
++     if(tick_5ms && finite_ready)planner_phase<=9;
++     if(finite_fault)begin planner_fault<=1;state<=HOLD;finite_reference<=0;queued_valid<=0;reason<=8;stop_reason<=8;end
++     else if(finite_sample)begin
++      planner_phase<=0;
++      if(finite_reference_position[64]!=finite_reference_position[63])begin planner_fault<=1;state<=HOLD;finite_reference<=0;queued_valid<=0;reason<=5;stop_reason<=5;end
++      else begin
++       nominal_target_wide<=finite_reference_position[63:0];
++       fraction<=direction[1] ? -finite_offset[15:0]:finite_offset[15:0];
++       velocity_q<=finite_signed_velocity;
++       acceleration_q<=direction[1] ? -finite_acceleration:finite_acceleration;
++       nominal_reference_velocity_cps<=($signed(finite_signed_velocity)*32'sd200)>>>16;
++       if(finite_done)begin
++        nominal_target_wide<=final_wide;fraction<=0;velocity_q<=0;acceleration_q<=0;nominal_reference_velocity_cps<=0;
++        finite_reference<=0;state<=SETTLING;direction<=0;nominal_done<=1;stop_reason<=9;settle_ticks<=0;settling_age<=0;
++       end
++      end
++     end
++    end
++    if(tick_5ms && !admitted_request && !dispatch_pending && !finite_reference)begin
+      if(state==HOLD || state==SETTLING)begin
+       if(trajectory_done)begin
+        if(settled_now)begin
+@@ -273,7 +481,7 @@
+        if(settling_age>=2999 && !settled_now)stop_reason<=11;
+       end
+      end else if(VARIANT==5 && state==WAVE_CAPTURE && velocity_q==0 && acceleration_q==0 &&
+-                 target_wide==final_wide && capture_arrived)begin
++                 nominal_target_wide==final_wide && capture_arrived)begin
+       if(settle_ticks<100)settle_ticks<=settle_ticks+1'b1;
+       if(settle_ticks>=99)begin state<=WAVE_PLAY;settle_ticks<=0;wave_goal<=origin_wide;end
+      end else begin
+@@ -294,7 +502,7 @@
+       end
+      end
+     end
+-    if(!admitted_request)begin
++    if(!admitted_request && !dispatch_pending && !finite_reference)begin
+      case(planner_phase)
+       1:begin
+        calculation_epoch<=event_count;reference_error_ext<=current_reference_error;actual_error_ext<=current_actual_error;
+@@ -350,21 +558,21 @@
+        planner_phase<=8;
+       end
+       8:begin
+-       if(calculation_epoch!=event_count)planner_phase<=1;
++       if(calculation_epoch!=event_count && !(VARIANT==2 && state==BRAKING))planner_phase<=1;
+        else begin
+         planner_phase<=0;
+         if(reference_overflow)begin planner_fault<=1;reason<=5;stop_reason<=5;state<=HOLD;velocity_q<=0;acceleration_q<=0;end
+         else begin
+-         target_wide<=integrated_reference[63:0];fraction<=position_sum[15:0];
++         nominal_target_wide<=integrated_reference[63:0];fraction<=position_sum[15:0];
+          velocity_q<=next_velocity;acceleration_q<=next_acceleration;
+-         reference_velocity_cps<=($signed(next_velocity)*32'sd200)>>>16;
++         nominal_reference_velocity_cps<=($signed(next_velocity)*32'sd200)>>>16;
+          if(state==BRAKING && next_velocity==0 && next_acceleration==0)begin
+           final_wide<=integrated_reference[63:0];fraction<=0;state<=SETTLING;direction<=0;
+-          trajectory_done<=1;settle_ticks<=0;settling_age<=0;
++          nominal_done<=1;settle_ticks<=0;settling_age<=0;
+          end else if(state!=CONTINUOUS && state!=WAVE_PLAY && state!=BRAKING &&
+                      next_velocity==0 && next_acceleration==0 && error_magnitude<=64)begin
+-          target_wide<=final_wide;fraction<=0;direction<=0;
+-          if(state!=WAVE_CAPTURE)begin state<=SETTLING;trajectory_done<=1;stop_reason<=9;settle_ticks<=0;settling_age<=0;end
++          nominal_target_wide<=final_wide;fraction<=0;direction<=0;
++          if(state!=WAVE_CAPTURE)begin state<=SETTLING;nominal_done<=1;stop_reason<=9;settle_ticks<=0;settling_age<=0;end
+          end
+         end
+        end
+--- baseline/src/forest_motion_reference_shape.v
++++ modified/src/forest_motion_reference_shape.v
+@@ -0,0 +1,54 @@
++// Two-degree-of-freedom command path; the measured feedback/PID is untouched.
++// Forest position Kp=25,Kd=620 at25ms has a setpoint derivative zero with
++// time constant620/25*25ms=620ms. At5ms, alpha1/128 gives635ms and removes
++// the large command-derivative lead. This is NOT an ADC/encoder filter.
++// Integer output and fractional state always approach the commanded goal
++// monotonically for a monotone input. No return-to-old-target stage exists.
++module forest_motion_reference_shape(
++ input clk,rst_n,tick,rebase,stationary,
++ input signed [63:0] reset_target,nominal_target,
++ output reg signed [63:0] target,
++ output reg signed [31:0] velocity_q,acceleration_q,
++ output reg fault
++);
++ reg [2:0] phase;
++ reg [15:0] fraction;
++ reg signed [64:0] difference;
++ reg signed [31:0] step_q;
++ reg signed [63:0] held_goal;
++ reg snap;
++ wire signed [32:0] error_q=
++   ($signed({difference[31],difference[31:0]})<<<16)-$signed({17'd0,fraction});
++ wire signed [33:0] sum_q=$signed({18'd0,fraction})+$signed({{2{step_q[31]}},step_q});
++ wire signed [64:0] next_target=$signed({target[63],target})+
++   $signed({{47{sum_q[33]}},sum_q[33:16]});
++ always @(posedge clk or negedge rst_n)begin
++  if(!rst_n)begin target<=0;fraction<=0;phase<=0;difference<=0;step_q<=0;
++   velocity_q<=0;acceleration_q<=0;fault<=0;held_goal<=0;snap<=0;end
++  else if(rebase)begin target<=reset_target;fraction<=0;phase<=0;
++   velocity_q<=0;acceleration_q<=0;fault<=0;end
++  else if(!fault)begin
++   case(phase)
++    0:if(tick)begin difference<=$signed({nominal_target[63],nominal_target})-
++       $signed({target[63],target});held_goal<=nominal_target;phase<=1;end
++    1:begin
++     if(difference < -65'sd16384 || difference >65'sd16384)begin fault<=1;phase<=0;end
++     else begin
++      snap<=stationary && error_q>=-33'sd65536 && error_q<=33'sd65536;
++      step_q<=error_q>>>7;phase<=2;
++     end
++    end
++    2:begin
++     if(next_target[64]!=next_target[63])fault<=1;
++     else begin
++      target<=snap ? held_goal:next_target[63:0];fraction<=snap ? 16'd0:sum_q[15:0];
++      velocity_q<=snap ? 32'sd0:step_q;
++      acceleration_q<=(snap ? 32'sd0:step_q)-velocity_q;
++     end
++     phase<=0;
++    end
++    default:begin phase<=0;fault<=1;end
++   endcase
++  end
++ end
++endmodule

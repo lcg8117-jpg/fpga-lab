@@ -1,0 +1,259 @@
+# do start_case.do
+# vsim -c -modelsimini modelsim.ini -onfinish exit -l modelsim_native.log -do "do start_case.do" 
+# Start time: 18:28:02 on Nov 02,2026
+# ** Note: (vsim-3812) Design is being optimized...
+# 
+# ** Warning: v5_cosim_core.sv(57): (vopt-2685) [TFMPC] - Too few port connections for 'buffer'.  Expected 18, found 17.
+# 
+# ** Warning: v5_cosim_core.sv(57): (vopt-2718) [TFMPC] - Missing connection for port 'preset_bank_selected'.
+# 
+# ** Warning: v5_cosim_core.sv(97): (vopt-2685) [TFMPC] - Too few port connections for 'fast_controller'.  Expected 46, found 21.
+# 
+# ** Warning: v5_cosim_core.sv(97): (vopt-2718) [TFMPC] - Missing connection for port 'unused_terminal'.
+# 
+# ** Warning: v5_cosim_core.sv(97): (vopt-2718) [TFMPC] - Missing connection for port 'position_d_bits'.
+# 
+# ** Warning: v5_cosim_core.sv(97): (vopt-2718) [TFMPC] - Missing connection for port 'position_i_bits'.
+# 
+# ** Warning: v5_cosim_core.sv(97): (vopt-2718) [TFMPC] - Missing connection for port 'position_p_bits'.
+# 
+# ** Warning: v5_cosim_core.sv(97): (vopt-2718) [TFMPC] - Missing connection for port 'angle_d_bits'.
+# 
+# ** Warning: v5_cosim_core.sv(97): (vopt-2718) [TFMPC] - Missing connection for port 'angle_i_bits'.
+# 
+# ** Warning: v5_cosim_core.sv(97): (vopt-2718) [TFMPC] - Missing connection for port 'angle_p_bits'.
+# 
+# ** Warning: v5_cosim_core.sv(97): (vopt-2718) [TFMPC] - Missing connection for port 'angle_diff_bits'.
+# 
+# ** Warning: v5_cosim_core.sv(97): (vopt-2718) [TFMPC] - Missing connection for port 'balance_bias_bits'.
+# 
+# ** Warning: v5_cosim_core.sv(97): (vopt-2718) [TFMPC] - Missing connection for port 'position_diff_bits'.
+# 
+# ** Warning: v5_cosim_core.sv(97): (vopt-2718) [TFMPC] - Missing connection for port 'position_bias_bits'.
+# 
+# ** Warning: v5_cosim_core.sv(97): (vopt-2718) [TFMPC] - Missing connection for port 'target'.
+# 
+# ** Warning: v5_cosim_core.sv(97): (vopt-2718) [TFMPC] - Missing connection for port 'position_div'.
+# 
+# ** Warning: v5_cosim_core.sv(97): (vopt-2718) [TFMPC] - Missing connection for port 'position_p_epoch'.
+# 
+# ** Warning: v5_cosim_core.sv(97): (vopt-2718) [TFMPC] - Missing connection for port 'position_d_epoch'.
+# 
+# ** Warning: v5_cosim_core.sv(97): (vopt-2718) [TFMPC] - Missing connection for port 'angle_d_epoch'.
+# 
+# ** Warning: v5_cosim_core.sv(97): (vopt-2718) [TFMPC] - Missing connection for port 'observation_revision'.
+# 
+# ** Warning: v5_cosim_core.sv(97): (vopt-2718) [TFMPC] - Missing connection for port 'observation_gains'.
+# 
+# ** Warning: v5_cosim_core.sv(97): (vopt-2718) [TFMPC] - Missing connection for port 'observation_delta'.
+# 
+# ** Warning: v5_cosim_core.sv(97): (vopt-2718) [TFMPC] - Missing connection for port 'observation_encoder'.
+# 
+# ** Warning: v5_cosim_core.sv(97): (vopt-2718) [TFMPC] - Missing connection for port 'observation_angle'.
+# 
+# ** Warning: v5_cosim_core.sv(97): (vopt-2718) [TFMPC] - Missing connection for port 'observation_start'.
+# 
+# ** Warning: v5_cosim_core.sv(97): (vopt-2718) [TFMPC] - Missing connection for port 'ready'.
+# 
+# ** Warning: v5_cosim_core.sv(97): (vopt-2718) [TFMPC] - Missing connection for port 'deadline_fault'.
+# 
+# ** Warning: v5_cosim_core.sv(97): (vopt-2718) [TFMPC] - Missing connection for port 'active_fast'.
+# 
+# ** Warning: v5_cosim_core.sv(109): (vopt-2685) [TFMPC] - Too few port connections for 'guard'.  Expected 36, found 27.
+# 
+# ** Warning: v5_cosim_core.sv(109): (vopt-2718) [TFMPC] - Missing connection for port 'measurement_fault'.
+# 
+# ** Warning: v5_cosim_core.sv(109): (vopt-2718) [TFMPC] - Missing connection for port 'legacy_raw_q20'.
+# 
+# ** Warning: v5_cosim_core.sv(109): (vopt-2718) [TFMPC] - Missing connection for port 'clear_blocked'.
+# 
+# ** Warning: v5_cosim_core.sv(109): (vopt-2718) [TFMPC] - Missing connection for port 'encoder_zero'.
+# 
+# ** Warning: v5_cosim_core.sv(109): (vopt-2718) [TFMPC] - Missing connection for port 'zero_q4'.
+# 
+# ** Warning: v5_cosim_core.sv(109): (vopt-2718) [TFMPC] - Missing connection for port 'run_session'.
+# 
+# ** Warning: v5_cosim_core.sv(109): (vopt-2718) [TFMPC] - Missing connection for port 'capture_active'.
+# 
+# ** Warning: v5_cosim_core.sv(109): (vopt-2718) [TFMPC] - Missing connection for port 'zero_valid'.
+# 
+# ** Warning: v5_cosim_core.sv(109): (vopt-2718) [TFMPC] - Missing connection for port 'mode'.
+# 
+# ** Note: (vopt-143) Recognized 1 FSM in module "forest_d1_fp64(fast)".
+# 
+# ** Note: (vopt-143) Recognized 1 FSM in module "j280_encoder_velocity(fast)".
+# 
+# ** Note: (vopt-143) Recognized 1 FSM in module "forest_d1_safety(fast)".
+# 
+# ** Note: (vopt-143) Recognized 1 FSM in module "forest_word_follow(fast)".
+# 
+# ** Note: (vopt-143) Recognized 1 FSM in module "source_m_guard(fast)".
+# 
+# ** Note: (vopt-143) Recognized 1 FSM in module "forest_d1_serial_format(fast)".
+# 
+# //  ModelSim SE-64 10.4 Dec  3 2014 
+# //
+# //  Copyright 1991-2014 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  THIS WORK CONTAINS TRADE SECRET AND PROPRIETARY INFORMATION
+# //  WHICH IS THE PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS
+# //  LICENSORS AND IS SUBJECT TO LICENSE TERMS.
+# //  THIS DOCUMENT CONTAINS TRADE SECRETS AND COMMERCIAL OR FINANCIAL
+# //  INFORMATION THAT ARE PRIVILEGED, CONFIDENTIAL, AND EXEMPT FROM
+# //  DISCLOSURE UNDER THE FREEDOM OF INFORMATION ACT, 5 U.S.C. SECTION 552.
+# //  FURTHERMORE, THIS INFORMATION IS PROHIBITED FROM DISCLOSURE UNDER
+# //  THE TRADE SECRETS ACT, 18 U.S.C. SECTION 1905.
+# //
+# Loading sv_std.std
+# Loading work.v5_cosim_core(fast)
+# Loading work.forest_program_store(fast)
+# Loading work.forest_draw_buffer(fast)
+# Loading work.forest_preset_rom(fast)
+# Loading work.forest_motion_planner(fast)
+# Loading work.forest_motion_coordinates(fast)
+# Loading work.forest_fixed_scan_rom(fast)
+# Loading work.forest_draw_clocked(fast)
+# Loading work.forest_word_follow(fast)
+# Loading work.forest_motion_tables(fast)
+# Loading work.v5_actuator_interval(fast)
+# Loading work.forest_d1_run_actuator(fast)
+# Loading work.j280_pwm_motor_safe(fast)
+# Loading work.forest_d1_pid(fast)
+# Loading work.forest_d1_fp64(fast)
+# Loading work.forest_d1_fast_balance(fast)
+# Loading work.forest_d1_fast_p_fixed(fast)
+# Loading work.forest_d1_serial_mul(fast)
+# Loading work.forest_d1_serial_q(fast)
+# Loading work.forest_d1_serial_format(fast)
+# Loading work.outer_guard_macro(fast)
+# Loading work.source_m_guard(fast)
+# Loading work.forest_d1_safety(fast)
+# Loading work.j280_encoder_velocity(fast)
+# ** Warning: (vsim-3015) N:/sequential_motion/cosim/native/v5_cosim_core.sv(97): [PCDPC] - Port size (12) does not match connection size (16) for port 'fast_angle'. The port definition is at: N:/sequential_motion/cosim/native/forest_d1_fast_balance.v(5).
+#    Time: 0 ns  Iteration: 0  Instance: /v5_cosim_core/fast_controller File: N:/sequential_motion/cosim/native/forest_d1_fast_balance.v
+# Loading D:/Program Files/MATLAB/R2025b/toolbox/edalink/extensions/modelsim/windows64/liblfmhdls_tmwvs.dll
+# CURRENT_CASE_CHECKPOINT_LOADED base_ms=0 epoch=1
+# F2_PROGRESS sample=1000 state=6 actual=13 target=0 fault=0
+# F2_PROGRESS sample=2000 state=6 actual=23 target=-1 fault=0
+# F2_PROGRESS sample=3000 state=6 actual=11 target=-3 fault=0
+# F2_PROGRESS sample=4000 state=6 actual=-29 target=-11 fault=0
+# F2_PROGRESS sample=5000 state=6 actual=-23 target=-28 fault=0
+# F2_PROGRESS sample=6000 state=6 actual=-30 target=-51 fault=0
+# F2_PROGRESS sample=7000 state=6 actual=-62 target=-73 fault=0
+# F2_PROGRESS sample=8000 state=6 actual=-98 target=-91 fault=0
+# F2_PROGRESS sample=9000 state=6 actual=-107 target=-99 fault=0
+# F2_PROGRESS sample=10000 state=6 actual=-101 target=-105 fault=0
+# F2_PROGRESS sample=11000 state=6 actual=-84 target=-105 fault=0
+# F2_PROGRESS sample=12000 state=6 actual=-69 target=-93 fault=0
+# F2_PROGRESS sample=13000 state=6 actual=-67 target=-84 fault=0
+# F2_PROGRESS sample=14000 state=6 actual=-81 target=-89 fault=0
+# F2_PROGRESS sample=15000 state=6 actual=-93 target=-84 fault=0
+# F2_PROGRESS sample=16000 state=6 actual=-67 target=-71 fault=0
+# F2_PROGRESS sample=17000 state=6 actual=-42 target=-62 fault=0
+# F2_PROGRESS sample=18000 state=6 actual=-48 target=-65 fault=0
+# F2_PROGRESS sample=19000 state=6 actual=-67 target=-63 fault=0
+# F2_PROGRESS sample=20000 state=6 actual=-47 target=-49 fault=0
+# F2_PROGRESS sample=21000 state=6 actual=-13 target=-44 fault=0
+# F2_PROGRESS sample=22000 state=6 actual=-34 target=-49 fault=0
+# F2_PROGRESS sample=23000 state=6 actual=-41 target=-42 fault=0
+# F2_PROGRESS sample=24000 state=6 actual=-10 target=-27 fault=0
+# F2_PROGRESS sample=25000 state=6 actual=16 target=-11 fault=0
+# F2_PROGRESS sample=26000 state=6 actual=7 target=-2 fault=0
+# F2_PROGRESS sample=27000 state=6 actual=-13 target=0 fault=0
+# F2_PROGRESS sample=28000 state=6 actual=14 target=13 fault=0
+# F2_PROGRESS sample=29000 state=6 actual=46 target=20 fault=0
+# F2_PROGRESS sample=30000 state=6 actual=40 target=15 fault=0
+# F2_PROGRESS sample=31000 state=6 actual=41 target=24 fault=0
+# F2_PROGRESS sample=32000 state=6 actual=35 target=39 fault=0
+# F2_PROGRESS sample=33000 state=6 actual=47 target=45 fault=0
+# F2_PROGRESS sample=34000 state=6 actual=81 target=54 fault=0
+# F2_PROGRESS sample=35000 state=6 actual=82 target=61 fault=0
+# F2_PROGRESS sample=36000 state=6 actual=82 target=70 fault=0
+# F2_PROGRESS sample=37000 state=6 actual=100 target=84 fault=0
+# F2_PROGRESS sample=38000 state=6 actual=87 target=86 fault=0
+# F2_PROGRESS sample=39000 state=6 actual=82 target=77 fault=0
+# F2_PROGRESS sample=40000 state=6 actual=112 target=83 fault=0
+# F2_PROGRESS sample=41000 state=6 actual=118 target=99 fault=0
+# F2_PROGRESS sample=42000 state=6 actual=103 target=111 fault=0
+# F2_PROGRESS sample=43000 state=6 actual=110 target=106 fault=0
+# F2_PROGRESS sample=44000 state=6 actual=121 target=95 fault=0
+# F2_PROGRESS sample=45000 state=6 actual=90 target=91 fault=0
+# F2_PROGRESS sample=46000 state=6 actual=66 target=84 fault=0
+# F2_PROGRESS sample=47000 state=6 actual=61 target=70 fault=0
+# F2_PROGRESS sample=48000 state=6 actual=57 target=49 fault=0
+# F2_PROGRESS sample=49000 state=6 actual=40 target=24 fault=0
+# F2_PROGRESS sample=50000 state=6 actual=8 target=-4 fault=0
+# F2_PROGRESS sample=51000 state=6 actual=-42 target=-31 fault=0
+# F2_PROGRESS sample=52000 state=6 actual=-69 target=-55 fault=0
+# F2_PROGRESS sample=53000 state=6 actual=-80 target=-73 fault=0
+# F2_PROGRESS sample=54000 state=6 actual=-69 target=-84 fault=0
+# F2_PROGRESS sample=55000 state=6 actual=-62 target=-89 fault=0
+# F2_PROGRESS sample=56000 state=6 actual=-69 target=-95 fault=0
+# F2_PROGRESS sample=57000 state=6 actual=-91 target=-104 fault=0
+# F2_PROGRESS sample=58000 state=6 actual=-103 target=-101 fault=0
+# F2_PROGRESS sample=59000 state=6 actual=-95 target=-92 fault=0
+# F2_PROGRESS sample=60000 state=6 actual=-88 target=-91 fault=0
+# F2_PROGRESS sample=61000 state=6 actual=-57 target=-83 fault=0
+# F2_PROGRESS sample=62000 state=6 actual=-44 target=-67 fault=0
+# F2_PROGRESS sample=63000 state=6 actual=-50 target=-54 fault=0
+# F2_PROGRESS sample=64000 state=6 actual=-59 target=-56 fault=0
+# F2_PROGRESS sample=65000 state=6 actual=-74 target=-64 fault=0
+# F2_PROGRESS sample=66000 state=6 actual=-46 target=-58 fault=0
+# F2_PROGRESS sample=67000 state=6 actual=-31 target=-47 fault=0
+# F2_PROGRESS sample=68000 state=6 actual=-20 target=-41 fault=0
+# F2_PROGRESS sample=69000 state=6 actual=-28 target=-29 fault=0
+# F2_PROGRESS sample=70000 state=6 actual=-28 target=-20 fault=0
+# F2_PROGRESS sample=71000 state=6 actual=-11 target=-15 fault=0
+# F2_PROGRESS sample=72000 state=6 actual=10 target=-8 fault=0
+# F2_PROGRESS sample=73000 state=6 actual=30 target=1 fault=0
+# F2_PROGRESS sample=74000 state=6 actual=13 target=7 fault=0
+# F2_PROGRESS sample=75000 state=6 actual=9 target=14 fault=0
+# F2_PROGRESS sample=76000 state=6 actual=22 target=24 fault=0
+# F2_PROGRESS sample=77000 state=6 actual=61 target=38 fault=0
+# F2_PROGRESS sample=78000 state=6 actual=77 target=52 fault=0
+# F2_PROGRESS sample=79000 state=6 actual=46 target=55 fault=0
+# F2_PROGRESS sample=80000 state=6 actual=65 target=52 fault=0
+# F2_PROGRESS sample=81000 state=6 actual=73 target=50 fault=0
+# F2_PROGRESS sample=82000 state=6 actual=74 target=57 fault=0
+# F2_PROGRESS sample=83000 state=6 actual=64 target=72 fault=0
+# F2_PROGRESS sample=84000 state=6 actual=85 target=81 fault=0
+# F2_PROGRESS sample=85000 state=6 actual=105 target=84 fault=0
+# F2_PROGRESS sample=86000 state=6 actual=113 target=89 fault=0
+# F2_PROGRESS sample=87000 state=6 actual=118 target=97 fault=0
+# F2_PROGRESS sample=88000 state=6 actual=110 target=104 fault=0
+# F2_PROGRESS sample=89000 state=6 actual=106 target=106 fault=0
+# F2_PROGRESS sample=90000 state=6 actual=127 target=106 fault=0
+# F2_PROGRESS sample=91000 state=6 actual=123 target=102 fault=0
+# F2_PROGRESS sample=92000 state=6 actual=95 target=89 fault=0
+# F2_PROGRESS sample=93000 state=6 actual=53 target=68 fault=0
+# F2_PROGRESS sample=94000 state=6 actual=41 target=43 fault=0
+# F2_PROGRESS sample=95000 state=6 actual=45 target=21 fault=0
+# F2_PROGRESS sample=96000 state=6 actual=16 target=6 fault=0
+# F2_PROGRESS sample=97000 state=6 actual=-15 target=0 fault=0
+# F2_PROGRESS sample=98000 state=6 actual=-8 target=0 fault=0
+# F2_PROGRESS sample=99000 state=6 actual=22 target=0 fault=0
+# F2_PROGRESS sample=100000 state=4 actual=18 target=0 fault=0
+# F2_PROGRESS sample=101000 state=4 actual=-18 target=0 fault=0
+# F2_PROGRESS sample=102000 state=4 actual=-7 target=0 fault=0
+# F2_PROGRESS sample=103000 state=4 actual=4 target=0 fault=0
+# F2_PROGRESS sample=104000 state=4 actual=28 target=0 fault=0
+# F2_PROGRESS sample=105000 state=4 actual=21 target=0 fault=0
+# F2_PROGRESS sample=106000 state=4 actual=-9 target=0 fault=0
+# F2_PROGRESS sample=107000 state=4 actual=2 target=0 fault=0
+# F2_PROGRESS sample=108000 state=4 actual=20 target=0 fault=0
+# F2_PROGRESS sample=109000 state=4 actual=23 target=0 fault=0
+# F2_PROGRESS sample=110000 state=4 actual=4 target=0 fault=0
+# F2_PROGRESS sample=111000 state=4 actual=-8 target=0 fault=0
+# F2_PROGRESS sample=112000 state=4 actual=10 target=0 fault=0
+# F2_PROGRESS sample=113000 state=4 actual=24 target=0 fault=0
+# F2_PROGRESS sample=114000 state=4 actual=23 target=0 fault=0
+# F2_PROGRESS sample=115000 state=4 actual=-10 target=0 fault=0
+# F2_PROGRESS sample=116000 state=4 actual=-2 target=0 fault=0
+# F2_PROGRESS sample=117000 state=4 actual=24 target=0 fault=0
+# F2_PROGRESS sample=118000 state=4 actual=11 target=0 fault=0
+# F2_PROGRESS sample=119000 state=4 actual=-11 target=0 fault=0
+# Simulation halt requested by foreign interface.
+quit -code 0 -force
+# End time: 18:54:55 on Nov 02,2026, Elapsed time: 0:26:53
+# Errors: 0, Warnings: 39

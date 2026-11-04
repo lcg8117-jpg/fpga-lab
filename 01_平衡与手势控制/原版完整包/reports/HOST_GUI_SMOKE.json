@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "transport": "FakeTransport only",
+  "window_visible": false,
+  "hardware_actions": 0,
+  "checked": "Tk startup, identity, config10 rendered, reason17 available",
+  "source_sha256": {
+    "host/app.py": "837359e43276c9cf6b1b8dd6b1032678a964eb9b7bc32f96443760f34a4da332",
+    "host/client.py": "d572bccc0101da8eaa434513f76ee391a018153baa1ac74fb47e1e17227e0923",
+    "host/config_fields.py": "661e1cfe99b5ca8574e932f4613d6727045dd47160907f98c390816c44ad7238",
+    "host/fake_transport.py": "599ff315eeab05e53acaac8a1b3a35ba08dc514ff0ad08649ed8eb2177127d3a",
+    "host/protocol.py": "784d8be5388a7ace0c748fa951848db8d7c54456ec0c87a54e76a968bdd9d5cc",
+    "host/session_log.py": "ff557f33864bb2211802d221e11aa629d9015b667a71674e3b42eac8b8d6b744",
+    "host/__init__.py": "8ea01967cca33839ab64089866db4e2c446d9da51ca87be62b3b5de0420a098c"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "host_revision": "curve-display-1",
+  "changed_source": [
+    "host/draw_editor.py"
+  ],
+  "before_sha256": "5acdfd2b8fa77d26dba912fb436f2b5820f37c78e295776b7204b1dba618500e",
+  "after_sha256": "924ba7e773deb8f16a5b80e1acde1f53123d3d2f140d5245b1b068617a329978",
+  "firmware_sha256": "677b66bdd36c9ceb49ffb6ac813e1acd9042e6f7db922208fd27969a90d067e7",
+  "hardware_actions": 0,
+  "firmware_unchanged": true,
+  "wire_sampling_unchanged": true,
+  "raw_measurements_unchanged": true
+}

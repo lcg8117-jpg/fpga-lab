@@ -1,0 +1,3 @@
+# Python's tkinter and all other imports are included in the standard library.
+# pyserial is imported only after an explicit USB connect action.
+pyserial==3.5

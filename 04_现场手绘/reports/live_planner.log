@@ -1,0 +1,2 @@
+PASS live_planner checks=13060 kits=2 directions=2 live_follow_before_release=1 lease_ms=200 idealFollowerOnly=1
+D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\product\tests\live_planner_tb.sv:116: $finish called at 89418160000 (1ps)

@@ -1,0 +1,8 @@
+{
+  "selected": "NATIVE_FASTP_R5.json",
+  "reason": "First fully accepted50MHz result; no need to repeat after passing",
+  "final_fmax_mhz": 50.06,
+  "R4_stopped_reason": "Functional synthesis netlist and PNR options identical to failedR2",
+  "R6_stopped_reason": "Independent comparison stopped afterR5 reached full acceptance",
+  "hardware_actions": 0
+}

@@ -1,0 +1,23 @@
+{
+  "passed": true,
+  "logic_tokens_identical": true,
+  "changes": [
+    {
+      "path": "src/forest_d1_safety.v",
+      "original_sha256": "966c7c49d68ecce6a622c359791406ea794aeda2763a7a84007debf704b14002",
+      "sha256": "099a0a3b5ca4459affe241c800ee4c55390964f6be3ebf2c27e3a14a2a6aff51",
+      "functional_tokens_sha256": "62017dadbc152011daaa6f11fea5e5b85093c4de51c0f4ec7e62c101ce003864",
+      "comment_only": true
+    },
+    {
+      "path": "src/forest_d1_system.v",
+      "original_sha256": "a7849ca5e625d5bd304ad13f9370e5a8514b67c3ab46cbbd7222e0a52c2b937e",
+      "sha256": "67e03a129104fa6ecd79574f380fb8933130b68c485f73ea99cb396f37d3b057",
+      "functional_tokens_sha256": "98f3a359042b2aef0aa5dac9d480b0f5ae9b41defcde36feac0732a49d72b356",
+      "comment_only": true
+    }
+  ],
+  "reference": "https://www.gowinsemi.com/upload/database_doc/38/document/5b923e5ef105f.pdf",
+  "why": "R1/R2 routed critical paths originate from safety session/zero/fault qualifiers; global Tcl switches left netlist unchanged",
+  "hardware_actions": 0
+}

@@ -1,0 +1,279 @@
+{
+  "status": "PASS_DATA_AUDIT_NOT_FUNCTIONAL_ACCEPTANCE",
+  "native_status": "PASS_EXECUTION_ONLY",
+  "native_rows": 119401,
+  "first_wave_ms": 0,
+  "last_time_s": 119.4,
+  "counts": {
+    "accepted_frames": 23880,
+    "points": 14680,
+    "missing_endpoints": 9200,
+    "duplicates": 0,
+    "reversed": 0,
+    "epoch_mismatch": 0,
+    "incoherent": 0,
+    "invalid_frames": 0,
+    "foreign_identity": 0,
+    "out_of_range": 0,
+    "missing_frames": 0,
+    "faults": 0,
+    "after_terminal": 0
+  },
+  "viewer_status": "complete",
+  "points": 14680,
+  "phase_points": {
+    "history_to_writing": 1960,
+    "G": 857,
+    "transition_G_O": 628,
+    "O": 937,
+    "transition_O_W": 286,
+    "W": 1332,
+    "transition_W_I": 273,
+    "I": 1004,
+    "transition_I_N": 244,
+    "N": 1239,
+    "return": 1920,
+    "tail": 4000
+  },
+  "letter_source_ranges": {
+    "W": {
+      "count": 1332,
+      "first": 13868,
+      "last": 15199
+    },
+    "N": {
+      "count": 1239,
+      "first": 16721,
+      "last": 17959
+    },
+    "O": {
+      "count": 937,
+      "first": 12645,
+      "last": 13581
+    },
+    "I": {
+      "count": 1004,
+      "first": 15473,
+      "last": 16476
+    },
+    "G": {
+      "count": 857,
+      "first": 11160,
+      "last": 12016
+    }
+  },
+  "current_letter_source_indices_disjoint": true,
+  "unique_current_source_indices": true,
+  "history_endpoints_may_be_reused": true,
+  "writing_points": 6800,
+  "expected_writing_points": 6800,
+  "full_writing_and_tail": true,
+  "x_error": {
+    "n": 6800,
+    "minimum": -18.017913818359375,
+    "maximum": 33.74958801269531,
+    "mean": 8.474624317393584,
+    "rms": 15.204847868013315,
+    "peak_to_peak": 51.76750183105469
+  },
+  "y_error": {
+    "n": 6800,
+    "minimum": -0.005200656604279847,
+    "maximum": 0.005700569127167154,
+    "mean": -7.429317706790705e-05,
+    "rms": 0.002221677398872174,
+    "peak_to_peak": 0.010901225731447
+  },
+  "canonical_xy_distance": {
+    "n": 6800,
+    "minimum": 0.17903150147020636,
+    "maximum": 52.031147525582355,
+    "mean": 20.68243600669598,
+    "rms": 22.744919636292863,
+    "peak_to_peak": 51.85211602411215
+  },
+  "paired_xy_p95_canonical_count": 37.133522721300395,
+  "tracking_error_count": {
+    "n": 34000,
+    "minimum": -18.0,
+    "maximum": 34.0,
+    "mean": 8.994088235294118,
+    "rms": 15.501718121094912,
+    "peak_to_peak": 52.0
+  },
+  "tail_position": {
+    "n": 20001,
+    "minimum": -19.0,
+    "maximum": 31.0,
+    "mean": 8.60441977901105,
+    "rms": 16.086255363490256,
+    "peak_to_peak": 50.0
+  },
+  "tail_tracking_error": {
+    "n": 20001,
+    "minimum": -19.0,
+    "maximum": 31.0,
+    "mean": 8.60441977901105,
+    "rms": 16.086255363490256,
+    "peak_to_peak": 50.0
+  },
+  "fault_samples": 0,
+  "maximum_outer_fault": 0.0,
+  "maximum_abs_pendulum_joint_angle_rad": 0.0776257370177393,
+  "maximum_abs_pin_snapshot_q15": 15892.0,
+  "entire_position": {
+    "n": 119401,
+    "minimum": -120.0,
+    "maximum": 142.0,
+    "mean": 8.38971197896165,
+    "rms": 62.061444965707686,
+    "peak_to_peak": 262.0
+  },
+  "final_actual": 24.0,
+  "final_reference": 0.0,
+  "final_strict_settled": false,
+  "final_motion_state": 4,
+  "phase_boundary_sample_deltas": [
+    {
+      "boundary_ms": 9800,
+      "next_phase": "history",
+      "feedback_delta_count": 0.0,
+      "reference_delta_count": 0.0,
+      "velocity_delta_rad_s": null,
+      "coordinate_offset_applied": false
+    },
+    {
+      "boundary_ms": 43800,
+      "next_phase": "history_to_writing",
+      "feedback_delta_count": 1.0,
+      "reference_delta_count": 0.0,
+      "velocity_delta_rad_s": null,
+      "coordinate_offset_applied": false
+    },
+    {
+      "boundary_ms": 55800,
+      "next_phase": "G",
+      "feedback_delta_count": 1.0,
+      "reference_delta_count": 0.0,
+      "velocity_delta_rad_s": 0.00013133748551796793,
+      "coordinate_offset_applied": false
+    },
+    {
+      "boundary_ms": 60085,
+      "next_phase": "transition_G_O",
+      "feedback_delta_count": -1.0,
+      "reference_delta_count": 0.0,
+      "velocity_delta_rad_s": -0.00013133748551796788,
+      "coordinate_offset_applied": false
+    },
+    {
+      "boundary_ms": 63225,
+      "next_phase": "O",
+      "feedback_delta_count": 0.0,
+      "reference_delta_count": 0.0,
+      "velocity_delta_rad_s": 0.0,
+      "coordinate_offset_applied": false
+    },
+    {
+      "boundary_ms": 67910,
+      "next_phase": "transition_O_W",
+      "feedback_delta_count": 0.0,
+      "reference_delta_count": 0.0,
+      "velocity_delta_rad_s": 0.0,
+      "coordinate_offset_applied": false
+    },
+    {
+      "boundary_ms": 69340,
+      "next_phase": "W",
+      "feedback_delta_count": 0.0,
+      "reference_delta_count": 1.0,
+      "velocity_delta_rad_s": 0.0,
+      "coordinate_offset_applied": false
+    },
+    {
+      "boundary_ms": 76000,
+      "next_phase": "transition_W_I",
+      "feedback_delta_count": 0.0,
+      "reference_delta_count": 0.0,
+      "velocity_delta_rad_s": 0.0,
+      "coordinate_offset_applied": false
+    },
+    {
+      "boundary_ms": 77365,
+      "next_phase": "I",
+      "feedback_delta_count": 0.0,
+      "reference_delta_count": 0.0,
+      "velocity_delta_rad_s": 0.0,
+      "coordinate_offset_applied": false
+    },
+    {
+      "boundary_ms": 82385,
+      "next_phase": "transition_I_N",
+      "feedback_delta_count": 0.0,
+      "reference_delta_count": 0.0,
+      "velocity_delta_rad_s": 0.0,
+      "coordinate_offset_applied": false
+    },
+    {
+      "boundary_ms": 83605,
+      "next_phase": "N",
+      "feedback_delta_count": 0.0,
+      "reference_delta_count": 0.0,
+      "velocity_delta_rad_s": 0.0,
+      "coordinate_offset_applied": false
+    },
+    {
+      "boundary_ms": 89800,
+      "next_phase": "return",
+      "feedback_delta_count": 0.0,
+      "reference_delta_count": 0.0,
+      "velocity_delta_rad_s": -0.00013133748551796788,
+      "coordinate_offset_applied": false
+    },
+    {
+      "boundary_ms": 99400,
+      "next_phase": "tail",
+      "feedback_delta_count": -1.0,
+      "reference_delta_count": 0.0,
+      "velocity_delta_rad_s": -0.0001313374855179683,
+      "coordinate_offset_applied": false
+    }
+  ],
+  "export_reconstruct_exact": true,
+  "raw_mat_receipt_bound": true,
+  "plan_checksum_verified": true,
+  "program_hex_exact": true,
+  "source_unchanged": true,
+  "physical_acceptance": false,
+  "approved_style_acceptance": false,
+  "input_source": {
+    "source_kind": "conditional_model",
+    "model": "sensor_271",
+    "source_csv": "cosim/cases/sequence_r03/FULL_1KHZ.csv",
+    "source_csv_sha256": "a1601d2dda9adedb180e64270907114b44c59fbb7d1383d1ffb3a2a431a7b208",
+    "source_freeze_sha256": "777e9fc187d42748885c96ae5295ce7b5aef1b9cca3a7e3a57b3d567542aa717",
+    "raw_mat_sha256": "43f701cf0d5c5508ace33a71ff355398d9d5c358e24d453f28f0fb021be25bc7",
+    "input_plan_sha256": "4ddd0b1ceb9a64d5a3a6c277f872b52a08ce957690b8a222415030f971632ee8",
+    "input_ram_checksum": 824031523,
+    "native_receipt_sha256": "5364a0d5b065b0566fb9490bf922f0ff7f4328070d9562564a0339503bbba571",
+    "source_field": "frame_actual",
+    "reference_used_as_feedback": false,
+    "source_sample_ms": 1,
+    "retained_sample_ms": 5,
+    "retained_time_rule": "first WAVE-relative multiples of5ms",
+    "board_ms_semantics": "native physical simulation milliseconds, not a hardware clock reading",
+    "control_epoch_semantics": "actual completed RTL fast transaction count",
+    "request_id_semantics": "offline replay task identifier1; no hardware PLAY ACK is claimed",
+    "coherent_semantics": "native transaction phase/finite-field checks passed; not a UART coherence flag",
+    "serial_frame_crc_tested": false,
+    "physical_acceptance": false,
+    "new_hardware_actions": false,
+    "current_samples_reused_across_letters": false,
+    "display_geometry_added": false,
+    "endpoint_calculation": "exact sampled frame_actual at t and t-46000ms",
+    "model_scope": "Historical conditional quiet-V3/ADC16 fit; parameters NOT calibrated to ADC64 or V5"
+  },
+  "replay_file": "NATIVE_R03_SEQUENTIAL_REPLAY.json",
+  "replay_sha256": "60a736387001465efbe0343a1cad8e457ebef60a9d36126ee26c97dd7b283c0f",
+  "replay_bytes": 3119838
+}

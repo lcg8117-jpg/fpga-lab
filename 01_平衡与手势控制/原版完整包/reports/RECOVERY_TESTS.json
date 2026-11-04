@@ -1,0 +1,28 @@
+{
+  "passed": true,
+  "source_sha256": {
+    "forest_motion_reference_shape.v": "ae3ef70575b86fc1d6313cb335ce8c625bf534279bbd83e670db21a8c5c0bedc",
+    "forest_d1_adaptive.v": "a9f4a622982802ea3156d3d626248440e3a247b9c1498c12913c881c67b34269"
+  },
+  "checks": [
+    {
+      "name": "library",
+      "passed": true
+    },
+    {
+      "name": "compile",
+      "passed": true
+    },
+    {
+      "name": "tb_reference_shape",
+      "passed": true
+    },
+    {
+      "name": "tb_absolute_search",
+      "passed": true
+    }
+  ],
+  "stage": "D:\\Codex_Scratch\\ADB1_RECOVERY_TEST_1793573795034743600",
+  "hardware_actions": 0,
+  "physical_acceptance": false
+}

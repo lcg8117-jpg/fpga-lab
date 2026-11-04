@@ -1,0 +1,25 @@
+Reading E:/Moildesim/tcl/vsim/pref.tcl
+
+# 10.4
+
+# //  ModelSim SE-64 10.4 Dec  3 2014 
+# //
+# //  Copyright 1991-2014 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  THIS WORK CONTAINS TRADE SECRET AND PROPRIETARY INFORMATION
+# //  WHICH IS THE PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS
+# //  LICENSORS AND IS SUBJECT TO LICENSE TERMS.
+# //  THIS DOCUMENT CONTAINS TRADE SECRETS AND COMMERCIAL OR FINANCIAL
+# //  INFORMATION THAT ARE PRIVILEGED, CONFIDENTIAL, AND EXEMPT FROM
+# //  DISCLOSURE UNDER THE FREEDOM OF INFORMATION ACT, 5 U.S.C. SECTION 552.
+# //  FURTHERMORE, THIS INFORMATION IS PROHIBITED FROM DISCLOSURE UNDER
+# //  THE TRADE SECRETS ACT, 18 U.S.C. SECTION 1905.
+# //
+# results/word_font2.wlf opened as dataset "word_font2"
+# do probe_examine.do
+# /word_closed_loop/g_motor /word_closed_loop/g_target /word_closed_loop/g_actual /word_closed_loop/g_tracking /word_closed_loop/g_completed /word_closed_loop/g_accepted /word_closed_loop/g_draw_index /word_closed_loop/g_lane/planner/follow_correction
+# -492 23 23 0 14000 1 -162 -15
+BULK_NATIVE_VALUES=-492 23 23 0 14000 1 -162 -15 LENGTH=8
+# 4294966804 23 23 0 14000 1 350 65521
+BULK_UNSIGNED_VALUES=4294966804 23 23 0 14000 1 350 65521 LENGTH=8

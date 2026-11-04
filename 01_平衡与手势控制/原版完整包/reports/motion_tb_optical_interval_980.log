@@ -1,0 +1,102 @@
+Reading D:/modeltech64_10.4/tcl/vsim/pref.tcl
+
+# 10.4
+
+# vsim -c -onfinish exit work.tb_optical_interval_980 -do "onerror {quit -code 2};run -all;quit -code 0" 
+# Start time: 06:57:21 on Nov 02,2026
+# ** Note: (vsim-3812) Design is being optimized...
+# 
+# ** Warning: tb_optical_interval_980.sv(8): (vopt-2685) [TFMPC] - Too few port connections for 'decoder'.  Expected 15, found 12.
+# 
+# ** Warning: tb_optical_interval_980.sv(8): (vopt-2718) [TFMPC] - Missing connection for port 'armed'.
+# 
+# ** Warning: tb_optical_interval_980.sv(8): (vopt-2718) [TFMPC] - Missing connection for port 'diagnostic_state'.
+# 
+# ** Warning: tb_optical_interval_980.sv(8): (vopt-2718) [TFMPC] - Missing connection for port 'suppressed_count'.
+# 
+# ** Warning: tb_optical_interval_980.sv(11): (vopt-2685) [TFMPC] - Too few port connections for 'motion'.  Expected 54, found 24.
+# 
+# ** Warning: tb_optical_interval_980.sv(11): (vopt-2718) [TFMPC] - Missing connection for port 'acceleration_q'.
+# 
+# ** Warning: tb_optical_interval_980.sv(11): (vopt-2718) [TFMPC] - Missing connection for port 'velocity_q'.
+# 
+# ** Warning: tb_optical_interval_980.sv(11): (vopt-2718) [TFMPC] - Missing connection for port 'planner_phase'.
+# 
+# ** Warning: tb_optical_interval_980.sv(11): (vopt-2718) [TFMPC] - Missing connection for port 'settle_ticks'.
+# 
+# ** Warning: tb_optical_interval_980.sv(11): (vopt-2718) [TFMPC] - Missing connection for port 'tracking_error'.
+# 
+# ** Warning: tb_optical_interval_980.sv(11): (vopt-2718) [TFMPC] - Missing connection for port 'controller_acceleration_q'.
+# 
+# ** Warning: tb_optical_interval_980.sv(11): (vopt-2718) [TFMPC] - Missing connection for port 'controller_velocity_q'.
+# 
+# ** Warning: tb_optical_interval_980.sv(11): (vopt-2718) [TFMPC] - Missing connection for port 'reference_velocity_cps'.
+# 
+# ** Warning: tb_optical_interval_980.sv(11): (vopt-2718) [TFMPC] - Missing connection for port 'velocity_valid'.
+# 
+# ** Warning: tb_optical_interval_980.sv(11): (vopt-2718) [TFMPC] - Missing connection for port 'measured_velocity_cps'.
+# 
+# ** Warning: tb_optical_interval_980.sv(11): (vopt-2718) [TFMPC] - Missing connection for port 'tracking_settled'.
+# 
+# ** Warning: tb_optical_interval_980.sv(11): (vopt-2718) [TFMPC] - Missing connection for port 'trajectory_done'.
+# 
+# ** Warning: tb_optical_interval_980.sv(11): (vopt-2718) [TFMPC] - Missing connection for port 'last_action'.
+# 
+# ** Warning: tb_optical_interval_980.sv(11): (vopt-2718) [TFMPC] - Missing connection for port 'last_request_id'.
+# 
+# ** Warning: tb_optical_interval_980.sv(11): (vopt-2718) [TFMPC] - Missing connection for port 'event_count'.
+# 
+# ** Warning: tb_optical_interval_980.sv(11): (vopt-2718) [TFMPC] - Missing connection for port 'stop_reason'.
+# 
+# ** Warning: tb_optical_interval_980.sv(11): (vopt-2718) [TFMPC] - Missing connection for port 'reason'.
+# 
+# ** Warning: tb_optical_interval_980.sv(11): (vopt-2718) [TFMPC] - Missing connection for port 'direction'.
+# 
+# ** Warning: tb_optical_interval_980.sv(11): (vopt-2718) [TFMPC] - Missing connection for port 'active'.
+# 
+# ** Warning: tb_optical_interval_980.sv(11): (vopt-2718) [TFMPC] - Missing connection for port 'target_local'.
+# 
+# ** Warning: tb_optical_interval_980.sv(11): (vopt-2718) [TFMPC] - Missing connection for port 'encoder_local'.
+# 
+# ** Warning: tb_optical_interval_980.sv(11): (vopt-2718) [TFMPC] - Missing connection for port 'final_wide'.
+# 
+# ** Warning: tb_optical_interval_980.sv(11): (vopt-2718) [TFMPC] - Missing connection for port 'origin_wide'.
+# 
+# ** Warning: tb_optical_interval_980.sv(11): (vopt-2718) [TFMPC] - Missing connection for port 'target_wide'.
+# 
+# ** Warning: tb_optical_interval_980.sv(11): (vopt-2718) [TFMPC] - Missing connection for port 'encoder_wide'.
+# 
+# ** Warning: tb_optical_interval_980.sv(11): (vopt-2718) [TFMPC] - Missing connection for port 'enc_wide_physical'.
+# 
+# ** Warning: tb_optical_interval_980.sv(11): (vopt-2718) [TFMPC] - Missing connection for port 'cfg_read_value'.
+# 
+# ** Warning: tb_optical_interval_980.sv(11): (vopt-2718) [TFMPC] - Missing connection for port 'cfg_revision'.
+# 
+# ** Warning: tb_optical_interval_980.sv(11): (vopt-2718) [TFMPC] - Missing connection for port 'cfg_error'.
+# 
+# ** Warning: tb_optical_interval_980.sv(11): (vopt-2718) [TFMPC] - Missing connection for port 'cfg_ok'.
+# 
+# //  ModelSim SE-64 10.4 Dec  3 2014 
+# //
+# //  Copyright 1991-2014 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  THIS WORK CONTAINS TRADE SECRET AND PROPRIETARY INFORMATION
+# //  WHICH IS THE PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS
+# //  LICENSORS AND IS SUBJECT TO LICENSE TERMS.
+# //  THIS DOCUMENT CONTAINS TRADE SECRETS AND COMMERCIAL OR FINANCIAL
+# //  INFORMATION THAT ARE PRIVILEGED, CONFIDENTIAL, AND EXEMPT FROM
+# //  DISCLOSURE UNDER THE FREEDOM OF INFORMATION ACT, 5 U.S.C. SECTION 552.
+# //  FURTHERMORE, THIS INFORMATION IS PROHIBITED FROM DISCLOSURE UNDER
+# //  THE TRADE SECRETS ACT, 18 U.S.C. SECTION 1905.
+# //
+# Loading sv_std.std
+# Loading work.tb_optical_interval_980(fast)
+# onerror {quit -code 2}
+#  Warning: onerror command for use within macro
+# run -all
+# PASS OPTICAL_INTERVAL_980 checks=208 reported980ms=blocked held_replay=0 explicit_STOP=immediate
+# ** Note: $finish    : tb_optical_interval_980.sv(38)
+#    Time: 1035040 ns  Iteration: 1  Instance: /tb_optical_interval_980
+# End time: 06:57:23 on Nov 02,2026, Elapsed time: 0:00:02
+# Errors: 0, Warnings: 35

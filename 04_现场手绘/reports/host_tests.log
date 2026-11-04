@@ -1,0 +1,28 @@
+test_ack_errors_report_actual_status (__main__.Tests.test_ack_errors_report_actual_status) ... ok
+test_button_release_without_tk_callback_ends_stroke (__main__.Tests.test_button_release_without_tk_callback_ends_stroke) ... ok
+test_clear_has_no_settling_qualification (__main__.Tests.test_clear_has_no_settling_qualification) ... ok
+test_codec_identity_and_no_old_upload (__main__.Tests.test_codec_identity_and_no_old_upload) ... ok
+test_connect_read_only_identity_lock (__main__.Tests.test_connect_read_only_identity_lock) ... ok
+test_default_disconnected_without_gui_or_port_scan (__main__.Tests.test_default_disconnected_without_gui_or_port_scan) ... ok
+test_delayed_ack_mouse_and_heartbeat_do_not_block_each_other (__main__.Tests.test_delayed_ack_mouse_and_heartbeat_do_not_block_each_other) ... ok
+test_full_rtl_wire_and_real_difference (__main__.Tests.test_full_rtl_wire_and_real_difference) ... ok
+test_late_stop_ack_does_not_invalidate_new_stroke (__main__.Tests.test_late_stop_ack_does_not_invalidate_new_stroke) ... ok
+test_live_points_exist_before_mouse_release (__main__.Tests.test_live_points_exist_before_mouse_release) ... ok
+test_missing_point_ack_is_not_replayed (__main__.Tests.test_missing_point_ack_is_not_replayed) ... ok
+test_physical_release_is_checked_while_waiting_for_ack (__main__.Tests.test_physical_release_is_checked_while_waiting_for_ack) ... ok
+test_real_disconnect_keeps_500ms_protection (__main__.Tests.test_real_disconnect_keeps_500ms_protection) ... ok
+test_release_before_begin_ack_has_no_late_motion (__main__.Tests.test_release_before_begin_ack_has_no_late_motion) ... ok
+test_release_during_delayed_begin_ack_and_rapid_strokes (__main__.Tests.test_release_during_delayed_begin_ack_and_rapid_strokes) ... ok
+test_release_removes_queued_old_points (__main__.Tests.test_release_removes_queued_old_points) ... ok
+test_stop_invalidates_waiting_stroke_without_late_point (__main__.Tests.test_stop_invalidates_waiting_stroke_without_late_point) ... ok
+test_time_alignment_retains_real_lag_and_gaps (__main__.Tests.test_time_alignment_retains_real_lag_and_gaps) ... ok
+test_unsent_begin_has_no_120ms_deadline_and_release_purges_it (__main__.Tests.test_unsent_begin_has_no_120ms_deadline_and_release_purges_it) ... ok
+
+----------------------------------------------------------------------
+Ran 19 tests in 12.376s
+
+OK
+ACK 62ms: points=11, max_point_gap=94.0ms, heartbeat_max_gap=110.0ms
+ACK 70ms: points=9, max_point_gap=94.0ms, heartbeat_max_gap=110.0ms
+ACK 94ms: points=7, max_point_gap=125.0ms, heartbeat_max_gap=110.0ms
+ACK 125ms: points=6, max_point_gap=141.0ms, heartbeat_max_gap=110.0ms

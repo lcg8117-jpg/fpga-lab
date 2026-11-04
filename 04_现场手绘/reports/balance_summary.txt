@@ -1,0 +1,24 @@
+审计与离线对照完成
+
+DS13：PASS。两种 kit 分别 37,326,230 个 50MHz 时钟，共 74,652,460 拍；97 个控制/调度探针零差异，B 通道三个驱动引脚零差异，ADC 时钟零差异。覆盖零点 RUN、STOP 后正位移再 RUN、STOP 后负位移再 RUN、重新 ZERO 再 RUN，全程没有绘画命令。每种 kit 覆盖 ADC64 746 批、慢 D 发起145次、快控制发起720次、快控制完成718次；最长快控制201/202拍。两边显式同S1、kit、操作脉冲。
+
+原 DS12：预期失败负例成立。IP570 完整完成37,326,230拍后等价断言失败，实际PWM引脚有6,771,362拍不同。已失败后未继续kit0。
+核心证据：
+1. STOP期间第10,350,013拍：封存快P反馈10010，DS12反馈10000；第10,500,993拍慢PID实际采样也分别10010与10000。
+2. 位置D历史、fast bias、位置P以及Moto随后不同。第10,550,151拍Moto为-181与1060；这时电机仍STOP，不能把这项单独当实际驱动证据。
+3. STOP后将编码器移动到+23cnt并RUN，第12,421,144拍实际{BN1,BN2,PWMB}首次不同：封存5(101)，DS12为4(100)。这才是实际驱动差异。
+4. 后续相同外部ADC输入也出现clean/filtered差异；ADC前端选样依赖驱动状态，PWM分叉会传播回测量链。
+
+接线原因：ADB1手动平衡使用mapped_encoder，参考encoder_zero；DS12始终使用motion_encoder。取消期间planner跟踪target_wide到当前encoder_wide，coordinates将encoder_local置10000，因此不绘画也改变了停止期间的P/D输入、历史以及再次RUN时的保持点。HOLD参考不是永远0：reanchor为0，cancel跟随当前位置，RUN后冻结。初次零点RUN发现反馈流水线与保护输入表示不同；本负例的首次实际PWM分叉发生在STOP位移再RUN。
+
+数值链：requested_fast均1，ADC_WORD_GUARD实际均1；ADC64/1ms、快P1/5ms、D5/25ms、位置滤波732284、角度Q4映射、PID符号、Moto=balance-position及一次MOTOR_SIGN=-1的驱动换算保持一致。planner测得速度为100ms位移乘10，用于判稳，不是位置D的直接输入。BEGIN要求误差±5cnt和速度±10cnt/s等条件，可以解释拒绝，不能独自解释晃动。
+
+来源核验：封存native_evidence/src与work/project/src全一致，ZIP内system/top/gateway同哈希；封存native清单42项全部匹配，DS12 native清单29项全部匹配且与DS12生产源一致。DS13 motion_session寄存器块与封存逐字一致。测试完成后两边主源码哈希未变。
+
+复现：在product目录使用python -B tests/balance_compare.py执行DS13正例；使用python -B tests/balance_negative.py执行原DS12负例。二者调用现有tests/rtl_compile.py。原/新整机源码仅复制和模块名前缀重命名；反向重命名逐字校验。DS12不存在的motion_session仅在只读testwrapper probe输出常量0，未添加任何DS12状态或控制逻辑。
+
+测试边界：两边STARTUP_CYCLES=100、KEY_STABLE_CYCLES=4、ZERO_SAMPLES=8以缩短无关等待；所有控制、ADC、位置滤波和PWM周期未缩短。仅force gateway输出的S1、kit、ZERO/RUN/STOP、gesture_enable=0，未force数值内核/ADC/encoder/safety/planner/driver。未测试摆起、绘画、自适应、全部故障边界或门级时序；原版与DS13的ALLOW_SWING及默认增益等产品特征仍不同，比较已显式统一为S1手动范围。
+
+此结果足以确认本次手动控制接线恢复，并可作为继续native构建的手动等价依据；不能承诺现场所有晃动原因均已找到。仍需原版/DS13同机械条件、同ZERO与停止位移场景的硬件对照。
+
+只新增授权balance_*测试和报告及balance_run中间文件。未改生产源码，未连接硬件，未启动或重复主代理的run_system/native。

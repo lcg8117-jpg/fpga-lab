@@ -1,0 +1,16 @@
+WORD_MODEL_READY font2
+LANE1 samples=24001 transactions=24000 peakAngle=205.841922 peakTracking=4 state=0
+LANE2 samples=24001 transactions=24000 peakAngle=311.564562 peakTracking=5 state=0
+PASS WORD_RTL_SIMULINK_FONT2
+[警告: 向量化内容可能需要很长时间才能创建，或者可能包含意外结果。将 'ContentType' 设置为 'image' 以提高性能。<a href="matlab:warning('off',
+'MATLAB:print:ContentTypeImageSuggested')">点击此处</a>以不再显示此消息。] 
+[警告: 向量化内容可能需要很长时间才能创建，或者可能包含意外结果。将 'ContentType' 设置为 'image' 以提高性能。<a href="matlab:warning('off',
+'MATLAB:print:ContentTypeImageSuggested')">点击此处</a>以不再显示此消息。] 
+                          scope: 'Supplied uncalibrated Oct27 count-domain plant;actual C6 tracking RTL with unchanged original PID'
+    physical_hardware_validated: 0
+                       sample_s: 0.0050
+        interface_delay_samples: 1
+                    python_used: 0
+                        results: [1×2 struct]
+
+MATLAB_NATIVE_EXPORT_AND_CAUSALITY_PASS

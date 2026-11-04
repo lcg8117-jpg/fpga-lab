@@ -1,0 +1,5 @@
+RUN fixture ms=174 ready=1 mode=1
+RUN fixture ms=1198 ready=1 mode=1
+RUN fixture ms=1529 ready=1 mode=1
+RUN fixture ms=1541 ready=1 mode=1
+PASS full_system checks=212684937 ticks=102935680 sample5ms=384 ADC64_1ms=2058 fastP_1ms=1913 completions=1915 wire_packets=431 coherent=386 job_frames=166 pwm_edges=20394 max_control_clocks=180 hardware_actions=0

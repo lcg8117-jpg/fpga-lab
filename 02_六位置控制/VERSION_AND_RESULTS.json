@@ -1,0 +1,32 @@
+{
+  "firmware": "56345239",
+  "schema": "56345208",
+  "layout": 5,
+  "requested_gains": [
+    53.78,
+    0,
+    210.14,
+    17.67,
+    0,
+    616.61
+  ],
+  "periods_us": {
+    "angle_P": 1000,
+    "position_P": 5000,
+    "angle_D": 5000,
+    "position_D": 25000
+  },
+  "qualified_bitstream": "Bitstream/J280_V4_FastP_56345239_Qualified.fs",
+  "bitstream_sha256": "5649eeb4bca1a3c1ae88c42761a9d52e4d3213ed42605e7c57489e5d271bfebb",
+  "project": "FPGA_Project/forest_d1_v4.gprj",
+  "desktop": "PC_Bluetooth/Launch.cmd",
+  "device": "GW2A-LV55PG484C8/I7",
+  "clock_mhz": 50,
+  "final_fmax_mhz": 50.314,
+  "all_five_sta_passed": true,
+  "actual_board_sram_programmed": true,
+  "actual_bt10_parameter_readback_verified": true,
+  "other_pc_hardware_connection_tested": false,
+  "physical_control_performance_accepted": false,
+  "teammate_package_hardware_actions": 0
+}

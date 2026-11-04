@@ -1,0 +1,38 @@
+{
+  "release": "ADB1完整旧版+S1",
+  "date": "2026-11-03",
+  "user_approved_archive": true,
+  "user_requested_teammate_delivery": true,
+  "scope": "Archive and portable handoff only; no hardware actions in this packaging turn",
+  "parent_archive_sha256": "276957af936061f2f60ecac0d26e2d4fde76aae16c4fa524099c013bac8b0cb4",
+  "firmware_sha256": "64a16095e2077ed6f0da54f7f8694b7ae078578ed88db02bef020011fb45e8c6",
+  "S1": [
+    53.78,
+    0,
+    210.14,
+    17.67,
+    0,
+    616.61
+  ],
+  "IEEE754": [
+    "42571eb8",
+    "00000000",
+    "435223d7",
+    "418d5c29",
+    "00000000",
+    "441a270a"
+  ],
+  "actual_S1_and_periods_observed": true,
+  "old_adaptive_fixed": false,
+  "adaptive_enabled": false,
+  "comprehensive_functional_test_claimed": false,
+  "launcher_changes": [
+    "S1 entry defaults",
+    "explicit manual local COM port",
+    "correct transport origin in window record",
+    "UTF-8 Windows launcher"
+  ],
+  "original_host_source_changed": false,
+  "FPGA_source_changed": false,
+  "new_compile": false
+}

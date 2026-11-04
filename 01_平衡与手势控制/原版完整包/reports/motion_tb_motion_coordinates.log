@@ -1,0 +1,32 @@
+Reading D:/modeltech64_10.4/tcl/vsim/pref.tcl
+
+# 10.4
+
+# vsim -c -onfinish exit work.tb_motion_coordinates -do "onerror {quit -code 2};run -all;quit -code 0" 
+# Start time: 06:57:13 on Nov 02,2026
+# ** Note: (vsim-3812) Design is being optimized...
+# 
+# //  ModelSim SE-64 10.4 Dec  3 2014 
+# //
+# //  Copyright 1991-2014 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  THIS WORK CONTAINS TRADE SECRET AND PROPRIETARY INFORMATION
+# //  WHICH IS THE PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS
+# //  LICENSORS AND IS SUBJECT TO LICENSE TERMS.
+# //  THIS DOCUMENT CONTAINS TRADE SECRETS AND COMMERCIAL OR FINANCIAL
+# //  INFORMATION THAT ARE PRIVILEGED, CONFIDENTIAL, AND EXEMPT FROM
+# //  DISCLOSURE UNDER THE FREEDOM OF INFORMATION ACT, 5 U.S.C. SECTION 552.
+# //  FURTHERMORE, THIS INFORMATION IS PROHIBITED FROM DISCLOSURE UNDER
+# //  THE TRADE SECRETS ACT, 18 U.S.C. SECTION 1905.
+# //
+# Loading sv_std.std
+# Loading work.tb_motion_coordinates(fast)
+# onerror {quit -code 2}
+#  Warning: onerror command for use within macro
+# run -all
+# PASS coordinates checks=6495
+# ** Note: $finish    : tb_motion_coordinates.v(62)
+#    Time: 305420 ns  Iteration: 1  Instance: /tb_motion_coordinates
+# End time: 06:57:14 on Nov 02,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0

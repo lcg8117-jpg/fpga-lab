@@ -1,0 +1,3 @@
+[警告: 向量化内容可能需要很长时间才能创建，或者可能包含意外结果。将 'ContentType' 设置为 'image' 以提高性能。<a href="matlab:warning('off',
+'MATLAB:print:ContentTypeImageSuggested')">点击此处</a>以不再显示此消息。] 
+EXPORTED_NATIVE_MEASUREMENTS points=6800 numeric_gate=0 final_settled=0

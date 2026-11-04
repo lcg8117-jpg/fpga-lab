@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "scope": "Synthesis timing estimate only; final routed STA remains required",
+  "project": "forest_d1_v1",
+  "passed": true,
+  "fmax_mhz": 58.432,
+  "clock_period_ns": 20,
+  "worst_reported_setup_slack_ns": 2.886,
+  "reported_path_count": 25,
+  "synthesis_resources": {
+    "T_Lut": 36090,
+    "T_Alu": 6482,
+    "T_Register": 24338
+  },
+  "projected_logic_lower_bound": 42572
+}

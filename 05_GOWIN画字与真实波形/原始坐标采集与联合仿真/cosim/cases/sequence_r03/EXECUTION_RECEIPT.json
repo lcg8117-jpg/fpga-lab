@@ -1,0 +1,14 @@
+{
+  "status": "PASS_EXECUTION_ONLY",
+  "scope": "MATCHED_CONDITIONAL_MODEL_NOT_PHYSICAL_ACCEPTANCE",
+  "hardware_actions": 0,
+  "runner_sha256": "fb6831014d708d6dd79ac605e50b6c9b5b2fee6717674587ba7b763433df7a33",
+  "started_unix": 1793615281.7623446,
+  "modelsim_pid": 38188,
+  "matlab_pid": 48408,
+  "trace_sha256": "43f701cf0d5c5508ace33a71ff355398d9d5c358e24d453f28f0fb021be25bc7",
+  "elapsed_s": 1614.2963330745697,
+  "matlab_exit_code": 0,
+  "modelsim_exit_code": 0,
+  "freeze_sha256": "777e9fc187d42748885c96ae5295ce7b5aef1b9cca3a7e3a57b3d567542aa717"
+}

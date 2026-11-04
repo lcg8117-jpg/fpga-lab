@@ -1,0 +1,69 @@
+DIFF stage=RUN_at_zero cycle=2851071 signal=control_encoder ref=0x2710 dut=0x2711 refwide=1 dutwide=1 reftarget=0 duttarget=0
+DIFF stage=RUN_at_zero cycle=3000992 signal=source_guard_mean ref=0xc0d dut=0xc0f refwide=2 dutwide=2 reftarget=0 duttarget=0
+DIFF stage=STOP_move_positive cycle=10350013 signal=fast_control_encoder ref=0x271a dut=0x2710 refwide=10 dutwide=10 reftarget=10 duttarget=10
+DIFF stage=STOP_move_positive cycle=10350013 signal=observation_encoder ref=0x271a dut=0x2710 refwide=10 dutwide=10 reftarget=10 duttarget=10
+DIFF stage=STOP_move_positive cycle=10350017 signal=core.fast.position_error ref=0xa dut=0x0 refwide=10 dutwide=10 reftarget=10 duttarget=10
+DIFF stage=STOP_move_positive cycle=10350117 signal=encoder_sample ref=0x271a dut=0x2710 refwide=10 dutwide=10 reftarget=10 duttarget=10
+DIFF stage=STOP_move_positive cycle=10500993 signal=core.original.sampled_encoder ref=0x271a dut=0x2710 refwide=23 dutwide=23 reftarget=23 duttarget=23
+DIFF stage=STOP_move_positive cycle=10501308 signal=core.original.last_position ref=0x3f083772 dut=0xbfbbe447 refwide=23 dutwide=23 reftarget=23 duttarget=23
+DIFF stage=STOP_move_positive cycle=10550017 signal=position_d ref=0x44b67009 dut=0x436247f5 refwide=23 dutwide=23 reftarget=23 duttarget=23
+DIFF stage=STOP_move_positive cycle=10550017 signal=position_diff ref=0x40177c89 dut=0x3ebbe448 refwide=23 dutwide=23 reftarget=23 duttarget=23
+DIFF stage=STOP_move_positive cycle=10550040 signal=core.fast.state ref=0x1e dut=0x13 refwide=23 dutwide=23 reftarget=23 duttarget=23
+DIFF stage=STOP_move_positive cycle=10550041 signal=core.fast.held_pd ref=0xfffffffffb155388 dut=0xe247f5 refwide=23 dutwide=23 reftarget=23 duttarget=23
+DIFF stage=STOP_move_positive cycle=10550048 signal=core.fast.bias ref=0xffffffffffe2a455 dut=0xffffffffffe88378 refwide=23 dutwide=23 reftarget=23 duttarget=23
+DIFF stage=STOP_move_positive cycle=10550129 signal=control_position_p_epoch ref=0xcd dut=0xd2 refwide=23 dutwide=23 reftarget=23 duttarget=23
+DIFF stage=STOP_move_positive cycle=10550139 signal=position_p ref=0xc1f6ab78 dut=0xc1cf80b8 refwide=23 dutwide=23 reftarget=23 duttarget=23
+DIFF stage=STOP_move_positive cycle=10550148 signal=position_bias ref=0xbfdf5b60 dut=0xbfbbe440 refwide=23 dutwide=23 reftarget=23 duttarget=23
+DIFF stage=STOP_move_positive cycle=10550149 signal=balance_pwm ref=0xfffffffffffffa42 dut=0x4ec refwide=23 dutwide=23 reftarget=23 duttarget=23
+DIFF stage=STOP_move_positive cycle=10550150 signal=position_pwm ref=0xfffffffffffffaf7 dut=0xc8 refwide=23 dutwide=23 reftarget=23 duttarget=23
+DIFF stage=STOP_move_positive cycle=10550151 signal=moto ref=0xffffffffffffff4b dut=0x424 refwide=23 dutwide=23 reftarget=23 duttarget=23
+DIFF stage=STOP_move_positive cycle=10550151 signal=actuator.duty_actual_q15 ref=0x337 dut=0xffffffffffffed28 refwide=23 dutwide=23 reftarget=23 duttarget=23
+DIFF stage=STOP_move_positive cycle=10550152 signal=busy ref=0x1 dut=0x0 refwide=23 dutwide=23 reftarget=23 duttarget=23
+DIFF stage=STOP_move_positive cycle=10550152 signal=done ref=0x0 dut=0x1 refwide=23 dutwide=23 reftarget=23 duttarget=23
+DIFF stage=STOP_move_positive cycle=10550152 signal=actuator.motor_duty_prepared_q15 ref=0x337 dut=0xffffffffffffed28 refwide=23 dutwide=23 reftarget=23 duttarget=23
+DIFF stage=STOP_move_positive cycle=10550152 signal=core.fast.done ref=0x0 dut=0x1 refwide=23 dutwide=23 reftarget=23 duttarget=23
+DIFF stage=STOP_move_positive cycle=10550153 signal=source_ready ref=0x0 dut=0x1 refwide=23 dutwide=23 reftarget=23 duttarget=23
+DIFF stage=STOP_move_positive cycle=10550154 signal=balance_diag ref=0x0 dut=0x20000 refwide=23 dutwide=23 reftarget=23 duttarget=23
+DIFF PWM cycle=12421144 stage=RUN_displaced_positive ref=5 dut=4
+DIFF stage=RUN_displaced_positive cycle=12550066 signal=bias_bits ref=0x0 dut=0x40800000 refwide=24 dutwide=24 reftarget=23 duttarget=23
+DIFF stage=RUN_displaced_positive cycle=12550108 signal=angle_p ref=0x80000000 dut=0xc3571eb8 refwide=24 dutwide=24 reftarget=23 duttarget=23
+DIFF stage=RUN_displaced_positive cycle=13977354 signal=clean ref=0x202 dut=0x201 refwide=35 dutwide=35 reftarget=23 duttarget=23
+DIFF stage=RUN_displaced_positive cycle=14000012 signal=filtered ref=0x2019 dut=0x2018 refwide=35 dutwide=35 reftarget=23 duttarget=23
+DIFF stage=RUN_displaced_positive cycle=14000016 signal=fast_mapped_angle ref=0xc14 dut=0xc13 refwide=35 dutwide=35 reftarget=23 duttarget=23
+DIFF stage=RUN_displaced_positive cycle=14000016 signal=observation_angle ref=0xc14 dut=0xc13 refwide=35 dutwide=35 reftarget=23 duttarget=23
+DIFF stage=RUN_displaced_positive cycle=14000017 signal=core.fast.angle_error ref=0x7 dut=0x6 refwide=35 dutwide=35 reftarget=23 duttarget=23
+SUMMARY kit=1 cycles=37326230 compared_cycles=37325220 probes=97 differing_values=371950426 pwm_mismatch_cycles=6771362 adc_clock_mismatches=0 ADC64_batches=746 D_launches=145 fast_launches=720 completed_fast=718 angleD_updates=143 posD_updates=26 posP_updates=143 max_fast_latency_clocks=201 motor_permitted_cycles=27500004 pwm_high_cycles=7564200 nonzero_position_samples=630
+MISMATCH_COUNT clean 1562
+MISMATCH_COUNT filtered 50000
+MISMATCH_COUNT source_ready 304
+MISMATCH_COUNT control_encoder 19794209
+MISMATCH_COUNT encoder_sample 19352222
+MISMATCH_COUNT source_guard_mean 28550472
+MISMATCH_COUNT fast_mapped_angle 50000
+MISMATCH_COUNT fast_control_encoder 19352430
+MISMATCH_COUNT busy 954
+MISMATCH_COUNT done 752
+MISMATCH_COUNT observation_angle 50000
+MISMATCH_COUNT observation_encoder 19352430
+MISMATCH_COUNT control_position_p_epoch 161
+MISMATCH_COUNT moto 19076074
+MISMATCH_COUNT balance_pwm 50516
+MISMATCH_COUNT position_pwm 19076075
+MISMATCH_COUNT angle_p 50228
+MISMATCH_COUNT position_p 19076086
+MISMATCH_COUNT position_d 19076208
+MISMATCH_COUNT bias_bits 50229
+MISMATCH_COUNT position_bias 19076077
+MISMATCH_COUNT position_diff 19076208
+MISMATCH_COUNT balance_diag 16821081
+MISMATCH_COUNT actuator.duty_actual_q15 19076074
+MISMATCH_COUNT actuator.motor_duty_prepared_q15 19076074
+MISMATCH_COUNT core.original.sampled_encoder 19125232
+MISMATCH_COUNT core.fast.position_error 19352422
+MISMATCH_COUNT core.fast.angle_error 50000
+MISMATCH_COUNT core.fast.bias 19076177
+MISMATCH_COUNT core.fast.held_pd 19076184
+MISMATCH_COUNT core.fast.done 752
+MISMATCH_COUNT core.fast.state 8316
+MISMATCH_COUNT core.original.last_position 19124917
+FAIL whole-system manual balance equivalence at cycle=37326230 stage=RUN_after_reZERO

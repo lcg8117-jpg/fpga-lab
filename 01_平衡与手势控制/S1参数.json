@@ -1,0 +1,48 @@
+{
+  "name": "ADB1完整旧版配套S1封存参数",
+  "gains_order": [
+    "angleP",
+    "angleI",
+    "angleD",
+    "positionP",
+    "positionI",
+    "positionD"
+  ],
+  "gains": [
+    53.78,
+    0,
+    210.14,
+    17.67,
+    0,
+    616.61
+  ],
+  "IEEE754": [
+    "42571eb8",
+    "00000000",
+    "435223d7",
+    "418d5c29",
+    "00000000",
+    "441a270a"
+  ],
+  "period_ms": {
+    "angleP": 1,
+    "angleD": 5,
+    "positionP": 5,
+    "positionD": 25
+  },
+  "ADC_samples_per_1ms": 64,
+  "position_filter": "732284/2^24",
+  "adaptive_enabled": false,
+  "firmware_sha256": "64a16095e2077ed6f0da54f7f8694b7ae078578ed88db02bef020011fb45e8c6",
+  "original_fs_defaults": [
+    49,
+    0,
+    260,
+    25,
+    0,
+    620
+  ],
+  "apply_method": "加载原FS后，在配套窗口明确写入S1并独立读回；输入框预填不是板端已写入。",
+  "persistence": "本次是SRAM镜像和运行参数；断电后需重新加载原FS并写入S1。",
+  "evidence": "evidence/ACTIVE_S1_AND_PERIODS_CONFIRMED.json"
+}

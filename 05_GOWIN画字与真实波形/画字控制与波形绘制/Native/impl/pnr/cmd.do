@@ -1,0 +1,19 @@
+-d D:\C6_ClosedLoopFix_20261030\Native\forest_d1_v5_20261030_012930_114699\impl\gwsynthesis\forest_d1_v5.vg
+-p GW2A-55C-PBGA484-8
+-pn GW2A-LV55PG484C8/I7
+-cst D:\C6_ClosedLoopFix_20261030\Native\forest_d1_v5_20261030_012930_114699\src\j280_official_interface.cst
+-cfg D:\C6_ClosedLoopFix_20261030\Native\forest_d1_v5_20261030_012930_114699\impl\pnr\device.cfg
+-sdc D:\C6_ClosedLoopFix_20261030\Native\forest_d1_v5_20261030_012930_114699\src\forest_d1_board.sdc
+-bit
+-tr
+-ph
+-warning_all
+-timing
+-cst_error
+-place_option 3
+-route_option 0
+-retiming_resource none
+-clock_route_order 0
+-correct_hold 1
+-route_maxfan 60
+-global_freq 50.000

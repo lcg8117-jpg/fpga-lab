@@ -1,0 +1,17 @@
+{
+  "source_snapshot_sha256": "fe8e63be1f9bf25d6450dd32c775e0ffe98e1895614f47da53d653019a7dcaa3",
+  "source_path": "D:\\Codex_Scratch\\SWD4_AutoTune_20261020\\research\\C4_FieldReview_20261029\\SNAPSHOT.chunks",
+  "physical_log_prefix_bytes": 32503024,
+  "fixture_sha256": "6144929ad49c324f18aa05f69b4ddd785238ec75aff9f1c29252e6a9dc5839e8",
+  "columns": [
+    "control_epoch",
+    "board_ms",
+    "actual_Forest_ENC",
+    "motion_state",
+    "mode",
+    "fault",
+    "motor_permission"
+  ],
+  "source_word": "GOWIN",
+  "new_capture": false
+}

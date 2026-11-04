@@ -1,0 +1,32 @@
+Reading D:/modeltech64_10.4/tcl/vsim/pref.tcl
+
+# 10.4
+
+# vsim -c -onfinish exit work.tb_brake_step -do "onerror {quit -code 2};run -all;quit -code 0" 
+# Start time: 06:57:18 on Nov 02,2026
+# ** Note: (vsim-3812) Design is being optimized...
+# 
+# //  ModelSim SE-64 10.4 Dec  3 2014 
+# //
+# //  Copyright 1991-2014 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  THIS WORK CONTAINS TRADE SECRET AND PROPRIETARY INFORMATION
+# //  WHICH IS THE PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS
+# //  LICENSORS AND IS SUBJECT TO LICENSE TERMS.
+# //  THIS DOCUMENT CONTAINS TRADE SECRETS AND COMMERCIAL OR FINANCIAL
+# //  INFORMATION THAT ARE PRIVILEGED, CONFIDENTIAL, AND EXEMPT FROM
+# //  DISCLOSURE UNDER THE FREEDOM OF INFORMATION ACT, 5 U.S.C. SECTION 552.
+# //  FURTHERMORE, THIS INFORMATION IS PROHIBITED FROM DISCLOSURE UNDER
+# //  THE TRADE SECRETS ACT, 18 U.S.C. SECTION 1905.
+# //
+# Loading sv_std.std
+# Loading work.tb_brake_step(fast)
+# onerror {quit -code 2}
+#  Warning: onerror command for use within macro
+# run -all
+# PASS BRAKE_STEP checks=95066 profiles=267 maximum_step_clocks=223
+# ** Note: $finish    : tb_brake_step.sv(55)
+#    Time: 9243900 ns  Iteration: 1  Instance: /tb_brake_step
+# End time: 06:57:20 on Nov 02,2026, Elapsed time: 0:00:02
+# Errors: 0, Warnings: 0

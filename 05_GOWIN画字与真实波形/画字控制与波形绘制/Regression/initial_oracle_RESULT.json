@@ -1,0 +1,50 @@
+{
+  "status": "FAIL",
+  "cases": [
+    {
+      "exit_code": 0,
+      "name": "buffer",
+      "pass": [
+        "# PASS C6_BUFFER checks=39 modeBoundCRC=1 oneShot=1 busyNoMutation=1 invalidNoCommit=1\r"
+      ]
+    },
+    {
+      "exit_code": 0,
+      "name": "follow",
+      "pass": [
+        "# PASS C6_FOLLOW checks=254 signedScale=1 finiteBounds=1 correctionBound=1 abortPipeline=1\r"
+      ]
+    },
+    {
+      "exit_code": 0,
+      "name": "fixed",
+      "pass": [
+        "# PASS C5_FIXED cases=8 checks=85046 idealFollowerOnly=1\r"
+      ]
+    },
+    {
+      "exit_code": 0,
+      "name": "chain",
+      "pass": [
+        "# PASS C5_CHAIN referenceEndNotPhysicalRest=1 offset8counts=1 nextFixedAccepted=1 uploadReady=1 activeStillRejected=1 noReferenceJump=1 STOPpriority=1\r"
+      ]
+    },
+    {
+      "exit_code": 0,
+      "name": "GOWIN",
+      "pass": [
+        "# PASS C4_REFERENCE cases=12 checks=106332 exactQ16Oracle=1 kits2Directions2Offsets3=1 stationaryAndIdealEncoder=1 originalStopping=1\r"
+      ]
+    },
+    {
+      "exit_code": 0,
+      "name": "EasyStart",
+      "pass": [
+        "# PASS C4_REFERENCE cases=12 checks=115932 exactQ16Oracle=1 kits2Directions2Offsets3=1 stationaryAndIdealEncoder=1 originalStopping=1\r"
+      ]
+    }
+  ],
+  "hardware_actions": 0,
+  "scope": "Actual source ModelSim regression; ideal/external stimuli for digital tests, not plant validation",
+  "error": "HDL case failed: tracked_GOWIN"
+}

@@ -1,0 +1,15 @@
+Model Technology ModelSim SE-64 vlog 10.4 Compiler 2014.12 Dec  3 2014
+Start time: 06:56:35 on Nov 02,2026
+vlog -sv forest_motion_reference_shape.v forest_d1_adaptive.v tb_reference_shape.sv tb_absolute_search.sv 
+-- Compiling module forest_motion_reference_shape
+-- Compiling module forest_d1_adaptive
+-- Compiling module forest_d1_adaptive_scale
+-- Compiling module tb_reference_shape
+-- Compiling module tb_absolute_search
+
+Top level modules:
+	forest_d1_adaptive_scale
+	tb_reference_shape
+	tb_absolute_search
+End time: 06:56:35 on Nov 02,2026, Elapsed time: 0:00:00
+Errors: 0, Warnings: 0

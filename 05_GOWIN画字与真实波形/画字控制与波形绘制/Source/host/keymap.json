@@ -1,0 +1,26 @@
+{
+  "1": {
+    "A": "STOP",
+    "B": "START",
+    "C": "SWM4",
+    "D": "SA21",
+    "E": "144",
+    "F": "HOLD"
+  },
+  "2": {
+    "G": "POSITION_1",
+    "H": "POSITION_2",
+    "I": "POSITION_3",
+    "J": "POSITION_4",
+    "K": "POSITION_5",
+    "L": "POSITION_6"
+  },
+  "3": {
+    "M": "TRAJECTORY_1",
+    "N": "TRAJECTORY_2",
+    "O": "TRAJECTORY_3",
+    "P": "TRAJECTORY_4",
+    "Q": "TRAJECTORY_5",
+    "R": "TRAJECTORY_6"
+  }
+}

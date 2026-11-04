@@ -1,0 +1,39 @@
+{
+  "status": "FAILED_OR_UNKNOWN_REVIEW_RECORD_BEFORE_ANY_RETRY",
+  "sram_attempts": 0,
+  "nonvolatile_flash_written": false,
+  "ZERO_sent": false,
+  "RUN_sent": false,
+  "motion_sent": false,
+  "uart_transmitted_bytes": 0,
+  "authorization": "User requested restoring the old ADB1 firmware and S1 PID; user confirmed G3 stopped and closed.",
+  "manual_function_test": "Awaiting user test; not claimed passed",
+  "calls": [],
+  "uart_requests": [],
+  "firmware_sha256": "64a16095e2077ed6f0da54f7f8694b7ae078578ed88db02bef020011fb45e8c6",
+  "firmware": "D:\\Codex_Scratch\\ADB1_S1_RESTORE_20261103_0342\\adb1.fs",
+  "programmer_sha256": "6cadcfe296ad8d58a2b9f23e855d39c3d18d59b61bbd4de68594139727ca5b93",
+  "original_delivery_recheck": "PASS",
+  "requested_gains": [
+    53.78,
+    0.0,
+    210.14,
+    17.67,
+    0.0,
+    616.61
+  ],
+  "requested_bits": [
+    "42571eb8",
+    "00000000",
+    "435223d7",
+    "418d5c29",
+    "00000000",
+    "441a270a"
+  ],
+  "port": {
+    "name": "COM5",
+    "hwid": "USB VID:PID=1A86:7523 SER= LOCATION=1-2"
+  },
+  "error": "AssertionError('Fresh RX not clean')",
+  "finished_local": "2026-11-03T03:45:45.698005+08:00"
+}

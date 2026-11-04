@@ -1,0 +1,78 @@
+Reading D:/modeltech64_10.4/tcl/vsim/pref.tcl
+
+# 10.4
+
+# vsim -c -onfinish exit work.tb_absolute_search -do "onerror {quit -code 2};run -all;quit -code 0" 
+# Start time: 06:56:44 on Nov 02,2026
+# ** Note: (vsim-3812) Design is being optimized...
+# 
+# ** Warning: tb_absolute_search.sv(15): (vopt-2685) [TFMPC] - Too few port connections for 'dut'.  Expected 47, found 27.
+# 
+# ** Warning: tb_absolute_search.sv(15): (vopt-2718) [TFMPC] - Missing connection for port 'diagnostic_cooldown'.
+# 
+# ** Warning: tb_absolute_search.sv(15): (vopt-2718) [TFMPC] - Missing connection for port 'diagnostic_window_samples'.
+# 
+# ** Warning: tb_absolute_search.sv(15): (vopt-2718) [TFMPC] - Missing connection for port 'diagnostic_phase'.
+# 
+# ** Warning: tb_absolute_search.sv(15): (vopt-2718) [TFMPC] - Missing connection for port 'diagnostic_event_samples'.
+# 
+# ** Warning: tb_absolute_search.sv(15): (vopt-2718) [TFMPC] - Missing connection for port 'diagnostic_window_peak'.
+# 
+# ** Warning: tb_absolute_search.sv(15): (vopt-2718) [TFMPC] - Missing connection for port 'diagnostic_reference_peak'.
+# 
+# ** Warning: tb_absolute_search.sv(15): (vopt-2718) [TFMPC] - Missing connection for port 'diagnostic_window_energy'.
+# 
+# ** Warning: tb_absolute_search.sv(15): (vopt-2718) [TFMPC] - Missing connection for port 'diagnostic_reference_energy'.
+# 
+# ** Warning: tb_absolute_search.sv(15): (vopt-2718) [TFMPC] - Missing connection for port 'diagnostic_center_after'.
+# 
+# ** Warning: tb_absolute_search.sv(15): (vopt-2718) [TFMPC] - Missing connection for port 'diagnostic_center_before'.
+# 
+# ** Warning: tb_absolute_search.sv(15): (vopt-2718) [TFMPC] - Missing connection for port 'diagnostic_reason'.
+# 
+# ** Warning: tb_absolute_search.sv(15): (vopt-2718) [TFMPC] - Missing connection for port 'diagnostic_code'.
+# 
+# ** Warning: tb_absolute_search.sv(15): (vopt-2718) [TFMPC] - Missing connection for port 'diagnostic_epoch'.
+# 
+# ** Warning: tb_absolute_search.sv(15): (vopt-2718) [TFMPC] - Missing connection for port 'diagnostic_seq'.
+# 
+# ** Warning: tb_absolute_search.sv(15): (vopt-2718) [TFMPC] - Missing connection for port 'diagnostic_pulse'.
+# 
+# ** Warning: tb_absolute_search.sv(15): (vopt-2718) [TFMPC] - Missing connection for port 'candidate_revision'.
+# 
+# ** Warning: tb_absolute_search.sv(15): (vopt-2718) [TFMPC] - Missing connection for port 'candidate_epoch'.
+# 
+# ** Warning: tb_absolute_search.sv(15): (vopt-2718) [TFMPC] - Missing connection for port 'adapt_epoch'.
+# 
+# ** Warning: tb_absolute_search.sv(15): (vopt-2718) [TFMPC] - Missing connection for port 'fast_d_q8'.
+# 
+# ** Warning: tb_absolute_search.sv(15): (vopt-2718) [TFMPC] - Missing connection for port 'fast_p_q8'.
+# 
+# //  ModelSim SE-64 10.4 Dec  3 2014 
+# //
+# //  Copyright 1991-2014 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  THIS WORK CONTAINS TRADE SECRET AND PROPRIETARY INFORMATION
+# //  WHICH IS THE PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS
+# //  LICENSORS AND IS SUBJECT TO LICENSE TERMS.
+# //  THIS DOCUMENT CONTAINS TRADE SECRETS AND COMMERCIAL OR FINANCIAL
+# //  INFORMATION THAT ARE PRIVILEGED, CONFIDENTIAL, AND EXEMPT FROM
+# //  DISCLOSURE UNDER THE FREEDOM OF INFORMATION ACT, 5 U.S.C. SECTION 552.
+# //  FURTHERMORE, THIS INFORMATION IS PROHIBITED FROM DISCLOSURE UNDER
+# //  THE TRADE SECRETS ACT, 18 U.S.C. SECTION 1905.
+# //
+# Loading sv_std.std
+# Loading work.tb_absolute_search(fast)
+# onerror {quit -code 2}
+#  Warning: onerror command for use within macro
+# run -all
+# SEARCH_RESULT initialD=150 optimumD=260 optimumP=49 learnedP=49.000000 learnedD=262.000000 retained=4 virtual_seconds=150
+# SEARCH_RESULT initialD=260 optimumD=260 optimumP=49 learnedP=49.000000 learnedD=260.000000 retained=0 virtual_seconds=150
+# SEARCH_RESULT initialD=300 optimumD=180 optimumP=49 learnedP=49.000000 learnedD=180.000000 retained=5 virtual_seconds=150
+# SEARCH_RESULT initialD=150 optimumD=332 optimumP=56 learnedP=56.000000 learnedD=334.000000 retained=11 virtual_seconds=150
+# PASS ABSOLUTE_SEARCH checks=483626 independent_optima=4 absolute_P_D=1 bidirectional=1 pause_preserves_learning=1
+# ** Note: $finish    : tb_absolute_search.sv(71)
+#    Time: 18124600 ns  Iteration: 1  Instance: /tb_absolute_search
+# End time: 06:56:46 on Nov 02,2026, Elapsed time: 0:00:02
+# Errors: 0, Warnings: 21

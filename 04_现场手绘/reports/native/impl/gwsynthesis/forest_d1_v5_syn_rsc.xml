@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Module name="forest_d1_top" T_Register="14453(0)" T_Alu="4030(0)" T_Lut="26617(0)" T_MULT36X36="3(0)" T_MULTALU36X18="7(0)" T_ALU54D="1(0)" T_Bsram="17(0)" T_Ssram="6(0)">
+ <SubModule name="system" Register="3162" Alu="125" Lut="2300" T_Register="14453(3162)" T_Alu="4030(125)" T_Lut="26617(2300)" T_MULT36X36="3(0)" T_MULTALU36X18="7(0)" T_ALU54D="1(0)" T_Bsram="17(0)" T_Ssram="6(0)">
+  <SubModule name="resetter" Register="2" Lut="1" T_Register="2(2)" T_Lut="1(1)"/>
+  <SubModule name="adc" Register="343" Alu="254" Lut="469" Ssram="5" T_Register="343(343)" T_Alu="254(254)" T_Lut="469(469)" T_Ssram="5(5)"/>
+  <SubModule name="encoder" Register="67" Alu="15" Lut="191" T_Register="67(67)" T_Alu="15(15)" T_Lut="191(191)"/>
+  <SubModule name="keys[0].key" Register="25" Lut="46" T_Register="25(25)" T_Lut="46(46)"/>
+  <SubModule name="keys[1].key" Register="25" Lut="46" T_Register="25(25)" T_Lut="46(46)"/>
+  <SubModule name="keys[2].key" Register="25" Lut="46" T_Register="25(25)" T_Lut="46(46)"/>
+  <SubModule name="keys[3].key" Register="24" Lut="44" T_Register="24(24)" T_Lut="44(44)"/>
+  <SubModule name="gateway" Register="991" Alu="157" Lut="549" T_Register="991(991)" T_Alu="157(157)" T_Lut="549(549)"/>
+  <SubModule name="router" Register="1276" Alu="411" Lut="2758" Bsram="13" T_Register="1276(1276)" T_Alu="411(411)" T_Lut="2758(2758)" T_Bsram="13(13)"/>
+  <SubModule name="link" Register="1260" Alu="84" Lut="3990" Bsram="2" Ssram="1" T_Register="1315(1260)" T_Alu="84(84)" T_Lut="4077(3990)" T_Bsram="2(2)" T_Ssram="1(1)">
+   <SubModule name="receiver" Register="33" Lut="47" T_Register="33(33)" T_Lut="47(47)"/>
+   <SubModule name="transmitter" Register="22" Lut="40" T_Register="22(22)" T_Lut="40(40)"/>
+  </SubModule>
+  <SubModule name="inputs" Register="108" Alu="81" Lut="253" MULT36X36="1" MULTALU36X18="1" T_Register="108(108)" T_Alu="81(81)" T_Lut="253(253)" T_MULT36X36="1(1)" T_MULTALU36X18="1(1)"/>
+  <SubModule name="raw_inputs" Register="28" Alu="13" Lut="76" MULTALU36X18="1" T_Register="28(28)" T_Alu="13(13)" T_Lut="76(76)" T_MULTALU36X18="1(1)"/>
+  <SubModule name="motion" Register="1075" Alu="726" Lut="2469" MULTALU36X18="3" T_Register="1329(1075)" T_Alu="1117(726)" T_Lut="2912(2469)" T_MULTALU36X18="3(3)" T_Bsram="2(0)">
+   <SubModule name="coordinates" Register="254" Alu="391" Lut="443" T_Register="254(254)" T_Alu="391(391)" T_Lut="443(443)"/>
+   <SubModule name="tables" Bsram="2" T_Bsram="2(2)"/>
+  </SubModule>
+  <SubModule name="safety" Register="124" Alu="54" Lut="177" T_Register="772(124)" T_Alu="315(54)" T_Lut="1046(177)" T_MULT36X36="1(0)">
+   <SubModule name="velocity_guard" Register="648" Alu="261" Lut="869" MULT36X36="1" T_Register="648(648)" T_Alu="261(261)" T_Lut="869(869)" T_MULT36X36="1(1)"/>
+  </SubModule>
+  <SubModule name="sampler" Register="216" Alu="162" Lut="159" T_Register="216(216)" T_Alu="162(162)" T_Lut="159(159)"/>
+  <SubModule name="fast_inputs" Register="92" Alu="81" Lut="200" MULT36X36="1" MULTALU36X18="1" T_Register="92(92)" T_Alu="81(81)" T_Lut="200(200)" T_MULT36X36="1(1)" T_MULTALU36X18="1(1)"/>
+  <SubModule name="core" Register="590" Alu="28" Lut="268" T_Register="4521(590)" T_Alu="1105(28)" T_Lut="11228(268)" T_ALU54D="1(0)">
+   <SubModule name="original" Register="990" Alu="44" Lut="5205" T_Register="2084(990)" T_Alu="510(44)" T_Lut="9535(5205)" T_ALU54D="1(0)">
+    <SubModule name="arithmetic" Register="1094" Alu="466" Lut="4330" ALU54D="1" T_Register="1094(1094)" T_Alu="466(466)" T_Lut="4330(4330)" T_ALU54D="1(1)"/>
+   </SubModule>
+   <SubModule name="fast" Register="1330" Alu="454" Lut="662" T_Register="1847(1330)" T_Alu="567(454)" T_Lut="1425(662)">
+    <SubModule name="multiplier" Register="256" Alu="72" Lut="263" T_Register="256(256)" T_Alu="72(72)" T_Lut="263(263)"/>
+    <SubModule name="q_encoder" Register="141" Alu="17" Lut="254" T_Register="141(141)" T_Alu="17(17)" T_Lut="254(254)"/>
+    <SubModule name="formatter" Register="120" Alu="24" Lut="246" T_Register="120(120)" T_Alu="24(24)" T_Lut="246(246)"/>
+   </SubModule>
+  </SubModule>
+  <SubModule name="actuator" Register="16" Lut="67" MULTALU36X18="1" T_Register="62(16)" T_Alu="79(0)" T_Lut="200(67)" T_MULTALU36X18="1(1)">
+   <SubModule name="motor_driver" Register="46" Alu="79" Lut="133" T_Register="46(46)" T_Alu="79(79)" T_Lut="133(133)"/>
+  </SubModule>
+  <SubModule name="diagnostics" Register="70" Alu="31" Lut="16" T_Register="70(70)" T_Alu="31(31)" T_Lut="16(16)"/>
+ </SubModule>
+</Module>

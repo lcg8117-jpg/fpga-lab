@@ -1,0 +1,12 @@
+{
+  "case": "sequence_r03",
+  "sample": 119000,
+  "physical_ms": 118999,
+  "wall_unix": 1793616870.5725806,
+  "elapsed_s": 1588.81023645401,
+  "cache_enabled": false,
+  "state": 4,
+  "actual": -11,
+  "target": 0,
+  "fault": 0
+}

@@ -1,0 +1,664 @@
+{
+  "hardware_actions": 0,
+  "source": "Existing DS12 field recordings; no new hardware test",
+  "sessions": [
+    {
+      "log_path": "C:\\Users\\董晨阳\\Documents\\Codex\\2026-11-02\\j280-adb1-s1-adaptive-integrated-build\\outputs\\J280_DS12_S1平衡_现场手绘_20261103\\logs\\20261103_062711_640534\\events.jsonl",
+      "sha256": "582f5cd999bf9dbe873adf961e8afb783fdb3a5a5cd0e92da85374c68f2053df",
+      "requests": 552,
+      "unmatched": [],
+      "ack_latency_ms": {
+        "min": 0.0,
+        "median": 63.0,
+        "max": 94.0
+      },
+      "active_S1_patterns": [
+        [
+          1113005752,
+          0,
+          1129456599,
+          1099783209,
+          0,
+          1142564618
+        ]
+      ],
+      "manual_S1_patterns": [
+        [
+          1113005752,
+          0,
+          1129456599,
+          1099783209,
+          0,
+          1142564618
+        ]
+      ],
+      "timing_metadata": [
+        [
+          1,
+          5,
+          5,
+          25
+        ]
+      ],
+      "rx_errors_max": 0,
+      "telemetry_dropped_max": 0,
+      "begin_rejected": 17,
+      "first_rejections": [
+        {
+          "request": {
+            "kind": "request",
+            "opcode": 72,
+            "group": 0,
+            "payload": "",
+            "request_id": 223,
+            "ticket": 3,
+            "source": "MOUSE_PRESS",
+            "host_monotonic": 85025.406
+          },
+          "ack": {
+            "kind": "ack",
+            "variant": 5,
+            "opcode": 72,
+            "status": 1,
+            "request_id": 223,
+            "stored_revision": 0,
+            "mutation_highwater": 1008,
+            "control_epoch": 123216,
+            "stored_gains": [
+              53.779998779296875,
+              0.0,
+              210.13999938964844,
+              17.670000076293945,
+              0.0,
+              616.6099853515625
+            ],
+            "stored_bits": [
+              1113005752,
+              0,
+              1129456599,
+              1099783209,
+              0,
+              1142564618
+            ],
+            "config_read_value": 4294967295,
+            "config_revision": 1,
+            "config_group": 0,
+            "config_id": 0,
+            "mode": 3,
+            "fault": 0,
+            "flags": 29,
+            "active_revision": 0,
+            "firmware_id": 1146302770,
+            "identity_ok": true,
+            "host_monotonic": 85025.484
+          },
+          "previous_control": {
+            "kind": "telemetry",
+            "variant": 5,
+            "flags": 23,
+            "mode": 3,
+            "coherent": true,
+            "firmware_id": 1146302770,
+            "schema": 1146310658,
+            "sequence": 4649,
+            "board_ms": 123202,
+            "control_epoch": 123202,
+            "active_revision": 0,
+            "stored_revision": 0,
+            "fault": 0,
+            "raw_adc": 568,
+            "zero_q4": 9190,
+            "mean_adc12": 3060,
+            "angle_error": -25,
+            "actual_applied_q15": -5611,
+            "physical_encoder_raw": 16,
+            "local_encoder": 10017,
+            "wide_encoder": 17,
+            "wide_target": 0,
+            "wide_physical_encoder": 17,
+            "control_period_us": 1000,
+            "origin": 0,
+            "play_time_ms": 0,
+            "job_id": 0,
+            "live_offset": 0,
+            "point_sequence": 0,
+            "play_state": 0,
+            "reference_velocity": 0,
+            "telemetry_dropped": 0,
+            "rx_errors": 0,
+            "config_revision": 1,
+            "angle_d_epoch": 123200,
+            "position_d_epoch": 123190,
+            "position_p_epoch": 123201,
+            "manual_gains": [
+              53.779998779296875,
+              0.0,
+              210.13999938964844,
+              17.670000076293945,
+              0.0,
+              616.6099853515625
+            ],
+            "active_gains": [
+              53.779998779296875,
+              0.0,
+              210.13999938964844,
+              17.670000076293945,
+              0.0,
+              616.6099853515625
+            ],
+            "manual_bits": [
+              1113005752,
+              0,
+              1129456599,
+              1099783209,
+              0,
+              1142564618
+            ],
+            "active_bits": [
+              1113005752,
+              0,
+              1129456599,
+              1099783209,
+              0,
+              1142564618
+            ],
+            "components": [
+              1344.5,
+              0.0,
+              630.4199829101562,
+              245.5262908935547,
+              0.0,
+              496.4453125
+            ],
+            "periods_ms": [
+              1,
+              5,
+              5,
+              25
+            ],
+            "fast_p": true,
+            "adc_samples": 64,
+            "identity_ok": true,
+            "host_monotonic": 85025.406
+          }
+        },
+        {
+          "request": {
+            "kind": "request",
+            "opcode": 72,
+            "group": 0,
+            "payload": "",
+            "request_id": 244,
+            "ticket": 5,
+            "source": "MOUSE_PRESS",
+            "host_monotonic": 85028.14
+          },
+          "ack": {
+            "kind": "ack",
+            "variant": 5,
+            "opcode": 72,
+            "status": 1,
+            "request_id": 244,
+            "stored_revision": 0,
+            "mutation_highwater": 1008,
+            "control_epoch": 125955,
+            "stored_gains": [
+              53.779998779296875,
+              0.0,
+              210.13999938964844,
+              17.670000076293945,
+              0.0,
+              616.6099853515625
+            ],
+            "stored_bits": [
+              1113005752,
+              0,
+              1129456599,
+              1099783209,
+              0,
+              1142564618
+            ],
+            "config_read_value": 4294967295,
+            "config_revision": 1,
+            "config_group": 0,
+            "config_id": 0,
+            "mode": 3,
+            "fault": 0,
+            "flags": 29,
+            "active_revision": 0,
+            "firmware_id": 1146302770,
+            "identity_ok": true,
+            "host_monotonic": 85028.203
+          },
+          "previous_control": {
+            "kind": "telemetry",
+            "variant": 5,
+            "flags": 23,
+            "mode": 3,
+            "coherent": true,
+            "firmware_id": 1146302770,
+            "schema": 1146310658,
+            "sequence": 5197,
+            "board_ms": 125942,
+            "control_epoch": 125942,
+            "active_revision": 0,
+            "stored_revision": 0,
+            "fault": 0,
+            "raw_adc": 574,
+            "zero_q4": 9190,
+            "mean_adc12": 3086,
+            "angle_error": 1,
+            "actual_applied_q15": -3181,
+            "physical_encoder_raw": 4,
+            "local_encoder": 10005,
+            "wide_encoder": 5,
+            "wide_target": 0,
+            "wide_physical_encoder": 5,
+            "control_period_us": 1000,
+            "origin": 0,
+            "play_time_ms": 0,
+            "job_id": 0,
+            "live_offset": 0,
+            "point_sequence": 0,
+            "play_state": 0,
+            "reference_velocity": 0,
+            "telemetry_dropped": 0,
+            "rx_errors": 0,
+            "config_revision": 1,
+            "angle_d_epoch": 125940,
+            "position_d_epoch": 125940,
+            "position_p_epoch": 125941,
+            "manual_gains": [
+              53.779998779296875,
+              0.0,
+              210.13999938964844,
+              17.670000076293945,
+              0.0,
+              616.6099853515625
+            ],
+            "active_gains": [
+              53.779998779296875,
+              0.0,
+              210.13999938964844,
+              17.670000076293945,
+              0.0,
+              616.6099853515625
+            ],
+            "manual_bits": [
+              1113005752,
+              0,
+              1129456599,
+              1099783209,
+              0,
+              1142564618
+            ],
+            "active_bits": [
+              1113005752,
+              0,
+              1129456599,
+              1099783209,
+              0,
+              1142564618
+            ],
+            "components": [
+              -53.779998779296875,
+              0.0,
+              1260.8399658203125,
+              22.975982666015625,
+              0.0,
+              538.315185546875
+            ],
+            "periods_ms": [
+              1,
+              5,
+              5,
+              25
+            ],
+            "fast_p": true,
+            "adc_samples": 64,
+            "identity_ok": true,
+            "host_monotonic": 85028.14
+          }
+        }
+      ]
+    },
+    {
+      "log_path": "C:\\Users\\董晨阳\\Documents\\Codex\\2026-11-02\\j280-adb1-s1-adaptive-integrated-build\\outputs\\J280_DS12_S1平衡_现场手绘_20261103\\logs\\20261103_062819_628581\\events.jsonl",
+      "sha256": "117af9cfd99ea528bc8809aaaa8a07271a1dd879a4fcae4220ff6fe95bf79286",
+      "requests": 1352,
+      "unmatched": [],
+      "ack_latency_ms": {
+        "min": 0.0,
+        "median": 78.0,
+        "max": 125.0
+      },
+      "active_S1_patterns": [
+        [
+          1113005752,
+          0,
+          1129456599,
+          1099783209,
+          0,
+          1142564618
+        ]
+      ],
+      "manual_S1_patterns": [
+        [
+          1113005752,
+          0,
+          1129456599,
+          1099783209,
+          0,
+          1142564618
+        ]
+      ],
+      "timing_metadata": [
+        [
+          1,
+          5,
+          5,
+          25
+        ]
+      ],
+      "rx_errors_max": 0,
+      "telemetry_dropped_max": 0,
+      "begin_rejected": 4,
+      "first_rejections": [
+        {
+          "request": {
+            "kind": "request",
+            "opcode": 72,
+            "group": 0,
+            "payload": "",
+            "request_id": 41,
+            "ticket": 2,
+            "source": "MOUSE_PRESS",
+            "host_monotonic": 85070.125
+          },
+          "ack": {
+            "kind": "ack",
+            "variant": 5,
+            "opcode": 72,
+            "status": 1,
+            "request_id": 41,
+            "stored_revision": 0,
+            "mutation_highwater": 1008,
+            "control_epoch": 167943,
+            "stored_gains": [
+              53.779998779296875,
+              0.0,
+              210.13999938964844,
+              17.670000076293945,
+              0.0,
+              616.6099853515625
+            ],
+            "stored_bits": [
+              1113005752,
+              0,
+              1129456599,
+              1099783209,
+              0,
+              1142564618
+            ],
+            "config_read_value": 4294967295,
+            "config_revision": 1,
+            "config_group": 0,
+            "config_id": 0,
+            "mode": 3,
+            "fault": 0,
+            "flags": 29,
+            "active_revision": 0,
+            "firmware_id": 1146302770,
+            "identity_ok": true,
+            "host_monotonic": 85070.203
+          },
+          "previous_control": {
+            "kind": "telemetry",
+            "variant": 5,
+            "flags": 23,
+            "mode": 3,
+            "coherent": true,
+            "firmware_id": 1146302770,
+            "schema": 1146310658,
+            "sequence": 13593,
+            "board_ms": 167922,
+            "control_epoch": 167922,
+            "active_revision": 0,
+            "stored_revision": 0,
+            "fault": 0,
+            "raw_adc": 573,
+            "zero_q4": 9190,
+            "mean_adc12": 3077,
+            "angle_error": -8,
+            "actual_applied_q15": -1879,
+            "physical_encoder_raw": 10,
+            "local_encoder": 10011,
+            "wide_encoder": 11,
+            "wide_target": 0,
+            "wide_physical_encoder": 11,
+            "control_period_us": 1000,
+            "origin": 0,
+            "play_time_ms": 0,
+            "job_id": 536,
+            "live_offset": 0,
+            "point_sequence": 538,
+            "play_state": 0,
+            "reference_velocity": 0,
+            "telemetry_dropped": 0,
+            "rx_errors": 0,
+            "config_revision": 1,
+            "angle_d_epoch": 167920,
+            "position_d_epoch": 167915,
+            "position_p_epoch": 167921,
+            "manual_gains": [
+              53.779998779296875,
+              0.0,
+              210.13999938964844,
+              17.670000076293945,
+              0.0,
+              616.6099853515625
+            ],
+            "active_gains": [
+              53.779998779296875,
+              0.0,
+              210.13999938964844,
+              17.670000076293945,
+              0.0,
+              616.6099853515625
+            ],
+            "manual_bits": [
+              1113005752,
+              0,
+              1129456599,
+              1099783209,
+              0,
+              1142564618
+            ],
+            "active_bits": [
+              1113005752,
+              0,
+              1129456599,
+              1099783209,
+              0,
+              1142564618
+            ],
+            "components": [
+              430.239990234375,
+              0.0,
+              -0.0,
+              222.95521545410156,
+              0.0,
+              -98.57282257080078
+            ],
+            "periods_ms": [
+              1,
+              5,
+              5,
+              25
+            ],
+            "fast_p": true,
+            "adc_samples": 64,
+            "identity_ok": true,
+            "host_monotonic": 85070.125
+          }
+        },
+        {
+          "request": {
+            "kind": "request",
+            "opcode": 72,
+            "group": 0,
+            "payload": "",
+            "request_id": 61,
+            "ticket": 4,
+            "source": "MOUSE_PRESS",
+            "host_monotonic": 85072.718
+          },
+          "ack": {
+            "kind": "ack",
+            "variant": 5,
+            "opcode": 72,
+            "status": 1,
+            "request_id": 61,
+            "stored_revision": 0,
+            "mutation_highwater": 1008,
+            "control_epoch": 170526,
+            "stored_gains": [
+              53.779998779296875,
+              0.0,
+              210.13999938964844,
+              17.670000076293945,
+              0.0,
+              616.6099853515625
+            ],
+            "stored_bits": [
+              1113005752,
+              0,
+              1129456599,
+              1099783209,
+              0,
+              1142564618
+            ],
+            "config_read_value": 4294967295,
+            "config_revision": 1,
+            "config_group": 0,
+            "config_id": 0,
+            "mode": 3,
+            "fault": 0,
+            "flags": 29,
+            "active_revision": 0,
+            "firmware_id": 1146302770,
+            "identity_ok": true,
+            "host_monotonic": 85072.781
+          },
+          "previous_control": {
+            "kind": "telemetry",
+            "variant": 5,
+            "flags": 23,
+            "mode": 3,
+            "coherent": true,
+            "firmware_id": 1146302770,
+            "schema": 1146310658,
+            "sequence": 14111,
+            "board_ms": 170512,
+            "control_epoch": 170512,
+            "active_revision": 0,
+            "stored_revision": 0,
+            "fault": 0,
+            "raw_adc": 575,
+            "zero_q4": 9190,
+            "mean_adc12": 3082,
+            "angle_error": -3,
+            "actual_applied_q15": -364,
+            "physical_encoder_raw": 9,
+            "local_encoder": 10010,
+            "wide_encoder": 10,
+            "wide_target": 0,
+            "wide_physical_encoder": 10,
+            "control_period_us": 1000,
+            "origin": 0,
+            "play_time_ms": 0,
+            "job_id": 536,
+            "live_offset": 0,
+            "point_sequence": 538,
+            "play_state": 0,
+            "reference_velocity": 0,
+            "telemetry_dropped": 0,
+            "rx_errors": 0,
+            "config_revision": 1,
+            "angle_d_epoch": 170510,
+            "position_d_epoch": 170490,
+            "position_p_epoch": 170511,
+            "manual_gains": [
+              53.779998779296875,
+              0.0,
+              210.13999938964844,
+              17.670000076293945,
+              0.0,
+              616.6099853515625
+            ],
+            "active_gains": [
+              53.779998779296875,
+              0.0,
+              210.13999938964844,
+              17.670000076293945,
+              0.0,
+              616.6099853515625
+            ],
+            "manual_bits": [
+              1113005752,
+              0,
+              1129456599,
+              1099783209,
+              0,
+              1142564618
+            ],
+            "active_bits": [
+              1113005752,
+              0,
+              1129456599,
+              1099783209,
+              0,
+              1142564618
+            ],
+            "components": [
+              161.33999633789062,
+              0.0,
+              -210.13999938964844,
+              235.32675170898438,
+              0.0,
+              -311.4721984863281
+            ],
+            "periods_ms": [
+              1,
+              5,
+              5,
+              25
+            ],
+            "fast_p": true,
+            "adc_samples": 64,
+            "identity_ok": true,
+            "host_monotonic": 85072.718
+          }
+        }
+      ]
+    },
+    {
+      "log_path": "C:\\Users\\董晨阳\\Documents\\Codex\\2026-11-02\\j280-adb1-s1-adaptive-integrated-build\\outputs\\J280_DS12_S1平衡_现场手绘_20261103\\logs\\20261103_063132_901754\\events.jsonl",
+      "sha256": "4ede113a0ad0a05a9db033e7a1768f55a15c1b7bea1beabe786f55c60c940755",
+      "requests": 117,
+      "unmatched": [],
+      "ack_latency_ms": {
+        "min": 47.0,
+        "median": 78.0,
+        "max": 79.0
+      },
+      "active_S1_patterns": [],
+      "manual_S1_patterns": [],
+      "timing_metadata": [],
+      "rx_errors_max": 0,
+      "telemetry_dropped_max": 0,
+      "begin_rejected": 0,
+      "first_rejections": []
+    }
+  ]
+}

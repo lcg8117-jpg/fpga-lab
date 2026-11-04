@@ -1,0 +1,18 @@
+-d D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\native\forest_d1_v5_20261103_064551_972101\impl\gwsynthesis\forest_d1_v5.vg
+-p GW2A-55C-PBGA484-8
+-pn GW2A-LV55PG484C8/I7
+-cst D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\native\forest_d1_v5_20261103_064551_972101\src\j280_official_interface.cst
+-cfg D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\native\forest_d1_v5_20261103_064551_972101\impl\pnr\device.cfg
+-sdc D:\Codex_Scratch\J280_LIVE_S1_FIX_DS13_20261103_CHAT\native\forest_d1_v5_20261103_064551_972101\src\forest_d1_board.sdc
+-bit
+-tr
+-ph
+-warning_all
+-timing
+-cst_error
+-place_option 2
+-route_option 1
+-clock_route_order 0
+-correct_hold 1
+-route_maxfan 60
+-global_freq 50.000

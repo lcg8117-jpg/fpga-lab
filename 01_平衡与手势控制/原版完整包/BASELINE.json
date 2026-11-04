@@ -1,0 +1,79 @@
+{
+  "source": "C:\\Users\\董晨阳\\Documents\\Codex\\2026-10-24\\forest-d1-online-tuning-5ms-config\\outputs\\J280_ADB1_运动末段与绝对PD搜索_20261031_045636",
+  "source_image_sha256": "cddd2ceefda0a9b89df9a8e58f6fa6a86d9bf97f8ab24b07f2cfa6450350ffa2",
+  "new_schema": "41445001",
+  "default_gains": [
+    49,
+    0,
+    260,
+    25,
+    0,
+    620
+  ],
+  "control_ms": {
+    "angleP": 1,
+    "angleD": 5,
+    "positionP": 5,
+    "positionD": 25
+  },
+  "protected_source_sha256": {
+    "src/dd1_i2c_byte.v": "988d36dee019e774628b6e27e10e3a0ba1301ee2f61468dc9111f0e9f756a85b",
+    "src/dd1_init_rom.v": "386a8337f1e70e26fd1affcf6c42b0af85c0e3b0a2064bdb718659856e1f392e",
+    "src/forest_d1_adaptive.v": "a9f4a622982802ea3156d3d626248440e3a247b9c1498c12913c881c67b34269",
+    "src/forest_d1_adaptive_features.v": "8512a10c62d78d93306c0a87f961bb0d25f2732679276e8ff77f6c1968c0c91b",
+    "src/forest_d1_adaptive_motion.v": "3d7e8778a2bc6a7b6edebdf90edec0891abbae4cf44e6b432f4fdf502109006d",
+    "src/forest_d1_board.sdc": "b875aa623ef6342803daaf60d60b1abf7abf3383e9b8a578b6f9641618454503",
+    "src/forest_d1_diagnostics.v": "bd8b708673d49db1ebebe59ec2bc56413d4dccc3ba00d5c59a79338b3be81c23",
+    "src/forest_d1_fp64.v": "9e24ccf029718f78bd4f9a9111072d3f28cc683fa1fb6c982237ac0759413b4c",
+    "src/forest_d1_fp_functions.vh": "11ea724bdf52e6cd49f456eb2a78dffa95123e5c2305f243cea43eee8a1a7c8e",
+    "src/forest_d1_gateway.v": "00f81549a5f796e82f4e3cc521d4eda81fd46a075ac88fa79220540998d203f7",
+    "src/forest_d1_gesture_decode.v": "e5451aeda09cb0ddda269de678f71d56ab9f65708f34b41d4ccf5231d0a5e43e",
+    "src/forest_d1_gesture_reader.v": "f71f8bf2baef530554bc295617562cc79fc5d23da718b2b5b21b18085b94a6e4",
+    "src/forest_d1_link.v": "33416e3f8407ec421dcc48325d012ebe5fa59ba8d0aff8167b295ca1d99a82b8",
+    "src/forest_d1_pid.v": "d91779196f25851f00d529e6848adb049b1fa2d70ca5501149e00392e1ebfdf9",
+    "src/forest_d1_reset.v": "8ce1007d2d4c5d432adeb65bb729b0fc406095994c1901da43ca426bdf3fecce",
+    "src/forest_d1_run_actuator.v": "42bdda196e5c7e7c6cf900ba202c3c4224e7bedeeccfbf8ea63ccf2430c99598",
+    "src/forest_d1_run_inputs.v": "c1eb158404d0a03b4a9d1d8ca895d19ff5dd69fbf2d45e9772318dd3c02de842",
+    "src/forest_d1_swing_observer.v": "2343cdcc7b99708a0b965f893c8ad1187bac04435671a8f211058bec908663ba",
+    "src/forest_d1_swing_pwm40k.v": "58973290e142b16967783f656cf93da94f9d8138789a78b8c4c9f2707c013573",
+    "src/forest_d1_swingup.v": "9ab724fa828945786d01a81a57ecb7ed9d1365e66c55d8923c0fd240b256357c",
+    "src/forest_d1_window_sampler.v": "6014cde78f34a9b6d6c37a0bdd737e52974db145408977768ec7e005c905e7db",
+    "src/forest_motion_brake_step.v": "3a0ef622993d3c84d8aba0a9d68e07a7caad5511c1bc3d3a4116ab757ed624bc",
+    "src/forest_motion_coordinates.v": "592a703611beb38f2bc4dd27e75d9bde080432a7133f64ba2214ba9f03e155f9",
+    "src/forest_motion_finite_scurve.v": "d4e3a5c2ed2c84eca79e525cdd311527e4af05a56df2a3b71d8e2cce7a9085aa",
+    "src/forest_motion_planner.v": "c4df3c14b2c629e25e17518be285d3d0c8ce6007269f0845a1cb23d92a696ae5",
+    "src/forest_motion_reference_shape.v": "ae3ef70575b86fc1d6313cb335ce8c625bf534279bbd83e670db21a8c5c0bedc",
+    "src/forest_motion_tables.v": "664f382e6742a53593bf6ac29d7f28b1b3e7db7ff4c8d107ee7dd3897d43b357",
+    "src/j280_adc_capture_trace.v": "25672d1b39b8757934e4ccb38673f5934ac685bcf0101a3bf1863cc0ee26d2e6",
+    "src/j280_encoder_velocity.v": "d4aba72acdb8b9a5a7d2f6adf766affd955a36a24fe340ab927b47b26ff94813",
+    "src/j280_encoder_x4.v": "1d80cdf9be06f78ca0f186231027b830f92e467199bef1149ac1b52e314d89c1",
+    "src/j280_key_debounce.v": "8f1e39e19ab024978362cc0e2082f9a17ed335bb97a07638836daf4b243ce336",
+    "src/j280_official_interface.cst": "22178bb76a8dd850c0e624d84970f14d5adda6c6fe5e0b3626fd8a7487422e9e",
+    "src/j280_pwm_motor_safe.v": "99dd05ce105945223542d42f793627a979d426cd551615b7c4c713bcd60d90a5",
+    "src/j280_swing_source_swm4.v": "93d449b9649c017961343fee5855dd118df3d8dea62e4beb225fe2df62e8e2df"
+  },
+  "changes": [
+    "add fixed fast P and completed-D bank",
+    "actual1kHz output with200Hz telemetry",
+    "5ms adaptive evidence retained",
+    "new schema and explicit period display"
+  ],
+  "physical_improvement_verified": false,
+  "hardware_actions": 0,
+  "synthesis_annotation_only": [
+    {
+      "path": "src/forest_d1_safety.v",
+      "original_sha256": "966c7c49d68ecce6a622c359791406ea794aeda2763a7a84007debf704b14002",
+      "sha256": "099a0a3b5ca4459affe241c800ee4c55390964f6be3ebf2c27e3a14a2a6aff51",
+      "functional_tokens_sha256": "62017dadbc152011daaa6f11fea5e5b85093c4de51c0f4ec7e62c101ce003864",
+      "comment_only": true
+    },
+    {
+      "path": "src/forest_d1_system.v",
+      "original_sha256": "a7849ca5e625d5bd304ad13f9370e5a8514b67c3ab46cbbd7222e0a52c2b937e",
+      "sha256": "67e03a129104fa6ecd79574f380fb8933130b68c485f73ea99cb396f37d3b057",
+      "functional_tokens_sha256": "98f3a359042b2aef0aa5dac9d480b0f5ae9b41defcde36feac0732a49d72b356",
+      "comment_only": true
+    }
+  ]
+}

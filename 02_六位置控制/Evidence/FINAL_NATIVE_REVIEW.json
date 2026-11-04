@@ -1,0 +1,128 @@
+{
+  "source_inputs": 30,
+  "native_wrapper": "D:\\Codex_Scratch\\R28_V4_FastP_Gains_20261103\\reports\\native_20261103_041120_700000\\RESULT.json",
+  "native_build": "D:\\Codex_Scratch\\R28_V4_FastP_Gains_20261103\\native\\forest_d1_v4_20261103_041121_679830",
+  "qualified_image": "D:\\Codex_Scratch\\R28_V4_FastP_Gains_20261103\\release\\J280_V4_FastP_56345239_Qualified.fs",
+  "setup_violated_endpoints": 0,
+  "hold_violated_endpoints": 0,
+  "analyzed_endpoints": 50542,
+  "clock_target_mhz": 50.0,
+  "final_fmax_mhz": 50.314,
+  "minimum_reported_setup_slack_ns": 0.125,
+  "minimum_reported_hold_slack_ns": 0.077,
+  "resources": {
+    "Logic": "36662/54720",
+    "Register": "17003/42000",
+    "CLS": "22809/27360",
+    "BSRAM": "15/140",
+    "DSP": "9/20",
+    "PRIMARY": "3/8",
+    "LW": "8/8"
+  },
+  "tool_version": "V1.9.12.04 (64-bit)",
+  "all_five_sta": {
+    "analyzed_endpoints": 50542,
+    "clock_period_ns": 20.0,
+    "clock_target_mhz": 50.0,
+    "final_fmax_mhz": 50.314,
+    "categories": {
+      "setup": {
+        "applicable": true,
+        "accepted": true,
+        "minimum_slack_ns": 0.125,
+        "reported_paths": 500,
+        "violated_endpoints": 0,
+        "negative_reported_paths": 0,
+        "proof": "Global ordered worst-path report has nonnegative minimum; endpoint count is only asserted when native summary supplies it.",
+        "report_anchor": "Setup_Slack_Table",
+        "requested_worst_paths": 500
+      },
+      "hold": {
+        "applicable": true,
+        "accepted": true,
+        "minimum_slack_ns": 0.077,
+        "reported_paths": 25,
+        "violated_endpoints": 0,
+        "negative_reported_paths": 0,
+        "proof": "Global ordered worst-path report has nonnegative minimum; endpoint count is only asserted when native summary supplies it.",
+        "report_anchor": "Hold_Slack_Table",
+        "requested_worst_paths": 25
+      },
+      "recovery": {
+        "applicable": true,
+        "accepted": true,
+        "minimum_slack_ns": 13.13,
+        "reported_paths": 25,
+        "violated_endpoints": null,
+        "negative_reported_paths": 0,
+        "proof": "Global ordered worst-path report has nonnegative minimum; endpoint count is only asserted when native summary supplies it.",
+        "report_anchor": "Recovery_Slack_Table",
+        "requested_worst_paths": 25
+      },
+      "removal": {
+        "applicable": true,
+        "accepted": true,
+        "minimum_slack_ns": 2.158,
+        "reported_paths": 25,
+        "violated_endpoints": null,
+        "negative_reported_paths": 0,
+        "proof": "Global ordered worst-path report has nonnegative minimum; endpoint count is only asserted when native summary supplies it.",
+        "report_anchor": "Removal_Slack_Table",
+        "requested_worst_paths": 25
+      },
+      "minimum_pulse_width": {
+        "applicable": true,
+        "accepted": true,
+        "minimum_slack_ns": 7.315,
+        "reported_paths": 10,
+        "violated_endpoints": null,
+        "negative_reported_paths": 0,
+        "proof": "Global ordered worst-path report has nonnegative minimum; endpoint count is only asserted when native summary supplies it.",
+        "report_anchor": "MIN_PULSE_WIDTH_TABLE",
+        "requested_worst_paths": 10,
+        "reported_pulse_types": [
+          "Low Pulse Width"
+        ],
+        "scope": "Global n-worst pulse checks; unlisted high/low types are not declared absent."
+      }
+    }
+  },
+  "full_routing": {
+    "accepted": true,
+    "placement_and_routing_completed": true,
+    "bitstream_generation_completed": true,
+    "explicit_unrouted_count": null,
+    "unrouted_mentions": [],
+    "criterion": "Explicit native full routing and bitstream completion with no unrouted/partial-route warning; protected checker also reparses completion. A missing numeric count remains null, never fabricated as zero.",
+    "numeric_zero_explicitly_reported": false
+  },
+  "accepted": true,
+  "bitstream": "D:\\Codex_Scratch\\R28_V4_FastP_Gains_20261103\\native\\forest_d1_v4_20261103_041121_679830\\impl\\pnr\\forest_d1_v4.fs",
+  "bitstream_sha256": "5649eeb4bca1a3c1ae88c42761a9d52e4d3213ed42605e7c57489e5d271bfebb",
+  "user_code": "0x56345239",
+  "part": "GW2A-LV55PG484C8/I7",
+  "evidence_sha256": {
+    "impl/pnr/forest_d1_v4.rpt.txt": "96ee3501c321fb9bf993b761b43d95d262aca60dceaf1011139a361fac27e806",
+    "impl/pnr/forest_d1_v4.log": "0c0d31407712d08c5cdbf45be7a84132013a5b3e4f47ead947cac58be119d90f",
+    "impl/pnr/forest_d1_v4.fs": "5649eeb4bca1a3c1ae88c42761a9d52e4d3213ed42605e7c57489e5d271bfebb",
+    "impl/pnr/forest_d1_v4_tr_content.html": "80082de735f67db75f64c8f1bb76700f98cf05b7c27acf87858e4bb891d7b538",
+    "impl/pnr/cmd.do": "a57c575ae3b3f8cf86c668a8974866120fc1f5118a922b13812e89df8ed15950",
+    "compile.log": "063e67f3aa8c649344cacf435f16c9223548e225f4dea12bf0342ef74a691be6",
+    "build_native.tcl": "2445f1bcaf18f1ecec5bf623bd88f62a2c2d95cab19bcdea2492f4338426db4b",
+    "impl/gwsynthesis/forest_d1_v4.vg": "8d2d266dd8937ca7f9345e2f376802a3caba697a2d23fe01f51ff70aa4e2eff9",
+    "impl/gwsynthesis/forest_d1_v4_syn.rpt.html": "b90952ef5ed3736249577ed1801d6fd6d9e3a7deafb70e19f39e26a06fce6228",
+    "impl/gwsynthesis/forest_d1_v4_syn_rsc.xml": "186d6a52feb1358e336cbb4f423888d26073a586a42ecd928cadb0613fb842a6",
+    "synthesis_gate.py": "5659924ea1ffb937ff95064aba1410feff9dbc3c8cfafb444758486f095fba55",
+    "SYNTHESIS_GATE.json": "c4f425c1adbdf7591ab46d446a014a1be9f70198d4461f1ff3e487f50bdfa04a",
+    "EXECUTED_BUILD_DRIVER.py": "52fa4d199353488cb1a6bb2c7dd6fa57dad8b63ef10fe3eec8c6d1ff3c5bfe65",
+    "read_active_json.py": "24dc2e022ade0d9d6077a7f0eadf4910070913acb67785dd062e5e02f1040ae8",
+    "check_sta_r26.py": "1f4498dca49f2710f1d2736e1b638954ffec1c4500d7bc41ae9a910e6f46e214"
+  },
+  "nonfatal_ide_cache_log_errors": [
+    "alog error: failed to open log file: 'C:/Users/???/AppData/Local/GowinSemi/IDE/cache/sh.log'"
+  ],
+  "unrouted_mentions": [],
+  "scope": "Original internal 50MHz STA; external ADC clock-to-data maximum and board skew were not supplied",
+  "external_adc_timing_physically_verified": false,
+  "hardware_verified": false
+}

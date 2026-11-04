@@ -1,0 +1,87 @@
+{
+  "note": "User-operated trial observed after programming; this agent sent no ZERO/RUN/motion commands",
+  "active_S1_exact_bits_verified": true,
+  "periods_ms_verified": [
+    1,
+    5,
+    5,
+    25
+  ],
+  "snapshot": {
+    "connected": true,
+    "authenticated": true,
+    "error": "",
+    "received": 39500,
+    "crc_errors": 20,
+    "format_errors": 0,
+    "timeouts": 0,
+    "unknown_actions": null,
+    "independent_gains": [
+      [
+        53.779998779296875,
+        0.0,
+        210.13999938964844,
+        17.670000076293945,
+        0.0,
+        616.6099853515625
+      ],
+      2
+    ],
+    "unix": 1793649067.6675613,
+    "pid": 39980,
+    "port": "COM5",
+    "simulated": false,
+    "title": "ADB1旧版封存 · S1 · 原完整手势功能 · 自适应试验前保持关闭",
+    "mapped": false,
+    "mode": 1,
+    "fault": 0,
+    "board_ms": 216921,
+    "firmware_id": 1094992433,
+    "schema": 1094995969,
+    "motor_permitted": false,
+    "pwm": 0,
+    "manual_gains": [
+      53.779998779296875,
+      0.0,
+      210.13999938964844,
+      17.670000076293945,
+      0.0,
+      616.6099853515625
+    ],
+    "active_gains": [
+      53.779998779296875,
+      0.0,
+      210.13999938964844,
+      17.670000076293945,
+      0.0,
+      616.6099853515625
+    ],
+    "adaptive_enabled": 0,
+    "periods_ms": [
+      1,
+      5,
+      5,
+      25
+    ],
+    "automatic_gain_write": false,
+    "automatic_ZERO_RUN": false,
+    "manual_gains_bits": [
+      "42571eb8",
+      "00000000",
+      "435223d7",
+      "418d5c29",
+      "00000000",
+      "441a270a"
+    ],
+    "active_gains_bits": [
+      "42571eb8",
+      "00000000",
+      "435223d7",
+      "418d5c29",
+      "00000000",
+      "441a270a"
+    ]
+  },
+  "archive": "ADB1旧版_S1现场封存_20261103_0342.zip",
+  "archive_sha256": "276957af936061f2f60ecac0d26e2d4fde76aae16c4fa524099c013bac8b0cb4"
+}

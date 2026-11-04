@@ -1,0 +1,17 @@
+{错误使用 assert
+Q4 projection infeasible at node48
+
+出错 make_easy_start_v2>quantize (第 91 行)
+ assert(~isempty(records),'Q4 projection infeasible at node%d',i);
+ ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+出错 make_easy_start_v2 (第 39 行)
+points=quantize(smooth);n=numel(points);validate(points);
+       ^^^^^^^^^^^^^^^^
+出错 run_font_generation (第 2 行)
+make_easy_start_v2;
+^^^^^^^^^^^^^^^^^^
+出错 run (第 112 行)
+evalin('caller', strcat(scriptStem, ';'));
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+} 
+ERROR: MATLAB error Exit Status: 0x00000001

@@ -1,0 +1,542 @@
+{
+  "firmware_id": 1094992433,
+  "schema": 1094995969,
+  "wire_version": 3,
+  "variant": 16,
+  "capabilities": 15,
+  "endian": "little",
+  "crc": {
+    "polynomial": 4129,
+    "initial": 65535,
+    "coverage": "all bytes except final two",
+    "stored_endian": "little"
+  },
+  "lengths": {
+    "command": 48,
+    "reply": 80,
+    "T": 256,
+    "D": 256,
+    "E": 256
+  },
+  "groups": {
+    "planner": 251,
+    "system": 254,
+    "gains": 255
+  },
+  "T_changes": [
+    {
+      "name": "final_target",
+      "offset": 88,
+      "type": "i64"
+    },
+    {
+      "name": "tracking_error",
+      "offset": 96,
+      "type": "i32"
+    },
+    {
+      "name": "actual_pwm_at_transaction_launch",
+      "offset": 62,
+      "type": "i16"
+    }
+  ],
+  "E": {
+    "magic": 1160922182,
+    "fields": [
+      {
+        "name": "magic",
+        "offset": 0,
+        "type": "u32"
+      },
+      {
+        "name": "wire_version",
+        "offset": 4,
+        "type": "u8"
+      },
+      {
+        "name": "variant",
+        "offset": 5,
+        "type": "u8"
+      },
+      {
+        "name": "flags",
+        "offset": 6,
+        "type": "u8"
+      },
+      {
+        "name": "mode",
+        "offset": 7,
+        "type": "u8"
+      },
+      {
+        "name": "sequence",
+        "offset": 8,
+        "type": "u32"
+      },
+      {
+        "name": "uptime_ms",
+        "offset": 12,
+        "type": "u32"
+      },
+      {
+        "name": "schema",
+        "offset": 16,
+        "type": "u32"
+      },
+      {
+        "name": "firmware_id",
+        "offset": 20,
+        "type": "u32"
+      },
+      {
+        "name": "capabilities",
+        "offset": 24,
+        "type": "u32"
+      },
+      {
+        "name": "control_epoch",
+        "offset": 28,
+        "type": "u32"
+      },
+      {
+        "name": "control_ms",
+        "offset": 32,
+        "type": "u32"
+      },
+      {
+        "name": "context_flags",
+        "offset": 36,
+        "type": "u32"
+      },
+      {
+        "name": "physical_wide",
+        "offset": 40,
+        "type": "i64"
+      },
+      {
+        "name": "origin",
+        "offset": 48,
+        "type": "i64"
+      },
+      {
+        "name": "final_target",
+        "offset": 56,
+        "type": "i64"
+      },
+      {
+        "name": "actual_position",
+        "offset": 64,
+        "type": "i64"
+      },
+      {
+        "name": "continuous_reference",
+        "offset": 72,
+        "type": "i64"
+      },
+      {
+        "name": "controller_tracking_error",
+        "offset": 80,
+        "type": "i64"
+      },
+      {
+        "name": "reference_velocity_cps",
+        "offset": 88,
+        "type": "i32"
+      },
+      {
+        "name": "measured_velocity_cps",
+        "offset": 92,
+        "type": "i32"
+      },
+      {
+        "name": "velocity_q16_per_5ms",
+        "offset": 96,
+        "type": "i32"
+      },
+      {
+        "name": "acceleration_q16_per_5ms2",
+        "offset": 100,
+        "type": "i32"
+      },
+      {
+        "name": "motion_state",
+        "offset": 104,
+        "type": "u8"
+      },
+      {
+        "name": "direction",
+        "offset": 105,
+        "type": "i8"
+      },
+      {
+        "name": "planner_phase",
+        "offset": 106,
+        "type": "u8"
+      },
+      {
+        "name": "stop_reason",
+        "offset": 107,
+        "type": "u8"
+      },
+      {
+        "name": "settle_ticks",
+        "offset": 108,
+        "type": "u8"
+      },
+      {
+        "name": "motion_flags",
+        "offset": 109,
+        "type": "u8"
+      },
+      {
+        "name": "planner_action",
+        "offset": 110,
+        "type": "u8"
+      },
+      {
+        "name": "motion_reason",
+        "offset": 111,
+        "type": "u8"
+      },
+      {
+        "name": "motion_events",
+        "offset": 112,
+        "type": "u32"
+      },
+      {
+        "name": "planner_request",
+        "offset": 116,
+        "type": "u32"
+      },
+      {
+        "name": "gesture_sequence",
+        "offset": 120,
+        "type": "u32"
+      },
+      {
+        "name": "gesture_poll",
+        "offset": 124,
+        "type": "u32"
+      },
+      {
+        "name": "raw43",
+        "offset": 128,
+        "type": "u8"
+      },
+      {
+        "name": "raw44",
+        "offset": 129,
+        "type": "u8"
+      },
+      {
+        "name": "decode_reason",
+        "offset": 130,
+        "type": "u8"
+      },
+      {
+        "name": "decode_state",
+        "offset": 131,
+        "type": "u8"
+      },
+      {
+        "name": "gesture_ready",
+        "offset": 132,
+        "type": "u8"
+      },
+      {
+        "name": "gesture_busy",
+        "offset": 133,
+        "type": "u8"
+      },
+      {
+        "name": "gesture_error",
+        "offset": 134,
+        "type": "u8"
+      },
+      {
+        "name": "gesture_init",
+        "offset": 135,
+        "type": "u8"
+      },
+      {
+        "name": "gesture_error_count",
+        "offset": 136,
+        "type": "u16"
+      },
+      {
+        "name": "gesture_id0",
+        "offset": 138,
+        "type": "u8"
+      },
+      {
+        "name": "gesture_id1",
+        "offset": 139,
+        "type": "u8"
+      },
+      {
+        "name": "suppressed",
+        "offset": 140,
+        "type": "u32"
+      },
+      {
+        "name": "feature_epoch",
+        "offset": 144,
+        "type": "u32"
+      },
+      {
+        "name": "candidate_epoch",
+        "offset": 148,
+        "type": "u32"
+      },
+      {
+        "name": "candidate_revision",
+        "offset": 152,
+        "type": "u32"
+      },
+      {
+        "name": "adoption_count",
+        "offset": 156,
+        "type": "u32"
+      },
+      {
+        "name": "freeze_reason",
+        "offset": 160,
+        "type": "u8"
+      },
+      {
+        "name": "feature_freeze",
+        "offset": 161,
+        "type": "u8"
+      },
+      {
+        "name": "adaptive_enabled",
+        "offset": 162,
+        "type": "u8"
+      },
+      {
+        "name": "adaptive_active",
+        "offset": 163,
+        "type": "u8"
+      },
+      {
+        "name": "control_revision",
+        "offset": 164,
+        "type": "u32"
+      },
+      {
+        "name": "stored_revision",
+        "offset": 168,
+        "type": "u32"
+      },
+      {
+        "name": "adopted_feature_epoch",
+        "offset": 172,
+        "type": "u32"
+      },
+      {
+        "name": "handoff_q4",
+        "offset": 176,
+        "type": "u16"
+      },
+      {
+        "name": "manual_run_q4",
+        "offset": 178,
+        "type": "u16"
+      },
+      {
+        "name": "source_flags",
+        "offset": 180,
+        "type": "u8"
+      },
+      {
+        "name": "source_reason",
+        "offset": 181,
+        "type": "u8"
+      },
+      {
+        "name": "source_capture_hold_ms",
+        "offset": 182,
+        "type": "u8"
+      },
+      {
+        "name": "profile",
+        "offset": 183,
+        "type": "u8"
+      },
+      {
+        "name": "kit_ip570",
+        "offset": 184,
+        "type": "u8"
+      },
+      {
+        "name": "capabilities_low",
+        "offset": 185,
+        "type": "u8"
+      },
+      {
+        "name": "angle_period_ms",
+        "offset": 186,
+        "type": "u8"
+      },
+      {
+        "name": "position_period_ms",
+        "offset": 187,
+        "type": "u8"
+      },
+      {
+        "name": "last_mutation",
+        "offset": 188,
+        "type": "u32"
+      },
+      {
+        "name": "zero_q4",
+        "offset": 192,
+        "type": "u16"
+      },
+      {
+        "name": "angle_target_adc12",
+        "offset": 194,
+        "type": "u16"
+      },
+      {
+        "name": "auto_state",
+        "offset": 200,
+        "type": "u8"
+      },
+      {
+        "name": "auto_result",
+        "offset": 201,
+        "type": "u8"
+      },
+      {
+        "name": "auto_enabled",
+        "offset": 202,
+        "type": "u8"
+      },
+      {
+        "name": "auto_reference_valid",
+        "offset": 203,
+        "type": "u8"
+      },
+      {
+        "name": "auto_error",
+        "offset": 204,
+        "type": "i32"
+      },
+      {
+        "name": "auto_anchor",
+        "offset": 208,
+        "type": "i32"
+      },
+      {
+        "name": "auto_attempt",
+        "offset": 212,
+        "type": "u32"
+      },
+      {
+        "name": "auto_still_ms",
+        "offset": 216,
+        "type": "u16"
+      },
+      {
+        "name": "auto_downward_q4",
+        "offset": 218,
+        "type": "u16"
+      },
+      {
+        "name": "fastp_tag",
+        "offset": 220,
+        "type": "u32"
+      },
+      {
+        "name": "control_period_us",
+        "offset": 224,
+        "type": "u16"
+      },
+      {
+        "name": "angle_P_ms",
+        "offset": 226,
+        "type": "u8"
+      },
+      {
+        "name": "angle_D_ms",
+        "offset": 227,
+        "type": "u8"
+      },
+      {
+        "name": "position_P_ms",
+        "offset": 228,
+        "type": "u8"
+      },
+      {
+        "name": "position_D_ms",
+        "offset": 229,
+        "type": "u8"
+      },
+      {
+        "name": "control_profile",
+        "offset": 230,
+        "type": "u8"
+      },
+      {
+        "name": "control_log_decimation",
+        "offset": 231,
+        "type": "u8"
+      },
+      {
+        "name": "angle_D_epoch_ms",
+        "offset": 232,
+        "type": "u32"
+      },
+      {
+        "name": "position_D_epoch_ms",
+        "offset": 236,
+        "type": "u32"
+      },
+      {
+        "name": "position_P_epoch_ms",
+        "offset": 240,
+        "type": "u32"
+      },
+      {
+        "name": "policy_epoch_5ms",
+        "offset": 244,
+        "type": "u32"
+      },
+      {
+        "name": "latest_control_epoch_ms",
+        "offset": 248,
+        "type": "u32"
+      }
+    ],
+    "reserved": [
+      [
+        196,
+        199
+      ],
+      [
+        252,
+        253
+      ]
+    ],
+    "crc_offset": 254
+  },
+  "notes": [
+    "T base offsets otherwise preserved; new wire identity is mandatory.",
+    "E motion40..119 is launch-context bound tocontrol_epoch/control_ms; optical128..143 is live; adaptive fieldscarry explicitfeature/adoptionepochs.",
+    "VelocityQ16 is controlunits/5ms, accelerationQ16 controlunits/5ms^2.",
+    "Localtarget10000 expresses the trajectory-relative PID origin, notfixedworldtarget.",
+    "T actual PWM is sampled at transaction launch; T requested PWM is computed fromthattransaction.",
+    "Control epoch is uptime milliseconds; published T stride is5ms while actual fast control executes every1ms.",
+    "Feature and candidate epochs retain their original5ms policy units. D epochs identify completed original5/25ms calculations.",
+    "E tail tag0x41465031; profile1 means angleP1ms/positionP5ms, D5/25ms. Nonzero I selects original PID."
+  ],
+  "default_gains": [
+    49,
+    0,
+    260,
+    25,
+    0,
+    620
+  ]
+}

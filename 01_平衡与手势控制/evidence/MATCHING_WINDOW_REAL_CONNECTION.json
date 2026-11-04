@@ -1,0 +1,75 @@
+{
+  "connected": true,
+  "authenticated": true,
+  "error": "",
+  "received": 17749,
+  "crc_errors": 13,
+  "format_errors": 0,
+  "timeouts": 0,
+  "unknown_actions": null,
+  "independent_gains": [
+    [
+      53.779998779296875,
+      0.0,
+      210.13999938964844,
+      17.670000076293945,
+      0.0,
+      616.6099853515625
+    ],
+    2
+  ],
+  "unix": 1793648979.8628895,
+  "pid": 39980,
+  "port": "COM5",
+  "simulated": false,
+  "title": "ADB1旧版封存 · S1 · 原完整手势功能 · 自适应试验前保持关闭",
+  "mapped": true,
+  "mode": 1,
+  "fault": 0,
+  "board_ms": 129147,
+  "firmware_id": 1094992433,
+  "schema": 1094995969,
+  "motor_permitted": false,
+  "pwm": 0,
+  "manual_gains": [
+    53.779998779296875,
+    0.0,
+    210.13999938964844,
+    17.670000076293945,
+    0.0,
+    616.6099853515625
+  ],
+  "active_gains": [
+    53.779998779296875,
+    0.0,
+    210.13999938964844,
+    17.670000076293945,
+    0.0,
+    616.6099853515625
+  ],
+  "adaptive_enabled": 0,
+  "periods_ms": [
+    1,
+    5,
+    5,
+    25
+  ],
+  "automatic_gain_write": false,
+  "automatic_ZERO_RUN": false,
+  "manual_gains_bits": [
+    "42571eb8",
+    "00000000",
+    "435223d7",
+    "418d5c29",
+    "00000000",
+    "441a270a"
+  ],
+  "active_gains_bits": [
+    "42571eb8",
+    "00000000",
+    "435223d7",
+    "418d5c29",
+    "00000000",
+    "441a270a"
+  ]
+}

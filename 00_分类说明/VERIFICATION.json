@@ -1,0 +1,99 @@
+{
+  "status": "PASS",
+  "source_files_verified": 1305,
+  "original_archives_unchanged": 5,
+  "original_local_sources_checked": 114,
+  "forbidden_file_count": 0,
+  "fs_file_count": 0,
+  "removed_fs_entries": 39,
+  "checked_model_data_containers": [
+    {
+      "path": "05_GOWIN画字与真实波形/画字控制与波形绘制/Presentation/C6_Word_ClosedLoop_Capture.slx",
+      "members": 21,
+      "forbidden_members": []
+    },
+    {
+      "path": "05_GOWIN画字与真实波形/画字控制与波形绘制/Source/evidence/C4_GOWIN_saved_rows.npz",
+      "members": 3,
+      "forbidden_members": []
+    },
+    {
+      "path": "05_GOWIN画字与真实波形/画字控制与波形绘制/Simulation/C5_Baseline/C6_Word_ClosedLoop_baseline.slx",
+      "members": 20,
+      "forbidden_members": []
+    },
+    {
+      "path": "05_GOWIN画字与真实波形/画字控制与波形绘制/Simulation/C5_Baseline/C6_Word_ClosedLoop_review.slx",
+      "members": 21,
+      "forbidden_members": []
+    },
+    {
+      "path": "05_GOWIN画字与真实波形/画字控制与波形绘制/Simulation/EasyStart_R3/C6_Word_ClosedLoop_font2.slx",
+      "members": 20,
+      "forbidden_members": []
+    },
+    {
+      "path": "05_GOWIN画字与真实波形/画字控制与波形绘制/Simulation/EasyStart_R3/C6_Word_ClosedLoop_review.slx",
+      "members": 21,
+      "forbidden_members": []
+    },
+    {
+      "path": "05_GOWIN画字与真实波形/原始坐标采集与联合仿真/results/V5_Sequential_Conditional_Loop.slx",
+      "members": 21,
+      "forbidden_members": []
+    },
+    {
+      "path": "05_GOWIN画字与真实波形/原始坐标采集与联合仿真/cosim/cases/sequence_r03/V5_Current_Field_Loop.slx",
+      "members": 20,
+      "forbidden_members": []
+    }
+  ],
+  "gowin_projects": [
+    {
+      "path": "05_GOWIN画字与真实波形/画字控制与波形绘制/Native/forest_d1_v5.gprj",
+      "enabled_inputs": 37,
+      "missing_inputs": []
+    },
+    {
+      "path": "05_GOWIN画字与真实波形/画字控制与波形绘制/Source/V5/project/forest_d1_v5.gprj",
+      "enabled_inputs": 37,
+      "missing_inputs": []
+    },
+    {
+      "path": "04_现场手绘/V5/project/forest_d1_v5.gprj",
+      "enabled_inputs": 27,
+      "missing_inputs": []
+    },
+    {
+      "path": "02_六位置控制/FPGA_Project/forest_d1_v4.gprj",
+      "enabled_inputs": 28,
+      "missing_inputs": []
+    },
+    {
+      "path": "01_平衡与手势控制/原版完整包/native_evidence/forest_d1_v1.gprj",
+      "enabled_inputs": 40,
+      "missing_inputs": []
+    },
+    {
+      "path": "01_平衡与手势控制/原版完整包/work/project/forest_d1_v1.gprj",
+      "enabled_inputs": 40,
+      "missing_inputs": []
+    }
+  ],
+  "python_files_parsed": 343,
+  "syntax_errors": [],
+  "broken_generated_links": [],
+  "native_coordinate_recheck": {
+    "points": 14681,
+    "maximum_x_error_count": 0,
+    "maximum_y_error_rad_s": 5.0306980803327406e-17,
+    "source_kind": "native_RTL_Simulink_feedback"
+  },
+  "physical_log_fixture_sha_matches_original_provenance": true,
+  "mapped_presentation_copies": [],
+  "current_lettering_status": "Successful with good results, owner confirmation 2026-11-04",
+  "uploaded": false,
+  "committed": false,
+  "hardware_actions": 0,
+  "errors": []
+}

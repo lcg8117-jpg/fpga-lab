@@ -1,0 +1,310 @@
+--- Oct31_ADB1/forest_d1_v1.gprj
++++ FastP_ADB1/forest_d1_v1.gprj
+@@ -1,4 +1,4 @@
+-<?xml version='1.0' encoding='utf8'?>
++<?xml version='1.0' encoding='utf-8'?>
+ <Project>
+   <Template>FPGA</Template>
+   <Version>5</Version>
+@@ -40,5 +40,5 @@
+     <File path="src/forest_motion_finite_scurve.v" type="file.verilog" enable="1" />
+     <File path="src/forest_motion_brake_step.v" type="file.verilog" enable="1" />
+     <File path="src/forest_motion_reference_shape.v" type="file.verilog" enable="1" />
+-  </FileList>
+-</Project>
++  <File path="src/forest_d1_fast_p_fixed.v" type="file.verilog" enable="1" /><File path="src/forest_d1_serial_mul.v" type="file.verilog" enable="1" /><File path="src/forest_d1_serial_format.v" type="file.verilog" enable="1" /><File path="src/forest_d1_p_compare.v" type="file.verilog" enable="1" /></FileList>
++</Project>--- Oct31_ADB1/src/forest_d1_safety.v
++++ FastP_ADB1/src/forest_d1_safety.v
+@@ -19,13 +19,13 @@
+     input wire arithmetic_fault,
+     input wire source_sample_en,
+     input wire [11:0] source_angle_adc12,
+-    output reg [2:0] mode,
+-    output reg [7:0] fault,
+-    output reg zero_valid,capture_active,
++    output reg [2:0] mode /* synthesis syn_maxfan=32 */,
++    output reg [7:0] fault /* synthesis syn_maxfan=32 */,
++    output reg zero_valid /* synthesis syn_maxfan=32 */,capture_active /* synthesis syn_maxfan=32 */,
+     output reg [13:0] zero_q4,
+     output reg signed [31:0] encoder_zero,
+-    output reg run_session /* synthesis syn_preserve=1 */,
+-    output reg run_session_controls /* synthesis syn_preserve=1 syn_keep=1 */,
++    output reg run_session /* synthesis syn_preserve=1 syn_maxfan=32 */,
++    output reg run_session_controls /* synthesis syn_preserve=1 syn_keep=1 syn_maxfan=32 */,
+     output wire motor_permitted,swing_permitted,
+     input wire motor_invalidate_calibration
+ );
+--- Oct31_ADB1/src/forest_d1_system.v
++++ FastP_ADB1/src/forest_d1_system.v
+@@ -24,7 +24,7 @@
+  wire ready=STARTUP_CYCLES==0 || startup_count>=STARTUP_CYCLES;
+  always @(posedge clk_50m or negedge reset_n)
+   if(!reset_n)startup_count<=0;else if(!ready)startup_count<=startup_count+1'b1;
+- wire control_rst_n=reset_n && ready;
++ wire control_rst_n /* synthesis syn_maxfan=64 */=reset_n && ready;
+  reg [15:0] millisecond_div;reg [31:0] uptime_ms;
+  wire tick_1ms=millisecond_div==49999;
+  always @(posedge clk_50m or negedge control_rst_n)
+@@ -32,12 +32,12 @@
+   else if(tick_1ms)begin millisecond_div<=0;uptime_ms<=uptime_ms+1'b1;end
+   else millisecond_div<=millisecond_div+1'b1;
+  wire [9:0] raw,clean;wire [13:0] filtered;
+- wire [31:0] actuator_diag,adc_cycle;
++ wire [31:0] actuator_diag,adc_cycle;wire adc_batch_valid;
+  j280_adc_capture_trace #(.DIAGNOSTIC_SWITCHES(1),.QUIET_CACHE_WORDS(1),.ADC_WORD_GUARD(1),.WINDOW_SAMPLES(64)) adc(
+   .clk_50m(clk_50m),.rst_n(reset_n),.adc_data_in(adc_data_in),.average_enable(1'b1),
+   .trace_adc_otr(adc_otr),.trace_actuator_diag(actuator_diag),.trace_motor_pins({BN1,BN2,PWMB}),
+   .adc_clk(adc_clk),.adc_oe_n(adc_oe_n),.adc_raw(raw),.adc_clean_stage(clean),.adc_filtered_q4(filtered),
+-  .trace_valid(),.trace_record(),.trace_time_counter(adc_cycle));
++  .control_sample_valid(adc_batch_valid),.trace_valid(),.trace_record(),.trace_time_counter(adc_cycle));
+  wire signed [31:0] enc;wire [15:0] invalid;
+  j280_encoder_x4 encoder(.clk_50m(clk_50m),.rst_n(reset_n),.enc_a(enc1_a),.enc_b(enc1_b),
+   .count(enc),.invalid_transition_count(invalid));
+@@ -188,7 +188,7 @@
+ 
+  wire signed [15:0] mapped_encoder,encoder_sample,control_encoder;
+  wire mapping_fault,angle_capture,angle_valid,raw_angle_valid,acquisition_fault,sample_en,frame_start;
+- wire source_rst_n;
++ wire source_rst_n /* synthesis syn_maxfan=64 */;
+  reg [3:0] mapping_settle;
+  always @(posedge clk_50m or negedge control_rst_n)
+   if(!control_rst_n)mapping_settle<=0;
+@@ -197,6 +197,11 @@
+  wire mapping_valid=&mapping_settle;
+  assign source_rst_n=control_rst_n && zero_valid && mapping_valid && prime_reset_count==0;
+  wire busy,done;wire signed [31:0] moto,balance_pwm,position_pwm,target;
++ wire control_fast_p,compare_ready,compare_deadline_fault;
++ reg fast_acquisition_fault;
++ wire actual_balance_permission=balance_permission && mapping_valid && !mapping_fault && !estop;
++ wire [31:0] control_angle_d_epoch,control_position_d_epoch,control_position_p_epoch;
++ wire [2:0] fast_position_div;
+  wire [2:0] position_div;
+  // Observer values continue updating while finished waits for the balance prime.
+  // Recheck all three current source conditions in addition to the quiet/raw guards.
+@@ -204,7 +209,7 @@
+   angle>=2285 && angle<=3885 && !acquisition_fault && !mapping_fault;
+  wire handoff_capture_request=mode==5 && handoff_started && !handoff_primed && handoff_capture_window;
+  reg source_frame_ready_reg;
+- assign source_frame_ready=source_frame_ready_reg;
++ assign source_frame_ready=source_frame_ready_reg && compare_ready;
+  always @(posedge clk_50m or negedge source_rst_n)
+   if(!source_rst_n)source_frame_ready_reg<=0;
+   else if(sample_en)source_frame_ready_reg<=0;else if(done)source_frame_ready_reg<=1;
+@@ -383,7 +388,7 @@
+   .run_pulse(physical_run || remote_run),.stop_pulse(stopping),.clear_pulse(key_pulse[2] || remote_clear),.estop_raw(estop),
+   .start_swing_pulse(swing_request),.hold_pulse(hold_pulse),.handoff_pulse(handoff_pulse && handoff_capture_window),.swing_failed(parent_swing_failed),
+   .adc_raw(raw),.adc_q4(filtered),.adc_otr_qualified(otr_qualified),.encoder_count(enc),.invalid_count(invalid),
+-  .arithmetic_fault(zero_valid && ((mapping_valid && mapping_fault) || (sample_en && busy) || acquisition_fault)),
++  .arithmetic_fault(zero_valid && ((mapping_valid && mapping_fault) || compare_deadline_fault || fast_acquisition_fault || acquisition_fault)),
+   .source_sample_en(sample_en),.source_angle_adc12(source_guard_mean),.mode(mode),.fault(fault),.zero_valid(zero_valid),
+   .capture_active(capture_active),.zero_q4(zero_q4),.encoder_zero(encoder_zero),.run_session(run_session),.run_session_controls(run_session_controls),
+   .motor_permitted(balance_permission),.swing_permitted(swing_permission));
+@@ -411,16 +416,49 @@
+   end
+  wire [31:0] bias_bits,position_bias,position_diff,angle_difference;
+  wire [31:0] angle_p,angle_i,angle_d,position_p,position_i,position_d;
+- forest_d1_pid core(.clk(clk_50m),.rst_n(source_rst_n),.sample_en(sample_en),
++ // Original core produces completed D at5/25ms; fast P computes at1/5ms.
++ wire fast_request=adc_batch_valid && source_rst_n;
++ wire [11:0] fast_mapped_angle;wire signed [15:0] unused_fast_raw_encoder;
++ wire fast_mapping_fault,fast_mapping_valid;
++ reg [3:0] expected_fast_valid;
++ reg signed [15:0] fast_control_encoder;
++ wire observation_start;wire [11:0] observation_angle;
++ wire signed [15:0] observation_encoder,observation_delta;
++ wire [191:0] observation_gains;wire [31:0] observation_revision;
++ reg [2:0] publication_div;reg captured_publish,captured_control_fast;
++ reg [31:0] captured_policy_epoch;
++ always @(posedge clk_50m or negedge source_rst_n)
++  if(!source_rst_n)begin expected_fast_valid<=0;fast_acquisition_fault<=0;fast_control_encoder<=10000;end
++  else begin
++   expected_fast_valid<={expected_fast_valid[2:0],fast_request};
++   if(fast_request)fast_control_encoder<=control_encoder;
++   if(fast_mapping_valid!=expected_fast_valid[3] || (!motion_session && fast_mapping_fault))fast_acquisition_fault<=1;
++  end
++ forest_d1_run_inputs #(.USE_Q4_INPUT(1)) fast_inputs(
++  .clk(clk_50m),.rst_n(control_rst_n),.angle_epoch_valid(source_rst_n),.angle_capture(fast_request),
++  .kit_ip570(kit_ip570),.adc_raw(raw),.adc_q4(filtered),.zero_q4(zero_q4),.encoder_count(enc),.encoder_zero(encoder_zero),
++  .angle_adc12(fast_mapped_angle),.encoder_forest(unused_fast_raw_encoder),.encoder_range_fault(fast_mapping_fault),.angle_valid(fast_mapping_valid));
++ always @(posedge clk_50m or negedge source_rst_n)
++  if(!source_rst_n)begin publication_div<=0;captured_publish<=0;captured_control_fast<=0;captured_policy_epoch<=0;end
++  else if(observation_start)begin
++   captured_publish<=!control_fast_p || publication_div==0;captured_control_fast<=control_fast_p;
++   captured_policy_epoch<=frames;
++   if(control_fast_p)publication_div<=publication_div==4 ? 0:publication_div+1'b1;else publication_div<=0;
++  end
++ forest_d1_p_compare core(.clk(clk_50m),.rst_n(source_rst_n),.cfg_rst_n(control_rst_n),.sample_en(sample_en),
++  .fast_sample_en(fast_mapping_valid && !fast_acquisition_fault),.run_session(mode==3 && actual_balance_permission),
++  .requested_fast(1'b1),.active_fast(control_fast_p),.ready(compare_ready),.deadline_fault(compare_deadline_fault),
++  .sample_epoch(uptime_ms),.gains(core_gains),.gain_revision(core_revision),
+   .integrator_clear(mode!=3 || !balance_permission),.prime_history(prime_pending),.angle_adc12(angle),.encoder(encoder_sample),
+-  .gain_write(1'b1),.bkp_bits(core_gains[31:0]),.bki_bits(core_gains[63:32]),.bkd_bits(core_gains[95:64]),
+-  .pkp_bits(core_gains[127:96]),.pki_bits(core_gains[159:128]),.pkd_bits(core_gains[191:160]),
++  .fast_angle(fast_mapped_angle),.fast_encoder(fast_control_encoder),
++  .observation_start(observation_start),.observation_angle(observation_angle),.observation_encoder(observation_encoder),
++  .observation_delta(observation_delta),.observation_gains(observation_gains),.observation_revision(observation_revision),
++  .angle_d_epoch(control_angle_d_epoch),.position_d_epoch(control_position_d_epoch),.position_p_epoch(control_position_p_epoch),
+   .done(done),.moto(moto),.balance_pwm(balance_pwm),.position_pwm(position_pwm),.target(target),
+   .position_bias_bits(position_bias),.position_diff_bits(position_diff),.balance_bias_bits(bias_bits),.angle_diff_bits(angle_difference),
+   .angle_p_bits(angle_p),.angle_i_bits(angle_i),.angle_d_bits(angle_d),.position_p_bits(position_p),
+-  .position_i_bits(position_i),.position_d_bits(position_d),.position_div(position_div),.busy(busy));
++  .position_i_bits(position_i),.position_d_bits(position_d),.position_div(position_div),.fast_position_div(fast_position_div),.busy(busy),.unused_terminal());
+  wire balance_bn1,balance_bn2,balance_pwm_pin;wire [31:0] balance_diag;
+- wire actual_balance_permission=balance_permission && mapping_valid && !mapping_fault && !estop;
+  forest_d1_run_actuator actuator(.clk(clk_50m),.rst_n(control_rst_n),.motor_permitted(actual_balance_permission),
+   .core_moto(moto),.BN1(balance_bn1),.BN2(balance_bn2),.PWMB(balance_pwm_pin),.duty_actual_q15(),.diag(balance_diag));
+  assign AN1=0;assign AN2=0;assign PWMA=0;
+@@ -514,7 +552,7 @@
+    captured_stop_reason<=0;captured_settle_ticks<=0;captured_motion_flags<=0;captured_velocity_valid<=0;captured_local_target<=10000;
+    adaptive_actual_q15<=0;adaptive_requested_moto<=0;adaptive_saturating<=0;
+   end else begin
+-   if(frame_start)begin
++   if(control_fast_p ? fast_request:frame_start)begin
+     frame_motion_session<=aligned_motion_session;frame_planner_action<=aligned_planner_action;frame_motion_reason<=aligned_motion_reason;
+     frame_last_gesture<=aligned_last_gesture;frame_action_reason<=aligned_action_reason;
+     frame_motion_events<=aligned_motion_events;frame_planner_request<=aligned_planner_request;
+@@ -525,7 +563,7 @@
+     frame_stop_reason<=aligned_stop_reason;frame_settle_ticks<=aligned_settle_ticks;frame_motion_flags<=aligned_motion_flags;
+     frame_velocity_valid<=aligned_velocity_valid;
+    end
+-   if(sample_en)begin
++   if(observation_start)begin
+     captured_motion_session<=frame_motion_session;captured_planner_action<=frame_planner_action;captured_motion_reason<=frame_motion_reason;
+     captured_last_gesture<=frame_last_gesture;captured_action_reason<=frame_action_reason;
+     captured_motion_events<=frame_motion_events;captured_planner_request<=frame_planner_request;captured_actual_at_launch<=actual_q15;
+@@ -536,7 +574,7 @@
+     captured_stop_reason<=frame_stop_reason;captured_settle_ticks<=frame_settle_ticks;captured_motion_flags<=frame_motion_flags;
+     captured_velocity_valid<=frame_velocity_valid;captured_local_target<=target[15:0];
+    end
+-   if(done)begin adaptive_actual_q15<=actual_q15;adaptive_requested_moto<=moto;adaptive_saturating<=moto>=6900 || moto<=-6900;end
++   if(done && captured_publish)begin adaptive_actual_q15<=actual_q15;adaptive_requested_moto<=moto;adaptive_saturating<=moto>=6900 || moto<=-6900;end
+   end
+  end
+  reg signed [63:0] frame_wide_encoder,frame_wide_target,frame_wide_physical;
+@@ -558,31 +596,31 @@
+    captured_position_update<=0;position_component_epoch<=0;captured_center_p<=0;captured_center_d<=0;
+    captured_fast_p<=0;captured_fast_d<=0;captured_learning_revision<=0;captured_candidate_epoch<=0;
+   end else begin
+-   if(frame_start)begin
++   if(control_fast_p ? fast_request:frame_start)begin
+     frame_encoder_raw<=enc;
+     frame_wide_encoder<=FEATURE_MOTION ? aligned_wide_encoder:wide_encoder;
+     frame_wide_target<=FEATURE_MOTION ? aligned_wide_target:wide_target;
+     frame_wide_physical<=FEATURE_MOTION ? aligned_wide_physical:wide_physical;
+    end
+-   if(sample_en)begin
++   if(observation_start)begin
+     captured_adaptive_used<=commit_bank ? adaptive_candidate:active_adaptive_used;
+     captured_feature_epoch<=commit_bank ? (adaptive_candidate ? candidate_epoch:0):active_feature_epoch;
+     captured_adaptive_enabled<=adaptation_enabled;captured_freeze<=freeze_reason;
+-    captured_ms<=uptime_ms;captured_epoch<=frames;captured_revision<=core_revision;captured_stored_revision<=stored_revision;
++    captured_ms<=uptime_ms;captured_epoch<=uptime_ms;captured_revision<=observation_revision;captured_stored_revision<=stored_revision;
+     captured_adaptive_epoch<=adaptive_epoch+(adaptive_commit ? 32'd1:32'd0);
+     captured_raw<={6'd0,raw};captured_zero<={2'd0,zero_q4};captured_q4<={2'd0,filtered};
+-    captured_angle<={4'd0,angle};captured_guard<={4'd0,raw_guard_mean};captured_encoder<=encoder_sample;
+-    captured_error<=$signed({1'b0,angle})-16'sd3085;
+-    captured_difference<=prime_pending ? 16'sd0:($signed({1'b0,angle})-16'sd3085)-previous_error;
++    captured_angle<={4'd0,observation_angle};captured_guard<={4'd0,raw_guard_mean};captured_encoder<=observation_encoder;
++    captured_error<=$signed({1'b0,observation_angle})-16'sd3085;
++    captured_difference<=observation_delta;
+     previous_error<=$signed({1'b0,angle})-16'sd3085;
+     captured_encoder_raw<=frame_encoder_raw;captured_wide_encoder<=frame_wide_encoder;
+     captured_wide_target<=frame_wide_target;captured_wide_physical<=frame_wide_physical;
+-    captured_gains<=core_gains;captured_base<=stored_gains;captured_target_gains<=adaptive_target;
+-    captured_position_update<=position_div==4;captured_center_p<=center_p;captured_center_d<=center_d;
++    captured_gains<=observation_gains;captured_base<=stored_gains;captured_target_gains<=adaptive_target;
++    captured_position_update<=control_fast_p ? fast_position_div==4:position_div==4;captured_center_p<=center_p;captured_center_d<=center_d;
+     captured_fast_p<=fast_p;captured_fast_d<=fast_d;captured_learning_revision<=learning_revision;
+     captured_candidate_epoch<=candidate_epoch;
+    end
+-   if(done && captured_position_update)position_component_epoch<=captured_epoch;
++   if(done)position_component_epoch<=control_position_p_epoch;
+   end
+  end
+  wire learning_pulse;wire [31:0] learning_seq,learning_event_epoch,diagnostic_reference_energy,diagnostic_window_energy;
+@@ -599,18 +637,18 @@
+  end
+  generate if(FEATURE_ADAPTIVE)begin:adaptive_hardware
+   forest_d1_adaptive_features features(.clk(clk_50m),.rst_n(control_rst_n && numerical_calibrated),
+-   .control_done(done && source_rst_n),
++   .control_done(done && source_rst_n && captured_publish),
+    .history_clear(numerical_history_clear),
+-   .transaction_epoch(captured_epoch),.angle_adc12(captured_angle[11:0]),
++   .transaction_epoch(captured_policy_epoch),.angle_adc12(captured_angle[11:0]),
+    .sampled_encoder_local(captured_encoder),.transaction_target_local(captured_local_target),
+    .reference_velocity_cps(captured_reference_velocity),.reference_acceleration_q(captured_acceleration_q),
+    .motion_braking(captured_motion_state==3),.feature_valid(feature_valid),.feature_epoch(feature_epoch),
+    .angle_error(feature_error),.angle_diff(feature_difference),.position_error(feature_position),
+    .evidence_freeze(feature_freeze),.evidence_reason(feature_reason));
+   forest_d1_adaptive_motion adaptive(.clk(clk_50m),.rst_n(control_rst_n && numerical_calibrated),
+-   .sample_valid(motion_session ? feature_valid:(done && source_rst_n)),.commit_tick(adaptive_commit),.run_balance(mode==3 && actual_balance_permission),
++   .sample_valid(motion_session ? feature_valid:(done && source_rst_n && captured_publish)),.commit_tick(adaptive_commit),.run_balance(mode==3 && actual_balance_permission),
+    .stop(stopping || estop || !run_session),.manual_write(manual_write),.enable_write(adapt_enable_write),.enable_value(adapt_enable_value),
+-   .gains_base(stored_gains),.manual_revision(stored_revision),.sample_epoch(motion_session ? feature_epoch:captured_epoch),
++   .gains_base(stored_gains),.manual_revision(stored_revision),.sample_epoch(motion_session ? feature_epoch:captured_policy_epoch),
+    .angle_error(motion_session ? feature_error:captured_error),.angle_diff(motion_session ? feature_difference:captured_difference),
+    .position_error(motion_session ? feature_position:($signed(captured_encoder)-32'sd10000)),.requested_moto(motion_session ? adaptive_requested_moto:moto),.actual_q15(motion_session ? adaptive_actual_q15:actual_q15),
+    .saturating(motion_session ? adaptive_saturating:(moto>=6900 || moto<=-6900)),.fault(fault!=0),.evidence_freeze(motion_session && feature_freeze),.evidence_reason(feature_reason),.target_gains(adaptive_target),
+@@ -636,7 +674,7 @@
+   assign adaptive_epoch=0;assign candidate_epoch=0;assign candidate_revision=stored_revision;
+  end endgenerate
+  reg [31:0] packet_sequence;reg [6:0] status_ms;
+- wire publish_control=source_rst_n && done;
++ wire publish_control=source_rst_n && done && captured_publish;
+  wire publish_status=tick_1ms && status_ms==99 && !source_rst_n;
+  always @(posedge clk_50m or negedge control_rst_n)begin
+   if(!control_rst_n)status_ms<=0;
+@@ -690,12 +728,21 @@
+   extended_packet[1447:1440]=source_capture_flags;extended_packet[1455:1448]=source_reason;
+   extended_packet[1463:1456]={2'd0,capture_hold_ms};extended_packet[1471:1464]={6'd0,selected_profile};
+   extended_packet[1479:1472]={7'd0,kit_ip570};extended_packet[1487:1480]=CAPABILITIES[7:0];
+-  extended_packet[1495:1488]=8'd5;extended_packet[1503:1496]=8'd25;extended_packet[1535:1504]=last_mutation;
++  extended_packet[1495:1488]=captured_control_fast ? 8'd1:8'd5;extended_packet[1503:1496]=captured_control_fast ? 8'd5:8'd25;extended_packet[1535:1504]=last_mutation;
+   extended_packet[1551:1536]={2'd0,zero_q4};extended_packet[1567:1552]=16'd3085;
+   extended_packet[1607:1600]=auto_state;extended_packet[1615:1608]=auto_result;
+   extended_packet[1623:1616]={7'd0,auto_enabled};extended_packet[1631:1624]={7'd0,auto_reference_valid};
+   extended_packet[1663:1632]=auto_error;extended_packet[1695:1664]=auto_anchor;extended_packet[1727:1696]=auto_attempt_seq;
+   extended_packet[1743:1728]=auto_still_ms;extended_packet[1759:1744]={2'd0,auto_downward};
++  extended_packet[1791:1760]=32'h41465031;
++  extended_packet[1807:1792]=captured_control_fast ? 16'd1000:16'd5000;
++  extended_packet[1815:1808]=captured_control_fast ? 8'd1:8'd5;extended_packet[1823:1816]=8'd5;
++  extended_packet[1831:1824]=captured_control_fast ? 8'd5:8'd25;extended_packet[1839:1832]=8'd25;
++  extended_packet[1847:1840]={7'd0,captured_control_fast};extended_packet[1855:1848]=captured_control_fast ? 8'd5:8'd1;
++  extended_packet[1887:1856]=control_angle_d_epoch;extended_packet[1919:1888]=control_position_d_epoch;
++  extended_packet[1951:1920]=control_position_p_epoch;extended_packet[1983:1952]=captured_policy_epoch;
++  extended_packet[2015:1984]=captured_epoch;
++
+  end
+  wire diagnostic_pending;wire [2047:0] diagnostic_packet;
+  // Sideband packets use idle controller time and leave a guard before the
+@@ -708,7 +755,7 @@
+   .PROTOCOL_VERSION(PROTOCOL_VERSION),.PROTOCOL_VARIANT(PROTOCOL_VARIANT),.SCHEMA(SCHEMA),.AUTO_RETURN_CAPABLE(FEATURE_AUTORETURN)) diagnostics(
+   .clk(clk_50m),.rst_n(control_rst_n),.tick_1ms(tick_1ms),.sent(publish_diag),.uptime_ms(uptime_ms),
+   .kit_ip570(kit_ip570),.kit_changed(kit_changed),.zero_valid(zero_valid),.encoder_raw(enc),.invalid_count(invalid),
+-  .control_done(done && source_rst_n),.control_gains(captured_gains),.control_epoch(captured_epoch),.control_ms(captured_ms),
++  .control_done(done && source_rst_n && captured_publish),.control_gains(captured_gains),.control_epoch(captured_epoch),.control_ms(captured_ms),
+   .control_feature_epoch(captured_feature_epoch),.active_revision(captured_revision),.stored_revision(captured_stored_revision),
+   .adoption_count(captured_adaptive_epoch),.control_adaptive_used(captured_adaptive_used),.control_freeze(captured_freeze),
+   .live_flags(flags),.gesture_map({5'd0,gesture_map}),.left_positive(left_positive),.cw_positive(cw_positive),
+@@ -765,8 +812,8 @@
+     tlm_data[831:800]<=publish_control ? moto:32'd0;
+     tlm_data[863:832]<=publish_control ? balance_pwm:32'd0;
+     tlm_data[895:864]<=publish_control ? position_pwm:32'd0;
+-    tlm_data[911:896]<=16'd3085;tlm_data[927:912]<=publish_control ? 16'd5000:16'd0;
+-    tlm_data[959:928]<=publish_control ? (captured_position_update ? captured_epoch:position_component_epoch):32'd0;
++    tlm_data[911:896]<=16'd3085;tlm_data[927:912]<=publish_control ? (captured_control_fast ? 16'd1000:16'd5000):16'd0;
++    tlm_data[959:928]<=publish_control ? control_position_p_epoch:32'd0;
+     tlm_data[991:960]<=gesture_sequence;tlm_data[1023:992]<=gesture_poll;
+     tlm_data[1215:1024]<=publish_control ? captured_base:stored_gains;
+     tlm_data[1407:1216]<=publish_control ? captured_gains:active_gains;
+--- Oct31_ADB1/src/forest_d1_top.v
++++ FastP_ADB1/src/forest_d1_top.v
+@@ -7,7 +7,7 @@
+  // Trial admission only: 15deg, rod200deg/s, arm140deg/s. Balance guards and
+  // the ordinary RUN entry window retain their existing independent limits.
+  // floor(abs(delta_q4)*6921/16) gives 634Q4 inside15deg; 635Q4 is outside.
+- forest_d1_system #(.VARIANT(1),.FIRMWARE_ID(32'h41444231),.SCHEMA(32'h41444203),
++ forest_d1_system #(.VARIANT(1),.FIRMWARE_ID(32'h41444231),.SCHEMA(32'h41445001),
+   .PROTOCOL_VERSION(3),.PROTOCOL_VARIANT(16),.CAPABILITIES(32'h0000000f),
+   .FEATURE_SWING(1),.FEATURE_THREE_PROFILES(0),.FEATURE_GESTURE(1),.FEATURE_MOTION(1),.FEATURE_ADAPTIVE(1),.FEATURE_AUTORETURN(0),
+   .SWING_CAPTURE_ALPHA_Q20(32'sd274517),.SWING_CAPTURE_AD_Q20(32'sd3660218),
